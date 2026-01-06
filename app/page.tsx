@@ -46,22 +46,21 @@ export default function Home() {
             </div>
 
             <div className="space-y-4">
-              <p className="font-mono text-sm text-accent">
-                {"> BE_THE_FIRST_TO_KNOW (email):"}
-              </p>
-              <form className="flex flex-col gap-3 sm:flex-row">
-                <Input
-                  type="email"
-                  placeholder="your.email@company.com"
-                  className="flex-1 border-accent/30 bg-secondary/10 font-mono text-sm placeholder:text-muted-foreground/50"
-                />
-                <Button
-                  type="submit"
-                  className="border border-accent/30 bg-accent font-mono text-accent-foreground hover:bg-accent/90"
+              <p className="font-mono text-sm">
+                <span className="text-accent">{"> BE_THE_FIRST_TO_KNOW:"}</span>
+                {" Join our Google group "}
+                <br />
+                {" > "}
+                <a
+                  rel="noopener noreferrer"
+                  href="https://groups.google.com/g/data-engineering-open-forum"
+                  target="_blank"
+                  className="underline hover:text-accent"
                 >
-                  {">> SUBMIT"}
-                </Button>
-              </form>
+                  data-engineering-open-forum
+                </a>
+                {" for updates & announcements."}
+              </p>
             </div>
 
             <div className="space-y-2 border-l-2 border-accent/30 pl-4 font-mono text-sm text-muted-foreground">
