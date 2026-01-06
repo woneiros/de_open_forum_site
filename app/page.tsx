@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
 export default function Home() {
   return (
@@ -39,7 +37,7 @@ export default function Home() {
               </p>
               <p className="text-pretty leading-relaxed text-muted-foreground">
                 World-class content. Meaningful connections. Open dialogue.
-                We're building an event that practitioners, leaders, and
+                We&apos;re building an event that practitioners, leaders, and
                 enthusiasts actively seek out — not just for the technical
                 depth, but for the experience it delivers.
               </p>
@@ -47,7 +45,9 @@ export default function Home() {
 
             <div className="space-y-4">
               <p className="font-mono text-sm">
-                <span className="text-accent">{"> BE_THE_FIRST_TO_KNOW:"}</span>
+                <span className="text-accent text-base">
+                  {"> BE_THE_FIRST_TO_KNOW:"}
+                </span>
                 {" Join our Google group "}
                 <br />
                 {" > "}
@@ -68,6 +68,52 @@ export default function Home() {
               <p>{"// Community-driven content"}</p>
               <p>{"// Open dialogue & collaboration"}</p>
               <p>{"// Connections that outlive the event"}</p>
+            </div>
+
+            {/* Previous editions */}
+            <div className="flex flex-col flex-wrap items-start gap-2">
+              <p className="text-lg">{"Previous editions:"}</p>
+              <p className="font-mono">
+                <span className="text-muted-foreground">{"// 2024:"}</span>
+                <a
+                  href="https://2024.dataengineeringopenforum.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent hover:underline text-sm"
+                >
+                  [website]
+                </a>
+                {", "}
+
+                <a
+                  href="https://www.youtube.com/playlist?list=PLSECvWLlUYeHM7BWwlEsNYO7aQrsDUQzD"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent hover:underline text-sm"
+                >
+                  [YouTube playlist]
+                </a>
+              </p>
+              <p className="font-mono">
+                <span className="text-muted-foreground">{"// 2025:"}</span>
+                <a
+                  href="https://2025.dataengineeringopenforum.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent hover:underline text-sm"
+                >
+                  [website]
+                </a>
+                {", "}
+                <a
+                  href="https://www.youtube.com/playlist?list=PLfXiENmg6yyXKICQiUNutmDyJKk84BVSP"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent hover:underline text-sm"
+                >
+                  [YouTube playlist]
+                </a>
+              </p>
             </div>
           </div>
 
