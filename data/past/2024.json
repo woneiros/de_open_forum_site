@@ -1,0 +1,83 @@
+{
+  "year": "2024",
+  "title": "Data Engineering Open Forum 2024",
+  "date": "2024-04-18",
+  "description": "The inaugural Data Engineering Open Forum brought together data engineering practitioners, leaders, and enthusiasts in San Francisco for a day of technical talks, knowledge sharing, and community building.",
+  "playlistUrl": "https://www.youtube.com/playlist?list=PLSECvWLlUYeHM7BWwlEsNYO7aQrsDUQzD",
+  "talks": [
+    {
+      "title": "Evolving from Rule-based Classifier: Machine Learning Powered Auto Remediation in Netflix Data Platform",
+      "authors": [
+        {
+          "name": "Stephanie Vezich Tamayo",
+          "title": "Senior Machine Learning Engineer at Netflix"
+        },
+        {
+          "name": "Binbing Hou",
+          "title": "Senior Software Engineer at Netflix"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=0j6b9V9tmKA&list=PLSECvWLlUYeHM7BWwlEsNYO7aQrsDUQzD&index=2"
+    },
+    {
+      "title": "Automating the Data Architect: Generative AI for Enterprise Data Modeling",
+      "authors": [
+        {
+          "name": "Jide Ogunjobi",
+          "title": "Founder & CTO at Context Data"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=DtzIIVJq8wA&list=PLSECvWLlUYeHM7BWwlEsNYO7aQrsDUQzD&index=6"
+    },
+    {
+      "title": "Reflections on Building a Data Platform From the Ground Up in a Post-GDPR World.",
+      "authors": [
+        {
+          "name": "Jessica Larson",
+          "title": "Data Engineer & Author of \"Snowflake Access Control\""
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=WdSsneeI6RE&list=PLSECvWLlUYeHM7BWwlEsNYO7aQrsDUQzD&index=5"
+    },
+    {
+      "title": "Unbundling the Data Warehouse: The Case for Independent Storage",
+      "authors": [
+        {
+          "name": "Jason Reid",
+          "title": "Co-founder & Head of Product at Tabular"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=CmEIJ-lagVU&list=PLSECvWLlUYeHM7BWwlEsNYO7aQrsDUQzD&index=1&pp=iAQB"
+    },
+    {
+      "title": "Real-Time Delivery of Impressions at Scale",
+      "authors": [
+        {
+          "name": "Tulika Bhatt",
+          "title": "Senior Data Engineer at Netflix"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=ARTHgxoJmCE&list=PLSECvWLlUYeHM7BWwlEsNYO7aQrsDUQzD&index=4"
+    },
+    {
+      "title": "Data Quality Score: How We Evolved the Data Quality Strategy at Airbnb",
+      "authors": [
+        {
+          "name": "Clark Wright",
+          "title": "Staff Analytics Engineer at Airbnb"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=Lv-bFDSzrqw&list=PLSECvWLlUYeHM7BWwlEsNYO7aQrsDUQzD&index=8"
+    },
+    {
+      "title": "Data Productivity at Scale",
+      "authors": [
+        {
+          "name": "Iaroslav Zeigerman",
+          "title": "Co-Founder and Chief Architect at Tobiko Data"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=KP5ml1tOfbY&list=PLSECvWLlUYeHM7BWwlEsNYO7aQrsDUQzD&index=3"
+    }
+  ]
+}

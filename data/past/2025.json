@@ -1,0 +1,165 @@
+{
+  "year": "2025",
+  "title": "Data Engineering Open Forum 2025",
+  "date": "2025-04-23",
+  "description": "The second edition of Data Engineering Open Forum continued the tradition of bringing together the data engineering community in San Francisco for cutting-edge technical talks, lightning sessions, and panel discussions.",
+  "playlistUrl": "https://www.youtube.com/playlist?list=PLfXiENmg6yyXKICQiUNutmDyJKk84BVSP",
+  "talks": [
+    {
+      "title": "How Netflix built a Real-Time Distributed Graph for Internet Scale",
+      "authors": [
+        {
+          "name": "Luis Medina",
+          "title": "Senior Data Engineer at Netflix"
+        },
+        {
+          "name": "Adrian Taruc",
+          "title": "Senior Data Engineer at Netflix"
+        }
+      ],
+      "youtubeUrl": null
+    },
+    {
+      "title": "Apache Spark™ 4.0 for Data Engineering",
+      "authors": [
+        {
+          "name": "Jules S. Damji",
+          "title": "Technical Staff at Databricks"
+        },
+        {
+          "name": "Allison Wang",
+          "title": "Staff Software Engineer at Databricks"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=odQ6mEUzGvQ&list=PLfXiENmg6yyXKICQiUNutmDyJKk84BVSP&index=3"
+    },
+    {
+      "title": "Apache Gluten: Revolutionizing Data Processing Efficiency on Apache Spark",
+      "authors": [
+        {
+          "name": "Binwei Yang",
+          "title": "Principal Engineer at IBM"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=f5ICT9wNK2A&list=PLfXiENmg6yyXKICQiUNutmDyJKk84BVSP"
+    },
+    {
+      "title": "Delivering Scalable Insights for a New Product Launch: Games at Netflix",
+      "authors": [
+        {
+          "name": "Michael Cuthbert",
+          "title": "Senior Data Engineer at Netflix"
+        },
+        {
+          "name": "Sunil Palepu",
+          "title": "Senior Data Engineer at Netflix"
+        }
+      ],
+      "youtubeUrl": null
+    },
+    {
+      "title": "Lightning Talks: Speed up your pipelines with Storage Partitioned Joins",
+      "authors": [
+        {
+          "name": "Ariel Marcus",
+          "title": "Senior Data Engineer at Netflix"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=S78D8LsnR5Y&list=PLfXiENmg6yyXKICQiUNutmDyJKk84BVSP"
+    },
+    {
+      "title": "Lightning Talks: Do Work that Matters - Balancing Foundational Work against Stakeholder Requests",
+      "authors": [
+        {
+          "name": "Lauren Lin",
+          "title": "Data Engineering Manager at Dropbox"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=XQQM7lDP_l8&list=PLfXiENmg6yyXKICQiUNutmDyJKk84BVSP"
+    },
+    {
+      "title": "Lightning Talks: Big Data Analytics and DevOps belong together: Deployment Automation for Business Intelligence team",
+      "authors": [
+        {
+          "name": "Nataliya Nadtoka",
+          "title": "Manager of Data Engineering at Basis Technologies"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=4bBkALARx1E&list=PLfXiENmg6yyXKICQiUNutmDyJKk84BVSP"
+    },
+    {
+      "title": "Making Lakehouse Table Formats & Catalogs work for your data using Apache XTable (Incubating)",
+      "authors": [
+        {
+          "name": "Dipankar Mazumdar",
+          "title": "Staff Data Engineer Advocate at Onehouse.ai"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=wLsMrdfBuwU&list=PLfXiENmg6yyXKICQiUNutmDyJKk84BVSP"
+    },
+    {
+      "title": "The Feedback Loop",
+      "authors": [
+        {
+          "name": "Michael Jennings",
+          "title": "Director LinkedIn Strategy - Product at Netflix"
+        },
+        {
+          "name": "Keyser Soderberg",
+          "title": "Senior Software Engineer at Netflix"
+        },
+        {
+          "name": "Margaux Bhatt",
+          "title": "Senior Director Content Data Science"
+        }
+      ],
+      "youtubeUrl": null
+    },
+    {
+      "title": "How Metronome Scaled their Real-Time Usage Based Billing Pipeline to Billions of Events Per Day",
+      "authors": [
+        {
+          "name": "Apurva Mehta",
+          "title": "Co-Founder and CEO at Responsive"
+        },
+        {
+          "name": "Nick Dellamaggiore",
+          "title": "Software Engineer at Metronome"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=mRSXzVciz2w&list=PLfXiENmg6yyXKICQiUNutmDyJKk84BVSP"
+    },
+    {
+      "title": "Enabling Reliable Metrics and Insights with DataJunction a Semantic Layer",
+      "authors": [
+        {
+          "name": "Yian Shang",
+          "title": "Senior Software Engineer at Netflix"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=t9XEJnEyz3I&list=PLfXiENmg6yyXKICQiUNutmDyJKk84BVSP"
+    },
+    {
+      "title": "Panel: The Future of Data Engineering",
+      "authors": [
+        {
+          "name": "Inna Giguere",
+          "title": "Director Content and Studio Data Engineering at Netflix"
+        },
+        {
+          "name": "Ryan Blue",
+          "title": "Technical Staff at Databricks"
+        },
+        {
+          "name": "Jery Wang",
+          "title": "Data Infrastructure Senior Leader at Airbnb"
+        },
+        {
+          "name": "Tulika Bhatt",
+          "title": "Senior Software Engineer at Netflix (Moderator)"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=VVWjdsuNrwE&list=PLfXiENmg6yyXKICQiUNutmDyJKk84BVSP"
+    }
+  ]
+}

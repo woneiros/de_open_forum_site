@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
 
       {/* Main content */}
       <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16 lg:py-24">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">
           {/* Left column - Text content */}
           <div className="flex flex-col justify-center space-y-8">
             <div className="space-y-4">
@@ -75,6 +76,13 @@ export default function Home() {
               <p className="text-lg">{"Previous editions:"}</p>
               <p className="font-mono">
                 <span className="text-muted-foreground">{"// 2024:"}</span>
+                <Link
+                  href="/past/2024"
+                  className="hover:text-accent hover:underline text-sm"
+                >
+                  [talks]
+                </Link>
+                {", "}
                 <a
                   href="https://2024.dataengineeringopenforum.com"
                   target="_blank"
@@ -84,7 +92,6 @@ export default function Home() {
                   [website]
                 </a>
                 {", "}
-
                 <a
                   href="https://www.youtube.com/playlist?list=PLSECvWLlUYeHM7BWwlEsNYO7aQrsDUQzD"
                   target="_blank"
@@ -96,6 +103,13 @@ export default function Home() {
               </p>
               <p className="font-mono">
                 <span className="text-muted-foreground">{"// 2025:"}</span>
+                <Link
+                  href="/past/2025"
+                  className="hover:text-accent hover:underline text-sm"
+                >
+                  [talks]
+                </Link>
+                {", "}
                 <a
                   href="https://2025.dataengineeringopenforum.com"
                   target="_blank"
