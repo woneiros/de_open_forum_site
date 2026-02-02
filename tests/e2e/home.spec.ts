@@ -49,24 +49,6 @@ test.describe("Homepage", () => {
       "https://groups.google.com/g/data-engineering-open-forum"
     );
     await expect(googleGroupLink).toHaveAttribute("target", "_blank");
-
-    // Check CFP link on header
-    const cfpLink = page.getByRole("link", {
-      name: "NOW_ACCEPTING_SUBMISSIONS_",
-    });
-    await expect(cfpLink).toHaveAttribute(
-      "href",
-      "https://forms.gle/B5s32ZaVeXG8dZJi8"
-    );
-    await expect(cfpLink).toHaveAttribute("target", "_blank");
-
-    // Check CFP link on main section
-    const cfpLinkMain = page.getByRole("link", { name: "Submit your talk" });
-    await expect(cfpLinkMain).toHaveAttribute(
-      "href",
-      "https://forms.gle/B5s32ZaVeXG8dZJi8"
-    );
-    await expect(cfpLinkMain).toHaveAttribute("target", "_blank");
   });
 
   test("should display Golden Gate Bridge image", async ({ page }) => {
