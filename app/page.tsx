@@ -120,17 +120,18 @@ export default function Home() {
                 practitioners sharing real-world experiences and production
                 system insights. Stay tuned for the full agenda.
               </p>
-              <p className="font-mono text-sm">
+              <p className="font-mono">
                 <span className="text-accent">
                   {"> CHECK_OUT_PREVIOUS_SESSIONS:"}
                 </span>
+                <br />
                 {" Get a sense of what to expect by exploring talks from "}
                 <Link href="/past/2024" className="underline hover:text-accent">
-                  2024
+                  [2024]
                 </Link>
                 {" and "}
                 <Link href="/past/2025" className="underline hover:text-accent">
-                  2025
+                  [2025]
                 </Link>
                 {"."}
               </p>
@@ -158,8 +159,8 @@ export default function Home() {
 
             {/* Organizer Information */}
             <div className="border-2 border-accent/40 p-6 space-y-3 rounded-sm">
-              <p className="font-mono text-sm text-accent">
-                {"// ORGANIZED_BY_"}
+              <p className="font-mono text-xl font-semibold text-accent">
+                {"> ORGANIZED_BY_"}
               </p>
               <h3 className="font-mono text-xl font-bold">
                 Data Engineering Team (DET)
@@ -167,47 +168,25 @@ export default function Home() {
               <p className="text-pretty leading-relaxed text-muted-foreground">
                 This event is organized by the Data Engineering Team (DET), a
                 grassroots community of data engineering practitioners. We are
-                vendor-neutral and community-driven — this is not a Netflix
-                event, though some Netflix employees are involved as community
-                members. Our mission is to create an open, authentic space for
-                data engineering dialogue.
+                vendor-neutral and community-driven. Our mission is to create an
+                open, authentic space for data engineering dialogue.
               </p>
-            </div>
 
-            {/* Program Committee */}
-            <div className="space-y-4">
-              <div className="font-mono text-xl font-semibold text-accent">
-                {"> PROGRAM_COMMITTEE_ "}
+              {/* Program Committee */}
+              <div className="space-y-4">
+                <div className="font-mono  font-semibold text-accent">
+                  {"// PROGRAM_COMMITTEE_ "}
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {programCommittee.map((member) => (
+                    <CommitteeCard
+                      key={member.name}
+                      name={member.name}
+                      company={member.company}
+                    />
+                  ))}
+                </div>
               </div>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {programCommittee.map((member) => (
-                  <CommitteeCard
-                    key={member.name}
-                    name={member.name}
-                    company={member.company}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Previous editions */}
-            <div className="flex flex-col flex-wrap items-start gap-2">
-              <p className="font-mono">
-                <span className="italic">{"Previous editions: "}</span>
-                <Link
-                  href="/past/2024"
-                  className="hover:text-accent hover:underline"
-                >
-                  [2024]
-                </Link>
-                {", "}
-                <Link
-                  href="/past/2025"
-                  className="hover:text-accent hover:underline"
-                >
-                  [2025]
-                </Link>
-              </p>
             </div>
 
             {/* FAQ Section */}
