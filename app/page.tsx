@@ -18,34 +18,58 @@ export default function Home() {
 
       {/* Main content */}
       <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16 lg:py-24">
-        <div className="grid gap-6 lg:grid-cols-10 lg:gap-10">
-          {/* Left column - Text content */}
-          <div className="flex flex-col justify-center space-y-8 lg:col-span-6 mx-1 md:mx-8 lg:mx-0">
-            <div className="space-y-4">
+        <div className="grid gap-6 lg:grid-cols-10 lg:gap-10 ">
+          {/* Header */}
+          <div className="col-span-full grid lg:grid-cols-10 grid-cols-1 border-b border-accent/30 pb-10 mb-10 gap-8">
+            <div className="space-y-4 lg:col-span-6">
               <div className="font-mono text-sm text-accent">
                 {"> AGENDA_COMING_SOON_ "}
               </div>
               <h1 className="text-balance font-mono text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl whitespace-pre-line">
                 Data Engineering Open Forum
               </h1>
-              <div className="font-mono text-lg text-muted-foreground sm:text-xl">
-                {"// San Francisco: April 16th, 2026"}
+              <div className="font-mono font-extrabold text-xl text-accent sm:text-2xl border-flow px-3 py-2 inline-block">
+                {"San Francisco: April 16th, 2026"}
+              </div>
+              <p className="text-pretty text-lg leading-relaxed">
+                A Data Engineering event by the community for the community.
+                <br />
+                <span className="italic font-mono text-sm">
+                  Brought to you by{" "}
+                  <a
+                    rel="noopener noreferrer"
+                    href="https://dataengineeringthings.com"
+                    target="_blank"
+                    className="underline hover:text-accent"
+                  >
+                    Data Engineering Things
+                  </a>
+                </span>
+              </p>
+              <div className="space-y-2 font-mono text-sm text-muted-foreground">
+                <p>{"// Technically deep, globally relevant"}</p>
+                <p>{"// Community-driven content"}</p>
+                <p>{"// Open dialogue & collaboration"}</p>
+                <p>{"// Connections that outlive the event"}</p>
               </div>
             </div>
-
-            <div className="space-y-4">
-              <p className="text-pretty text-lg leading-relaxed">
-                The most anticipated and respected conference in the data
-                engineering community.
-              </p>
-              <p className="text-pretty leading-relaxed text-muted-foreground">
-                World-class content. Meaningful connections. Open dialogue.
-                We&apos;re building an event that practitioners, leaders, and
-                enthusiasts actively seek out — not just for the technical
-                depth, but for the experience it delivers.
-              </p>
+            {/* Right column - Visual element */}
+            <div className="flex items-center justify-center lg:col-span-4 ">
+              <div className="relative  w-full h-70 lg:h-110 max-w-md">
+                <Image
+                  src="/de_open_forum_goldengate.png"
+                  alt="Data Engineering Open Forum - Golden Gate Bridge representing San Francisco"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-contain"
+                />
+              </div>
             </div>
-
+          </div>
+          {/* End of header -- begin main content */}
+          {/* Left column - Text content */}
+          <div className="flex flex-col justify-center space-y-8 lg:col-span-8 mx-1 md:mx-8 lg:mx-0">
             {/* Why Should I Attend? */}
             <div className="space-y-6">
               <div className="font-mono text-sm text-accent">
@@ -101,17 +125,11 @@ export default function Home() {
                   {"> CHECK_OUT_PREVIOUS_SESSIONS:"}
                 </span>
                 {" Get a sense of what to expect by exploring talks from "}
-                <Link
-                  href="/past/2024"
-                  className="underline hover:text-accent"
-                >
+                <Link href="/past/2024" className="underline hover:text-accent">
                   2024
                 </Link>
                 {" and "}
-                <Link
-                  href="/past/2025"
-                  className="underline hover:text-accent"
-                >
+                <Link href="/past/2025" className="underline hover:text-accent">
                   2025
                 </Link>
                 {"."}
@@ -136,13 +154,6 @@ export default function Home() {
                 </a>
                 {" for updates & announcements."}
               </p>
-            </div>
-
-            <div className="space-y-2 border-l-2 border-accent/30 pl-4 font-mono text-sm text-muted-foreground">
-              <p>{"// Technically deep, globally relevant"}</p>
-              <p>{"// Community-driven content"}</p>
-              <p>{"// Open dialogue & collaboration"}</p>
-              <p>{"// Connections that outlive the event"}</p>
             </div>
 
             {/* Organizer Information */}
@@ -205,20 +216,6 @@ export default function Home() {
                 {"> FREQUENTLY_ASKED_QUESTIONS_ "}
               </div>
               <FAQSection items={faqItems} />
-            </div>
-          </div>
-
-          {/* Right column - Visual element */}
-          <div className="flex items-center justify-center lg:col-span-4">
-            <div className="relative aspect-square w-full max-w-md">
-              <Image
-                src="/de_open_forum_goldengate.png"
-                alt="Data Engineering Open Forum - Golden Gate Bridge representing San Francisco"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-contain"
-              />
             </div>
           </div>
         </div>

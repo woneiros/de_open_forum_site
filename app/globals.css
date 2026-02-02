@@ -152,3 +152,59 @@
     repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(239, 214, 72, 0.008) 3px, rgba(239, 214, 72, 0.008) 6px),
     repeating-linear-gradient(-45deg, transparent, transparent 3px, rgba(239, 214, 72, 0.008) 3px, rgba(239, 214, 72, 0.008) 6px);
 }
+
+/* Animated "data flowing" border effect */
+@keyframes border-flow {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.border-flow {
+  position: relative;
+  background: var(--primary);
+  isolation: isolate;
+}
+
+.border-flow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0%,
+    transparent 25%,
+    var(--accent) 30%,
+    var(--accent) 35%,
+    transparent 40%,
+    transparent 100%
+  );
+  animation: border-flow 4s linear infinite;
+}
+
+.border-flow::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: var(--primary);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .border-flow::before {
+    animation: none;
+    background: var(--accent);
+    opacity: 0.3;
+  }
+}
