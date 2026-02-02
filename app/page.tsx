@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { CommitteeCard } from "@/components/CommitteeCard";
+import { FAQSection } from "@/components/FAQSection";
+import { programCommittee, faqItems } from "@/data/homepage";
 
 export default function Home() {
   return (
@@ -43,12 +46,75 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-4">
-              <p className="font-mono font-extrabold text-2xl text-accent">
-                {">>"} Agenda coming soon!{" "}
+            {/* Why Should I Attend? */}
+            <div className="space-y-6">
+              <div className="font-mono text-sm text-accent">
+                {"> WHY_ATTEND_ "}
+              </div>
+              <p className="text-pretty text-lg leading-relaxed">
+                This isn&apos;t just another conference. It&apos;s a grassroots
+                community gathering where genuine connections are formed and
+                real problems are discussed openly. No vendor pitches, no
+                superficial networking — just practitioners sharing authentic
+                experiences and building relationships that matter.
               </p>
-              <p className="font-mono text-sm text-muted-foreground">
-                {"// Stay tuned for updates on speakers, sessions, and more."}
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
+                  <p className="font-semibold">Community-Driven</p>
+                  <p className="text-sm text-muted-foreground">
+                    Built by practitioners, for practitioners. Our content and
+                    direction come from the community, not corporate agendas.
+                  </p>
+                </div>
+                <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
+                  <p className="font-semibold">Vendor-Neutral</p>
+                  <p className="text-sm text-muted-foreground">
+                    An open space for honest dialogue about what works, what
+                    doesn&apos;t, and the real challenges we face.
+                  </p>
+                </div>
+                <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
+                  <p className="font-semibold">Authentic Connections</p>
+                  <p className="text-sm text-muted-foreground">
+                    Meaningful relationships that extend beyond the event.
+                    Connect with peers who truly get it.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Agenda Section */}
+            <div className="space-y-4">
+              <div className="font-mono text-sm text-accent">
+                {"> AGENDA_ "}
+              </div>
+              <p className="font-mono font-extrabold text-2xl text-accent">
+                {">>"} Coming soon!
+              </p>
+              <p className="text-pretty leading-relaxed text-muted-foreground">
+                We&apos;re curating an exceptional lineup of talks from
+                practitioners sharing real-world experiences and production
+                system insights. Stay tuned for the full agenda.
+              </p>
+              <p className="font-mono text-sm">
+                <span className="text-accent">
+                  {"> CHECK_OUT_PREVIOUS_SESSIONS:"}
+                </span>
+                {" Get a sense of what to expect by exploring talks from "}
+                <Link
+                  href="/past/2024"
+                  className="underline hover:text-accent"
+                >
+                  2024
+                </Link>
+                {" and "}
+                <Link
+                  href="/past/2025"
+                  className="underline hover:text-accent"
+                >
+                  2025
+                </Link>
+                {"."}
               </p>
             </div>
 
@@ -79,6 +145,40 @@ export default function Home() {
               <p>{"// Connections that outlive the event"}</p>
             </div>
 
+            {/* Organizer Information */}
+            <div className="border-2 border-accent/40 p-6 space-y-3 rounded-sm">
+              <p className="font-mono text-sm text-accent">
+                {"// ORGANIZED_BY_"}
+              </p>
+              <h3 className="font-mono text-xl font-bold">
+                Data Engineering Team (DET)
+              </h3>
+              <p className="text-pretty leading-relaxed text-muted-foreground">
+                This event is organized by the Data Engineering Team (DET), a
+                grassroots community of data engineering practitioners. We are
+                vendor-neutral and community-driven — this is not a Netflix
+                event, though some Netflix employees are involved as community
+                members. Our mission is to create an open, authentic space for
+                data engineering dialogue.
+              </p>
+            </div>
+
+            {/* Program Committee */}
+            <div className="space-y-4">
+              <div className="font-mono text-sm text-accent">
+                {"> PROGRAM_COMMITTEE_ "}
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {programCommittee.map((member) => (
+                  <CommitteeCard
+                    key={member.name}
+                    name={member.name}
+                    company={member.company}
+                  />
+                ))}
+              </div>
+            </div>
+
             {/* Previous editions */}
             <div className="flex flex-col flex-wrap items-start gap-2">
               <p className="font-mono">
@@ -97,6 +197,14 @@ export default function Home() {
                   [2025]
                 </Link>
               </p>
+            </div>
+
+            {/* FAQ Section */}
+            <div className="space-y-4">
+              <div className="font-mono text-sm text-accent">
+                {"> FREQUENTLY_ASKED_QUESTIONS_ "}
+              </div>
+              <FAQSection items={faqItems} />
             </div>
           </div>
 
