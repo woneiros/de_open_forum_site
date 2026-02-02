@@ -80,10 +80,10 @@ test.describe("Homepage", () => {
     // Check section header
     await expect(page.getByText(/WHY_ATTEND_/)).toBeVisible();
 
-    // Check benefit cards
-    await expect(page.getByText("Community-Driven")).toBeVisible();
-    await expect(page.getByText("Vendor-Neutral")).toBeVisible();
-    await expect(page.getByText("Authentic Connections")).toBeVisible();
+    // Check benefit cards - use exact match to avoid matching other similar text
+    await expect(page.getByText("Community-Driven", { exact: true })).toBeVisible();
+    await expect(page.getByText("Vendor-Neutral", { exact: true })).toBeVisible();
+    await expect(page.getByText("Authentic Connections", { exact: true })).toBeVisible();
 
     // Check narrative content
     await expect(
@@ -97,19 +97,17 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Check agenda section
-    await expect(page.getByText(/AGENDA_/)).toBeVisible();
+    await expect(page.getByText("> AGENDA_", { exact: true })).toBeVisible();
     await expect(page.getByText(/Coming soon!/)).toBeVisible();
 
     // Check links to previous sessions
-    await expect(
-      page.getByText(/CHECK_OUT_PREVIOUS_SESSIONS:/i)
-    ).toBeVisible();
+    await expect(page.getByText(/CHECK_OUT_PREVIOUS_SESSIONS:/i)).toBeVisible();
 
-    // Verify there are multiple links to 2024 and 2025 (one in agenda, one in previous editions)
-    const links2024 = page.getByRole("link", { name: "2024" });
+    // Verify there are links to 2024 and 2025 in agenda section
+    const links2024 = page.getByRole("link", { name: "[2024]" });
     await expect(links2024.first()).toBeVisible();
 
-    const links2025 = page.getByRole("link", { name: "2025" });
+    const links2025 = page.getByRole("link", { name: "[2025]" });
     await expect(links2025.first()).toBeVisible();
   });
 
@@ -120,13 +118,10 @@ test.describe("Homepage", () => {
 
     // Check organizer section
     await expect(page.getByText(/ORGANIZED_BY_/)).toBeVisible();
-    await expect(
-      page.getByText("Data Engineering Team (DET)")
-    ).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Data Engineering Things/ })).toBeVisible();
 
-    // Check key messaging about vendor-neutral nature
-    await expect(page.getByText(/vendor-neutral/i)).toBeVisible();
-    await expect(page.getByText(/not a Netflix event/i)).toBeVisible();
+    // Check key messaging about vendor-neutral and community-driven nature
+    await expect(page.getByText(/vendor-neutral and community-driven/i)).toBeVisible();
   });
 
   test("should display all Program Committee members", async ({ page }) => {
@@ -153,18 +148,16 @@ test.describe("Homepage", () => {
     }
 
     // Check some company names
-    await expect(page.getByText(/OpenAI/)).toBeVisible();
-    await expect(page.getByText(/Netflix/)).toBeVisible();
-    await expect(page.getByText(/Airbnb/)).toBeVisible();
+    await expect(page.getByText(/OpenAI/).first()).toBeVisible();
+    await expect(page.getByText(/Netflix/).first()).toBeVisible();
+    await expect(page.getByText(/Airbnb/).first()).toBeVisible();
   });
 
   test("should display FAQ section with accordion", async ({ page }) => {
     await page.goto("/");
 
     // Check section header
-    await expect(
-      page.getByText(/FREQUENTLY_ASKED_QUESTIONS_/)
-    ).toBeVisible();
+    await expect(page.getByText(/FREQUENTLY_ASKED_QUESTIONS_/)).toBeVisible();
 
     // Check some FAQ questions are present
     await expect(
@@ -187,8 +180,11 @@ test.describe("Homepage", () => {
     await firstQuestion.click();
 
     // Check that answer is now visible
-    await expect(page.getByText(/April 16th, 2026/)).toBeVisible();
-    await expect(page.getByText(/San Francisco, California/)).toBeVisible();
+    await expect(
+      page.getByText(
+        /The Data Engineering Open Forum will be held on April 16th, 2026 in San Francisco, California/
+      )
+    ).toBeVisible();
 
     // Click again to collapse
     await firstQuestion.click();

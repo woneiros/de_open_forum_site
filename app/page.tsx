@@ -163,13 +163,22 @@ export default function Home() {
                 {"> ORGANIZED_BY_"}
               </p>
               <h3 className="font-mono text-xl font-bold">
-                Data Engineering Team (DET)
+                Data Engineering Things{" "}
+                <a
+                  href="https://dataengineeringthings.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-accent"
+                >
+                  [DET]
+                </a>
               </h3>
               <p className="text-pretty leading-relaxed text-muted-foreground">
-                This event is organized by the Data Engineering Team (DET), a
-                grassroots community of data engineering practitioners. We are
-                vendor-neutral and community-driven. Our mission is to create an
-                open, authentic space for data engineering dialogue.
+                This event is organized by the team behind Data Engineering
+                Things (DET), a grassroots community of data engineering
+                practitioners. We are vendor-neutral and community-driven. Our
+                mission is to create an open, authentic space for data
+                engineering dialogue.
               </p>
 
               {/* Program Committee */}

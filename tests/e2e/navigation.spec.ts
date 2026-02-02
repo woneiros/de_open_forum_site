@@ -38,7 +38,7 @@ test.describe("Navigation", () => {
     // Verify we're back on the home page
     await expect(page).toHaveURL("/");
     await expect(
-      page.getByText("The most anticipated and respected conference")
+      page.getByText(/Data Engineering event by the community/)
     ).toBeVisible();
   });
 
@@ -53,7 +53,7 @@ test.describe("Navigation", () => {
     // Verify we're back on the home page
     await expect(page).toHaveURL("/");
     await expect(
-      page.getByText("The most anticipated and respected conference")
+      page.getByText(/Data Engineering event by the community/)
     ).toBeVisible();
   });
 
