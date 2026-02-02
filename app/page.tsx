@@ -69,10 +69,10 @@ export default function Home() {
           </div>
           {/* End of header -- begin main content */}
           {/* Left column - Text content */}
-          <div className="flex flex-col justify-center space-y-8 lg:col-span-8 mx-1 md:mx-8 lg:mx-0">
+          <div className="flex flex-col justify-center space-y-16 lg:col-span-8 mx-1 md:mx-8 lg:mx-0">
             {/* Why Should I Attend? */}
             <div className="space-y-6">
-              <div className="font-mono text-sm text-accent">
+              <div className="font-mono text-3xl font-semibold text-accent">
                 {"> WHY_ATTEND_ "}
               </div>
               <p className="text-pretty text-lg leading-relaxed">
@@ -109,7 +109,7 @@ export default function Home() {
 
             {/* Agenda Section */}
             <div className="space-y-4">
-              <div className="font-mono text-sm text-accent">
+              <div className="font-mono text-3xl font-semibold text-accent">
                 {"> AGENDA_ "}
               </div>
               <p className="font-mono font-extrabold text-2xl text-accent">
@@ -176,7 +176,7 @@ export default function Home() {
 
             {/* Program Committee */}
             <div className="space-y-4">
-              <div className="font-mono text-sm text-accent">
+              <div className="font-mono text-xl font-semibold text-accent">
                 {"> PROGRAM_COMMITTEE_ "}
               </div>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -212,7 +212,7 @@ export default function Home() {
 
             {/* FAQ Section */}
             <div className="space-y-4">
-              <div className="font-mono text-sm text-accent">
+              <div className="font-mono text-3xl font-semibold text-accent">
                 {"> FREQUENTLY_ASKED_QUESTIONS_ "}
               </div>
               <FAQSection items={faqItems} />
