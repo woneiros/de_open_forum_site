@@ -1,6 +1,7 @@
 export interface CommitteeMember {
   name: string;
-  company: string;
+  title: string;
+  linkedin: string;
 }
 
 export interface FAQItem {
@@ -10,22 +11,58 @@ export interface FAQItem {
 }
 
 export const programCommittee: CommitteeMember[] = [
-  { name: "Xinran Waibel", company: "OpenAI" },
-  { name: "Apoorva Bapat", company: "Netflix" },
-  { name: "Goutham Budati", company: "The Farmer's Dog" },
-  { name: "Jerry Wang", company: "Airbnb" },
-  { name: "Michelle Winter", company: "eBay" },
-  { name: "Sharath Chandra", company: "Figma" },
-  { name: "Shruthi Jaganath", company: "Netflix" },
-  { name: "Tulika Bhatt", company: "Netflix" },
-  { name: "Will Monge", company: "Netflix" },
+  {
+    name: "Xinran Waibel",
+    title: "Head of DET Community",
+    linkedin: "https://www.linkedin.com/in/xinranwaibel/",
+  },
+  {
+    name: "Apoorva Bapat",
+    title: "Data Engineering @ Netflix",
+    linkedin: "https://www.linkedin.com/in/apoorvabapat/",
+  },
+  {
+    name: "Goutham Budati",
+    title: "VP of Data Strategy and Insights @ The Farmer's Dog",
+    linkedin: "https://www.linkedin.com/in/gouthambudati/",
+  },
+  {
+    name: "Jerry Wang",
+    title: "Data Infrastructure Leadership @ Airbnb",
+    linkedin: "https://www.linkedin.com/in/jerry-wang-aa813637/",
+  },
+  {
+    name: "Michelle Winters",
+    title: "Distinguished Architect @ eBay",
+    linkedin: "https://www.linkedin.com/in/mufford/",
+  },
+  {
+    name: "Sharath Chandra",
+    title: "Data Engineering Manager @ Figma",
+    linkedin: "https://www.linkedin.com/in/sharathchandra1288/",
+  },
+  {
+    name: "Shruthi Jaganathan",
+    title: "Data Engineering @ Netflix",
+    linkedin: "https://www.linkedin.com/in/shruthi-jaganathan/",
+  },
+  {
+    name: "Tulika Bhatt",
+    title: "Data Engineering @ Netflix",
+    linkedin: "https://www.linkedin.com/in/tulikabhatt/",
+  },
+  {
+    name: "Will Monge",
+    title: "Data Engineering @ Netflix",
+    linkedin: "https://www.linkedin.com/in/willmonge/",
+  },
 ];
 
 export const faqItems: FAQItem[] = [
   {
     question: "When and where is the conference?",
     answer:
-      "The Data Engineering Open Forum will be held on April 16th, 2026 in San Francisco, California. Specific venue details will be announced soon.",
+      "The Data Engineering Open Forum will be held on April 16th, 2026 at the Contemporary Jewish Museum in San Francisco, California.",
     category: "logistics",
   },
   {
@@ -41,34 +78,22 @@ export const faqItems: FAQItem[] = [
     category: "logistics",
   },
   {
+    question: "Who organizes this event?",
+    answer:
+      "This conference is organized by Data Engineer Things (DET). This is not a Netflix event, though some Netflix employees are involved in the Program Committee.",
+    category: "community",
+  },
+  {
     question: "Is there a Code of Conduct?",
     answer:
       "Yes, we are committed to providing a welcoming and inclusive environment for all attendees. Our Code of Conduct will be published alongside registration details.",
     category: "logistics",
   },
   {
-    question: "Who organizes this event?",
-    answer:
-      "This conference is organized by the Data Engineering Team (DET), a grassroots community of data engineering practitioners. We are community-driven and vendor-neutral — this is not a Netflix event, though some Netflix employees are involved as community members.",
-    category: "community",
-  },
-  {
     question: "Is this a vendor-sponsored conference?",
     answer:
-      "This is a community-driven, vendor-neutral conference. While we may have sponsors to help cover costs, the content, speakers, and direction are controlled by the community, not by vendors. Our goal is to create an open space for authentic dialogue about data engineering.",
+      "While we have sponsors to help cover costs, the content is controlled by the Program Committee, not by vendors. All sessions are reviewed and approved by the Program Committee.",
     category: "community",
-  },
-  {
-    question: "What makes this conference different from others?",
-    answer:
-      "We focus on building a genuine community rather than just hosting an event. This means technically deep content from practitioners, meaningful connections that outlive the conference, and open dialogue free from vendor influence. We're building something the community actively seeks out.",
-    category: "community",
-  },
-  {
-    question: "What kind of sessions can I expect?",
-    answer:
-      "Expect technically deep talks from practitioners sharing real-world experiences, lessons learned, and production system insights. Check out our previous editions from 2024 and 2025 to get a sense of the content quality and topics covered.",
-    category: "content",
   },
   {
     question: "Will sessions be recorded?",
