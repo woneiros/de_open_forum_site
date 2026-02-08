@@ -12,7 +12,14 @@ export default function Home() {
       <div className="border-b border-accent/30 px-4 py-2 font-mono text-xs">
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <span>{"// DATA ENGINEERING OPEN FORUM"}</span>
-          <span>{"[SAN FRANCISCO, CA]"}</span>
+          <div className="flex items-center gap-4">
+            <Link href="/past/2025" className="underline hover:text-accent">
+              [2025 TALKS]
+            </Link>
+            <Link href="/past/2024" className="underline hover:text-accent">
+              [2024 TALKS]
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -42,7 +49,7 @@ export default function Home() {
                     target="_blank"
                     className="underline hover:text-accent"
                   >
-                    Data Engineer Things
+                    Data Engineer Things (DET)
                   </a>
                 </span>
               </p>
@@ -213,11 +220,9 @@ export default function Home() {
         {/* Bottom decorative element */}
         <div className="mt-16 border-t border-accent/30 pt-8 font-mono text-xs text-muted-foreground">
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>{"// Excellence in content & community"}</div>
-            <div className="flex gap-6">
-              <span>{"[OPEN]"}</span>
-              <span>{"[INCLUSIVE]"}</span>
-              <span>{"[INSPIRING]"}</span>
+            <div className="space-y-1">
+              <div>{"// Data Engineering Open Forum"}</div>
+              <div>{"// Organized by Data Engineer Things (DET)"}</div>
             </div>
           </div>
         </div>

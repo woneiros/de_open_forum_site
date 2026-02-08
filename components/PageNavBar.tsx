@@ -7,7 +7,6 @@ export default function PageNavBar() {
         <Link href="/" className="hover:text-accent">
           {"← BACK TO HOME"}
         </Link>
-        <span>{"[SAN FRANCISCO, CA]"}</span>
       </div>
     </div>
   );
