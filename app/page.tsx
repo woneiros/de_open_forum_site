@@ -35,14 +35,14 @@ export default function Home() {
                 A Data Engineering event by the community for the community.
                 <br />
                 <span className="italic font-mono text-sm">
-                  Brought to you by{" "}
+                  Organized by{" "}
                   <a
                     rel="noopener noreferrer"
-                    href="https://dataengineeringthings.com"
+                    href="https://dataengineerthings.org"
                     target="_blank"
                     className="underline hover:text-accent"
                   >
-                    Data Engineering Things
+                    Data Engineer Things
                   </a>
                 </span>
               </p>
@@ -163,9 +163,9 @@ export default function Home() {
                 {"> ORGANIZED_BY_"}
               </p>
               <h3 className="font-mono text-xl font-bold">
-                Data Engineering Things{" "}
+                Data Engineer Things{" "}
                 <a
-                  href="https://dataengineeringthings.org"
+                  href="https://dataengineerthings.org"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline hover:text-accent"
@@ -174,11 +174,10 @@ export default function Home() {
                 </a>
               </h3>
               <p className="text-pretty leading-relaxed text-muted-foreground">
-                This event is organized by the team behind Data Engineering
-                Things (DET), a grassroots community of data engineering
-                practitioners. We are vendor-neutral and community-driven. Our
-                mission is to create an open, authentic space for data
-                engineering dialogue.
+                This event is organized by Data Engineer Things (DET),
+                a global community built by data engineers for data engineers.
+                Our mission is to create an open and safe space for data professionals
+                to learn and connect.
               </p>
 
               {/* Program Committee */}

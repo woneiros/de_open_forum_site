@@ -118,7 +118,7 @@ test.describe("Homepage", () => {
 
     // Check organizer section
     await expect(page.getByText(/ORGANIZED_BY_/)).toBeVisible();
-    await expect(page.getByRole("heading", { name: /Data Engineering Things/ })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Data Engineer Things/ })).toBeVisible();
 
     // Check key messaging about vendor-neutral and community-driven nature
     await expect(page.getByText(/vendor-neutral and community-driven/i)).toBeVisible();
