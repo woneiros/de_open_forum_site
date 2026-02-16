@@ -12,7 +12,14 @@ export default function Home() {
       <div className="border-b border-accent/30 px-4 py-2 font-mono text-xs">
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <span>{"// DATA ENGINEERING OPEN FORUM"}</span>
-          <span>{"[SAN FRANCISCO, CA]"}</span>
+          <div className="flex items-center gap-4">
+            <Link href="/past/2025" className="underline hover:text-accent">
+              [2025 TALKS]
+            </Link>
+            <Link href="/past/2024" className="underline hover:text-accent">
+              [2024 TALKS]
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -32,17 +39,17 @@ export default function Home() {
                 {"San Francisco: April 16th, 2026"}
               </div>
               <p className="text-pretty text-lg leading-relaxed">
-                A Data Engineering event by the community for the community.
+                The most anticipated data engineering community event of the year
                 <br />
                 <span className="italic font-mono text-sm">
                   Brought to you by{" "}
                   <a
                     rel="noopener noreferrer"
-                    href="https://dataengineeringthings.com"
+                    href="https://dataengineerthings.org"
                     target="_blank"
                     className="underline hover:text-accent"
                   >
-                    Data Engineering Things
+                    Data Engineer Things (DET)
                   </a>
                 </span>
               </p>
@@ -73,35 +80,39 @@ export default function Home() {
             {/* Why Should I Attend? */}
             <div className="space-y-6">
               <div className="font-mono text-3xl font-semibold text-accent">
-                {"> WHY_ATTEND_ "}
+                {"> WHAT_IS_DATA_ENEGINEERING_OPEN_FORUM_"}
               </div>
               <p className="text-pretty text-lg leading-relaxed">
-                This isn&apos;t just another conference. It&apos;s a grassroots
-                community gathering where genuine connections are formed and
-                real problems are discussed openly. No vendor pitches, no
-                superficial networking — just practitioners sharing authentic
-                experiences and building relationships that matter.
+                The Data Engineering Open Forum aspires to become the most
+                anticipated and respected conference in the data engineering
+                community — a world-class event that practitioners, leaders, and
+                enthusiasts actively seek out, not just for its content, but
+                for the experience it delivers.
               </p>
               <div className="grid gap-4 sm:grid-cols-3">
                 <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
+                  <p className="font-semibold">Openness</p>
+                  <p className="text-sm text-muted-foreground">
+                    We are committed to the openness that defines an open forum,
+                    rooted in the belief that open dialogue, collaboration, and
+                    inclusiveness are what move the field forward. 
+                  </p>
+                </div>
+                <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
                   <p className="font-semibold">Community-Driven</p>
                   <p className="text-sm text-muted-foreground">
-                    Built by practitioners, for practitioners. Our content and
-                    direction come from the community, not corporate agendas.
+                    Our content, backed by the program committee, will be technically
+                    deep and community-driven, reflecting the real challenges and
+                    innovations shaping the data engineering landscape.
                   </p>
                 </div>
                 <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
-                  <p className="font-semibold">Vendor-Neutral</p>
+                  <p className="font-semibold">Lasting Connections</p>
                   <p className="text-sm text-muted-foreground">
-                    An open space for honest dialogue about what works, what
-                    doesn&apos;t, and the real challenges we face.
-                  </p>
-                </div>
-                <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
-                  <p className="font-semibold">Authentic Connections</p>
-                  <p className="text-sm text-muted-foreground">
-                    Meaningful relationships that extend beyond the event.
-                    Connect with peers who truly get it.
+                    We aim to create an inclusive space where meaningful
+                    conversations happen not only in sessions but everywhere,
+                    empowering you to build connections that outlive the
+                    conference itself.
                   </p>
                 </div>
               </div>
@@ -126,32 +137,31 @@ export default function Home() {
                 </span>
                 <br />
                 {" Get a sense of what to expect by exploring talks from "}
-                <Link href="/past/2024" className="underline hover:text-accent">
-                  [2024]
-                </Link>
-                {" and "}
                 <Link href="/past/2025" className="underline hover:text-accent">
                   [2025]
+                </Link>
+                {" and "}
+                <Link href="/past/2024" className="underline hover:text-accent">
+                  [2024]
                 </Link>
                 {"."}
               </p>
             </div>
 
             <div className="space-y-4">
-              <p className="font-mono text-sm">
-                <span className="text-accent text-base">
+              <p className="font-mono">
+                <span className="text-accent">
                   {"> BE_THE_FIRST_TO_KNOW:"}
                 </span>
-                {" Join our Google group "}
                 <br />
-                {" > "}
+                {" Join our  "}
                 <a
                   rel="noopener noreferrer"
                   href="https://groups.google.com/g/data-engineering-open-forum"
                   target="_blank"
                   className="underline hover:text-accent"
                 >
-                  data-engineering-open-forum
+                  Google Group
                 </a>
                 {" for updates & announcements."}
               </p>
@@ -163,22 +173,20 @@ export default function Home() {
                 {"> ORGANIZED_BY_"}
               </p>
               <h3 className="font-mono text-xl font-bold">
-                Data Engineering Things{" "}
                 <a
-                  href="https://dataengineeringthings.org"
+                  href="https://dataengineerthings.org"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline hover:text-accent"
                 >
-                  [DET]
+                  Data Engineer Things
                 </a>
               </h3>
               <p className="text-pretty leading-relaxed text-muted-foreground">
-                This event is organized by the team behind Data Engineering
-                Things (DET), a grassroots community of data engineering
-                practitioners. We are vendor-neutral and community-driven. Our
-                mission is to create an open, authentic space for data
-                engineering dialogue.
+                This event is organized by Data Engineer Things (DET),
+                a global community built by data engineers for data engineers.
+                Our mission is to create an open and safe space for data professionals
+                to learn and connect.
               </p>
 
               {/* Program Committee */}
@@ -191,7 +199,8 @@ export default function Home() {
                     <CommitteeCard
                       key={member.name}
                       name={member.name}
-                      company={member.company}
+                      title={member.title}
+                      linkedin={member.linkedin}
                     />
                   ))}
                 </div>
@@ -211,11 +220,9 @@ export default function Home() {
         {/* Bottom decorative element */}
         <div className="mt-16 border-t border-accent/30 pt-8 font-mono text-xs text-muted-foreground">
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>{"// Excellence in content & community"}</div>
-            <div className="flex gap-6">
-              <span>{"[OPEN]"}</span>
-              <span>{"[INCLUSIVE]"}</span>
-              <span>{"[INSPIRING]"}</span>
+            <div className="space-y-1">
+              <div>{"// Data Engineering Open Forum"}</div>
+              <div>{"// Organized by Data Engineer Things (DET)"}</div>
             </div>
           </div>
         </div>
