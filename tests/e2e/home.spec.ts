@@ -14,11 +14,10 @@ test.describe("Homepage", () => {
   test("should display event date and location", async ({ page }) => {
     await page.goto("/");
 
-    // Check location badge in top nav
-    await expect(page.getByText("[SAN FRANCISCO, CA]")).toBeVisible();
-
-    // Check event date
-    await expect(page.getByText(/April 16th, 2026/)).toBeVisible();
+    // Check event date and location line
+    await expect(
+      page.getByText(/San Francisco: April 16th, 2026/)
+    ).toBeVisible();
   });
 
   test("should have links to past events", async ({ page }) => {
@@ -42,7 +41,7 @@ test.describe("Homepage", () => {
 
     // Check Google Group link
     const googleGroupLink = page.getByRole("link", {
-      name: "data-engineering-open-forum",
+      name: /Google Group/i,
     });
     await expect(googleGroupLink).toHaveAttribute(
       "href",
@@ -78,16 +77,18 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Check section header
-    await expect(page.getByText(/WHY_ATTEND_/)).toBeVisible();
+    await expect(
+      page.getByText(/WHAT_IS_DATA_ENEGINEERING_OPEN_FORUM_/)
+    ).toBeVisible();
 
     // Check benefit cards - use exact match to avoid matching other similar text
+    await expect(page.getByText("Openness", { exact: true })).toBeVisible();
     await expect(page.getByText("Community-Driven", { exact: true })).toBeVisible();
-    await expect(page.getByText("Vendor-Neutral", { exact: true })).toBeVisible();
-    await expect(page.getByText("Authentic Connections", { exact: true })).toBeVisible();
+    await expect(page.getByText("Lasting Connections", { exact: true })).toBeVisible();
 
     // Check narrative content
     await expect(
-      page.getByText(/grassroots community gathering/i)
+      page.getByText(/most anticipated and respected conference/i)
     ).toBeVisible();
   });
 
@@ -97,7 +98,7 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Check agenda section
-    await expect(page.getByText("> AGENDA_", { exact: true })).toBeVisible();
+    await expect(page.getByText(/> AGENDA_/)).toBeVisible();
     await expect(page.getByText(/Coming soon!/)).toBeVisible();
 
     // Check links to previous sessions
@@ -120,8 +121,10 @@ test.describe("Homepage", () => {
     await expect(page.getByText(/ORGANIZED_BY_/)).toBeVisible();
     await expect(page.getByRole("heading", { name: /Data Engineer Things/ })).toBeVisible();
 
-    // Check key messaging about vendor-neutral and community-driven nature
-    await expect(page.getByText(/vendor-neutral and community-driven/i)).toBeVisible();
+    // Check key messaging about the community
+    await expect(
+      page.getByText(/global community built by data engineers/i)
+    ).toBeVisible();
   });
 
   test("should display all Program Committee members", async ({ page }) => {
@@ -136,7 +139,7 @@ test.describe("Homepage", () => {
       "Apoorva Bapat",
       "Goutham Budati",
       "Jerry Wang",
-      "Michelle Winter",
+      "Michelle Winters",
       "Sharath Chandra",
       "Shruthi Jaganath",
       "Tulika Bhatt",
@@ -148,9 +151,9 @@ test.describe("Homepage", () => {
     }
 
     // Check some company names
-    await expect(page.getByText(/OpenAI/).first()).toBeVisible();
     await expect(page.getByText(/Netflix/).first()).toBeVisible();
     await expect(page.getByText(/Airbnb/).first()).toBeVisible();
+    await expect(page.getByText(/Figma/).first()).toBeVisible();
   });
 
   test("should display FAQ section with accordion", async ({ page }) => {
@@ -182,7 +185,7 @@ test.describe("Homepage", () => {
     // Check that answer is now visible
     await expect(
       page.getByText(
-        /The Data Engineering Open Forum will be held on April 16th, 2026 in San Francisco, California/
+        /April 16th, 2026 at the Contemporary Jewish Museum in San Francisco, California/
       )
     ).toBeVisible();
 

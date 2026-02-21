@@ -38,7 +38,7 @@ test.describe("Navigation", () => {
     // Verify we're back on the home page
     await expect(page).toHaveURL("/");
     await expect(
-      page.getByText(/Data Engineering event by the community/)
+      page.getByRole("heading", { name: /Data Engineering Open Forum/i })
     ).toBeVisible();
   });
 
@@ -53,7 +53,7 @@ test.describe("Navigation", () => {
     // Verify we're back on the home page
     await expect(page).toHaveURL("/");
     await expect(
-      page.getByText(/Data Engineering event by the community/)
+      page.getByRole("heading", { name: /Data Engineering Open Forum/i })
     ).toBeVisible();
   });
 
