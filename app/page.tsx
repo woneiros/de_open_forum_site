@@ -1,9 +1,54 @@
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { CommitteeCard } from "@/components/CommitteeCard";
 import { FAQSection } from "@/components/FAQSection";
 import { programCommittee, faqItems } from "@/data/homepage";
+
+const sponsorTiers = [
+  {
+    tier: "PREMIUM",
+    sponsors: [
+      {
+        name: "Databricks",
+        href: "https://www.databricks.com/",
+        logoSrc: "/sponsors/databricks.svg",
+      },
+      {
+        name: "StreamNative",
+        href: "https://streamnative.io/",
+        logoSrc: "/sponsors/streamnative.svg",
+      },
+      {
+        name: "CelerData",
+        href: "https://celerdata.com/",
+        logoSrc: "/sponsors/celerdata.svg",
+      },
+      {
+        name: "PuppyGraphy",
+        href: "https://www.puppygraph.com/",
+        logoSrc: "/sponsors/puppygraphy.svg",
+      },
+    ],
+  },
+  {
+    tier: "GOLD",
+    sponsors: [
+      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
+      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
+      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
+      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
+    ],
+  },
+  {
+    tier: "SILVER",
+    sponsors: [
+      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
+      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
+      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
+      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
+    ],
+  },
+] as const;
 
 export default function Home() {
   return (
@@ -216,6 +261,52 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <div className="mt-20 space-y-4">
+          <p className="font-mono font-extrabold text-2xl text-accent">
+            {">>"} Sponsors
+          </p>
+          <p className="font-mono text-sm text-muted-foreground">
+            {"// Thanks to our partners for supporting the community."}
+          </p>
+        </div>
+
+        <section className="mt-6 rounded-sm bg-primary/70 px-5 py-8 sm:px-8 sm:py-10">
+          <div className="space-y-10">
+            {sponsorTiers.map((group) => (
+              <div key={group.tier} className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <div className="h-px flex-1 bg-accent/35" />
+                  <p className="font-mono text-lg font-semibold text-accent">
+                    {group.tier}
+                  </p>
+                  <div className="h-px flex-1 bg-accent/35" />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+                  {group.sponsors.map((sponsor, index) => (
+                    <a
+                      key={`${group.tier}-${sponsor.name}-${index}`}
+                      href={sponsor.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="sponsor-link group flex h-20 items-center justify-center rounded-sm bg-primary/20 px-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                      aria-label={sponsor.name}
+                    >
+                      <Image
+                        src={sponsor.logoSrc}
+                        alt={`${sponsor.name} logo`}
+                        width={220}
+                        height={56}
+                        className="sponsor-logo h-10 w-auto object-contain sm:h-11"
+                      />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Bottom decorative element */}
         <div className="mt-16 border-t border-accent/30 pt-8 font-mono text-xs text-muted-foreground">

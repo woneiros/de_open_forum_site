@@ -208,3 +208,18 @@
     opacity: 0.3;
   }
 }
+
+.sponsor-logo {
+  opacity: 0.95;
+  filter: brightness(0) invert(1);
+  transition: filter 180ms ease, opacity 180ms ease, transform 180ms ease;
+}
+
+.sponsor-link:hover .sponsor-logo,
+.sponsor-link:focus-visible .sponsor-logo,
+.sponsor-link:active .sponsor-logo {
+  opacity: 1;
+  transform: translateY(-1px);
+  filter: brightness(0) saturate(100%) invert(85%) sepia(71%) saturate(683%)
+    hue-rotate(352deg) brightness(95%) contrast(92%);
+}
