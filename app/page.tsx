@@ -6,46 +6,63 @@ import { programCommittee, faqItems } from "@/data/homepage";
 
 const sponsorTiers = [
   {
-    tier: "PREMIUM",
+    tier: "PLATINUM PLUS",
     sponsors: [
       {
-        name: "Databricks",
+        name: "Databriks",
         href: "https://www.databricks.com/",
-        logoSrc: "/sponsors/databricks.svg",
+        logoSrc: "/sponsors/databriks.svg",
       },
+    ],
+  },
+  {
+    tier: "PLATINUM",
+    sponsors: [
       {
-        name: "StreamNative",
-        href: "https://streamnative.io/",
-        logoSrc: "/sponsors/streamnative.svg",
-      },
-      {
-        name: "CelerData",
-        href: "https://celerdata.com/",
-        logoSrc: "/sponsors/celerdata.svg",
-      },
-      {
-        name: "PuppyGraphy",
-        href: "https://www.puppygraph.com/",
-        logoSrc: "/sponsors/puppygraphy.svg",
+        name: "Astronomer",
+        href: "https://www.astronomer.io/",
+        logoSrc: "/sponsors/astronomer.png",
       },
     ],
   },
   {
     tier: "GOLD",
     sponsors: [
-      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
-      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
-      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
-      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
+      {
+        name: "VeloDB",
+        href: "https://www.velodb.io/",
+        logoSrc: "/sponsors/velodb.png",
+      },
     ],
   },
   {
     tier: "SILVER",
     sponsors: [
-      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
-      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
-      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
-      { name: "Your Logo", href: "#", logoSrc: "/sponsors/placeholder.svg" },
+      {
+        name: "CelerData",
+        href: "https://celerdata.com/",
+        logoSrc: "/sponsors/celerdata.svg",
+      },
+      {
+        name: "Dremio",
+        href: "https://www.dremio.com/",
+        logoSrc: "/sponsors/dremio.png",
+      },
+      {
+        name: "MinIO",
+        href: "https://min.io/",
+        logoSrc: "/sponsors/minio-color.svg",
+      },
+      {
+        name: "PuppyGraph",
+        href: "https://www.puppygraph.com/",
+        logoSrc: "/sponsors/puppygraph.png",
+      },
+      {
+        name: "StreamNative",
+        href: "https://streamnative.io/",
+        logoSrc: "/sponsors/streamnative.svg",
+      },
     ],
   },
 ] as const;
@@ -252,6 +269,67 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Sponsors Section */}
+            <div className="space-y-4">
+              <p className="font-mono font-extrabold text-2xl text-accent">
+                {">>"} Sponsors
+              </p>
+              <p className="font-mono text-sm text-muted-foreground">
+                {"// Thanks to our partners for supporting the community."}
+              </p>
+
+              <section className="mt-6 rounded-sm bg-primary/70 px-5 py-8 sm:px-8 sm:py-10">
+                <div className="space-y-10">
+                  {sponsorTiers.map((group) => (
+                    <div key={group.tier} className="space-y-8">
+                      <div className="flex items-center gap-4">
+                        <div className="h-px flex-1 bg-accent/35" />
+                        <p className="font-mono text-lg font-semibold text-accent">
+                          {group.tier}
+                        </p>
+                        <div className="h-px flex-1 bg-accent/35" />
+                      </div>
+
+                      <div
+                        className={
+                          group.sponsors.length === 1
+                            ? "grid grid-cols-1 gap-4"
+                            : group.tier === "SILVER"
+                            ? "grid grid-cols-2 gap-4 sm:grid-cols-3"
+                            : "grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
+                        }
+                      >
+                        {group.sponsors.map((sponsor, index) => (
+                          <a
+                            key={`${group.tier}-${sponsor.name}-${index}`}
+                            href={sponsor.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="sponsor-link group mx-auto flex h-20 w-full max-w-[260px] items-center justify-center rounded-sm bg-primary/20 px-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                            aria-label={sponsor.name}
+                          >
+                            <Image
+                              src={sponsor.logoSrc}
+                              alt={`${sponsor.name} logo`}
+                              width={220}
+                              height={56}
+                              className={`sponsor-logo mx-auto w-auto max-w-full object-contain ${
+                                sponsor.name === "Dremio"
+                                  ? "h-20 sm:h-[88px]"
+                                  : sponsor.name === "MinIO"
+                                  ? "h-5 sm:h-[22px]"
+                                  : "h-10 sm:h-11"
+                              }`}
+                            />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </div>
+
             {/* FAQ Section */}
             <div className="space-y-4">
               <div className="font-mono text-3xl font-semibold text-accent">
@@ -261,52 +339,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        <div className="mt-20 space-y-4">
-          <p className="font-mono font-extrabold text-2xl text-accent">
-            {">>"} Sponsors
-          </p>
-          <p className="font-mono text-sm text-muted-foreground">
-            {"// Thanks to our partners for supporting the community."}
-          </p>
-        </div>
-
-        <section className="mt-6 rounded-sm bg-primary/70 px-5 py-8 sm:px-8 sm:py-10">
-          <div className="space-y-10">
-            {sponsorTiers.map((group) => (
-              <div key={group.tier} className="space-y-8">
-                <div className="flex items-center gap-4">
-                  <div className="h-px flex-1 bg-accent/35" />
-                  <p className="font-mono text-lg font-semibold text-accent">
-                    {group.tier}
-                  </p>
-                  <div className="h-px flex-1 bg-accent/35" />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-                  {group.sponsors.map((sponsor, index) => (
-                    <a
-                      key={`${group.tier}-${sponsor.name}-${index}`}
-                      href={sponsor.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="sponsor-link group flex h-20 items-center justify-center rounded-sm bg-primary/20 px-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                      aria-label={sponsor.name}
-                    >
-                      <Image
-                        src={sponsor.logoSrc}
-                        alt={`${sponsor.name} logo`}
-                        width={220}
-                        height={56}
-                        className="sponsor-logo h-10 w-auto object-contain sm:h-11"
-                      />
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
 
         {/* Bottom decorative element */}
         <div className="mt-16 border-t border-accent/30 pt-8 font-mono text-xs text-muted-foreground">
