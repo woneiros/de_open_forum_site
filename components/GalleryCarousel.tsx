@@ -7,7 +7,7 @@ type GalleryItem = {
   src: string;
   alt: string;
   title: string;
-  body: string[];
+  body: readonly string[];
 };
 
 type GalleryCarouselProps = {
