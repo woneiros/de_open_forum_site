@@ -82,8 +82,8 @@ test.describe("Homepage", () => {
     ).toBeVisible();
 
     // Check benefit cards - use exact match to avoid matching other similar text
-    await expect(page.getByText("Openness", { exact: true })).toBeVisible();
-    await expect(page.getByText("Community-Driven", { exact: true })).toBeVisible();
+    await expect(page.getByText("Open Dialogue", { exact: true })).toBeVisible();
+    await expect(page.getByText("Community Driven", { exact: true })).toBeVisible();
     await expect(page.getByText("Lasting Connections", { exact: true })).toBeVisible();
 
     // Check narrative content

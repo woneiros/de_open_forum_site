@@ -136,7 +136,7 @@ export default function Home() {
               </p>
               <div className="grid gap-4 sm:grid-cols-3">
                 <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
-                  <p className="font-semibold">Openness</p>
+                  <p className="font-semibold">Open Dialogue</p>
                   <p className="text-sm text-muted-foreground">
                     We are committed to the openness that defines an open forum,
                     rooted in the belief that open dialogue, collaboration, and
@@ -144,7 +144,7 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
-                  <p className="font-semibold">Community-Driven</p>
+                  <p className="font-semibold">Community Driven</p>
                   <p className="text-sm text-muted-foreground">
                     Our content, backed by the program committee, will be technically
                     deep and community-driven, reflecting the real challenges and
