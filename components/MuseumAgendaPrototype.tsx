@@ -26,17 +26,17 @@ interface Session {
 
 const halls: Record<HallId, { name: string; color: string; roomLabel: string }> = {
   hall1: {
-    name: "Main Hall",
+    name: "Goldman Hall",
     roomLabel: "North Gallery",
     color: "border-[#e67e22] bg-[#e67e22]/15 text-[#f6ba7f]",
   },
   hall2: {
-    name: "2nd Hall",
+    name: "Swig Gallery",
     roomLabel: "Central Atrium",
     color: "border-[#3f8cff] bg-[#3f8cff]/15 text-[#9ec7ff]",
   },
   hall3: {
-    name: "3rd Hall",
+    name: "Yud Gallery",
     roomLabel: "South Studio",
     color: "border-[#4caf76] bg-[#4caf76]/15 text-[#9ddfb5]",
   },
@@ -48,7 +48,7 @@ const timeSlots = [
   { key: "09:45", start: "9:45 AM", end: "10:15 AM" },
   { key: "10:30", start: "10:30 AM", end: "11:15 AM" },
   { key: "11:30", start: "11:30 AM", end: "12:15 PM" },
-  { key: "12:15", start: "12:15 AM", end: "2:00 PM" },
+  { key: "12:15", start: "12:15 PM", end: "2:00 PM" },
   { key: "13:00", start: "2:00 PM", end: "2:45 PM" },
   { key: "15:00", start: "3:00 PM", end: "3:45 PM" },
   { key: "16:00", start: "4:00 PM", end: "4:45 PM" },
@@ -159,6 +159,14 @@ export function MuseumAgendaPrototype() {
     return `${session.speakers[0].name} +${session.speakers.length - 1}`;
   };
 
+  const getSessionTimeRange = (session: Session) => {
+    const matchingSlot = timeSlots.find((slot) => slot.key === session.start);
+    if (!matchingSlot) {
+      return `${session.start} - ${session.end}`;
+    }
+    return `${matchingSlot.start} - ${matchingSlot.end}`;
+  };
+
   return (
     <section>
       <div className="overflow-hidden rounded-md border border-accent/35">
@@ -188,7 +196,7 @@ export function MuseumAgendaPrototype() {
             </div>
             {slot.key === "07:30" ? (
               <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
-                <p className="text-sm font-semibold leading-tight">Check In & Breakfast</p>
+                <p className="text-sm font-semibold leading-tight">Check-in & Breakfast</p>
               </div>
             ) : slot.key === "12:15" ? (
               <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
@@ -197,9 +205,9 @@ export function MuseumAgendaPrototype() {
             ) : slot.key === "17:30" ? (
               <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
                 <p className="text-center text-sm font-semibold leading-tight">
-                  Happy Hour
+                  Happy Hour & Networking
                   <br />
-                  Networking
+                  <span className="font-normal italic">(Sponsored by Databricks)</span>
                 </p>
               </div>
             ) : (
@@ -227,7 +235,7 @@ export function MuseumAgendaPrototype() {
                       event.stopPropagation();
                       setActiveSession(session);
                     }}
-                    className={`border-r border-accent/10 px-2 py-2 text-left transition-all last:border-r-0 ${
+                    className={`cursor-pointer border-r border-accent/10 px-2 py-2 text-left transition-all last:border-r-0 ${
                       isSelected
                         ? "bg-accent/15 shadow-[inset_0_0_0_1px_rgba(239,214,72,0.45)]"
                         : "bg-black/15 hover:bg-accent/25 hover:shadow-[inset_0_0_0_1px_rgba(239,214,72,0.35)]"
@@ -240,7 +248,7 @@ export function MuseumAgendaPrototype() {
                       {getSpeakerLabel(session)}
                     </p>
                     <p className="text-xs text-accent">
-                      {session.start} - {session.end}
+                      {getSessionTimeRange(session)}
                     </p>
                   </button>
                 );
@@ -288,8 +296,8 @@ export function MuseumAgendaPrototype() {
 
                   <div className="space-y-2 text-sm">
                     <p>
-                      <span className="font-mono text-accent">TIME</span>: {activeSession.start} -{" "}
-                      {activeSession.end}
+                      <span className="font-mono text-accent">TIME</span>:{" "}
+                      {getSessionTimeRange(activeSession)}
                     </p>
                     <p>
                       <span className="font-mono text-accent">HALL</span>:{" "}

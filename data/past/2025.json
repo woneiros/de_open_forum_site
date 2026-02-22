@@ -116,7 +116,7 @@
       "youtubeUrl": null
     },
     {
-      "title": "How Metronome Scaled their Real-Time Usage Based Billing Pipeline to Billions of Events Per Day",
+      "title": "How Metronome Scaled Their Real-Time Usage-Based Billing Pipeline to Billions of Events Per Day",
       "authors": [
         {
           "name": "Apurva Mehta",
@@ -130,7 +130,7 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=mRSXzVciz2w&list=PLfXiENmg6yyXKICQiUNutmDyJKk84BVSP"
     },
     {
-      "title": "Enabling Reliable Metrics and Insights with DataJunction a Semantic Layer",
+      "title": "Enabling Reliable Metrics and Insights with DataJunction, a Semantic Layer",
       "authors": [
         {
           "name": "Yian Shang",
@@ -151,7 +151,7 @@
           "title": "Technical Staff at Databricks"
         },
         {
-          "name": "Jery Wang",
+          "name": "Jerry Wang",
           "title": "Data Infrastructure Senior Leader at Airbnb"
         },
         {

@@ -11,7 +11,7 @@ const sponsorTiers = [
     tier: "PLATINUM PLUS",
     sponsors: [
       {
-        name: "Databriks",
+        name: "Databricks",
         href: "https://www.databricks.com/",
         logoSrc: "/sponsors/databriks.svg",
       },
@@ -54,6 +54,11 @@ const sponsorTiers = [
         name: "MinIO",
         href: "https://min.io/",
         logoSrc: "/sponsors/minio-color.svg",
+      },
+      {
+        name: "Netflix",
+        href: "https://www.netflix.com/",
+        logoSrc: "/sponsors/netflix.svg",
       },
       {
         name: "PuppyGraph",
@@ -105,7 +110,7 @@ const galleryItems = [
     title: "Q&A Lines That Never Get Shorter - Data Engineering Open Forum 2025",
     body: [
       "The conversations don’t stop when the slides end.",
-      "During Q&A, attendees line up at the mic for a deeper dive",
+      "During Q&A, attendees line up at the mic for a deeper dive.",
       "The only problem? We always run out of time before we run out of questions.",
     ],
   },
@@ -129,10 +134,10 @@ export default function Home() {
           <span>{"// DATA ENGINEERING OPEN FORUM"}</span>
           <div className="flex items-center gap-4">
             <Link href="/past/2025" className="underline hover:text-accent">
-              [2025 TALKS]
+              [DEOF 2025]
             </Link>
             <Link href="/past/2024" className="underline hover:text-accent">
-              [2024 TALKS]
+              [DEOF 2024]
             </Link>
           </div>
         </div>
@@ -148,22 +153,19 @@ export default function Home() {
                 Data Engineering Open Forum
               </h1>
               <div className="font-mono font-extrabold text-xl text-accent sm:text-2xl border-flow px-3 py-2 inline-block">
-                {"San Francisco: April 16th, 2026"}
+                The Contemporary Jewish Museum
+                <br />
+                San Francisco | April 16th, 2026
               </div>
               <p className="text-pretty text-lg leading-relaxed">
-                The most anticipated data engineering community event of the year
-                <br />
-                <span className="italic font-mono text-sm">
-                  Organized by{" "}
+                The most anticipated data engineering community conference of the year, organized by{" "}
                   <a
                     rel="noopener noreferrer"
-                    href="https://dataengineerthings.org"
-                    target="_blank"
+                    href="#organized-by"
                     className="underline hover:text-accent"
                   >
                     Data Engineer Things (DET)
                   </a>
-                </span>
               </p>
               <div className="space-y-2 font-mono text-sm text-muted-foreground">
                 <p>{"// Community-driven content with technical depth"}</p>
@@ -196,7 +198,7 @@ export default function Home() {
               <p className="text-pretty text-lg leading-relaxed">
                 The Data Engineering Open Forum (DEOF) is a world-class community
                 conference that practitioners and leaders actively seek out,
-                not just for its content, but for the authetic experience
+                not just for its content, but for the authentic experience
                 it delivers.
               </p>
               <div className="grid gap-4 sm:grid-cols-3">
@@ -241,49 +243,14 @@ export default function Home() {
                 {"> AGENDA_ "}
               </div>
               <MuseumAgendaPrototype />
-              <p className="font-mono">
-                <span className="text-accent">
-                  {"> CHECK_OUT_PREVIOUS_SESSIONS:"}
-                </span>
-                <br />
-                {" Get a sense of what to expect by exploring talks from "}
-                <Link href="/past/2025" className="underline hover:text-accent">
-                  [2025]
-                </Link>
-                {" and "}
-                <Link href="/past/2024" className="underline hover:text-accent">
-                  [2024]
-                </Link>
-                {"."}
-              </p>
             </div>
-
-            <div className="space-y-4">
-              <p className="font-mono">
-                <span className="text-accent">
-                  {"> BE_THE_FIRST_TO_KNOW:"}
-                </span>
-                <br />
-                {" Join our  "}
-                <a
-                  rel="noopener noreferrer"
-                  href="https://groups.google.com/g/data-engineering-open-forum"
-                  target="_blank"
-                  className="underline hover:text-accent"
-                >
-                  Google Group
-                </a>
-                {" for updates & announcements."}
-              </p>
-            </div>
-
             {/* Gallery Section */}
             <div className="space-y-6">
               <div className="font-mono text-3xl font-semibold text-accent">
                 {"> PHOTO_GALLERY_ "}
               </div>
               <p className="text-pretty text-sm text-muted-foreground">
-                Photos from previous Data Engineering Open Forum events.
+                // Photos from previous Data Engineering Open Forum events.
               </p>
               <div className="max-w-2xl">
                 <GalleryCarousel items={galleryItems} />
@@ -292,7 +259,7 @@ export default function Home() {
 
             <div className="space-y-2">
               {/* Organizer Information */}
-              <div className="space-y-0">
+              <div id="organized-by" className="space-y-2 scroll-mt-24">
                 <div className="font-mono text-3xl font-semibold text-accent">
                   {"> ORGANIZED_BY_"}
                 </div>
@@ -312,10 +279,10 @@ export default function Home() {
                     </a>
                   </div>
                   <div className="space-y-3">
-                    <h3 className="font-mono text-xl font-bold">
+                    <h3 className="font-mono text-xl font-bold text-accent">
                       Data Engineer Things
                     </h3>
-                    <p className="text-pretty leading-relaxed text-muted-foreground">
+                    <p className="text-pretty leading-relaxed text-white">
                       This event is organized by{" "}
                       <a
                         href="https://dataengineerthings.org"
@@ -357,11 +324,11 @@ export default function Home() {
 
             {/* Sponsors Section */}
             <div className="space-y-4">
-              <p className="font-mono font-extrabold text-2xl text-accent">
-                {">>"} Sponsors
-              </p>
+              <div className="font-mono text-3xl font-semibold text-accent">
+                {"> SPONSORS_ "}
+              </div>
               <p className="font-mono text-sm text-muted-foreground">
-                {"// Thanks to our partners for supporting the community."}
+                {"// Thank you to our partners for supporting the community."}
               </p>
 
               <section className="mt-6 rounded-sm bg-primary/70 px-5 py-8 sm:px-8 sm:py-10">
@@ -419,9 +386,40 @@ export default function Home() {
             {/* FAQ Section */}
             <div className="space-y-4">
               <div className="font-mono text-3xl font-semibold text-accent">
-                {"> FREQUENTLY_ASKED_QUESTIONS_ "}
+                {"> FAQ_ "}
               </div>
               <FAQSection items={faqItems} />
+            </div>
+
+            {/* Contact Section */}
+            <div className="space-y-4">
+              <div className="font-mono text-3xl font-semibold text-accent">
+                {"> CONTACT_ "}
+              </div>
+              <div className="rounded-sm border-2 border-accent/40 p-5">
+                <p className="text-pretty leading-relaxed text-primary-foreground">
+                  Join our{" "}
+                  <a
+                    href="https://groups.google.com/g/data-engineering-open-forum"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-accent"
+                  >
+                    Google Group
+                  </a>{" "}
+                  to receive email updates on Data Engineering Open Forum, including event announcements, Call for Proposals (CFP), volunteer opportunities, and more.
+                </p>
+                <p className="mt-3 text-pretty leading-relaxed text-primary-foreground">
+                  If you have any questions, email us at{" "}
+                  <a
+                    href="mailto:info@dataengineerthings.org"
+                    className="underline hover:text-accent"
+                  >
+                    info@dataengineerthings.org
+                  </a>
+                  .
+                </p>
+              </div>
             </div>
           </div>
         </div>

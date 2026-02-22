@@ -15,21 +15,19 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Check event date and location line
-    await expect(
-      page.getByText(/San Francisco: April 16th, 2026/)
-    ).toBeVisible();
+    await expect(page.getByText(/San Francisco\s*\|\s*April 16th, 2026/)).toBeVisible();
   });
 
   test("should have links to past events", async ({ page }) => {
     await page.goto("/");
 
     // Check 2024 edition links
-    const talks2024Link = page.getByRole("link", { name: "[2024]" }).first();
+    const talks2024Link = page.getByRole("link", { name: "[DEOF 2024]" }).first();
     await expect(talks2024Link).toBeVisible();
     await expect(talks2024Link).toHaveAttribute("href", "/past/2024");
 
     // Check 2025 edition links
-    const talks2025Link = page.getByRole("link", { name: "[2025]" }).first();
+    const talks2025Link = page.getByRole("link", { name: "[DEOF 2025]" }).first();
     await expect(talks2025Link).toBeVisible();
     await expect(talks2025Link).toHaveAttribute("href", "/past/2025");
   });
@@ -104,18 +102,13 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Check agenda section
-    await expect(page.getByText("> AGENDA_", { exact: true })).toBeVisible();
-    await expect(page.getByText(/Coming soon!/)).toBeVisible();
-
-    // Check links to previous sessions
-    await expect(page.getByText(/CHECK_OUT_PREVIOUS_SESSIONS:/i)).toBeVisible();
-
-    // Verify there are links to 2024 and 2025 in agenda section
-    const links2024 = page.getByRole("link", { name: "[2024]" });
-    await expect(links2024.first()).toBeVisible();
-
-    const links2025 = page.getByRole("link", { name: "[2025]" });
-    await expect(links2025.first()).toBeVisible();
+    await expect(page.getByText(/>\s*AGENDA_/)).toBeVisible();
+    await expect(page.getByText("Time Range")).toBeVisible();
+    await expect(page.getByText("Goldman Hall")).toBeVisible();
+    await expect(page.getByText("Swig Gallery")).toBeVisible();
+    await expect(page.getByText("Yud Gallery")).toBeVisible();
+    await expect(page.getByText("Check-in & Breakfast")).toBeVisible();
+    await expect(page.getByText("Streaming in Production")).toBeVisible();
   });
 
   test("should display DET organizer information prominently", async ({
@@ -169,7 +162,7 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Check section header
-    const faqHeader = page.getByText(/FREQUENTLY_ASKED_QUESTIONS_/);
+    const faqHeader = page.getByText(/>\s*FAQ_/);
     await faqHeader.scrollIntoViewIfNeeded();
     await expect(faqHeader).toBeVisible();
 
@@ -191,7 +184,9 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Find an accordion item
-    const firstQuestion = page.getByText(/When and where is the conference?/);
+    const firstQuestion = page.getByRole("button", {
+      name: /When and where is the conference\?/,
+    });
     await expect(firstQuestion).toBeVisible();
 
     // Click to expand
@@ -199,10 +194,9 @@ test.describe("Homepage", () => {
 
     // Check that answer is now visible
     await expect(
-      page.getByText(
-        /April 16th, 2026 at the Contemporary Jewish Museum in San Francisco, California/
-      )
+      page.getByText(/The Data Engineering Open Forum will be held on April 16th, 2026 at/i)
     ).toBeVisible();
+    await expect(page.getByText(/736 Mission St, San Francisco, CA 94103\./)).toBeVisible();
 
     // Click again to collapse
     await firstQuestion.click();

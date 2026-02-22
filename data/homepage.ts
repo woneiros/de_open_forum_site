@@ -65,19 +65,10 @@ export const faqItems: FAQItem[] = [
   {
     question: "When and where is the conference?",
     answer:
-      "The Data Engineering Open Forum will be held on April 16th, 2026 at the Contemporary Jewish Museum in San Francisco, California.",
-    category: "logistics",
-  },
-  {
-    question: "How much does it cost to attend?",
-    answer:
-      "Registration details and pricing will be announced soon. Join our Google Group to be notified when registration opens.",
-    category: "logistics",
-  },
-  {
-    question: "How do I register?",
-    answer:
-      "Registration is not yet open. We'll announce registration details through our Google Group mailing list. Make sure to join to stay updated.",
+      "The Data Engineering Open Forum will be held on April 16th, 2026 at ",
+    answerLinkText: "The Contemporary Jewish Museum",
+    answerLinkHref: "https://maps.app.goo.gl/Gy94FPXDxhcouHHn6",
+    answerSuffix: ", 736 Mission St, San Francisco, CA 94103.",
     category: "logistics",
   },
   {
@@ -89,7 +80,10 @@ export const faqItems: FAQItem[] = [
   {
     question: "Is there a Code of Conduct?",
     answer:
-      "Yes, we are committed to providing a welcoming and inclusive environment for all attendees. Our Code of Conduct will be published alongside registration details.",
+      "Yes, we are committed to providing a welcoming and inclusive environment for all attendees. Please review our ",
+    answerLinkText: "Code of Conduct",
+    answerLinkHref: "https://www.dataengineerthings.org/coc",
+    answerSuffix: ".",
     category: "logistics",
   },
   {
@@ -110,7 +104,10 @@ export const faqItems: FAQItem[] = [
   {
     question: "Can I submit a talk proposal for future events?",
     answer:
-      "The Call for Proposals (CFP) for this year's event has closed. However, we welcome talk proposals throughout the year for future events. Stay tuned to our Google Group for announcements about the next CFP.",
+      "The Call for Proposals (CFP) for this year's event has closed. However, we welcome talk proposals throughout the year for future events. Stay tuned to our ",
+    answerLinkText: "Google Group",
+    answerLinkHref: "https://groups.google.com/g/data-engineering-open-forum",
+    answerSuffix: " for announcements about the next CFP.",
     category: "content",
   },
 ];

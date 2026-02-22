@@ -4,8 +4,8 @@ test.describe("Navigation", () => {
   test("should navigate from home to 2024 talks page", async ({ page }) => {
     await page.goto("/");
 
-    // Click the top-nav [2024 TALKS] link
-    await page.getByRole("link", { name: "[2024 TALKS]" }).click();
+    // Click the top-nav [DEOF 2024] link
+    await page.getByRole("link", { name: "[DEOF 2024]" }).click();
 
     // Verify we're on the 2024 page
     await expect(page).toHaveURL("/past/2024");
@@ -17,8 +17,8 @@ test.describe("Navigation", () => {
   test("should navigate from home to 2025 talks page", async ({ page }) => {
     await page.goto("/");
 
-    // Click the top-nav [2025 TALKS] link
-    await page.getByRole("link", { name: "[2025 TALKS]" }).click();
+    // Click the top-nav [DEOF 2025] link
+    await page.getByRole("link", { name: "[DEOF 2025]" }).click();
 
     // Verify we're on the 2025 page
     await expect(page).toHaveURL("/past/2025");
@@ -69,7 +69,7 @@ test.describe("Navigation", () => {
     await expect(page).toHaveURL("/");
 
     // Navigate to 2024
-    await page.getByRole("link", { name: "[2024 TALKS]" }).click();
+    await page.getByRole("link", { name: "[DEOF 2024]" }).click();
     await expect(page).toHaveURL("/past/2024");
 
     // Go back to home
@@ -77,7 +77,7 @@ test.describe("Navigation", () => {
     await expect(page).toHaveURL("/");
 
     // Navigate to 2025
-    await page.getByRole("link", { name: "[2025 TALKS]" }).click();
+    await page.getByRole("link", { name: "[DEOF 2025]" }).click();
     await expect(page).toHaveURL("/past/2025");
 
     // Go back to home again
@@ -89,7 +89,7 @@ test.describe("Navigation", () => {
     await page.goto("/");
 
     // Navigate to 2024 talks
-    await page.getByRole("link", { name: "[2024 TALKS]" }).click();
+    await page.getByRole("link", { name: "[DEOF 2024]" }).click();
     await expect(page).toHaveURL("/past/2024");
 
     // Use browser back button
