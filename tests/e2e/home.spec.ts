@@ -178,7 +178,9 @@ test.describe("Homepage", () => {
       page.getByRole("button", { name: /When and where is the conference\?/ })
     ).toBeVisible();
     await expect(
-      page.getByRole("button", { name: /Who organizes this event\?/ })
+      page.getByRole("button", {
+        name: /Who organizes Data Engineering Open Forum 2026\?/,
+      })
     ).toBeVisible();
     await expect(
       page.getByRole("button", { name: /Is there a Code of Conduct\?/ })
