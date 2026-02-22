@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CommitteeCard } from "@/components/CommitteeCard";
 import { FAQSection } from "@/components/FAQSection";
+import { MuseumAgendaPrototype } from "@/components/MuseumAgendaPrototype";
 import GalleryCarousel from "@/components/GalleryCarousel";
 import { programCommittee, faqItems } from "@/data/homepage";
 
@@ -239,14 +240,7 @@ export default function Home() {
               <div className="font-mono text-3xl font-semibold text-accent">
                 {"> AGENDA_ "}
               </div>
-              <p className="font-mono font-extrabold text-2xl text-accent">
-                {">>"} Coming soon!
-              </p>
-              <p className="text-pretty leading-relaxed text-muted-foreground">
-                We&apos;re curating an exceptional lineup of talks from
-                practitioners sharing real-world experiences and production
-                system insights. Stay tuned for the full agenda.
-              </p>
+              <MuseumAgendaPrototype />
               <p className="font-mono">
                 <span className="text-accent">
                   {"> CHECK_OUT_PREVIOUS_SESSIONS:"}
