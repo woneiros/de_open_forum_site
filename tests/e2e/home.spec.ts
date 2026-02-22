@@ -98,7 +98,7 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Check agenda section
-    await expect(page.getByText(/> AGENDA_/)).toBeVisible();
+    await expect(page.getByText("> AGENDA_", { exact: true })).toBeVisible();
     await expect(page.getByText(/Coming soon!/)).toBeVisible();
 
     // Check links to previous sessions
@@ -168,7 +168,7 @@ test.describe("Homepage", () => {
     ).toBeVisible();
     await expect(page.getByText(/Who organizes this event?/)).toBeVisible();
     await expect(
-      page.getByText(/What kind of sessions can I expect?/)
+      page.getByText(/Is there a Code of Conduct\?/)
     ).toBeVisible();
   });
 
