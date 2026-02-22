@@ -25,6 +25,19 @@ export function FAQSection({ items }: FAQSectionProps) {
           </AccordionTrigger>
           <AccordionContent className="text-muted-foreground pb-4">
             {item.answer}
+            {item.answerLinkText && item.answerLinkHref ? (
+              <>
+                <a
+                  href={item.answerLinkHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-accent"
+                >
+                  {item.answerLinkText}
+                </a>
+                {item.answerSuffix ?? ""}
+              </>
+            ) : null}
           </AccordionContent>
         </AccordionItem>
       ))}

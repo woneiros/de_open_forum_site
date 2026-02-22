@@ -38,7 +38,10 @@ test.describe("Navigation", () => {
     // Verify we're back on the home page
     await expect(page).toHaveURL("/");
     await expect(
-      page.getByRole("heading", { name: /Data Engineering Open Forum/i })
+      page.getByRole("heading", {
+        name: /Data Engineering Open Forum/i,
+        level: 1,
+      })
     ).toBeVisible();
   });
 
@@ -53,7 +56,10 @@ test.describe("Navigation", () => {
     // Verify we're back on the home page
     await expect(page).toHaveURL("/");
     await expect(
-      page.getByRole("heading", { name: /Data Engineering Open Forum/i })
+      page.getByRole("heading", {
+        name: /Data Engineering Open Forum/i,
+        level: 1,
+      })
     ).toBeVisible();
   });
 

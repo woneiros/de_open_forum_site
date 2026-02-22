@@ -63,11 +63,13 @@ test.describe("Homepage", () => {
 
     // Check for key messaging
     await expect(
-      page.getByText(/Technically deep, globally relevant/i)
+      page.getByText(/Community-driven content with technical depth/i)
     ).toBeVisible();
-    await expect(page.getByText(/Community-driven content/i)).toBeVisible();
     await expect(
-      page.getByText(/Open dialogue & collaboration/i)
+      page.getByText(/Make connections that outlive the event/i)
+    ).toBeVisible();
+    await expect(
+      page.getByText(/Exclusive access to career opportinities/i)
     ).toBeVisible();
   });
 
@@ -78,19 +80,23 @@ test.describe("Homepage", () => {
 
     // Check section header
     await expect(
-      page.getByText(/WHAT_IS_DATA_ENEGINEERING_OPEN_FORUM_/)
+      page.getByText(/WHY_ATTEND_/)
     ).toBeVisible();
 
     // Check benefit cards - use exact match to avoid matching other similar text
-    await expect(page.getByText("Openness", { exact: true })).toBeVisible();
-    await expect(page.getByText("Community-Driven", { exact: true })).toBeVisible();
+    await expect(page.getByText("Community Driven", { exact: true })).toBeVisible();
     await expect(page.getByText("Lasting Connections", { exact: true })).toBeVisible();
+    await expect(page.getByText("Career Opportunities", { exact: true })).toBeVisible();
 
     // Check narrative content
+    await expect(page.getByText(/world-class community/i)).toBeVisible();
+
+    // Check career opportunities content
     await expect(
-      page.getByText(/most anticipated and respected conference/i)
+      page.getByText(/job opportunities at top tech companies/i)
     ).toBeVisible();
   });
+
 
   test("should display expanded Agenda section with past links", async ({
     page,
@@ -141,13 +147,16 @@ test.describe("Homepage", () => {
       "Jerry Wang",
       "Michelle Winters",
       "Sharath Chandra",
-      "Shruthi Jaganath",
+      "Shruthi Jaganathan",
       "Tulika Bhatt",
       "Will Monge",
     ];
 
+    const committeeSection = page.locator("#program-committee");
     for (const member of committeeMembers) {
-      await expect(page.getByText(member)).toBeVisible();
+      await expect(
+        committeeSection.getByText(member, { exact: true })
+      ).toBeVisible();
     }
 
     // Check some company names
@@ -160,15 +169,21 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Check section header
-    await expect(page.getByText(/FREQUENTLY_ASKED_QUESTIONS_/)).toBeVisible();
+    const faqHeader = page.getByText(/FREQUENTLY_ASKED_QUESTIONS_/);
+    await faqHeader.scrollIntoViewIfNeeded();
+    await expect(faqHeader).toBeVisible();
 
     // Check some FAQ questions are present
     await expect(
-      page.getByText(/When and where is the conference?/)
+      page.getByRole("button", { name: /When and where is the conference\?/ })
     ).toBeVisible();
-    await expect(page.getByText(/Who organizes this event?/)).toBeVisible();
     await expect(
-      page.getByText(/Is there a Code of Conduct\?/)
+      page.getByRole("button", {
+        name: /Who organizes Data Engineering Open Forum 2026\?/,
+      })
+    ).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: /Is there a Code of Conduct\?/ })
     ).toBeVisible();
   });
 
