@@ -8,7 +8,7 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "DE Open Forum - Data Engineering Open Forum",
+  title: "Data Engineering Open Forum",
   description: "An approachable, community-driven data engineering conference in San Francisco. Coming soon.",
   generator: "v0.app",
   icons: {

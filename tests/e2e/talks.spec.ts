@@ -69,9 +69,9 @@ test.describe("2024 Talks Page", () => {
     await expect(
       page.getByText("// Data Engineering Open Forum")
     ).toBeVisible();
-    await expect(page.getByText("[OPEN]")).toBeVisible();
-    await expect(page.getByText("[TECHNICAL]")).toBeVisible();
-    await expect(page.getByText("[COMMUNITY]")).toBeVisible();
+    await expect(
+      page.getByText("// Organized by Data Engineer Things (DET)")
+    ).toBeVisible();
   });
 });
 
