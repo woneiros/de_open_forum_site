@@ -186,11 +186,6 @@ export default function Home() {
               <div className="font-mono text-3xl font-semibold text-accent">
                 {"> AGENDA_ "}
               </div>
-              <p className="text-pretty leading-relaxed text-muted-foreground">
-                Experimental agenda concept: timeline + museum map.
-                This is a visual prototype with placeholder sessions to test
-                how attendees can quickly decide where to go next across three halls.
-              </p>
               <MuseumAgendaPrototype />
               <p className="font-mono">
                 <span className="text-accent">

@@ -26,90 +26,37 @@ interface Session {
 
 const halls: Record<HallId, { name: string; color: string; roomLabel: string }> = {
   hall1: {
-    name: "Hall 1",
+    name: "Main Hall",
     roomLabel: "North Gallery",
     color: "border-[#e67e22] bg-[#e67e22]/15 text-[#f6ba7f]",
   },
   hall2: {
-    name: "Hall 2",
+    name: "2nd Hall",
     roomLabel: "Central Atrium",
     color: "border-[#3f8cff] bg-[#3f8cff]/15 text-[#9ec7ff]",
   },
   hall3: {
-    name: "Hall 3",
+    name: "3rd Hall",
     roomLabel: "South Studio",
     color: "border-[#4caf76] bg-[#4caf76]/15 text-[#9ddfb5]",
   },
 };
 
-const timeSlots = ["07:30", "09:00", "10:30", "13:00", "15:00", "17:30"];
+const timeSlots = [
+  { key: "07:30", start: "8:30 AM", end: "9:30 AM" },
+  { key: "09:00", start: "9:30 AM", end: "9:45 AM" },
+  { key: "09:45", start: "9:45 AM", end: "10:15 AM" },
+  { key: "10:30", start: "10:30 AM", end: "11:15 AM" },
+  { key: "11:30", start: "11:30 AM", end: "12:15 PM" },
+  { key: "12:15", start: "12:15 AM", end: "2:00 PM" },
+  { key: "13:00", start: "2:00 PM", end: "2:45 PM" },
+  { key: "15:00", start: "3:00 PM", end: "3:45 PM" },
+  { key: "16:00", start: "4:00 PM", end: "4:45 PM" },
+  { key: "16:45", start: "4:45 PM", end: "5:00 PM" },
+  { key: "17:30", start: "5:00 PM", end: "7:00 PM" },
+];
 
 const sessions: Session[] = [
-  {
-    id: "s1",
-    start: "07:30",
-    end: "08:30",
-    hall: "hall1",
-    title: "Opening Dialogue",
-    speakers: [
-      {
-        name: "Speaker A",
-        title: "Head of Data",
-        company: "Northwind",
-        linkedin: "https://www.linkedin.com",
-        avatarUrl: "https://i.pravatar.cc/80?img=12",
-        bio: "Builds resilient data platforms for fast-growing teams. Focuses on practical architecture decisions that scale.",
-      },
-    ],
-    abstract:
-      "A practical framing of the day: what is changing in modern data engineering and where teams are getting stuck in production.",
-  },
-  {
-    id: "s2",
-    start: "07:30",
-    end: "08:30",
-    hall: "hall2",
-    title: "Platform Futures",
-    speakers: [
-      {
-        name: "Speaker B",
-        title: "Principal Engineer",
-        company: "LakeOps",
-        linkedin: "https://www.linkedin.com",
-        avatarUrl: "https://i.pravatar.cc/80?img=32",
-        bio: "Leads platform strategy across ingestion and compute. Enjoys simplifying hard infra choices for product teams.",
-      },
-      {
-        name: "Speaker C",
-        title: "Staff Data Engineer",
-        company: "GraphTrail",
-        linkedin: "https://www.linkedin.com",
-        avatarUrl: "https://i.pravatar.cc/80?img=5",
-        bio: "Designs data contracts and lineage systems in production. Advocates for reliability as a product feature.",
-      },
-    ],
-    abstract:
-      "Design patterns for platform teams balancing fast product delivery with operational stability and self-service.",
-  },
-  {
-    id: "s3",
-    start: "07:30",
-    end: "08:30",
-    hall: "hall3",
-    title: "Architecture Stories",
-    speakers: [
-      {
-        name: "Speaker D",
-        title: "Staff Data Engineer",
-        company: "GraphTrail",
-        linkedin: "https://www.linkedin.com",
-        avatarUrl: "https://i.pravatar.cc/80?img=43",
-        bio: "Works on distributed data architecture at scale. Shares migration lessons from legacy to modern stacks.",
-      },
-    ],
-    abstract:
-      "Field notes from architecture migrations, including tradeoffs across pipelines, contracts, and lineage ownership.",
-  },
   {
     id: "s4",
     start: "09:00",
@@ -186,33 +133,6 @@ const sessions: Session[] = [
     abstract:
       "A migration checklist and reference architecture for teams adopting lakehouse patterns under real constraints.",
   },
-  {
-    id: "s8",
-    start: "17:30",
-    end: "19:00",
-    hall: "hall2",
-    title: "Closing Panel",
-    speakers: [
-      {
-        name: "Speaker I",
-        title: "VP, Data",
-        company: "OpenForum Collective",
-        linkedin: "https://www.linkedin.com",
-        avatarUrl: "https://i.pravatar.cc/80?img=58",
-        bio: "Leads data organizations through rapid growth phases. Passionate about team design and technical leadership.",
-      },
-      {
-        name: "Speaker J",
-        title: "Director, Platform",
-        company: "OpenForum Collective",
-        linkedin: "https://www.linkedin.com",
-        avatarUrl: "https://i.pravatar.cc/80?img=14",
-        bio: "Runs platform engineering with a product mindset. Works at the intersection of governance, tooling, and UX.",
-      },
-    ],
-    abstract:
-      "Leaders discuss what it takes to build high-trust, high-velocity data organizations over the next 24 months.",
-  },
 ];
 
 const hallOrder: HallId[] = ["hall1", "hall2", "hall3"];
@@ -240,19 +160,12 @@ export function MuseumAgendaPrototype() {
   };
 
   return (
-    <section className="rounded-md border border-accent/35 bg-black/20 p-4 sm:p-6">
-      <div className="mb-4 space-y-1">
-        <p className="font-mono text-xs text-accent">
-          {">>"} Prototype 01: Clickable timeline
-        </p>
-        <p className="text-sm text-muted-foreground">
-          Click any session cell to open speaker/topic details in a pop-up.
-        </p>
-      </div>
-
-      <div className="overflow-hidden rounded-md border border-accent/20">
-        <div className="grid grid-cols-[88px_repeat(3,minmax(0,1fr))] border-b border-accent/20 bg-primary/45 font-mono text-xs">
-          <div className="border-r border-accent/20 px-3 py-2 text-accent">Time</div>
+    <section>
+      <div className="overflow-hidden rounded-md border border-accent/35">
+        <div className="grid grid-cols-[100px_repeat(3,minmax(0,1fr))] border-b border-accent/20 bg-primary/45 font-mono text-xs">
+          <div className="border-r border-accent/20 px-3 py-2 text-accent">
+            Time Range
+          </div>
           {hallOrder.map((hallId) => (
             <div
               key={hallId}
@@ -263,56 +176,76 @@ export function MuseumAgendaPrototype() {
           ))}
         </div>
 
-        {timeSlots.map((time) => (
+        {timeSlots.map((slot) => (
           <div
-            key={time}
-            className="grid grid-cols-[88px_repeat(3,minmax(0,1fr))] border-b border-accent/10 last:border-b-0"
+            key={`${slot.start}-${slot.end}`}
+            className="grid grid-cols-[100px_repeat(3,minmax(0,1fr))] border-b border-accent/10 last:border-b-0"
           >
-            <div className="border-r border-accent/10 px-3 py-3 font-mono text-xs text-muted-foreground">
-              {time}
+            <div className="border-r border-accent/10 px-3 py-3">
+              <p className="whitespace-nowrap text-sm font-semibold leading-tight">{slot.start}</p>
+              <p className="whitespace-nowrap text-sm font-semibold leading-tight">-</p>
+              <p className="whitespace-nowrap text-sm font-semibold leading-tight">{slot.end}</p>
             </div>
-            {hallOrder.map((hallId) => {
-              const session = sessions.find(
-                (item) => item.start === time && item.hall === hallId,
-              );
-
-              if (!session) {
-                return (
-                  <div
-                    key={`${time}-${hallId}`}
-                    className="border-r border-accent/10 bg-black/10 px-2 py-2 last:border-r-0"
-                  />
+            {slot.key === "07:30" ? (
+              <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
+                <p className="text-sm font-semibold leading-tight">Check In & Breakfast</p>
+              </div>
+            ) : slot.key === "12:15" ? (
+              <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
+                <p className="text-sm font-semibold leading-tight">Lunch</p>
+              </div>
+            ) : slot.key === "17:30" ? (
+              <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
+                <p className="text-center text-sm font-semibold leading-tight">
+                  Happy Hour
+                  <br />
+                  Networking
+                </p>
+              </div>
+            ) : (
+              hallOrder.map((hallId) => {
+                const session = sessions.find(
+                  (item) => item.start === slot.key && item.hall === hallId,
                 );
-              }
 
-              const isSelected = activeSession?.id === session.id;
+                if (!session) {
+                  return (
+                    <div
+                      key={`${slot.start}-${slot.end}-${hallId}`}
+                      className="border-r border-accent/10 bg-black/10 px-2 py-2 last:border-r-0"
+                    />
+                  );
+                }
 
-              return (
-                <button
-                  type="button"
-                  key={session.id}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    setActiveSession(session);
-                  }}
-                  className={`border-r border-accent/10 px-2 py-2 text-left transition-all last:border-r-0 ${
-                    isSelected
-                      ? "bg-accent/15 shadow-[inset_0_0_0_1px_rgba(239,214,72,0.45)]"
-                      : "bg-black/15 hover:bg-black/30"
-                  }`}
-                >
-                  <p className="line-clamp-2 text-sm font-semibold leading-tight">
-                    {session.title}
-                  </p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    {getSpeakerLabel(session)}
-                  </p>
-                  <p className="text-xs text-accent">
-                    {session.start} - {session.end}
-                  </p>
-                </button>
-              );
-            })}
+                const isSelected = activeSession?.id === session.id;
+
+                return (
+                  <button
+                    type="button"
+                    key={session.id}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setActiveSession(session);
+                    }}
+                    className={`border-r border-accent/10 px-2 py-2 text-left transition-all last:border-r-0 ${
+                      isSelected
+                        ? "bg-accent/15 shadow-[inset_0_0_0_1px_rgba(239,214,72,0.45)]"
+                        : "bg-black/15 hover:bg-accent/25 hover:shadow-[inset_0_0_0_1px_rgba(239,214,72,0.35)]"
+                    }`}
+                  >
+                    <p className="line-clamp-2 text-sm font-semibold leading-tight underline decoration-accent/70 underline-offset-2">
+                      {session.title}
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {getSpeakerLabel(session)}
+                    </p>
+                    <p className="text-xs text-accent">
+                      {session.start} - {session.end}
+                    </p>
+                  </button>
+                );
+              })
+            )}
           </div>
         ))}
       </div>
@@ -428,9 +361,6 @@ export function MuseumAgendaPrototype() {
             document.body,
           )
         : null}
-      <p className="mt-3 font-mono text-[11px] text-muted-foreground">
-        {"// Click a session cell to view details"}
-      </p>
     </section>
   );
 }
