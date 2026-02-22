@@ -11,7 +11,7 @@ type GalleryItem = {
 };
 
 type GalleryCarouselProps = {
-  items: GalleryItem[];
+  items: readonly GalleryItem[];
   intervalMs?: number;
 };
 
