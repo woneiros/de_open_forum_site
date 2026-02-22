@@ -63,11 +63,13 @@ test.describe("Homepage", () => {
 
     // Check for key messaging
     await expect(
-      page.getByText(/Technically deep, globally relevant/i)
+      page.getByText(/Community-driven content with technical depth/i)
     ).toBeVisible();
-    await expect(page.getByText(/Community-driven content/i)).toBeVisible();
     await expect(
-      page.getByText(/Open dialogue & collaboration/i)
+      page.getByText(/Make connections that outlive the event/i)
+    ).toBeVisible();
+    await expect(
+      page.getByText(/Exclusive access to career opportinities/i)
     ).toBeVisible();
   });
 
@@ -78,19 +80,23 @@ test.describe("Homepage", () => {
 
     // Check section header
     await expect(
-      page.getByText(/WHAT_IS_DATA_ENEGINEERING_OPEN_FORUM_/)
+      page.getByText(/WHY_ATTEND_/)
     ).toBeVisible();
 
     // Check benefit cards - use exact match to avoid matching other similar text
-    await expect(page.getByText("Open Dialogue", { exact: true })).toBeVisible();
     await expect(page.getByText("Community Driven", { exact: true })).toBeVisible();
     await expect(page.getByText("Lasting Connections", { exact: true })).toBeVisible();
+    await expect(page.getByText("Career Opportunities", { exact: true })).toBeVisible();
 
     // Check narrative content
+    await expect(page.getByText(/world-class community/i)).toBeVisible();
+
+    // Check career opportunities content
     await expect(
-      page.getByText(/most anticipated and respected conference/i)
+      page.getByText(/job opportunities at top tech companies/i)
     ).toBeVisible();
   });
+
 
   test("should display expanded Agenda section with past links", async ({
     page,
@@ -146,8 +152,11 @@ test.describe("Homepage", () => {
       "Will Monge",
     ];
 
+    const committeeSection = page.locator("#program-committee");
     for (const member of committeeMembers) {
-      await expect(page.getByText(member)).toBeVisible();
+      await expect(
+        committeeSection.getByText(member, { exact: true })
+      ).toBeVisible();
     }
 
     // Check some company names

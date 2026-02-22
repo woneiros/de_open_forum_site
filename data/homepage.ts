@@ -7,6 +7,9 @@ export interface CommitteeMember {
 export interface FAQItem {
   question: string;
   answer: string;
+  answerLinkText?: string;
+  answerLinkHref?: string;
+  answerSuffix?: string;
   category: "logistics" | "community" | "content";
 }
 
@@ -78,7 +81,7 @@ export const faqItems: FAQItem[] = [
     category: "logistics",
   },
   {
-    question: "Who organizes this event?",
+    question: "Who organizes Data Engineering Open Forum 2026?",
     answer:
       "This conference is organized by Data Engineer Things (DET). This is not a Netflix event, though some Netflix employees are involved in the Program Committee.",
     category: "community",
@@ -92,13 +95,16 @@ export const faqItems: FAQItem[] = [
   {
     question: "Is this a vendor-sponsored conference?",
     answer:
-      "While we have sponsors to help cover costs, the content is controlled by the Program Committee, not by vendors. All sessions are reviewed and approved by the Program Committee.",
+      "While we have sponsors to help cover costs, all sessions are reviewed and approved by the Program Committee.",
     category: "community",
   },
   {
     question: "Will sessions be recorded?",
     answer:
-      "Yes! We plan to record sessions and make them available online after the conference, just like we did for our 2024 and 2025 events. You can find recordings from previous years on our website.",
+      "Yes! We plan to record sessions and upload them to the ",
+    answerLinkText: "Data Engineer Things YouTube channel",
+    answerLinkHref: "https://www.youtube.com/@data-engineer-things/",
+    answerSuffix: " after the event.",
     category: "content",
   },
   {

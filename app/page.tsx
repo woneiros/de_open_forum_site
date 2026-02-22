@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CommitteeCard } from "@/components/CommitteeCard";
 import { FAQSection } from "@/components/FAQSection";
+import GalleryCarousel from "@/components/GalleryCarousel";
 import { programCommittee, faqItems } from "@/data/homepage";
 
 const sponsorTiers = [
@@ -50,6 +51,57 @@ const sponsorTiers = [
   },
 ] as const;
 
+const galleryItems = [
+  {
+    src: "/gallery/panel-discussion-2025.jpg",
+    alt: "Panel discussion on stage - Data Engineering Open Forum 2025",
+    title:
+      "“The Future of Data Engineering” Panel - Data Engineering Open Forum 2025",
+    body: [
+      "Inna Giguere, Director of Data Engineering at Netflix",
+      "Ryan Blue, Technical Staff at Databricks",
+      "Jerry Wang, Data Infrastructure Senior Leader at Airbnb",
+    ],
+  },
+  {
+    src: "/gallery/apache-spark-talk-2025.jpg",
+    alt: "Apache Spark 4.0 Talk - Data Engineering Open Forum 2025",
+    title:
+      "Presenting Apache Spark 4.0 - Data Engineering Open Forum 2025",
+    body: [
+      "Allison Wang, Staff Software Engineer at Databricks",
+      "Jules S. Damji, Technical Staff at Databricks",
+    ],
+  },
+  {
+    src: "/gallery/apache-xtable-talk-2025.jpg",
+    alt: "Apache XTable talk - Data Engineering Open Forum 2025",
+    title: "Presenting Apache XTable - Data Engineering Open Forum 2025",
+    body: [
+      "Dipankar Mazumdar, Staff Data Engineer Advocate at Onehouse.ai",
+    ],
+  },
+  {
+    src: "/gallery/audience-qna-2025.jpg",
+    alt: "Q&A Lines That Never Get Shorter - Data Engineering Open Forum 2025",
+    title: "Q&A Lines That Never Get Shorter - Data Engineering Open Forum 2025",
+    body: [
+      "The conversations don’t stop when the slides end.",
+      "During Q&A, attendees line up at the mic for a deeper dive",
+      "The only problem? We always run out of time before we run out of questions.",
+    ],
+  },
+  {
+    src: "/gallery/audience-engagements-2025.jpg",
+    alt: "Active Audience Engagements - Data Engineering Open Forum 2025",
+    title:
+      "Active Audience Engagements - Data Engineering Open Forum 2025",
+    body: [
+      "A packed auditorium of data professionals actively engages with the speaker, with dozens of attendees raising their hands during a session.",
+    ],
+  },
+] as const;
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-primary text-primary-foreground bg-diagonal-pattern">
@@ -74,9 +126,6 @@ export default function Home() {
           {/* Header */}
           <div className="col-span-full grid lg:grid-cols-10 grid-cols-1 border-b border-accent/30 pb-10 mb-10 gap-8">
             <div className="space-y-4 lg:col-span-6">
-              <div className="font-mono text-sm text-accent">
-                {"> AGENDA_COMING_SOON_ "}
-              </div>
               <h1 className="text-balance font-mono text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl whitespace-pre-line">
                 Data Engineering Open Forum
               </h1>
@@ -87,7 +136,7 @@ export default function Home() {
                 The most anticipated data engineering community event of the year
                 <br />
                 <span className="italic font-mono text-sm">
-                  Brought to you by{" "}
+                  Organized by{" "}
                   <a
                     rel="noopener noreferrer"
                     href="https://dataengineerthings.org"
@@ -99,10 +148,9 @@ export default function Home() {
                 </span>
               </p>
               <div className="space-y-2 font-mono text-sm text-muted-foreground">
-                <p>{"// Technically deep, globally relevant"}</p>
-                <p>{"// Community-driven content"}</p>
-                <p>{"// Open dialogue & collaboration"}</p>
-                <p>{"// Connections that outlive the event"}</p>
+                <p>{"// Community-driven content with technical depth"}</p>
+                <p>{"// Make connections that outlive the event"}</p>
+                <p>{"// Exclusive access to career opportinities"}</p>
               </div>
             </div>
             {/* Right column - Visual element */}
@@ -125,30 +173,28 @@ export default function Home() {
             {/* Why Should I Attend? */}
             <div className="space-y-6">
               <div className="font-mono text-3xl font-semibold text-accent">
-                {"> WHAT_IS_DATA_ENEGINEERING_OPEN_FORUM_"}
+                {"> WHY_ATTEND_"}
               </div>
               <p className="text-pretty text-lg leading-relaxed">
-                The Data Engineering Open Forum aspires to become the most
-                anticipated and respected conference in the data engineering
-                community — a world-class event that practitioners, leaders, and
-                enthusiasts actively seek out, not just for its content, but
-                for the experience it delivers.
+                The Data Engineering Open Forum (DEOF) is a world-class community
+                conference that practitioners and leaders actively seek out,
+                not just for its content, but for the authetic experience
+                it delivers.
               </p>
               <div className="grid gap-4 sm:grid-cols-3">
                 <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
-                  <p className="font-semibold">Open Dialogue</p>
-                  <p className="text-sm text-muted-foreground">
-                    We are committed to the openness that defines an open forum,
-                    rooted in the belief that open dialogue, collaboration, and
-                    inclusiveness are what move the field forward. 
-                  </p>
-                </div>
-                <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
                   <p className="font-semibold">Community Driven</p>
                   <p className="text-sm text-muted-foreground">
-                    Our content, backed by the program committee, will be technically
-                    deep and community-driven, reflecting the real challenges and
-                    innovations shaping the data engineering landscape.
+                    Our sessions, curated and approved by the{" "}
+                    <a
+                      href="#program-committee"
+                      className="underline underline-offset-2 hover:text-accent"
+                    >
+                      program committee
+                    </a>{" "}
+                    , will be technically deep and community-driven, reflecting
+                    the real challenges and innovations shaping the data
+                    engineering landscape.
                   </p>
                 </div>
                 <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
@@ -156,8 +202,16 @@ export default function Home() {
                   <p className="text-sm text-muted-foreground">
                     We aim to create an inclusive space where meaningful
                     conversations happen not only in sessions but everywhere,
-                    empowering you to build connections that outlive the
-                    conference itself.
+                    empowering you to build lasting connections and collaborate
+                    in ways that outlive the conference itself.
+                  </p>
+                </div>
+                <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
+                  <p className="font-semibold">Career Opportunities</p>
+                  <p className="text-sm text-muted-foreground">
+                    You will get the unique opportunity to explore job opportunities at
+                    top tech companies, meet the hiring teams in person at the event,
+                    and make connections that can turn into real next steps after the event.
                   </p>
                 </div>
               </div>
@@ -212,31 +266,69 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Organizer Information */}
-            <div className="border-2 border-accent/40 p-6 space-y-3 rounded-sm">
-              <p className="font-mono text-xl font-semibold text-accent">
-                {"> ORGANIZED_BY_"}
+            {/* Gallery Section */}
+            <div className="space-y-6">
+              <div className="font-mono text-3xl font-semibold text-accent">
+                {"> PHOTO_GALLERY_ "}
+              </div>
+              <p className="text-pretty text-sm text-muted-foreground">
+                Photos from previous Data Engineering Open Forum events.
               </p>
-              <h3 className="font-mono text-xl font-bold">
-                <a
-                  href="https://dataengineerthings.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-accent"
-                >
-                  Data Engineer Things
-                </a>
-              </h3>
-              <p className="text-pretty leading-relaxed text-muted-foreground">
-                This event is organized by Data Engineer Things (DET),
-                a global community built by data engineers for data engineers.
-                Our mission is to create an open and safe space for data professionals
-                to learn and connect.
-              </p>
+              <div className="max-w-2xl">
+                <GalleryCarousel items={galleryItems} />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              {/* Organizer Information */}
+              <div className="space-y-0">
+                <div className="font-mono text-3xl font-semibold text-accent">
+                  {"> ORGANIZED_BY_"}
+                </div>
+                <div className="flex flex-col gap-6 md:flex-row md:items-center">
+                  <div className="flex justify-start">
+                    <a
+                      href="https://dataengineerthings.org"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex"
+                    >
+                      <img
+                        src="/logos/det_logo.jpeg"
+                        alt="Data Engineer Things logo"
+                        className="h-44 w-44 object-contain"
+                      />
+                    </a>
+                  </div>
+                  <div className="space-y-3">
+                    <h3 className="font-mono text-xl font-bold">
+                      Data Engineer Things
+                    </h3>
+                    <p className="text-pretty leading-relaxed text-muted-foreground">
+                      This event is organized by{" "}
+                      <a
+                        href="https://dataengineerthings.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-accent"
+                      >
+                        Data Engineer Things (DET)
+                      </a>
+                      ,{" "}
+                      a global community built by data engineers for data engineers.
+                      Our mission is to create an open and safe space for data professionals
+                      to learn and connect.
+                    </p>
+                  </div>
+                </div>
+              </div>
 
               {/* Program Committee */}
-              <div className="space-y-4">
-                <div className="font-mono  font-semibold text-accent">
+              <div
+                id="program-committee"
+                className="space-y-4 scroll-mt-24 rounded-sm border-2 border-accent/40 p-5"
+              >
+                <div className="font-mono font-semibold text-accent">
                   {"// PROGRAM_COMMITTEE_ "}
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
