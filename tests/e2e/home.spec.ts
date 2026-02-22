@@ -147,7 +147,7 @@ test.describe("Homepage", () => {
       "Jerry Wang",
       "Michelle Winters",
       "Sharath Chandra",
-      "Shruthi Jaganath",
+      "Shruthi Jaganathan",
       "Tulika Bhatt",
       "Will Monge",
     ];
@@ -169,15 +169,19 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Check section header
-    await expect(page.getByText(/FREQUENTLY_ASKED_QUESTIONS_/)).toBeVisible();
+    const faqHeader = page.getByText(/FREQUENTLY_ASKED_QUESTIONS_/);
+    await faqHeader.scrollIntoViewIfNeeded();
+    await expect(faqHeader).toBeVisible();
 
     // Check some FAQ questions are present
     await expect(
-      page.getByText(/When and where is the conference?/)
+      page.getByRole("button", { name: /When and where is the conference\?/ })
     ).toBeVisible();
-    await expect(page.getByText(/Who organizes this event?/)).toBeVisible();
     await expect(
-      page.getByText(/Is there a Code of Conduct\?/)
+      page.getByRole("button", { name: /Who organizes this event\?/ })
+    ).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: /Is there a Code of Conduct\?/ })
     ).toBeVisible();
   });
 
