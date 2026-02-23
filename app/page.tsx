@@ -268,6 +268,10 @@ export default function Home() {
               <div className="font-mono text-3xl font-semibold text-accent">
                 {"> AGENDA_ "}
               </div>
+              <p className="font-mono text-sm text-muted-foreground">
+                // We are still finalizing the agenda. Check back later for the latest
+                schedule and speaker updates.
+              </p>
               <MuseumAgendaPrototype />
               <a
                 href="https://luma.com/deof2026"
