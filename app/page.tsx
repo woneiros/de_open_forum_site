@@ -133,6 +133,14 @@ export default function Home() {
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <span>{"// DATA ENGINEERING OPEN FORUM"}</span>
           <div className="flex items-center gap-4">
+            <a
+              href="https://luma.com/deof2026"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center border-2 border-accent bg-accent px-3 py-1 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              Register Now
+            </a>
             <Link href="/past/2025" className="underline hover:text-accent">
               [DEOF 2025]
             </Link>
@@ -167,6 +175,16 @@ export default function Home() {
                     Data Engineer Things (DET)
                   </a>
               </p>
+              <div>
+                <a
+                  href="https://luma.com/deof2026"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-3 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  Register Now
+                </a>
+              </div>
               <div className="space-y-2 font-mono text-sm text-muted-foreground">
                 <p>{"// Community-driven content with technical depth"}</p>
                 <p>{"// Make connections that outlive the event"}</p>
