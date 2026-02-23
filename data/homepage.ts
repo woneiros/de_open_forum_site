@@ -63,6 +63,15 @@ export const programCommittee: CommitteeMember[] = [
 
 export const faqItems: FAQItem[] = [
   {
+    question: "How do I register for the event?",
+    answer:
+      "You can register for Data Engineering Open Forum 2026 using our ",
+    answerLinkText: "event registration page",
+    answerLinkHref: "https://luma.com/deof2026",
+    answerSuffix: ".",
+    category: "logistics",
+  },
+  {
     question: "When and where is the conference?",
     answer:
       "The Data Engineering Open Forum will be held on April 16th, 2026 at ",

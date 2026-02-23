@@ -129,10 +129,16 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-primary text-primary-foreground bg-diagonal-pattern">
       {/* Top bar with retro feel */}
-      <div className="border-b border-accent/30 px-4 py-2 font-mono text-xs">
+      <div className="fixed inset-x-0 top-0 z-50 border-b border-accent/30 bg-primary/95 px-4 py-2 font-mono text-xs backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <span>{"// DATA ENGINEERING OPEN FORUM"}</span>
           <div className="flex items-center gap-4">
+            <Link href="/past/2025" className="underline hover:text-accent">
+              [DEOF 2025]
+            </Link>
+            <Link href="/past/2024" className="underline hover:text-accent">
+              [DEOF 2024]
+            </Link>
             <a
               href="https://luma.com/deof2026"
               target="_blank"
@@ -141,18 +147,12 @@ export default function Home() {
             >
               Register Now
             </a>
-            <Link href="/past/2025" className="underline hover:text-accent">
-              [DEOF 2025]
-            </Link>
-            <Link href="/past/2024" className="underline hover:text-accent">
-              [DEOF 2024]
-            </Link>
           </div>
         </div>
       </div>
 
       {/* Main content */}
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16 lg:py-24">
+      <div className="mx-auto max-w-6xl px-4 pb-12 pt-24 sm:pb-16 sm:pt-28 lg:pb-24 lg:pt-32">
         <div className="grid gap-6 lg:grid-cols-10 lg:gap-10 ">
           {/* Header */}
           <div className="col-span-full grid lg:grid-cols-10 grid-cols-1 border-b border-accent/30 pb-10 mb-10 gap-8">
@@ -253,6 +253,14 @@ export default function Home() {
                   </p>
                 </div>
               </div>
+              <a
+                href="https://luma.com/deof2026"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                Register Now
+              </a>
             </div>
 
             {/* Agenda Section */}
@@ -261,18 +269,42 @@ export default function Home() {
                 {"> AGENDA_ "}
               </div>
               <MuseumAgendaPrototype />
+              <a
+                href="https://luma.com/deof2026"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                Register Now
+              </a>
             </div>
             {/* Gallery Section */}
             <div className="space-y-6">
               <div className="font-mono text-3xl font-semibold text-accent">
-                {"> PHOTO_GALLERY_ "}
+                {"> PAST_EVENTS_ "}
               </div>
-              <p className="text-pretty text-sm text-muted-foreground">
-                // Photos from previous Data Engineering Open Forum events.
+              <p className="text-pretty text-lg leading-relaxed">
+                Watch session recordings from our previous events:{" "}
+                <Link href="/past/2025" className="underline hover:text-accent">
+                  DEOF 2025
+                </Link>
+                {" "}and{" "}
+                <Link href="/past/2024" className="underline hover:text-accent">
+                  DEOF 2024
+                </Link>
+                .
               </p>
               <div className="max-w-2xl">
                 <GalleryCarousel items={galleryItems} />
               </div>
+              <a
+                href="https://luma.com/deof2026"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                Register Now
+              </a>
             </div>
 
             <div className="space-y-2">
@@ -338,6 +370,14 @@ export default function Home() {
                   ))}
                 </div>
               </div>
+              <a
+                href="https://luma.com/deof2026"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                Register Now
+              </a>
             </div>
 
             {/* Sponsors Section */}
@@ -407,6 +447,14 @@ export default function Home() {
                 {"> FAQ_ "}
               </div>
               <FAQSection items={faqItems} />
+              <a
+                href="https://luma.com/deof2026"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                Register Now
+              </a>
             </div>
 
             {/* Contact Section */}
@@ -414,19 +462,25 @@ export default function Home() {
               <div className="font-mono text-3xl font-semibold text-accent">
                 {"> CONTACT_ "}
               </div>
-              <div className="rounded-sm border-2 border-accent/40 p-5">
+              <div className="space-y-5 rounded-sm border-2 border-accent/40 p-5">
+                <div className="font-mono font-semibold text-accent">
+                  {"// GET_DEOF_UPDATES_ "}
+                </div>
                 <p className="text-pretty leading-relaxed text-primary-foreground">
                   Join our{" "}
                   <a
                     href="https://groups.google.com/g/data-engineering-open-forum"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline hover:text-accent"
+                    className="underline text-accent hover:opacity-90"
                   >
                     Google Group
                   </a>{" "}
                   to receive email updates on Data Engineering Open Forum, including event announcements, Call for Proposals (CFP), volunteer opportunities, and more.
                 </p>
+                <div className="font-mono font-semibold text-accent">
+                  {"// QUESTIONS_ "}
+                </div>
                 <p className="mt-3 text-pretty leading-relaxed text-primary-foreground">
                   If you have any questions, email us at{" "}
                   <a
