@@ -482,12 +482,12 @@ export default function Home() {
                   {"// QUESTIONS_ "}
                 </div>
                 <p className="mt-3 text-pretty leading-relaxed text-primary-foreground">
-                  If you have any questions, email us at{" "}
+                  If you have any questions, please contact us in{" "}
                   <a
-                    href="mailto:info@dataengineerthings.org"
+                    href="mailto:data-engineering-open-forum-info@googlegroups.com"
                     className="underline hover:text-accent"
                   >
-                    info@dataengineerthings.org
+                    email
                   </a>
                   .
                 </p>
