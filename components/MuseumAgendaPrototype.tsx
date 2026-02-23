@@ -44,8 +44,7 @@ const halls: Record<HallId, { name: string; color: string; roomLabel: string }> 
 
 const timeSlots = [
   { key: "07:30", start: "8:30 AM", end: "9:30 AM" },
-  { key: "09:00", start: "9:30 AM", end: "9:45 AM" },
-  { key: "09:45", start: "9:45 AM", end: "10:15 AM" },
+  { key: "09:30", start: "9:30 AM", end: "10:15 AM" },
   { key: "10:30", start: "10:30 AM", end: "11:15 AM" },
   { key: "11:30", start: "11:30 AM", end: "12:15 PM" },
   { key: "12:15", start: "12:15 PM", end: "2:00 PM" },
@@ -58,8 +57,8 @@ const timeSlots = [
 const sessions: Session[] = [
   {
     id: "s4",
-    start: "09:00",
-    end: "10:00",
+    start: "09:30",
+    end: "10:15",
     hall: "hall1",
     title: "Streaming in Production",
     speakers: [
@@ -197,7 +196,7 @@ export function MuseumAgendaPrototype() {
               <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
                 <p className="text-sm font-semibold leading-tight">📋 Check-in & Breakfast</p>
               </div>
-            ) : slot.key === "09:00" ? (
+            ) : slot.key === "09:30" ? (
               <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
                 <p className="text-sm font-semibold leading-tight">
                   Open Remarks & Keynote Presentations

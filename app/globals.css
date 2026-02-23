@@ -220,6 +220,4 @@
 .sponsor-link:active .sponsor-logo {
   opacity: 1;
   transform: translateY(-1px);
-  filter: brightness(0) saturate(100%) invert(85%) sepia(71%) saturate(683%)
-    hue-rotate(352deg) brightness(95%) contrast(92%);
 }

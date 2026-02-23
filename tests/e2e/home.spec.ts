@@ -108,7 +108,9 @@ test.describe("Homepage", () => {
     await expect(page.getByText("Swig Gallery")).toBeVisible();
     await expect(page.getByText("Yud Gallery")).toBeVisible();
     await expect(page.getByText("Check-in & Breakfast")).toBeVisible();
-    await expect(page.getByText("Streaming in Production")).toBeVisible();
+    await expect(
+      page.getByText("Open Remarks & Keynote Presentations")
+    ).toBeVisible();
   });
 
   test("should display DET organizer information prominently", async ({

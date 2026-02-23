@@ -410,30 +410,44 @@ export default function Home() {
                             : "grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
                         }
                       >
-                        {group.sponsors.map((sponsor, index) => (
-                          <a
-                            key={`${group.tier}-${sponsor.name}-${index}`}
-                            href={sponsor.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="sponsor-link group mx-auto flex h-20 w-full max-w-[260px] items-center justify-center rounded-sm bg-primary/20 px-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                            aria-label={sponsor.name}
-                          >
-                            <Image
-                              src={sponsor.logoSrc}
-                              alt={`${sponsor.name} logo`}
-                              width={220}
-                              height={56}
-                              className={`sponsor-logo mx-auto w-auto max-w-full object-contain ${
-                                sponsor.name === "Dremio"
-                                  ? "h-20 sm:h-[88px]"
-                                  : sponsor.name === "MinIO"
-                                  ? "h-5 sm:h-[22px]"
-                                  : "h-10 sm:h-11"
-                              }`}
-                            />
-                          </a>
-                        ))}
+                        {group.sponsors.map((sponsor, index) => {
+                          const isSilver = group.tier === "SILVER";
+
+                          return (
+                            <a
+                              key={`${group.tier}-${sponsor.name}-${index}`}
+                              href={sponsor.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="sponsor-link group mx-auto flex h-20 w-full max-w-[260px] items-center justify-center rounded-sm bg-primary/20 px-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                              aria-label={sponsor.name}
+                            >
+                              <Image
+                                src={sponsor.logoSrc}
+                                alt={`${sponsor.name} logo`}
+                                width={220}
+                                height={56}
+                                className={`sponsor-logo mx-auto w-auto max-w-full object-contain ${
+                                  sponsor.name === "Dremio"
+                                    ? isSilver
+                                      ? "h-[64px] sm:h-[72px]"
+                                      : "h-20 sm:h-[88px]"
+                                    : sponsor.name === "MinIO"
+                                    ? isSilver
+                                      ? "h-[18px] sm:h-5"
+                                      : "h-[22px] sm:h-[26px]"
+                                    : sponsor.name === "CelerData"
+                                    ? isSilver
+                                      ? "h-7 sm:h-8"
+                                      : "h-10 sm:h-11"
+                                    : isSilver
+                                    ? "h-8 sm:h-9"
+                                    : "h-10 sm:h-11"
+                                }`}
+                              />
+                            </a>
+                          );
+                        })}
                       </div>
                     </div>
                   ))}
