@@ -51,8 +51,7 @@ const timeSlots = [
   { key: "12:15", start: "12:15 PM", end: "2:00 PM" },
   { key: "13:00", start: "2:00 PM", end: "2:45 PM" },
   { key: "15:00", start: "3:00 PM", end: "3:45 PM" },
-  { key: "16:00", start: "4:00 PM", end: "4:45 PM" },
-  { key: "16:45", start: "4:45 PM", end: "5:00 PM" },
+  { key: "16:00", start: "4:00 PM", end: "5:00 PM" },
   { key: "17:30", start: "5:00 PM", end: "7:00 PM" },
 ];
 
@@ -196,16 +195,28 @@ export function MuseumAgendaPrototype() {
             </div>
             {slot.key === "07:30" ? (
               <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
-                <p className="text-sm font-semibold leading-tight">Check-in & Breakfast</p>
+                <p className="text-sm font-semibold leading-tight">📋 Check-in & Breakfast</p>
+              </div>
+            ) : slot.key === "09:00" ? (
+              <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
+                <p className="text-sm font-semibold leading-tight">
+                  Open Remarks & Keynote Presentations
+                </p>
               </div>
             ) : slot.key === "12:15" ? (
               <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
-                <p className="text-sm font-semibold leading-tight">Lunch</p>
+                <p className="text-sm font-semibold leading-tight">🥗 Lunch</p>
+              </div>
+            ) : slot.key === "16:00" ? (
+              <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
+                <p className="text-sm font-semibold leading-tight">
+                  Keynote Panel & Close Remarks
+                </p>
               </div>
             ) : slot.key === "17:30" ? (
               <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
                 <p className="text-center text-sm font-semibold leading-tight">
-                  Happy Hour & Networking
+                  🍹 Happy Hour & Networking
                   <br />
                   <span className="font-normal italic">(Sponsored by Databricks)</span>
                 </p>
