@@ -3,14 +3,14 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-type HallId = "hall1" | "hall2" | "hall3";
+type HallId = "goldman" | "swig" | "yud";
 
 interface Speaker {
   name: string;
   title: string;
   company: string;
   linkedin: string;
-  avatarUrl: string;
+  avatarUrl: string | null;
   bio: string;
 }
 
@@ -26,17 +26,17 @@ interface Session {
 }
 
 const halls: Record<HallId, { name: string; color: string; roomLabel: string }> = {
-  hall1: {
+  goldman: {
     name: "Goldman Hall",
     roomLabel: "North Gallery",
     color: "border-[#e67e22] bg-[#e67e22]/15 text-[#f6ba7f]",
   },
-  hall2: {
+  swig: {
     name: "Swig Gallery",
     roomLabel: "Central Atrium",
     color: "border-[#3f8cff] bg-[#3f8cff]/15 text-[#9ec7ff]",
   },
-  hall3: {
+  yud: {
     name: "Yud Gallery",
     roomLabel: "South Studio",
     color: "border-[#4caf76] bg-[#4caf76]/15 text-[#9ddfb5]",
@@ -49,7 +49,7 @@ const timeSlots = [
   { key: "10:30", start: "10:30 AM", end: "11:15 AM" },
   { key: "11:30", start: "11:30 AM", end: "12:15 PM" },
   { key: "12:15", start: "12:15 PM", end: "2:00 PM" },
-  { key: "13:00", start: "2:00 PM", end: "2:45 PM" },
+  { key: "14:00", start: "2:00 PM", end: "2:45 PM" },
   { key: "15:00", start: "3:00 PM", end: "3:45 PM" },
   { key: "16:00", start: "4:00 PM", end: "5:00 PM" },
   { key: "17:30", start: "5:00 PM", end: "7:00 PM" },
@@ -60,7 +60,7 @@ const sessions: Session[] = [
     id: "s5",
     start: "10:30",
     end: "11:15",
-    hall: "hall1",
+    hall: "goldman",
     sessionType: "Full Talk",
     title: "Column storage for the AI era",
     speakers: [
@@ -80,14 +80,14 @@ const sessions: Session[] = [
     id: "s6",
     start: "10:30",
     end: "11:15",
-    hall: "hall3",
+    hall: "yud",
     sessionType: "Lightning Group",
     title: "From Manual to Magical: Building AI Agents for ETL Automation",
     speakers: [
       {
         name: "Himanshi Manglunia",
         title: "Senior Data Engineer",
-        company: "Amazon Web Services (AWS)",
+        company: "Amazon Web Services",
         linkedin: "https://www.linkedin.com/in/himanshi-manglunia/",
         avatarUrl: "/speakers/Himanshi-Manglunia.jpeg",
         bio: "Himanshi Manglunia is a Senior Data Engineer at Amazon Web Services, specializing in marketing measurement and attribution systems. With nearly a decade of experience in data engineering and analytics, she brings deep expertise in designing and building large-scale data pipelines that power critical business decisions.\n\nHimanshi holds a Bachelor's degree in Information Technology and a Master's degree in Data Analytics. At AWS Marketing, she leads the technical development of backend data infrastructure which supports the marketing investment portfolio, including decision-support tools used by senior leadership for goal-setting and resource allocation.\n\nHer technical contributions span end-to-end pipeline development, data architecture design, and cross-functional enablement. She has driven significant process improvements through automation and workflow optimization. Himanshi is the go-to technical advisor for science, economist, and business intelligence teams, establishing office hours, comprehensive documentation, and change management frameworks that have improved cross-team collaboration.\n\nBeyond her individual contributions, Himanshi is committed to developing engineering talent through mentorship and knowledge sharing. She has presented technical sessions to 50+ attendees and on-boarded multiple engineers to independence. Her work exemplifies the intersection of technical excellence, operational efficiency, and organizational impact.",
@@ -100,7 +100,7 @@ const sessions: Session[] = [
     id: "s13",
     start: "10:30",
     end: "11:15",
-    hall: "hall3",
+    hall: "yud",
     sessionType: "Lightning Group",
     title: "SparkMedic: First Aid for Failing Jobs",
     speakers: [
@@ -120,7 +120,7 @@ const sessions: Session[] = [
     id: "s7",
     start: "11:30",
     end: "12:15",
-    hall: "hall1",
+    hall: "goldman",
     sessionType: "Panel",
     title: "Data, Perspective, Action: Why Most Data Engineering Teams Fail at the 'Perspective' Part",
     speakers: [
@@ -140,7 +140,7 @@ const sessions: Session[] = [
     id: "s8",
     start: "11:30",
     end: "12:15",
-    hall: "hall3",
+    hall: "yud",
     sessionType: "Lightning Group",
     title: "MinervaSQL - Lessons Building a Full-fledged SQL interface for a Semantic Layer",
     speakers: [
@@ -158,9 +158,9 @@ const sessions: Session[] = [
   },
   {
     id: "s9",
-    start: "13:00",
+    start: "14:00",
     end: "14:45",
-    hall: "hall1",
+    hall: "goldman",
     sessionType: "Full Talk",
     title: "Powering Netflix’s Multimodal Feature Engineering at Scale",
     speakers: [
@@ -179,7 +179,7 @@ const sessions: Session[] = [
     id: "s10",
     start: "15:00",
     end: "15:45",
-    hall: "hall1",
+    hall: "goldman",
     sessionType: "Full Talk",
     title: "Breaking Down Data Silos: Building Federated Knowledge Infrastructure for Enterprise Agentic AI",
     speakers: [
@@ -199,7 +199,7 @@ const sessions: Session[] = [
     id: "s11",
     start: "15:00",
     end: "15:45",
-    hall: "hall2",
+    hall: "swig",
     sessionType: "Full Talk",
     title: "Orchestrating LLM Inference with Apache Airflow",
     speakers: [
@@ -216,9 +216,9 @@ const sessions: Session[] = [
   },
   {
     id: "s12",
-    start: "13:00",
+    start: "14:00",
     end: "14:45",
-    hall: "hall3",
+    hall: "yud",
     sessionType: "Lightning Group",
     title: "Data Lineage in 2026: From Compliance Checkbox to Critical Platform Investment",
     speakers: [
@@ -236,9 +236,9 @@ const sessions: Session[] = [
   },
   {
     id: "s14",
-    start: "13:00",
+    start: "14:00",
     end: "14:45",
-    hall: "hall3",
+    hall: "yud",
     sessionType: "Lightning Group",
     title: "Lessons from building a data observability product with OpenLineage",
     speakers: [
@@ -254,9 +254,47 @@ const sessions: Session[] = [
     abstract:
       "We describe practical lessons from building Datadog's Data Observability product on top of the OpenLineage standard. The architecture transforms single OpenLineage events into multiple downstream products: lineage graph nodes/edges, time-series metrics, logs/spans, and data quality events-maximizing value from sparse telemetry.",
   },
+  {
+    id: "s15",
+    start: "10:30",
+    end: "11:15",
+    hall: "swig",
+    sessionType: "Full Talk",
+    title: "Apache Spark: Structured Streaming Real-Time Mode",
+    speakers: [
+      {
+        name: "Jerry Peng",
+        title: "Staff Software Engineer",
+        company: "Databricks",
+        linkedin: "https://www.linkedin.com/in/boyang-jerry-peng/",
+        avatarUrl: null,
+        bio: "To be added",
+      },
+    ],
+    abstract: "To be added",
+  },
+  {
+    id: "s16",
+    start: "14:00",
+    end: "14:45",
+    hall: "swig",
+    sessionType: "Full Talk",
+    title: "Apache Spark: Declarative Pipelines",
+    speakers: [
+      {
+        name: "Sandy Ryza",
+        title: "Software Engineer",
+        company: "Databricks",
+        linkedin: "https://www.linkedin.com/in/sandyryza/",
+        avatarUrl: null,
+        bio: "To be added",
+      },
+    ],
+    abstract: "To be added",
+  },
 ];
 
-const hallOrder: HallId[] = ["hall1", "hall2", "hall3"];
+const hallOrder: HallId[] = ["goldman", "swig", "yud"];
 
 const sessionTypeStyle: Record<Session["sessionType"], string> = {
   Keynote: "border-[#d4a017] bg-[#d4a017]/15 text-[#f7d774]",
@@ -284,8 +322,10 @@ export function MuseumAgendaPrototype() {
   }, [activeSession]);
 
   const getSpeakerLabel = (session: Session) => {
-    if (session.speakers.length === 1) return session.speakers[0].name;
-    return `${session.speakers[0].name} +${session.speakers.length - 1}`;
+    const leadSpeaker = session.speakers[0];
+    const leadLabel = `${leadSpeaker.name}, ${leadSpeaker.title} @ ${leadSpeaker.company}`;
+    if (session.speakers.length === 1) return leadLabel;
+    return `${leadLabel} +${session.speakers.length - 1}`;
   };
 
   const getSessionTimeRange = (session: Session) => {
@@ -375,38 +415,63 @@ export function MuseumAgendaPrototype() {
                 return (
                   <div
                     key={`${slot.start}-${slot.end}-${hallId}`}
-                    className="border-r border-accent/10 bg-black/10 p-1 last:border-r-0"
+                    className="flex border-r border-accent/10 bg-black/10 p-1 last:border-r-0"
                   >
-                    <div className="space-y-1">
-                      {cellSessions.map((session) => {
-                        const isSelected = activeSession?.id === session.id;
-                        return (
-                          <button
-                            type="button"
-                            key={session.id}
-                            onClick={(event) => {
-                              event.stopPropagation();
-                              setActiveSession(session);
-                            }}
-                            className={`w-full cursor-pointer rounded border border-accent/15 px-2 py-2 text-left transition-all ${
-                              isSelected
-                                ? "bg-accent/15 shadow-[inset_0_0_0_1px_rgba(239,214,72,0.45)]"
-                                : "bg-black/15 hover:bg-accent/25 hover:shadow-[inset_0_0_0_1px_rgba(239,214,72,0.35)]"
-                            }`}
-                          >
-                            <p className="line-clamp-2 text-sm font-semibold leading-tight underline decoration-accent/70 underline-offset-2">
-                              {session.title}
-                            </p>
-                            <p className="mt-1 text-xs text-muted-foreground">
-                              {getSpeakerLabel(session)}
-                            </p>
-                            <p className="text-xs text-accent">
-                              {getSessionTimeRange(session)}
-                            </p>
-                          </button>
-                        );
-                      })}
-                    </div>
+                    {cellSessions.length === 1 ? (
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          setActiveSession(cellSessions[0]);
+                        }}
+                        className={`flex h-full w-full cursor-pointer flex-col justify-start rounded border border-accent/15 px-2 py-2 text-left transition-all ${
+                          activeSession?.id === cellSessions[0].id
+                            ? "bg-accent/15 shadow-[inset_0_0_0_1px_rgba(239,214,72,0.45)]"
+                            : "bg-black/15 hover:bg-accent/25 hover:shadow-[inset_0_0_0_1px_rgba(239,214,72,0.35)]"
+                        }`}
+                      >
+                        <p className="text-sm font-semibold leading-tight underline decoration-accent/70 underline-offset-2">
+                          {cellSessions[0].title}
+                        </p>
+                        <p className="mt-1 text-xs text-muted-foreground">
+                          {getSpeakerLabel(cellSessions[0])}
+                        </p>
+                        <p className="text-xs text-accent">
+                          {getSessionTimeRange(cellSessions[0])}
+                        </p>
+                      </button>
+                    ) : (
+                      <div className="w-full space-y-1">
+                        {cellSessions.map((session) => {
+                          const isSelected = activeSession?.id === session.id;
+                          return (
+                            <button
+                              type="button"
+                              key={session.id}
+                              onClick={(event) => {
+                                event.stopPropagation();
+                                setActiveSession(session);
+                              }}
+                              className={`flex w-full cursor-pointer flex-col justify-start rounded border border-accent/15 px-2 py-2 text-left transition-all ${
+                                isSelected
+                                  ? "bg-accent/15 shadow-[inset_0_0_0_1px_rgba(239,214,72,0.45)]"
+                                  : "bg-black/15 hover:bg-accent/25 hover:shadow-[inset_0_0_0_1px_rgba(239,214,72,0.35)]"
+                              }`}
+                            >
+                              <p className="text-sm font-semibold leading-tight underline decoration-accent/70 underline-offset-2">
+                                {session.title}
+                              </p>
+                              <p className="mt-1 text-xs text-muted-foreground">
+                                {getSpeakerLabel(session)}
+                              </p>
+                              <p className="text-xs text-accent">
+                                {getSessionTimeRange(session)}
+                              </p>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 );
               })
@@ -470,11 +535,15 @@ export function MuseumAgendaPrototype() {
                           className="border-l-2 border-accent/30 pl-3 py-2"
                         >
                           <div className="flex items-start gap-3">
-                            <img
-                              src={speaker.avatarUrl}
-                              alt={`${speaker.name} avatar`}
-                              className="h-11 w-11 rounded-full border border-accent/30 object-cover"
-                            />
+                            {speaker.avatarUrl ? (
+                              <img
+                                src={speaker.avatarUrl}
+                                alt={`${speaker.name} avatar`}
+                                className="h-11 w-11 rounded-full border border-accent/30 object-cover"
+                              />
+                            ) : (
+                              <div className="h-11 w-11 rounded-full border border-accent/30 bg-black/20" />
+                            )}
                             <div className="min-w-0 flex-1">
                               <div>
                                 <div className="flex items-center gap-1">

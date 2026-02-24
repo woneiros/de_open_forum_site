@@ -8,6 +8,7 @@ type GalleryItem = {
   alt: string;
   title: string;
   body: readonly string[];
+  photoCredit: string;
 };
 
 type GalleryCarouselProps = {
@@ -93,6 +94,9 @@ export default function GalleryCarousel({
         </div>
         <div className="absolute bottom-4 left-6 text-[11px] text-muted-foreground">
           {activeIndex + 1} / {totalItems}
+        </div>
+        <div className="absolute bottom-4 right-6 text-[11px] text-muted-foreground">
+          Photo: {activeItem.photoCredit}
         </div>
       </div>
     </div>
