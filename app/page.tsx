@@ -85,6 +85,7 @@ const galleryItems = [
       "Ryan Blue, Technical Staff at Databricks",
       "Jerry Wang, Data Infrastructure Senior Leader at Airbnb",
     ],
+    photoCredit: "Luis Medina",
   },
   {
     src: "/gallery/apache-spark-talk-2025.jpg",
@@ -94,12 +95,14 @@ const galleryItems = [
       "Allison Wang, Staff Software Engineer at Databricks",
       "Jules S. Damji, Technical Staff at Databricks",
     ],
+    photoCredit: "Luis Medina",
   },
   {
     src: "/gallery/apache-xtable-talk-2025.jpg",
     alt: "Apache XTable talk - Data Engineering Open Forum 2025",
     title: "Presenting Apache XTable - Data Engineering Open Forum 2025",
     body: ["Dipankar Mazumdar, Staff Data Engineer Advocate at Onehouse.ai"],
+    photoCredit: "Luis Medina",
   },
   {
     src: "/gallery/audience-qna-2025.jpg",
@@ -111,6 +114,7 @@ const galleryItems = [
       "During Q&A, attendees line up at the mic for a deeper dive.",
       "The only problem? We always run out of time before we run out of questions.",
     ],
+    photoCredit: "Luis Medina",
   },
   {
     src: "/gallery/audience-engagements-2025.jpg",
@@ -119,6 +123,7 @@ const galleryItems = [
     body: [
       "A packed auditorium of data professionals actively engages with the speaker, with dozens of attendees raising their hands during a session.",
     ],
+    photoCredit: "Luis Medina",
   },
 ] as const;
 
