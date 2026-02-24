@@ -160,6 +160,36 @@ test.describe("Homepage", () => {
     await expect(page.getByText(/Figma/).first()).toBeVisible();
   });
 
+  test("should display Job Opportunities section with Netflix link", async ({
+    page,
+  }) => {
+    await page.goto("/");
+
+    // Check section header
+    await expect(page.getByText(/>\s*JOB_OPPORTUNITIES_/)).toBeVisible();
+
+    // Check description text
+    await expect(
+      page.getByText(/Explore career opportunities at companies hiring data engineers/i)
+    ).toBeVisible();
+
+    // Check Netflix job link
+    const netflixJobLink = page.getByRole("link", {
+      name: /View Data Engineering jobs at Netflix/i,
+    });
+    await expect(netflixJobLink).toBeVisible();
+    await expect(netflixJobLink).toHaveAttribute("target", "_blank");
+    await expect(netflixJobLink).toHaveAttribute(
+      "href",
+      /explore\.jobs\.netflix\.net/
+    );
+
+    // Check "more coming soon" text
+    await expect(
+      page.getByText(/More opportunities coming soon/i)
+    ).toBeVisible();
+  });
+
   test("should display FAQ section with accordion", async ({ page }) => {
     await page.goto("/");
 
