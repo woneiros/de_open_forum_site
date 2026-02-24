@@ -309,7 +309,7 @@ export default function Home() {
               </div>
 
               <p className="font-mono text-sm text-muted-foreground">
-                {"// More opportunities coming soon."}
+                {"// More job opportunities to be added soon."}
               </p>
             </div>
 
