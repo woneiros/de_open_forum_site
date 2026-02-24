@@ -264,8 +264,9 @@ export default function Home() {
                 {"> AGENDA_ "}
               </div>
               <p className="font-mono text-sm text-muted-foreground">
-                // We are still finalizing the agenda. Check back later for the
-                latest schedule and speaker updates.
+                {
+                  "// We are still finalizing the agenda. Check back later for the latest schedule and speaker updates."
+                }
               </p>
               <MuseumAgendaPrototype />
               <a
