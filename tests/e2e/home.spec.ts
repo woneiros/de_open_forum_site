@@ -15,19 +15,25 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Check event date and location line
-    await expect(page.getByText(/San Francisco\s*\|\s*April 16th, 2026/)).toBeVisible();
+    await expect(
+      page.getByText(/San Francisco\s*\|\s*April 16th, 2026/),
+    ).toBeVisible();
   });
 
   test("should have links to past events", async ({ page }) => {
     await page.goto("/");
 
     // Check 2024 edition links
-    const talks2024Link = page.getByRole("link", { name: "[DEOF 2024]" }).first();
+    const talks2024Link = page
+      .getByRole("link", { name: "[DEOF 2024]" })
+      .first();
     await expect(talks2024Link).toBeVisible();
     await expect(talks2024Link).toHaveAttribute("href", "/past/2024");
 
     // Check 2025 edition links
-    const talks2025Link = page.getByRole("link", { name: "[DEOF 2025]" }).first();
+    const talks2025Link = page
+      .getByRole("link", { name: "[DEOF 2025]" })
+      .first();
     await expect(talks2025Link).toBeVisible();
     await expect(talks2025Link).toHaveAttribute("href", "/past/2025");
   });
@@ -43,7 +49,7 @@ test.describe("Homepage", () => {
     });
     await expect(googleGroupLink).toHaveAttribute(
       "href",
-      "https://groups.google.com/g/data-engineering-open-forum"
+      "https://groups.google.com/g/data-engineering-open-forum",
     );
     await expect(googleGroupLink).toHaveAttribute("target", "_blank");
   });
@@ -61,13 +67,13 @@ test.describe("Homepage", () => {
 
     // Check for key messaging
     await expect(
-      page.getByText(/Community-driven content with technical depth/i)
+      page.getByText(/Community-driven content with technical depth/i),
     ).toBeVisible();
     await expect(
-      page.getByText(/Make connections that outlive the event/i)
+      page.getByText(/Make connections that outlive the event/i),
     ).toBeVisible();
     await expect(
-      page.getByText(/Exclusive access to career opportinities/i)
+      page.getByText(/Exclusive access to career opportunities/i),
     ).toBeVisible();
   });
 
@@ -77,24 +83,27 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Check section header
-    await expect(
-      page.getByText(/WHY_ATTEND_/)
-    ).toBeVisible();
+    await expect(page.getByText(/WHY_ATTEND_/)).toBeVisible();
 
     // Check benefit cards - use exact match to avoid matching other similar text
-    await expect(page.getByText("Community Driven", { exact: true })).toBeVisible();
-    await expect(page.getByText("Lasting Connections", { exact: true })).toBeVisible();
-    await expect(page.getByText("Career Opportunities", { exact: true })).toBeVisible();
+    await expect(
+      page.getByText("Community Driven", { exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.getByText("Lasting Connections", { exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.getByText("Career Opportunities", { exact: true }),
+    ).toBeVisible();
 
     // Check narrative content
     await expect(page.getByText(/world-class community/i)).toBeVisible();
 
     // Check career opportunities content
     await expect(
-      page.getByText(/job opportunities at top tech companies/i)
+      page.getByText(/job opportunities at top tech companies/i),
     ).toBeVisible();
   });
-
 
   test("should display expanded Agenda section with past links", async ({
     page,
@@ -109,7 +118,7 @@ test.describe("Homepage", () => {
     await expect(page.getByText("Yud Gallery")).toBeVisible();
     await expect(page.getByText("Check-in & Breakfast")).toBeVisible();
     await expect(
-      page.getByText("Open Remarks & Keynote Presentations")
+      page.getByText("Open Remarks & Keynote Presentations"),
     ).toBeVisible();
   });
 
@@ -120,11 +129,13 @@ test.describe("Homepage", () => {
 
     // Check organizer section
     await expect(page.getByText(/ORGANIZED_BY_/)).toBeVisible();
-    await expect(page.getByRole("heading", { name: /Data Engineer Things/ })).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: /Data Engineer Things/ }),
+    ).toBeVisible();
 
     // Check key messaging about the community
     await expect(
-      page.getByText(/global community built by data engineers/i)
+      page.getByText(/global community built by data engineers/i),
     ).toBeVisible();
   });
 
@@ -150,7 +161,7 @@ test.describe("Homepage", () => {
     const committeeSection = page.locator("#program-committee");
     for (const member of committeeMembers) {
       await expect(
-        committeeSection.getByText(member, { exact: true })
+        committeeSection.getByText(member, { exact: true }),
       ).toBeVisible();
     }
 
@@ -170,7 +181,7 @@ test.describe("Homepage", () => {
 
     // Check description text
     await expect(
-      page.getByText(/Explore career opportunities at companies hiring data engineers/i)
+      page.getByText(/Our event partners are looking for top talent/i),
     ).toBeVisible();
 
     // Check Netflix job link
@@ -181,12 +192,12 @@ test.describe("Homepage", () => {
     await expect(netflixJobLink).toHaveAttribute("target", "_blank");
     await expect(netflixJobLink).toHaveAttribute(
       "href",
-      /explore\.jobs\.netflix\.net/
+      /explore\.jobs\.netflix\.net/,
     );
 
     // Check "more coming soon" text
     await expect(
-      page.getByText(/More opportunities coming soon/i)
+      page.getByText(/More job opportunities to be added soon/i),
     ).toBeVisible();
   });
 
@@ -200,15 +211,15 @@ test.describe("Homepage", () => {
 
     // Check some FAQ questions are present
     await expect(
-      page.getByRole("button", { name: /When and where is the conference\?/ })
+      page.getByRole("button", { name: /When and where is the conference\?/ }),
     ).toBeVisible();
     await expect(
       page.getByRole("button", {
         name: /Who organizes Data Engineering Open Forum 2026\?/,
-      })
+      }),
     ).toBeVisible();
     await expect(
-      page.getByRole("button", { name: /Is there a Code of Conduct\?/ })
+      page.getByRole("button", { name: /Is there a Code of Conduct\?/ }),
     ).toBeVisible();
   });
 
@@ -226,9 +237,13 @@ test.describe("Homepage", () => {
 
     // Check that answer is now visible
     await expect(
-      page.getByText(/The Data Engineering Open Forum will be held on April 16th, 2026 at/i)
+      page.getByText(
+        /The Data Engineering Open Forum will be held on April 16th, 2026 at/i,
+      ),
     ).toBeVisible();
-    await expect(page.getByText(/736 Mission St, San Francisco, CA 94103\./)).toBeVisible();
+    await expect(
+      page.getByText(/736 Mission St, San Francisco, CA 94103\./),
+    ).toBeVisible();
 
     // Click again to collapse
     await firstQuestion.click();

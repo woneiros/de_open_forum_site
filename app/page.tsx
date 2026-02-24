@@ -165,10 +165,7 @@ export default function Home() {
               <p className="text-pretty text-lg leading-relaxed">
                 The most anticipated data engineering community conference of
                 the year, organized by{" "}
-                <a
-                  href="#organized-by"
-                  className="underline hover:text-accent"
-                >
+                <a href="#organized-by" className="underline hover:text-accent">
                   Data Engineer Things (DET)
                 </a>
               </p>
@@ -185,7 +182,7 @@ export default function Home() {
               <div className="space-y-2 font-mono text-sm text-muted-foreground">
                 <p>{"// Community-driven content with technical depth"}</p>
                 <p>{"// Make connections that outlive the event"}</p>
-                <p>{"// Exclusive access to career opportinities"}</p>
+                <p>{"// Exclusive access to career opportunities"}</p>
               </div>
             </div>
             {/* Right column - Visual element */}
@@ -267,8 +264,9 @@ export default function Home() {
                 {"> AGENDA_ "}
               </div>
               <p className="font-mono text-sm text-muted-foreground">
-                // We are still finalizing the agenda. Check back later for the
-                latest schedule and speaker updates.
+                {
+                  "// We are still finalizing the agenda. Check back later for the latest schedule and speaker updates."
+                }
               </p>
               <MuseumAgendaPrototype />
               <a
@@ -287,7 +285,10 @@ export default function Home() {
                 {"> JOB_OPPORTUNITIES_"}
               </div>
               <p className="text-pretty text-lg leading-relaxed">
-                Our event partners are looking for top talents in data engineering! Check out the open job roles, meet the hiring teams in person at the event, and make connections that can turn into real next steps after the event.
+                Our event partners are looking for top talent in data
+                engineering! Check out open job roles, meet the hiring teams in
+                person at the event, and make connections that can turn into
+                real next steps after the event.
               </p>
 
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
