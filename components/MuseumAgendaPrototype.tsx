@@ -87,7 +87,7 @@ const sessions: Session[] = [
       {
         name: "Himanshi Manglunia",
         title: "Senior Data Engineer",
-        company: "Amazon Web Services (AWS)",
+        company: "Amazon Web Services",
         linkedin: "https://www.linkedin.com/in/himanshi-manglunia/",
         avatarUrl: "/speakers/Himanshi-Manglunia.jpeg",
         bio: "Himanshi Manglunia is a Senior Data Engineer at Amazon Web Services, specializing in marketing measurement and attribution systems. With nearly a decade of experience in data engineering and analytics, she brings deep expertise in designing and building large-scale data pipelines that power critical business decisions.\n\nHimanshi holds a Bachelor's degree in Information Technology and a Master's degree in Data Analytics. At AWS Marketing, she leads the technical development of backend data infrastructure which supports the marketing investment portfolio, including decision-support tools used by senior leadership for goal-setting and resource allocation.\n\nHer technical contributions span end-to-end pipeline development, data architecture design, and cross-functional enablement. She has driven significant process improvements through automation and workflow optimization. Himanshi is the go-to technical advisor for science, economist, and business intelligence teams, establishing office hours, comprehensive documentation, and change management frameworks that have improved cross-team collaboration.\n\nBeyond her individual contributions, Himanshi is committed to developing engineering talent through mentorship and knowledge sharing. She has presented technical sessions to 50+ attendees and on-boarded multiple engineers to independence. Her work exemplifies the intersection of technical excellence, operational efficiency, and organizational impact.",
@@ -284,8 +284,10 @@ export function MuseumAgendaPrototype() {
   }, [activeSession]);
 
   const getSpeakerLabel = (session: Session) => {
-    if (session.speakers.length === 1) return session.speakers[0].name;
-    return `${session.speakers[0].name} +${session.speakers.length - 1}`;
+    const leadSpeaker = session.speakers[0];
+    const leadLabel = `${leadSpeaker.name}, ${leadSpeaker.title} @ ${leadSpeaker.company}`;
+    if (session.speakers.length === 1) return leadLabel;
+    return `${leadLabel} +${session.speakers.length - 1}`;
   };
 
   const getSessionTimeRange = (session: Session) => {
