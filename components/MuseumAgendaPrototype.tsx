@@ -49,7 +49,7 @@ const timeSlots = [
   { key: "10:30", start: "10:30 AM", end: "11:15 AM" },
   { key: "11:30", start: "11:30 AM", end: "12:15 PM" },
   { key: "12:15", start: "12:15 PM", end: "2:00 PM" },
-  { key: "13:00", start: "2:00 PM", end: "2:45 PM" },
+  { key: "14:00", start: "2:00 PM", end: "2:45 PM" },
   { key: "15:00", start: "3:00 PM", end: "3:45 PM" },
   { key: "16:00", start: "4:00 PM", end: "5:00 PM" },
   { key: "17:30", start: "5:00 PM", end: "7:00 PM" },
@@ -158,7 +158,7 @@ const sessions: Session[] = [
   },
   {
     id: "s9",
-    start: "13:00",
+    start: "14:00",
     end: "14:45",
     hall: "goldman",
     sessionType: "Full Talk",
@@ -216,7 +216,7 @@ const sessions: Session[] = [
   },
   {
     id: "s12",
-    start: "13:00",
+    start: "14:00",
     end: "14:45",
     hall: "yud",
     sessionType: "Lightning Group",
@@ -236,7 +236,7 @@ const sessions: Session[] = [
   },
   {
     id: "s14",
-    start: "13:00",
+    start: "14:00",
     end: "14:45",
     hall: "yud",
     sessionType: "Lightning Group",
@@ -275,7 +275,7 @@ const sessions: Session[] = [
   },
   {
     id: "s16",
-    start: "13:00",
+    start: "14:00",
     end: "14:45",
     hall: "swig",
     sessionType: "Full Talk",
@@ -415,38 +415,63 @@ export function MuseumAgendaPrototype() {
                 return (
                   <div
                     key={`${slot.start}-${slot.end}-${hallId}`}
-                    className="border-r border-accent/10 bg-black/10 p-1 last:border-r-0"
+                    className="flex border-r border-accent/10 bg-black/10 p-1 last:border-r-0"
                   >
-                    <div className="space-y-1">
-                      {cellSessions.map((session) => {
-                        const isSelected = activeSession?.id === session.id;
-                        return (
-                          <button
-                            type="button"
-                            key={session.id}
-                            onClick={(event) => {
-                              event.stopPropagation();
-                              setActiveSession(session);
-                            }}
-                            className={`w-full cursor-pointer rounded border border-accent/15 px-2 py-2 text-left transition-all ${
-                              isSelected
-                                ? "bg-accent/15 shadow-[inset_0_0_0_1px_rgba(239,214,72,0.45)]"
-                                : "bg-black/15 hover:bg-accent/25 hover:shadow-[inset_0_0_0_1px_rgba(239,214,72,0.35)]"
-                            }`}
-                          >
-                            <p className="line-clamp-2 text-sm font-semibold leading-tight underline decoration-accent/70 underline-offset-2">
-                              {session.title}
-                            </p>
-                            <p className="mt-1 text-xs text-muted-foreground">
-                              {getSpeakerLabel(session)}
-                            </p>
-                            <p className="text-xs text-accent">
-                              {getSessionTimeRange(session)}
-                            </p>
-                          </button>
-                        );
-                      })}
-                    </div>
+                    {cellSessions.length === 1 ? (
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          setActiveSession(cellSessions[0]);
+                        }}
+                        className={`flex h-full w-full cursor-pointer flex-col justify-start rounded border border-accent/15 px-2 py-2 text-left transition-all ${
+                          activeSession?.id === cellSessions[0].id
+                            ? "bg-accent/15 shadow-[inset_0_0_0_1px_rgba(239,214,72,0.45)]"
+                            : "bg-black/15 hover:bg-accent/25 hover:shadow-[inset_0_0_0_1px_rgba(239,214,72,0.35)]"
+                        }`}
+                      >
+                        <p className="text-sm font-semibold leading-tight underline decoration-accent/70 underline-offset-2">
+                          {cellSessions[0].title}
+                        </p>
+                        <p className="mt-1 text-xs text-muted-foreground">
+                          {getSpeakerLabel(cellSessions[0])}
+                        </p>
+                        <p className="text-xs text-accent">
+                          {getSessionTimeRange(cellSessions[0])}
+                        </p>
+                      </button>
+                    ) : (
+                      <div className="w-full space-y-1">
+                        {cellSessions.map((session) => {
+                          const isSelected = activeSession?.id === session.id;
+                          return (
+                            <button
+                              type="button"
+                              key={session.id}
+                              onClick={(event) => {
+                                event.stopPropagation();
+                                setActiveSession(session);
+                              }}
+                              className={`flex w-full cursor-pointer flex-col justify-start rounded border border-accent/15 px-2 py-2 text-left transition-all ${
+                                isSelected
+                                  ? "bg-accent/15 shadow-[inset_0_0_0_1px_rgba(239,214,72,0.45)]"
+                                  : "bg-black/15 hover:bg-accent/25 hover:shadow-[inset_0_0_0_1px_rgba(239,214,72,0.35)]"
+                              }`}
+                            >
+                              <p className="text-sm font-semibold leading-tight underline decoration-accent/70 underline-offset-2">
+                                {session.title}
+                              </p>
+                              <p className="mt-1 text-xs text-muted-foreground">
+                                {getSpeakerLabel(session)}
+                              </p>
+                              <p className="text-xs text-accent">
+                                {getSessionTimeRange(session)}
+                              </p>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 );
               })
