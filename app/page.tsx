@@ -280,6 +280,39 @@ export default function Home() {
                 Register Now
               </a>
             </div>
+
+            {/* Job Opportunities Section */}
+            <div className="space-y-4">
+              <div className="font-mono text-3xl font-semibold text-accent">
+                {"> JOB_OPPORTUNITIES_"}
+              </div>
+              <p className="text-pretty text-lg leading-relaxed">
+                Our event partners are looking for top talents in data engineering! Check out the open job roles, meet the hiring teams in person at the event, and make connections that can turn into real next steps after the event.
+              </p>
+
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <a
+                  href="https://explore.jobs.netflix.net/careers?query=Data%20Engineer&location=any&pid=790313722341&domain=netflix.com&sort_by=relevance&triggerGoButton=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-24 items-center justify-center rounded-sm border-2 border-accent/30 bg-primary/40 px-6 transition-colors hover:border-accent hover:bg-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  aria-label="View Data Engineering jobs at Netflix"
+                >
+                  <Image
+                    src="/sponsors/netflix.svg"
+                    alt="Netflix logo"
+                    width={120}
+                    height={40}
+                    className="object-contain brightness-0 invert opacity-80 transition-opacity group-hover:opacity-100"
+                  />
+                </a>
+              </div>
+
+              <p className="font-mono text-sm text-muted-foreground">
+                {"// More opportunities coming soon."}
+              </p>
+            </div>
+
             {/* Gallery Section */}
             <div className="space-y-6">
               <div className="font-mono text-3xl font-semibold text-accent">
@@ -373,14 +406,6 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              <a
-                href="https://luma.com/deof2026"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                Register Now
-              </a>
             </div>
 
             {/* Sponsors Section */}
@@ -456,38 +481,6 @@ export default function Home() {
                   ))}
                 </div>
               </section>
-            </div>
-
-            {/* Job Opportunities Section */}
-            <div className="space-y-4">
-              <div className="font-mono text-3xl font-semibold text-accent">
-                {"> JOB_OPPORTUNITIES_"}
-              </div>
-              <p className="text-pretty text-lg leading-relaxed">
-                Explore career opportunities at companies hiring data engineers.
-              </p>
-
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <a
-                  href="https://explore.jobs.netflix.net/careers?query=Data%20Engineer&location=any&pid=790313722341&domain=netflix.com&sort_by=relevance&triggerGoButton=true"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex h-24 items-center justify-center rounded-sm border-2 border-accent/30 bg-primary/40 px-6 transition-colors hover:border-accent hover:bg-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  aria-label="View Data Engineering jobs at Netflix"
-                >
-                  <Image
-                    src="/sponsors/netflix.svg"
-                    alt="Netflix logo"
-                    width={120}
-                    height={40}
-                    className="object-contain brightness-0 invert opacity-80 transition-opacity group-hover:opacity-100"
-                  />
-                </a>
-              </div>
-
-              <p className="font-mono text-sm text-muted-foreground">
-                {"// More opportunities coming soon."}
-              </p>
             </div>
 
             {/* FAQ Section */}
