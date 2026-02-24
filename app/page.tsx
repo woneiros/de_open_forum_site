@@ -142,7 +142,7 @@ export default function Home() {
               [DEOF 2024]
             </Link>
             <a
-              href="https://luma.com/deof2026"
+              href="https://luma.com/deof2026?utm_source=website-topbar"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center border-2 border-accent bg-accent px-3 py-1 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
@@ -176,7 +176,7 @@ export default function Home() {
               </p>
               <div>
                 <a
-                  href="https://luma.com/deof2026"
+                  href="https://luma.com/deof2026?utm_source=website-hero"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-3 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
@@ -254,7 +254,7 @@ export default function Home() {
                 </div>
               </div>
               <a
-                href="https://luma.com/deof2026"
+                href="https://luma.com/deof2026?utm_source=website-why-attend"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
@@ -275,7 +275,7 @@ export default function Home() {
               </p>
               <MuseumAgendaPrototype />
               <a
-                href="https://luma.com/deof2026"
+                href="https://luma.com/deof2026?utm_source=website-agenda"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
@@ -339,7 +339,7 @@ export default function Home() {
                 <GalleryCarousel items={galleryItems} />
               </div>
               <a
-                href="https://luma.com/deof2026"
+                href="https://luma.com/deof2026?utm_source=website-past-events"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
@@ -496,7 +496,7 @@ export default function Home() {
               </div>
               <FAQSection items={faqItems} />
               <a
-                href="https://luma.com/deof2026"
+                href="https://luma.com/deof2026?utm_source=website-faq"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
