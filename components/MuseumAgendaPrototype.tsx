@@ -3,14 +3,14 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-type HallId = "hall1" | "hall2" | "hall3";
+type HallId = "goldman" | "swig" | "yud";
 
 interface Speaker {
   name: string;
   title: string;
   company: string;
   linkedin: string;
-  avatarUrl: string;
+  avatarUrl: string | null;
   bio: string;
 }
 
@@ -26,17 +26,17 @@ interface Session {
 }
 
 const halls: Record<HallId, { name: string; color: string; roomLabel: string }> = {
-  hall1: {
+  goldman: {
     name: "Goldman Hall",
     roomLabel: "North Gallery",
     color: "border-[#e67e22] bg-[#e67e22]/15 text-[#f6ba7f]",
   },
-  hall2: {
+  swig: {
     name: "Swig Gallery",
     roomLabel: "Central Atrium",
     color: "border-[#3f8cff] bg-[#3f8cff]/15 text-[#9ec7ff]",
   },
-  hall3: {
+  yud: {
     name: "Yud Gallery",
     roomLabel: "South Studio",
     color: "border-[#4caf76] bg-[#4caf76]/15 text-[#9ddfb5]",
@@ -60,7 +60,7 @@ const sessions: Session[] = [
     id: "s5",
     start: "10:30",
     end: "11:15",
-    hall: "hall1",
+    hall: "goldman",
     sessionType: "Full Talk",
     title: "Column storage for the AI era",
     speakers: [
@@ -80,7 +80,7 @@ const sessions: Session[] = [
     id: "s6",
     start: "10:30",
     end: "11:15",
-    hall: "hall3",
+    hall: "yud",
     sessionType: "Lightning Group",
     title: "From Manual to Magical: Building AI Agents for ETL Automation",
     speakers: [
@@ -100,7 +100,7 @@ const sessions: Session[] = [
     id: "s13",
     start: "10:30",
     end: "11:15",
-    hall: "hall3",
+    hall: "yud",
     sessionType: "Lightning Group",
     title: "SparkMedic: First Aid for Failing Jobs",
     speakers: [
@@ -120,7 +120,7 @@ const sessions: Session[] = [
     id: "s7",
     start: "11:30",
     end: "12:15",
-    hall: "hall1",
+    hall: "goldman",
     sessionType: "Panel",
     title: "Data, Perspective, Action: Why Most Data Engineering Teams Fail at the 'Perspective' Part",
     speakers: [
@@ -140,7 +140,7 @@ const sessions: Session[] = [
     id: "s8",
     start: "11:30",
     end: "12:15",
-    hall: "hall3",
+    hall: "yud",
     sessionType: "Lightning Group",
     title: "MinervaSQL - Lessons Building a Full-fledged SQL interface for a Semantic Layer",
     speakers: [
@@ -160,7 +160,7 @@ const sessions: Session[] = [
     id: "s9",
     start: "13:00",
     end: "14:45",
-    hall: "hall1",
+    hall: "goldman",
     sessionType: "Full Talk",
     title: "Powering Netflix’s Multimodal Feature Engineering at Scale",
     speakers: [
@@ -179,7 +179,7 @@ const sessions: Session[] = [
     id: "s10",
     start: "15:00",
     end: "15:45",
-    hall: "hall1",
+    hall: "goldman",
     sessionType: "Full Talk",
     title: "Breaking Down Data Silos: Building Federated Knowledge Infrastructure for Enterprise Agentic AI",
     speakers: [
@@ -199,7 +199,7 @@ const sessions: Session[] = [
     id: "s11",
     start: "15:00",
     end: "15:45",
-    hall: "hall2",
+    hall: "swig",
     sessionType: "Full Talk",
     title: "Orchestrating LLM Inference with Apache Airflow",
     speakers: [
@@ -218,7 +218,7 @@ const sessions: Session[] = [
     id: "s12",
     start: "13:00",
     end: "14:45",
-    hall: "hall3",
+    hall: "yud",
     sessionType: "Lightning Group",
     title: "Data Lineage in 2026: From Compliance Checkbox to Critical Platform Investment",
     speakers: [
@@ -238,7 +238,7 @@ const sessions: Session[] = [
     id: "s14",
     start: "13:00",
     end: "14:45",
-    hall: "hall3",
+    hall: "yud",
     sessionType: "Lightning Group",
     title: "Lessons from building a data observability product with OpenLineage",
     speakers: [
@@ -254,9 +254,47 @@ const sessions: Session[] = [
     abstract:
       "We describe practical lessons from building Datadog's Data Observability product on top of the OpenLineage standard. The architecture transforms single OpenLineage events into multiple downstream products: lineage graph nodes/edges, time-series metrics, logs/spans, and data quality events-maximizing value from sparse telemetry.",
   },
+  {
+    id: "s15",
+    start: "10:30",
+    end: "11:15",
+    hall: "swig",
+    sessionType: "Full Talk",
+    title: "Apache Spark: Structured Streaming Real-Time Mode",
+    speakers: [
+      {
+        name: "Jerry Peng",
+        title: "Staff Software Engineer",
+        company: "Databricks",
+        linkedin: "https://www.linkedin.com/in/boyang-jerry-peng/",
+        avatarUrl: null,
+        bio: "To be added",
+      },
+    ],
+    abstract: "To be added",
+  },
+  {
+    id: "s16",
+    start: "13:00",
+    end: "14:45",
+    hall: "swig",
+    sessionType: "Full Talk",
+    title: "Apache Spark: Declarative Pipelines",
+    speakers: [
+      {
+        name: "Sandy Ryza",
+        title: "Software Engineer",
+        company: "Databricks",
+        linkedin: "https://www.linkedin.com/in/sandyryza/",
+        avatarUrl: null,
+        bio: "To be added",
+      },
+    ],
+    abstract: "To be added",
+  },
 ];
 
-const hallOrder: HallId[] = ["hall1", "hall2", "hall3"];
+const hallOrder: HallId[] = ["goldman", "swig", "yud"];
 
 const sessionTypeStyle: Record<Session["sessionType"], string> = {
   Keynote: "border-[#d4a017] bg-[#d4a017]/15 text-[#f7d774]",
@@ -472,11 +510,15 @@ export function MuseumAgendaPrototype() {
                           className="border-l-2 border-accent/30 pl-3 py-2"
                         >
                           <div className="flex items-start gap-3">
-                            <img
-                              src={speaker.avatarUrl}
-                              alt={`${speaker.name} avatar`}
-                              className="h-11 w-11 rounded-full border border-accent/30 object-cover"
-                            />
+                            {speaker.avatarUrl ? (
+                              <img
+                                src={speaker.avatarUrl}
+                                alt={`${speaker.name} avatar`}
+                                className="h-11 w-11 rounded-full border border-accent/30 object-cover"
+                              />
+                            ) : (
+                              <div className="h-11 w-11 rounded-full border border-accent/30 bg-black/20" />
+                            )}
                             <div className="min-w-0 flex-1">
                               <div>
                                 <div className="flex items-center gap-1">
