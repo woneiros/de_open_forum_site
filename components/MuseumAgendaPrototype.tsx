@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
   getSessionBySlug,
@@ -19,6 +19,84 @@ const sessionTypeStyle: Record<Session["sessionType"], string> = {
   "Lightning Talk": "border-[#3f8cff] bg-[#3f8cff]/15 text-[#9ec7ff]",
   None: "border-transparent bg-transparent text-transparent",
 };
+
+function SpeakerBio({ bio }: { bio: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const [showToggle, setShowToggle] = useState(false);
+  const bioRef = useRef<HTMLParagraphElement | null>(null);
+
+  useEffect(() => {
+    const bioElement = bioRef.current;
+    if (!bioElement) return;
+
+    const updateOverflowState = () => {
+      const previousDisplay = bioElement.style.display;
+      const previousOverflow = bioElement.style.overflow;
+      const previousLineClamp = bioElement.style.webkitLineClamp;
+      const previousBoxOrient = bioElement.style.webkitBoxOrient;
+
+      bioElement.style.display = "-webkit-box";
+      bioElement.style.overflow = "hidden";
+      bioElement.style.webkitLineClamp = "5";
+      bioElement.style.webkitBoxOrient = "vertical";
+
+      setShowToggle(bioElement.scrollHeight > bioElement.clientHeight + 1);
+
+      bioElement.style.display = previousDisplay;
+      bioElement.style.overflow = previousOverflow;
+      bioElement.style.webkitLineClamp = previousLineClamp;
+      bioElement.style.webkitBoxOrient = previousBoxOrient;
+    };
+
+    updateOverflowState();
+    window.addEventListener("resize", updateOverflowState);
+    return () => window.removeEventListener("resize", updateOverflowState);
+  }, [bio]);
+
+  return (
+    <div className="mt-2 w-full pr-14">
+      <p
+        ref={bioRef}
+        className="whitespace-normal break-normal text-justify hyphens-auto text-sm leading-relaxed italic text-muted-foreground/80 [overflow-wrap:normal]"
+        style={
+          expanded
+            ? undefined
+            : {
+                display: "-webkit-box",
+                overflow: "hidden",
+                WebkitLineClamp: 5,
+                WebkitBoxOrient: "vertical",
+              }
+        }
+      >
+        “{bio}”
+      </p>
+      {showToggle ? (
+        <div className="mt-1 text-sm leading-relaxed italic text-muted-foreground/80">
+          <button
+            type="button"
+            onClick={() => setExpanded((previous) => !previous)}
+            className="inline-flex items-center gap-1 rounded-sm border-0 bg-transparent p-0 text-accent/90 not-italic transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent/50"
+          >
+            <span>{expanded ? "Show Less" : "Show More"}</span>
+            <svg
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+              className={`h-3 w-3 transition-transform ${expanded ? "rotate-180" : ""}`}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M3 6l5 5 5-5" />
+            </svg>
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
+}
 
 export function MuseumAgendaPrototype() {
   const [activeSession, setActiveSession] = useState<Session | null>(null);
@@ -364,16 +442,14 @@ export function MuseumAgendaPrototype() {
                                 <p className="font-mono text-sm text-muted-foreground">
                                   {speaker.title} @ {speaker.company}
                                 </p>
-                                <p className="mt-2 w-full pr-14 whitespace-normal break-normal text-justify hyphens-auto text-sm leading-relaxed italic text-muted-foreground/80 [overflow-wrap:normal]">
-                                  “{speaker.bio}”
-                                </p>
+                                <SpeakerBio bio={speaker.bio} />
                               </div>
                             </div>
                           </div>
                         </div>
                       ))}
                     </div>
-                    <div className="w-full space-y-3 whitespace-normal break-normal text-justify hyphens-auto leading-relaxed text-muted-foreground [overflow-wrap:normal]">
+                    <div className="w-full space-y-3 whitespace-normal break-normal text-justify hyphens-auto leading-relaxed text-primary-foreground [overflow-wrap:normal]">
                       <p>
                         <span className="font-mono text-accent">ABSTRACT</span>:
                       </p>
