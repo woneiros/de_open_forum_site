@@ -264,7 +264,7 @@ export default function Home() {
             </div>
 
             {/* Agenda Section */}
-            <div className="space-y-4">
+            <div id="agenda" className="space-y-4">
               <div className="font-mono text-3xl font-semibold text-accent">
                 {"> AGENDA_ "}
               </div>
