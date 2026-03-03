@@ -156,6 +156,7 @@ export const sessions: Session[] = [
     start: "11:30",
     end: "12:15",
     hall: "swig",
+    sessionType: "Full Talk",
     title: "Beyond Vectors: How Apache Doris Brings Hybrid Search and Real-Time Analytics to Context Engineering",
     speakers: [
       {
