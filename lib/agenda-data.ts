@@ -152,6 +152,26 @@ export const sessions: Session[] = [
       "Minerva is Airbnb's semantic layer and metric platform. With 1000s of users and 40,000 metrics, Minerva powers analytics and experimentation across the entire company.\n\nA couple years ago, we took the treacherous path and decided to build a full-fledged SQL interface for Minerva, called \"MinervaSQL\". This has enabled a new level of exploratory power for our users, but it comes with some complex challenges.\n\nThis talk covers some of MinervaSQL's unique features, along with their tradeoffs, including:\n1. Virtualized one-big-table for the entire semantic layer\n2. Materialized view selection and automatic rewriting\n3. Passthrough and interoperability with the broader data lake",
   },
   {
+    id: "s17",
+    start: "11:30",
+    end: "12:15",
+    hall: "swig",
+    sessionType: "Full Talk",
+    title: "Beyond Vectors: How Apache Doris Brings Hybrid Search and Real-Time Analytics to Context Engineering",
+    speakers: [
+      {
+        name: "Yuankai Shen",
+        title: "Principal Product Manager",
+        company: "VeloDB",
+        linkedin: "https://www.linkedin.com/in/yuankai-kevin-shen/",
+        avatarUrl: "/speakers/Kevin-Shen.jpg",
+        bio: "Yuankai (Kevin) is currently a principal product manager at VeloDB. Prior to VeloDB, Kevin led various data management products at IBM, such as watsonx.data and IBM Data Virtualization (Watson Query). Aside from working in data management, Kevin has also spent years as a technology consultant at Accenture, working closely with the U.S. federal customers on implementing solutions to reflect legislation.",
+      },
+    ],
+    abstract:
+      "Generative AI lives or dies by the context it is provided with, as a lack of appropriate context leads to an ambiguous response, leaving the generated up to probability. In 2020, Meta researchers published the paper, “Embedding-based Retrieval in Facebook Search”, discussing how “Approximate Nearest Neighbor” was implemented through embedding models with high-dimensional vector representation. The retrieval method in this paper resulted in vector-based retrieval-augmented generation (RAG) being the most prevalent architecture for enriching LLMs with context.\n\nHowever, RAG with pure vector search has limitations, including semantic confusion, where pure ANN retrieval with vector embedding and search alone is unable to distinguish among different classes, concepts, or inputs due to high semantic similarity among embeddings (i.e Seattle and San Francisco are all on the west coast hence semantically similar, but may not match the intent of the user). Furthermore, retrieval and context engineering with pure vector search are very memory-intensive, resulting in high infrastructure requirements.\n\nThis talk will introduce hybrid search with Apache Doris as a next-generation retrieval solution for generative AI and context engineering. Addressing the semantic confusion problem by combining vector search, full-text search, and SQL to capture the exact-match intent with semantic similarity, resulting in a more accurate and cost-effective solution.\n\nFinally, we will touch on how the native real-time capability that Apache Doris brings to OLAP can be extended to real-time RAG, helping organizations think about future challenges in this space.",
+  },
+  {
     id: "s9",
     start: "14:00",
     end: "14:45",
@@ -165,16 +185,17 @@ export const sessions: Session[] = [
         company: "LanceDB",
         linkedin: "https://www.linkedin.com/in/yezhaoqin/",
         avatarUrl: "/speakers/Jack-Ye.jpeg",
-        bio: "Bio coming soon.",
+        bio: "Jack Ye is an open source software engineer at LanceDB. He is Apache Iceberg, Apache Polaris and Lance PMC Member. Before LanceDB, he was formerly tech lead for AWS SageMaker Lakehouse, EMR, Athena and S3 Tables.",
       },
     ],
-    abstract: "Abstract coming soon.",
+    abstract:
+      "As multimodal models mature, the challenge increasingly shifts from model architecture to feature engineering and dataset construction at scale. In this talk, we’ll share how Netflix builds and curates multimodal features across large video and image corpora, with LanceDB serving as the core storage and query layer for multimodal data.\n\nWe’ll briefly cover how Ray powers distributed ingestion, filtering, and large-scale batch inference across hundreds of GPUs, enabling the application of modern vision-language models to extract rich multimodal embeddings from video and image data. These embeddings capture both low-level visual signals and higher-level semantic context, forming the foundation for downstream tasks such as search, retrieval, and dataset curation.\n\nWe’ll examine how multimodal feature extraction enables semantic search, filtering, and exploration over large video collections, supporting queries expressed as natural language, images, or combinations of both. We’ll discuss how extracted features encode attributes such as scene composition, lighting, mood, and subject matter, enabling practical use cases like content filtering and targeted dataset selection in addition to semantic retrieval.\n\nFinally, we’ll dive into how LanceDB's multimodal lakehouse serves as the high-performance storage and query layer for these features, enabling sub-second search over hundreds of terabytes of data, along with efficient sampling and diversity-aware dataset refinement across the data curation lifecycle. Built on the Lance columnar file format, this architecture is optimized for storing and querying large-scale multimodal embeddings and metadata efficiently. By treating multimodal features as first-class data assets, LanceDB enables scalable retrieval, dataset analysis, and production workflows that support continuous improvement of high-quality training data for text-to-image and video-to-text research.",
   },
   {
     id: "s10",
     start: "15:00",
     end: "15:45",
-    hall: "goldman",
+    hall: "yud",
     sessionType: "Full Talk",
     title: "Breaking Down Data Silos: Building Federated Knowledge Infrastructure for Enterprise Agentic AI",
     speakers: [
@@ -192,8 +213,8 @@ export const sessions: Session[] = [
   },
   {
     id: "s11",
-    start: "15:00",
-    end: "15:45",
+    start: "14:00",
+    end: "14:45",
     hall: "swig",
     sessionType: "Full Talk",
     title: "Orchestrating LLM Inference with Apache Airflow",
@@ -271,8 +292,8 @@ export const sessions: Session[] = [
   },
   {
     id: "s16",
-    start: "14:00",
-    end: "14:45",
+    start: "15:00",
+    end: "15:45",
     hall: "swig",
     sessionType: "Full Talk",
     title: "Apache Spark: Declarative Pipelines",
