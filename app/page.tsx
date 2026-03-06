@@ -534,7 +534,9 @@ export default function Home() {
                 <p className="mt-3 text-pretty leading-relaxed text-primary-foreground">
                   If you have any questions, please contact us in{" "}
                   <a
-                    href="mailto:data-engineering-open-forum-info@googlegroups.com"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=data-engineering-open-forum-info@googlegroups.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="underline hover:text-accent"
                   >
                     email
