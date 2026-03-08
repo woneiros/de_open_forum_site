@@ -309,6 +309,46 @@ export const sessions: Session[] = [
     ],
     abstract: "To be added",
   },
+  {
+    id: "s18",
+    start: "11:30",
+    end: "12:15",
+    hall: "yud",
+    sessionType: "Lightning Talk",
+    title: "From Idea to Production: E2E Traceability for ML Innovation",
+    speakers: [
+      {
+        name: "Booker Gong",
+        title: "Senior Staff Data Engineer",
+        company: "Meta",
+        linkedin: "https://www.linkedin.com/in/booker-g-a52baa154/",
+        avatarUrl: "/speakers/Booker-Gong.jpeg",
+        bio: "Booker Gong is a Senior Staff Data Engineer at Meta specializing in ML ecosystems insights with over 10 years of experience. Booker currently lives in the Bay Area and enjoys traveling, swimming, reading and game design outside work. Booker studied Electrical Engineering in Columbia University and Physics in Peking University.",
+      },
+    ],
+    abstract:
+      "In modern machine learning ecosystems, innovation happens at a staggering pace-new model architectures, training optimizations, feature engineering techniques, and serving improvements emerge continuously from research labs and engineering teams alike. But as organizations scale to thousands of prediction use cases serving billions of users, a fundamental question becomes increasingly difficult to answer: How do innovations actually flow through ML ecosystems, and what value do they create?\n\nThe technical challenges are substantial: innovations are abstract concepts that embody in code, configurations, and processes with varying footprints; models spanning across large heterogeneous ecosystems iterated through multiple frameworks and pipelines; and \"existence\" of a technique sometimes must be inferred as it is impossible to be explicitly logged.\n\nOur solution combines static analysis, agent-based discovery, dependency resolution, and ML artifact graph to bridge the gap between ML research and production value realization, by building a central innovation platform including many parts: a centralized registry that transforms scattered innovations into a discoverable, governable catalog with rich metadata; a lineage foundation that automatically extracts technique representations across model development process; a recommender that help innovation propagation faster across ML use cases; and an attribution engine that provides unprecedented visibility into the innovation-to-impact lifecycle.",
+  },
+  {
+    id: "s19",
+    start: "15:00",
+    end: "15:45",
+    hall: "goldman",
+    sessionType: "Full Talk",
+    title: "Inside OpenAI’s Internal AI Data Agent",
+    speakers: [
+      {
+        name: "Bonnie Xu",
+        title: "Staff Software Engineer",
+        company: "OpenAI",
+        linkedin: "https://www.linkedin.com/in/xubonnie/",
+        avatarUrl: "/speakers/Bonnie-Xu.png",
+        bio: "Bonnie Xu is a software engineer and the tech lead of the Data Productivity team at OpenAI, where she built an AI-powered data tool from the ground up to help teams explore and understand data more intelligently. Before joining OpenAI, she spent four years at Stripe working on Data Platform and previously held engineering roles at Meta and Google. Her work focuses on building scalable systems that bring AI and data together to make analysis faster and more accessible.",
+      },
+    ],
+    abstract:
+      "OpenAI's internal data platform spans tens of thousands of tables and hundreds of petabytes of data. It’s powerful, but navigating it without deep institutional knowledge is hard. Our data agent lets employees go from question to insight in minutes, not days. This lowers the bar for pulling data and nuanced analysis across all functions, not just for our data team. In this talk, we’ll share how we built an AI data agent that explores and reasons over our platform.\n\nWe’ll first unpack the core architecture behind our agent and the multiple layers of context it uses to answer questions. We’ll then show why each layer matters, how each one shapes the final response, and how we keep them updated with minimal manual intervention. Additionally, we'll cover the evaluation framework we use to maintain consistently high response quality and how tools like Codex helped us accelerate the agent's development.\n\nFinally, we’ll dive into how we expanded adoption across the company and the tips and tricks we learned for deeply integrating this tool into users' workflows.\n\nAttendees will walk away with practical patterns for building data-aware AI agents, deploying retrieval-augmented systems in complex data environments, and driving sustained adoption of AI-assisted analytics.",
+  },
 ];
 
 export const hallOrder: HallId[] = ["goldman", "swig", "yud"];
