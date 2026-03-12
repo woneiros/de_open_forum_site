@@ -489,6 +489,38 @@ export default function Home() {
               </section>
             </div>
 
+            {/* Event Production Section */}
+            <div className="space-y-4">
+              <div className="font-mono text-3xl font-semibold text-accent">
+                {"> EVENT_PARTNERS_ "}
+              </div>
+              <div className="grid gap-5 rounded-sm border border-border/70 p-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-8">
+                <div className="space-y-2">
+                  <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-accent">
+                    {"Event Production"}
+                  </p>
+                  <p className="text-pretty text-base leading-relaxed text-primary-foreground">
+                    {"ImagineX Productions"}
+                  </p>
+                </div>
+                <a
+                  href="https://imaginexproductions.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-sm px-2 py-2 transition-opacity hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  aria-label="ImagineX Productions"
+                >
+                  <Image
+                    src="/logos/ImagineX-Productions.png"
+                    alt="ImagineX Productions logo"
+                    width={110}
+                    height={38}
+                    className="h-auto w-full max-w-[96px] object-contain sm:max-w-[110px]"
+                  />
+                </a>
+              </div>
+            </div>
+
             {/* FAQ Section */}
             <div className="space-y-4">
               <div className="font-mono text-3xl font-semibold text-accent">
