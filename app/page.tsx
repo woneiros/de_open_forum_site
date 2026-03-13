@@ -31,6 +31,11 @@ const sponsorTiers = [
     tier: "GOLD",
     sponsors: [
       {
+        name: "Airbnb",
+        href: "https://www.airbnb.com/",
+        logoSrc: "/sponsors/Airbnb.png",
+      },
+      {
         name: "VeloDB",
         href: "https://www.velodb.io/",
         logoSrc: "/sponsors/velodb.png",
@@ -59,6 +64,11 @@ const sponsorTiers = [
         name: "Netflix",
         href: "https://www.netflix.com/",
         logoSrc: "/sponsors/netflix.svg",
+      },
+      {
+        name: "OpenAI",
+        href: "https://openai.com/",
+        logoSrc: "/sponsors/openai.png",
       },
       {
         name: "PuppyGraph",
@@ -298,6 +308,21 @@ export default function Home() {
 
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 <a
+                  href="https://careers.airbnb.com/positions/?_search_input=data%20engineer&_departments=engineering&_where_you_work=united-states%2Cremote-usa%2Cusa%2Cremote-usa-usa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-24 items-center justify-center rounded-sm border-2 border-accent/30 bg-primary/40 px-6 transition-colors hover:border-accent hover:bg-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  aria-label="View Data Engineering jobs at Airbnb"
+                >
+                  <Image
+                    src="/sponsors/Airbnb.png"
+                    alt="Airbnb logo"
+                    width={480}
+                    height={160}
+                    className="h-auto w-full max-w-[308px] object-contain brightness-0 invert opacity-80 transition-opacity group-hover:opacity-100"
+                  />
+                </a>
+                <a
                   href="https://explore.jobs.netflix.net/careers?query=Data%20Engineer&location=any&pid=790313722341&domain=netflix.com&sort_by=relevance&triggerGoButton=true"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -310,6 +335,21 @@ export default function Home() {
                     width={120}
                     height={40}
                     className="object-contain brightness-0 invert opacity-80 transition-opacity group-hover:opacity-100"
+                  />
+                </a>
+                <a
+                  href="https://openai.com/careers/data-engineer-analytics-san-francisco/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-24 items-center justify-center rounded-sm border-2 border-accent/30 bg-primary/40 px-6 transition-colors hover:border-accent hover:bg-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  aria-label="View Data Engineering jobs at OpenAI"
+                >
+                  <Image
+                    src="/sponsors/openai.png"
+                    alt="OpenAI logo"
+                    width={120}
+                    height={40}
+                    className="h-auto w-full max-w-[180px] object-contain brightness-0 invert opacity-80 transition-opacity group-hover:opacity-100"
                   />
                 </a>
               </div>
@@ -439,6 +479,9 @@ export default function Home() {
                         className={
                           group.sponsors.length === 1
                             ? "grid grid-cols-1 gap-4"
+                            : group.tier === "GOLD" &&
+                                group.sponsors.length === 2
+                              ? "mx-auto grid max-w-[540px] grid-cols-2 gap-4"
                             : group.tier === "SILVER"
                               ? "grid grid-cols-2 gap-4 sm:grid-cols-3"
                               : "grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
@@ -464,8 +507,21 @@ export default function Home() {
                                 className={`sponsor-logo mx-auto w-auto max-w-full object-contain ${
                                   sponsor.name === "Dremio"
                                     ? isSilver
-                                      ? "h-[64px] sm:h-[72px]"
-                                      : "h-20 sm:h-[88px]"
+                                      ? "h-[70px] sm:h-[79px]"
+                                      : "h-[88px] sm:h-[97px]"
+                                    : sponsor.name === "Airbnb"
+                                      ? isSilver
+                                        ? "h-[104px] sm:h-[114px]"
+                                        : "h-[125px] sm:h-[135px]"
+                                    : sponsor.name === "OpenAI" ||
+                                        sponsor.name === "PuppyGraph"
+                                      ? isSilver
+                                        ? "h-10 sm:h-[43px]"
+                                        : "h-12 sm:h-[52px]"
+                                    : sponsor.name === "StreamNative"
+                                      ? isSilver
+                                        ? "h-9 sm:h-10"
+                                        : "h-11 sm:h-12"
                                     : sponsor.name === "MinIO"
                                       ? isSilver
                                         ? "h-[18px] sm:h-5"
