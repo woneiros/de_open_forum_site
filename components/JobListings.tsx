@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Image from "next/image";
 import { Input } from "@/components/ui/input";
 
 export interface JobListing {
@@ -10,6 +11,7 @@ export interface JobListing {
   subtitle: string;
   location: string;
   location_type: "Remote" | "Hybrid" | "Onsite";
+  years_experience: string;
 }
 
 const LOCATION_TYPE_ICONS: Record<JobListing["location_type"], string> = {
@@ -24,21 +26,41 @@ const ALL_LOCATION_TYPES: JobListing["location_type"][] = [
   "Onsite",
 ];
 
+const COMPANY_LOGOS: Record<string, string> = {
+  Airbnb: "/job_logos/Airbnb_jobs.png",
+  CelerData: "/job_logos/celerdata_jobs.svg",
+  Netflix: "/job_logos/netflix_jobs.png",
+  OpenAI: "/job_logos/openai_jobs.png",
+};
+
 interface JobListingsProps {
   jobs: JobListing[];
+  initialCompany?: string;
 }
 
-export default function JobListings({ jobs }: JobListingsProps) {
+export default function JobListings({ jobs, initialCompany }: JobListingsProps) {
   const [query, setQuery] = useState("");
-  const [activeFilter, setActiveFilter] = useState<
+  const [activeCompany, setActiveCompany] = useState<string | null>(
+    initialCompany ?? null,
+  );
+  const [activeLocationType, setActiveLocationType] = useState<
     JobListing["location_type"] | null
   >(null);
 
-  const availableTypes = useMemo(() => {
+  const availableCompanies = useMemo(() => {
+    const seen = new Set<string>();
+    return jobs
+      .filter((j) => {
+        if (seen.has(j.company)) return false;
+        seen.add(j.company);
+        return true;
+      })
+      .map((j) => j.company);
+  }, [jobs]);
+
+  const availableLocationTypes = useMemo(() => {
     const types = new Set(jobs.map((j) => j.location_type));
-    return ALL_LOCATION_TYPES.filter((t) =>
-      types.has(t as JobListing["location_type"]),
-    );
+    return ALL_LOCATION_TYPES.filter((t) => types.has(t));
   }, [jobs]);
 
   const filtered = useMemo(() => {
@@ -50,34 +72,38 @@ export default function JobListings({ jobs }: JobListingsProps) {
         job.title.toLowerCase().includes(q) ||
         job.subtitle.toLowerCase().includes(q) ||
         job.location.toLowerCase().includes(q);
-      const matchesFilter = !activeFilter || job.location_type === activeFilter;
-      return matchesQuery && matchesFilter;
+      const matchesCompany = !activeCompany || job.company === activeCompany;
+      const matchesLocationType =
+        !activeLocationType || job.location_type === activeLocationType;
+      return matchesQuery && matchesCompany && matchesLocationType;
     });
-  }, [jobs, query, activeFilter]);
+  }, [jobs, query, activeCompany, activeLocationType]);
 
   return (
-    <div className="space-y-6">
-      {/* Search + filter bar */}
+    <div className="space-y-4">
+      {/* Search + location type filter row */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <Input
           type="search"
-          placeholder="// search by company, title, location..."
+          placeholder="// search by title, location..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="font-mono text-sm bg-primary/40 border-accent/30 placeholder:text-muted-foreground focus-visible:border-accent focus-visible:ring-accent/30 h-10"
         />
-        {availableTypes.length > 0 && (
+        {availableLocationTypes.length > 0 && (
           <div className="flex gap-2 shrink-0">
-            {availableTypes.map((type) => (
+            {availableLocationTypes.map((type) => (
               <button
                 key={type}
                 type="button"
-                aria-pressed={activeFilter === type}
+                aria-pressed={activeLocationType === type}
                 onClick={() =>
-                  setActiveFilter(activeFilter === type ? null : type)
+                  setActiveLocationType(
+                    activeLocationType === type ? null : type,
+                  )
                 }
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 font-mono text-xs border transition-colors ${
-                  activeFilter === type
+                  activeLocationType === type
                     ? "border-accent bg-accent text-primary"
                     : "border-accent/30 text-muted-foreground hover:border-accent hover:text-primary-foreground"
                 }`}
@@ -90,12 +116,49 @@ export default function JobListings({ jobs }: JobListingsProps) {
         )}
       </div>
 
+      {/* Company pills row */}
+      {availableCompanies.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {availableCompanies.map((company) => {
+            const logo = COMPANY_LOGOS[company];
+            const isActive = activeCompany === company;
+            return (
+              <button
+                key={company}
+                type="button"
+                aria-pressed={isActive}
+                onClick={() =>
+                  setActiveCompany(isActive ? null : company)
+                }
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 font-mono text-xs border transition-colors ${
+                  isActive
+                    ? "border-accent bg-accent text-primary"
+                    : "border-accent/30 text-muted-foreground hover:border-accent hover:text-primary-foreground"
+                }`}
+              >
+                {logo && (
+                  <Image
+                    src={logo}
+                    alt={`${company} logo`}
+                    width={14}
+                    height={14}
+                    className={`h-3.5 w-auto object-contain ${isActive ? "brightness-0" : "brightness-0 invert"}`}
+                  />
+                )}
+                {company.toUpperCase()}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
       {/* Result count */}
       <div className="font-mono text-xs text-muted-foreground">
         {`// ${filtered.length} ${filtered.length === 1 ? "opportunity" : "opportunities"} found`}
       </div>
 
       {/* Listings */}
+      <div data-testid="job-listings">
       {filtered.length > 0 ? (
         <div className="space-y-3">
           {filtered.map((job) => (
@@ -105,12 +168,24 @@ export default function JobListings({ jobs }: JobListingsProps) {
             >
               <div className="space-y-1.5 min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono text-xs font-semibold text-accent border border-accent/40 px-1.5 py-0.5">
+                  <span className="font-mono text-xs font-semibold text-accent border border-accent/40 px-1.5 py-0.5 inline-flex items-center gap-1">
+                    {COMPANY_LOGOS[job.company] && (
+                      <Image
+                        src={COMPANY_LOGOS[job.company]}
+                        alt={`${job.company} logo`}
+                        width={14}
+                        height={14}
+                        className="h-3.5 w-auto object-contain brightness-0 invert opacity-80"
+                      />
+                    )}
                     {job.company.toUpperCase()}
                   </span>
                   <span className="font-mono text-xs text-muted-foreground border border-accent/20 px-1.5 py-0.5 inline-flex items-center gap-1">
                     <span>{LOCATION_TYPE_ICONS[job.location_type]}</span>
                     {job.location_type.toUpperCase()}
+                  </span>
+                  <span className="font-mono text-xs text-muted-foreground border border-accent/20 px-1.5 py-0.5">
+                    {job.location}
                   </span>
                 </div>
                 <p className="text-base font-semibold leading-snug">
@@ -118,7 +193,11 @@ export default function JobListings({ jobs }: JobListingsProps) {
                 </p>
                 <p className="font-mono text-sm text-muted-foreground">
                   {"// "}
-                  {job.subtitle} &mdash; {job.location}
+                  {job.subtitle}
+                </p>
+                <p className="font-mono text-sm text-muted-foreground">
+                  {"// "}
+                  {job.years_experience} years experience
                 </p>
               </div>
               <a
@@ -139,6 +218,7 @@ export default function JobListings({ jobs }: JobListingsProps) {
           </p>
         </div>
       )}
+      </div>
     </div>
   );
 }

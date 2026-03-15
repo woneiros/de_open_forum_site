@@ -321,10 +321,8 @@ export default function Home() {
               </p>
 
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <a
-                  href="https://careers.airbnb.com/positions/?_search_input=data%20engineer&_departments=engineering&_where_you_work=united-states%2Cremote-usa%2Cusa%2Cremote-usa-usa"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/jobs?company=Airbnb"
                   className="group flex h-24 items-center justify-center rounded-sm border-2 border-accent/30 bg-primary/40 px-6 transition-colors hover:border-accent hover:bg-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   aria-label="View Data Engineering jobs at Airbnb"
                 >
@@ -335,11 +333,9 @@ export default function Home() {
                     height={160}
                     className="h-auto w-full max-w-[308px] object-contain brightness-0 invert opacity-80 transition-opacity group-hover:opacity-100"
                   />
-                </a>
-                <a
-                  href="https://explore.jobs.netflix.net/careers?query=Data%20Engineer&location=any&pid=790313722341&domain=netflix.com&sort_by=relevance&triggerGoButton=true"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                </Link>
+                <Link
+                  href="/jobs?company=Netflix"
                   className="group flex h-24 items-center justify-center rounded-sm border-2 border-accent/30 bg-primary/40 px-6 transition-colors hover:border-accent hover:bg-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   aria-label="View Data Engineering jobs at Netflix"
                 >
@@ -350,11 +346,9 @@ export default function Home() {
                     height={40}
                     className="object-contain brightness-0 invert opacity-80 transition-opacity group-hover:opacity-100"
                   />
-                </a>
-                <a
-                  href="https://openai.com/careers/data-engineer-analytics-san-francisco/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                </Link>
+                <Link
+                  href="/jobs?company=OpenAI"
                   className="group flex h-24 items-center justify-center rounded-sm border-2 border-accent/30 bg-primary/40 px-6 transition-colors hover:border-accent hover:bg-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   aria-label="View Data Engineering jobs at OpenAI"
                 >
@@ -365,7 +359,7 @@ export default function Home() {
                     height={40}
                     className="h-auto w-full max-w-[180px] object-contain brightness-0 invert opacity-80 transition-opacity group-hover:opacity-100"
                   />
-                </a>
+                </Link>
               </div>
               <Link
                 href="/jobs"

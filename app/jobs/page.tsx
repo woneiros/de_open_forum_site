@@ -14,7 +14,13 @@ export const metadata: Metadata = {
     "Explore data engineering job opportunities from our event partners at the Data Engineering Open Forum.",
 };
 
-export default function JobsPage() {
+export default async function JobsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ company?: string }>;
+}) {
+  const { company } = await searchParams;
+
   return (
     <main className="min-h-screen bg-primary text-primary-foreground bg-diagonal-pattern">
       <PageNavBar />
@@ -33,9 +39,19 @@ export default function JobsPage() {
             Explore open roles, meet the hiring teams in person at the event,
             and make connections that can turn into real next steps.
           </p>
+          <div>
+            <a
+              href="https://luma.com/deof2026?utm_source=website-job-page"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-3 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              Register Now
+            </a>
+          </div>
         </div>
 
-        <JobListings jobs={validatedJobOpportunities} />
+        <JobListings jobs={validatedJobOpportunities} initialCompany={company} />
 
         <PageFooter />
       </div>

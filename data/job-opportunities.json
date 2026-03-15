@@ -5,7 +5,8 @@
     "title": "Data Engineer, Analytics",
     "subtitle": "Applied AI Engineering",
     "location": "San Francisco, CA",
-    "location_type": "Onsite"
+    "location_type": "Onsite",
+    "years_experience": "8+"
   },
   {
     "company": "Netflix",
@@ -13,7 +14,8 @@
     "title": "Data Engineer (L5)",
     "subtitle": "Data & Insights",
     "location": "USA",
-    "location_type": "Remote"
+    "location_type": "Remote",
+    "years_experience": "8+"
   },
   {
     "company": "Netflix",
@@ -21,7 +23,8 @@
     "title": "Data Engineer (L5) - Ads",
     "subtitle": "Data & Insights",
     "location": "USA",
-    "location_type": "Remote"
+    "location_type": "Remote",
+    "years_experience": "8+"
   },
   {
     "company": "Netflix",
@@ -29,7 +32,8 @@
     "title": "Manager, Ads Data Engineering",
     "subtitle": "Data & Insights",
     "location": "USA",
-    "location_type": "Remote"
+    "location_type": "Remote",
+    "years_experience": "8+"
   },
   {
     "company": "Netflix",
@@ -37,7 +41,8 @@
     "title": "Data Engineer (L5) - Messaging",
     "subtitle": "Data & Insights",
     "location": "USA",
-    "location_type": "Remote"
+    "location_type": "Remote",
+    "years_experience": "8+"
   },
   {
     "company": "Netflix",
@@ -45,7 +50,8 @@
     "title": "Data Engineer (L4) - Revenue Growth",
     "subtitle": "Data & Insights",
     "location": "Los Gatos, CA",
-    "location_type": "Onsite"
+    "location_type": "Onsite",
+    "years_experience": "8+"
   },
   {
     "company": "Netflix",
@@ -53,7 +59,8 @@
     "title": "Data Engineer (L5) - Content Finance",
     "subtitle": "Data & Insights",
     "location": "USA",
-    "location_type": "Remote"
+    "location_type": "Remote",
+    "years_experience": "8+"
   },
   {
     "company": "Netflix",
@@ -61,15 +68,8 @@
     "title": "Data Engineer (L5) - Privacy",
     "subtitle": "Data & Insights",
     "location": "USA",
-    "location_type": "Remote"
-  },
-  {
-    "company": "Netflix",
-    "link": "https://explore.jobs.netflix.net/careers/job/790302856610",
-    "title": "Senior Data Engineer",
-    "subtitle": "Data & Insights",
-    "location": "Warsaw, Poland",
-    "location_type": "Onsite"
+    "location_type": "Remote",
+    "years_experience": "8+"
   },
   {
     "company": "Airbnb",
@@ -77,7 +77,8 @@
     "title": "Staff Data Engineer - Data AI-Listings & Structured Data",
     "subtitle": "Marketplaces Data and AI",
     "location": "USA",
-    "location_type": "Remote"
+    "location_type": "Remote",
+    "years_experience": "9+"
   },
   {
     "company": "Airbnb",
@@ -85,7 +86,8 @@
     "title": "Senior Staff Data Engineer, Marketplaces DNA",
     "subtitle": "Marketplaces Data and AI",
     "location": "USA",
-    "location_type": "Remote"
+    "location_type": "Remote",
+    "years_experience": "12+"
   },
   {
     "company": "Airbnb",
@@ -93,7 +95,44 @@
     "title": "Engineering Manager, Supply & Insights DnA",
     "subtitle": "Marketplaces Data and AI",
     "location": "USA",
-    "location_type": "Remote"
+    "location_type": "Remote",
+    "years_experience": "9+"
+  },
+  {
+    "company": "Airbnb",
+    "link": "https://careers.airbnb.com/positions/7702685/",
+    "title": "Engineering Manager, Storage",
+    "subtitle": "Online Data",
+    "location": "USA",
+    "location_type": "Remote",
+    "years_experience": "9+"
+  },
+  {
+    "company": "Airbnb",
+    "link": "https://careers.airbnb.com/positions/7702714/",
+    "title": "Staff Software Engineer (Technical Lead), Storage",
+    "subtitle": "Online Data",
+    "location": "USA",
+    "location_type": "Remote",
+    "years_experience": "9+"
+  },
+  {
+    "company": "Airbnb",
+    "link": "https://careers.airbnb.com/positions/7702704/",
+    "title": "Senior Software Engineer, Storage",
+    "subtitle": "Online Data",
+    "location": "USA",
+    "location_type": "Remote",
+    "years_experience": "5+"
+  },
+  {
+    "company": "Airbnb",
+    "link": "https://careers.airbnb.com/positions/7683174/",
+    "title": "Senior Software Engineer, Data Infrastructure",
+    "subtitle": "Data Warehouse Infrastructure",
+    "location": "USA",
+    "location_type": "Remote",
+    "years_experience": "5+"
   },
   {
     "company": "Airbnb",
@@ -101,6 +140,43 @@
     "title": "Senior Staff Machine Learning Engineer, Data & Eval",
     "subtitle": "Core ML",
     "location": "USA",
-    "location_type": "Remote"
+    "location_type": "Remote",
+    "years_experience": "12+"
+  },
+  {
+    "company": "CelerData",
+    "link": "https://www.linkedin.com/jobs/view/4372981678/",
+    "title": "Software Engineer",
+    "subtitle": "Database System",
+    "location": "Menlo Park, CA",
+    "location_type": "Remote",
+    "years_experience": "3+"
+  },
+  {
+    "company": "CelerData",
+    "link": "https://www.linkedin.com/jobs/view/4378742518/",
+    "title": "Engineering Leader",
+    "subtitle": "Post-Sales",
+    "location": "Menlo Park, CA",
+    "location_type": "Onsite",
+    "years_experience": "10+"
+  },
+  {
+    "company": "CelerData",
+    "link": "https://www.linkedin.com/jobs/view/4369676128/",
+    "title": "Developer Advocate",
+    "subtitle": "StarRocks project",
+    "location": "Menlo Park, CA",
+    "location_type": "Remote",
+    "years_experience": "3+"
+  },
+  {
+    "company": "CelerData",
+    "link": "https://www.linkedin.com/jobs/view/4371802859/",
+    "title": "Product Manager",
+    "subtitle": "Cloud Experience",
+    "location": "Menlo Park, CA",
+    "location_type": "Remote",
+    "years_experience": "2+"
   }
 ]
