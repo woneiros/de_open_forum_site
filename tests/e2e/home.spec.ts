@@ -113,9 +113,9 @@ test.describe("Homepage", () => {
     // Check agenda section
     await expect(page.getByText(/>\s*AGENDA_/)).toBeVisible();
     await expect(page.getByText("Time Range")).toBeVisible();
-    await expect(page.getByText("Goldman Hall")).toBeVisible();
-    await expect(page.getByText("Swig Gallery")).toBeVisible();
-    await expect(page.getByText("Yud Gallery")).toBeVisible();
+    await expect(page.getByText("Goldman Hall", { exact: true }).first()).toBeVisible();
+    await expect(page.getByText("Swig Gallery", { exact: true }).first()).toBeVisible();
+    await expect(page.getByText("Yud Gallery", { exact: true }).first()).toBeVisible();
     await expect(page.getByText("Check-in & Breakfast")).toBeVisible();
     await expect(
       page.getByText("Open Remarks & Keynote Presentations"),
