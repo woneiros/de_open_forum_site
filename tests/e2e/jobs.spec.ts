@@ -22,14 +22,15 @@ test.describe("Job Opportunities Page", () => {
     await expect(page.getByText("AIRBNB").first()).toBeVisible();
   });
 
-  test("should filter listings when searching by company", async ({ page }) => {
+  test("should filter listings when searching by title", async ({ page }) => {
     await page.goto("/jobs");
 
-    await page.getByPlaceholder(/search by company/i).fill("OpenAI");
+    await page.getByPlaceholder(/search by title/i).fill("Analytics");
 
-    await expect(page.getByText("OPENAI")).toBeVisible();
-    await expect(page.getByText("NETFLIX")).not.toBeVisible();
-    await expect(page.getByText("AIRBNB")).not.toBeVisible();
+    const listings = page.locator('[data-testid="job-listings"]');
+    await expect(listings.getByText("OPENAI")).toBeVisible();
+    await expect(listings.getByText("NETFLIX")).not.toBeVisible();
+    await expect(listings.getByText("AIRBNB")).not.toBeVisible();
   });
 
   test("should show empty state when search has no matches", async ({
@@ -37,7 +38,7 @@ test.describe("Job Opportunities Page", () => {
   }) => {
     await page.goto("/jobs");
 
-    await page.getByPlaceholder(/search by company/i).fill("xyzzy-no-match");
+    await page.getByPlaceholder(/search by title/i).fill("xyzzy-no-match");
 
     await expect(page.getByText(/no results found/i)).toBeVisible();
     await expect(page.getByText(/0 opportunities found/i)).toBeVisible();
@@ -50,12 +51,43 @@ test.describe("Job Opportunities Page", () => {
     // filtering Remote should hide it
     await page.getByRole("button", { name: /remote/i }).click();
 
-    await expect(page.getByText("OPENAI")).not.toBeVisible();
-    await expect(page.getByText("NETFLIX").first()).toBeVisible();
+    const listings = page.locator('[data-testid="job-listings"]');
+    await expect(listings.getByText("OPENAI")).not.toBeVisible();
+    await expect(listings.getByText("NETFLIX").first()).toBeVisible();
 
     // Click again to deselect — OpenAI should reappear
     await page.getByRole("button", { name: /remote/i }).click();
-    await expect(page.getByText("OPENAI")).toBeVisible();
+    await expect(listings.getByText("OPENAI")).toBeVisible();
+  });
+
+  test("should filter by company pill", async ({ page }) => {
+    await page.goto("/jobs");
+
+    await page.getByRole("button", { name: /airbnb/i }).click();
+
+    const listings = page.locator('[data-testid="job-listings"]');
+    await expect(listings.getByText("AIRBNB").first()).toBeVisible();
+    await expect(listings.getByText("NETFLIX")).not.toBeVisible();
+    await expect(listings.getByText("OPENAI")).not.toBeVisible();
+
+    // Click again to deselect
+    await page.getByRole("button", { name: /airbnb/i }).click();
+    await expect(listings.getByText("NETFLIX").first()).toBeVisible();
+  });
+
+  test("should pre-select company pill when navigating from homepage logo", async ({
+    page,
+  }) => {
+    await page.goto("/jobs?company=Netflix");
+
+    // Netflix pill should be active (aria-pressed)
+    const netflixPill = page.getByRole("button", { name: /netflix/i });
+    await expect(netflixPill).toHaveAttribute("aria-pressed", "true");
+
+    // Only Netflix jobs should be visible in listings
+    const listings = page.locator('[data-testid="job-listings"]');
+    await expect(listings.getByText("AIRBNB")).not.toBeVisible();
+    await expect(listings.getByText("OPENAI")).not.toBeVisible();
   });
 
   test("should have apply links that open in a new tab", async ({ page }) => {
