@@ -56,6 +56,11 @@ const sponsorTiers = [
         logoSrc: "/sponsors/dremio.png",
       },
       {
+        name: "Matia",
+        href: "https://www.matia.io/",
+        logoSrc: "/sponsors/matia.png",
+      },
+      {
         name: "MinIO",
         href: "https://min.io/",
         logoSrc: "/sponsors/minio-color.svg",
@@ -200,7 +205,7 @@ export default function Home() {
               <div className="space-y-2 font-mono text-sm text-muted-foreground">
                 <p>{"// Community-driven content with technical depth"}</p>
                 <p>{"// Make connections that outlive the event"}</p>
-                <p>{"// Exclusive access to career opportunities"}</p>
+                <p>{"// Onsite recruiting with Airbnb, Netflix, and OpenAI"}</p>
               </div>
             </div>
             {/* Right column - Visual element */}
@@ -259,10 +264,16 @@ export default function Home() {
                 <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
                   <p className="font-semibold">Career Opportunities</p>
                   <p className="text-sm text-muted-foreground">
-                    You will get the unique opportunity to explore job
-                    opportunities at top tech companies, meet the hiring teams
-                    in person at the event, and make connections that can turn
-                    into real next steps after the event.
+                    Top tech companies (including Airbnb, Netflix, and
+                    OpenAI) will be recruiting onsite. Explore{" "}
+                    <Link
+                      href="#onsite-recruiting"
+                      className="underline underline-offset-2 hover:text-accent"
+                    >
+                      open job roles
+                    </Link>
+                    , meet the hiring teams in person, and make connections
+                    that can turn into real next steps after the event.
                   </p>
                 </div>
               </div>
@@ -298,9 +309,9 @@ export default function Home() {
             </div>
 
             {/* Job Opportunities Section */}
-            <div className="space-y-4">
+            <div id="onsite-recruiting" className="space-y-4 scroll-mt-24">
               <div className="font-mono text-3xl font-semibold text-accent">
-                {"> JOB_OPPORTUNITIES_"}
+                {"> ONSITE_RECRUITING_"}
               </div>
               <p className="text-pretty text-lg leading-relaxed">
                 Our event partners are looking for top talent in data
@@ -356,15 +367,11 @@ export default function Home() {
                   />
                 </a>
               </div>
-
-              <p className="font-mono text-sm text-muted-foreground">
-                {"// More job opportunities to be added soon."}
-              </p>
               <Link
                 href="/jobs"
                 className="inline-flex items-center font-mono text-sm text-accent hover:underline"
               >
-                {"[VIEW ALL OPPORTUNITIES →]"}
+                {"[VIEW ALL OPEN JOB ROLES →]"}
               </Link>
             </div>
 

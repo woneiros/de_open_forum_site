@@ -177,7 +177,7 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Check section header
-    await expect(page.getByText(/>\s*JOB_OPPORTUNITIES_/)).toBeVisible();
+    await expect(page.getByText(/>\s*ONSITE_RECRUITING_/)).toBeVisible();
 
     // Check description text
     await expect(
