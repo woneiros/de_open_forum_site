@@ -199,6 +199,21 @@ test.describe("Homepage", () => {
     await expect(
       page.getByText(/More job opportunities to be added soon/i),
     ).toBeVisible();
+
+    // Check "View all" link points to /jobs
+    const viewAllLink = page.getByRole("link", {
+      name: /VIEW ALL OPPORTUNITIES/i,
+    });
+    await expect(viewAllLink).toBeVisible();
+    await expect(viewAllLink).toHaveAttribute("href", "/jobs");
+  });
+
+  test("should display [JOBS] link in the top navbar", async ({ page }) => {
+    await page.goto("/");
+
+    const jobsLink = page.getByRole("link", { name: "[JOBS]" });
+    await expect(jobsLink).toBeVisible();
+    await expect(jobsLink).toHaveAttribute("href", "/jobs");
   });
 
   test("should display FAQ section with accordion", async ({ page }) => {

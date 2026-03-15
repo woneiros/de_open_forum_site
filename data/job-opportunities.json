@@ -1,0 +1,106 @@
+[
+  {
+    "company": "OpenAI",
+    "link": "https://openai.com/careers/data-engineer-analytics-san-francisco/",
+    "title": "Data Engineer, Analytics",
+    "subtitle": "Applied AI Engineering",
+    "location": "San Francisco, CA",
+    "location_type": "Onsite"
+  },
+  {
+    "company": "Netflix",
+    "link": "https://explore.jobs.netflix.net/careers/job/790313345439",
+    "title": "Data Engineer (L5)",
+    "subtitle": "Data & Insights",
+    "location": "USA",
+    "location_type": "Remote"
+  },
+  {
+    "company": "Netflix",
+    "link": "https://explore.jobs.netflix.net/careers/job/790313551840",
+    "title": "Data Engineer (L5) - Ads",
+    "subtitle": "Data & Insights",
+    "location": "USA",
+    "location_type": "Remote"
+  },
+  {
+    "company": "Netflix",
+    "link": "https://explore.jobs.netflix.net/careers/job/790313607717",
+    "title": "Manager, Ads Data Engineering",
+    "subtitle": "Data & Insights",
+    "location": "USA",
+    "location_type": "Remote"
+  },
+  {
+    "company": "Netflix",
+    "link": "https://explore.jobs.netflix.net/careers/job/790313754856",
+    "title": "Data Engineer (L5) - Messaging",
+    "subtitle": "Data & Insights",
+    "location": "USA",
+    "location_type": "Remote"
+  },
+  {
+    "company": "Netflix",
+    "link": "https://explore.jobs.netflix.net/careers/job/790312817842",
+    "title": "Data Engineer (L4) - Revenue Growth",
+    "subtitle": "Data & Insights",
+    "location": "Los Gatos, CA",
+    "location_type": "Onsite"
+  },
+  {
+    "company": "Netflix",
+    "link": "https://explore.jobs.netflix.net/careers/job/790314597441",
+    "title": "Data Engineer (L5) - Content Finance",
+    "subtitle": "Data & Insights",
+    "location": "USA",
+    "location_type": "Remote"
+  },
+  {
+    "company": "Netflix",
+    "link": "https://explore.jobs.netflix.net/careers/job/790312603705",
+    "title": "Data Engineer (L5) - Privacy",
+    "subtitle": "Data & Insights",
+    "location": "USA",
+    "location_type": "Remote"
+  },
+  {
+    "company": "Netflix",
+    "link": "https://explore.jobs.netflix.net/careers/job/790302856610",
+    "title": "Senior Data Engineer",
+    "subtitle": "Data & Insights",
+    "location": "Warsaw, Poland",
+    "location_type": "Onsite"
+  },
+  {
+    "company": "Airbnb",
+    "link": "https://careers.airbnb.com/positions/7012829/",
+    "title": "Staff Data Engineer - Data AI-Listings & Structured Data",
+    "subtitle": "Marketplaces Data and AI",
+    "location": "USA",
+    "location_type": "Remote"
+  },
+  {
+    "company": "Airbnb",
+    "link": "https://careers.airbnb.com/positions/7463663/",
+    "title": "Senior Staff Data Engineer, Marketplaces DNA",
+    "subtitle": "Marketplaces Data and AI",
+    "location": "USA",
+    "location_type": "Remote"
+  },
+  {
+    "company": "Airbnb",
+    "link": "https://careers.airbnb.com/positions/7707242/",
+    "title": "Engineering Manager, Supply & Insights DnA",
+    "subtitle": "Marketplaces Data and AI",
+    "location": "USA",
+    "location_type": "Remote"
+  },
+  {
+    "company": "Airbnb",
+    "link": "https://careers.airbnb.com/positions/6757302/",
+    "title": "Senior Staff Machine Learning Engineer, Data & Eval",
+    "subtitle": "Core ML",
+    "location": "USA",
+    "location_type": "Remote"
+  }
+]
