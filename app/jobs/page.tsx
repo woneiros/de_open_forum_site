@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { z } from "zod";
 import PageNavBar from "@/components/PageNavBar";
 import PageFooter from "@/components/PageFooter";
 import JobListings, { type JobListing } from "@/components/JobListings";
 import jobOpportunities from "@/data/job-opportunities.json";
+
+const jobListingsSchema: z.ZodType<JobListing[]> = z.array(z.any());
+const validatedJobOpportunities = jobListingsSchema.parse(jobOpportunities);
 
 export const metadata: Metadata = {
   title: "Job Opportunities - Data Engineering Open Forum",
@@ -18,18 +22,20 @@ export default function JobsPage() {
       <div className="mx-1 md:mx-8 lg:mx-auto max-w-6xl px-4 py-12 sm:py-16 lg:py-24">
         {/* Header */}
         <div className="space-y-4 mb-10">
-          <div className="font-mono text-sm text-accent">{"> JOB_OPPORTUNITIES_"}</div>
+          <div className="font-mono text-sm text-accent">
+            {"> JOB_OPPORTUNITIES_"}
+          </div>
           <h1 className="text-balance font-mono text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
             Job Opportunities
           </h1>
           <p className="text-pretty leading-relaxed text-muted-foreground max-w-3xl">
-            Our event partners are looking for top talent in data engineering. Explore open
-            roles, meet the hiring teams in person at the event, and make connections that
-            can turn into real next steps.
+            Our event partners are looking for top talent in data engineering.
+            Explore open roles, meet the hiring teams in person at the event,
+            and make connections that can turn into real next steps.
           </p>
         </div>
 
-        <JobListings jobs={jobOpportunities as JobListing[]} />
+        <JobListings jobs={validatedJobOpportunities} />
 
         <PageFooter />
       </div>

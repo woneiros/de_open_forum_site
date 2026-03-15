@@ -12,13 +12,17 @@ export interface JobListing {
   location_type: "Remote" | "Hybrid" | "Onsite";
 }
 
-const LOCATION_TYPE_ICONS: Record<string, string> = {
+const LOCATION_TYPE_ICONS: Record<JobListing["location_type"], string> = {
   Remote: "~",
   Hybrid: "⇄",
   Onsite: "●",
 };
 
-const ALL_LOCATION_TYPES = ["Remote", "Hybrid", "Onsite"];
+const ALL_LOCATION_TYPES: JobListing["location_type"][] = [
+  "Remote",
+  "Hybrid",
+  "Onsite",
+];
 
 interface JobListingsProps {
   jobs: JobListing[];
@@ -26,11 +30,15 @@ interface JobListingsProps {
 
 export default function JobListings({ jobs }: JobListingsProps) {
   const [query, setQuery] = useState("");
-  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [activeFilter, setActiveFilter] = useState<
+    JobListing["location_type"] | null
+  >(null);
 
   const availableTypes = useMemo(() => {
     const types = new Set(jobs.map((j) => j.location_type));
-    return ALL_LOCATION_TYPES.filter((t) => types.has(t as JobListing["location_type"]));
+    return ALL_LOCATION_TYPES.filter((t) =>
+      types.has(t as JobListing["location_type"]),
+    );
   }, [jobs]);
 
   const filtered = useMemo(() => {
@@ -63,7 +71,11 @@ export default function JobListings({ jobs }: JobListingsProps) {
             {availableTypes.map((type) => (
               <button
                 key={type}
-                onClick={() => setActiveFilter(activeFilter === type ? null : type)}
+                type="button"
+                aria-pressed={activeFilter === type}
+                onClick={() =>
+                  setActiveFilter(activeFilter === type ? null : type)
+                }
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 font-mono text-xs border transition-colors ${
                   activeFilter === type
                     ? "border-accent bg-accent text-primary"
@@ -101,7 +113,9 @@ export default function JobListings({ jobs }: JobListingsProps) {
                     {job.location_type.toUpperCase()}
                   </span>
                 </div>
-                <p className="text-base font-semibold leading-snug">{job.title}</p>
+                <p className="text-base font-semibold leading-snug">
+                  {job.title}
+                </p>
                 <p className="font-mono text-sm text-muted-foreground">
                   {"// "}
                   {job.subtitle} &mdash; {job.location}
