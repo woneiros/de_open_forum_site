@@ -151,6 +151,9 @@ export default function Home() {
             <Link href="/past/2024" className="underline hover:text-accent">
               [DEOF 2024]
             </Link>
+            <Link href="/jobs" className="underline hover:text-accent">
+              [JOBS]
+            </Link>
             <a
               href="https://luma.com/deof2026?utm_source=website-topbar"
               target="_blank"
@@ -357,6 +360,12 @@ export default function Home() {
               <p className="font-mono text-sm text-muted-foreground">
                 {"// More job opportunities to be added soon."}
               </p>
+              <Link
+                href="/jobs"
+                className="inline-flex items-center font-mono text-sm text-accent hover:underline"
+              >
+                {"[VIEW ALL OPPORTUNITIES →]"}
+              </Link>
             </div>
 
             {/* Gallery Section */}
