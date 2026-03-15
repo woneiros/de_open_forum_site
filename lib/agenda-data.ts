@@ -14,9 +14,11 @@ export interface Session {
   start: string;
   end: string;
   hall: HallId;
-  sessionType: "Keynote" | "Panel" | "Full Talk" | "Lightning Talk" | "None";
+  spansAllHalls?: boolean;
+  sessionType: "Keynote" | "Keynote Panel" | "Panel" | "Full Talk" | "Lightning Talk" | "None";
   title: string;
   speakers: Speaker[];
+  moderator?: Speaker | null;
   abstract: string;
 }
 
@@ -120,16 +122,32 @@ export const sessions: Session[] = [
     title: "Data, Perspective, Action: Why Most Data Engineering Teams Fail at the 'Perspective' Part",
     speakers: [
       {
-        name: "Goutham Budati",
-        title: "VP, Data Strategy and Insights",
-        company: "The Farmer's Dog",
-        linkedin: "https://www.linkedin.com/in/gouthambudati/",
-        avatarUrl: "/speakers/Goutham-Budati.jpeg",
-        bio: "Goutham Budati is Vice President of Data Strategy and Insights at The Farmer's Dog, where he leads Consumer Research, Voice of the Customer, Data Science, Analytics, and Data Engineering teams. He specializes in building zero-to-one data teams and turning around data organizations that don't scale with business after a strong start, having done so three times across companies ranging from startups to Fortune 10 enterprises, which led him to develop the Data-Perspective-Action Framework.\n\nPreviously at Amazon, Goutham led Data Products and Experimentation, where he scaled experimentation frameworks across the organization. His work at Zocdoc and Oxford Road demonstrates his ability to transform data teams from technical support into strategic partners that bridge technical execution with business impact.\n\nBeyond his executive role, Goutham serves on the University of Maryland's MS in Marketing Analytics Advisory Council. He holds an MBA from University of Maryland Smith School of Business and a BE in Computer Science from Osmania University.",
+        name: "Mick Dreeling",
+        title: "Director, Games Data Science and Engineering",
+        company: "Netflix",
+        linkedin: "https://www.linkedin.com/in/mdreeling/",
+        avatarUrl: "/speakers/Mick-Dreeling.jpeg",
+        bio: "Mick Dreeling is a technology leader specializing in data engineering, analytics, and large-scale data platforms. He is currently Director of Games Data Science and Engineering at Netflix, where he leads teams responsible for building the data infrastructure and analytics systems that support the company's growing games ecosystem.\n\nPrior to Netflix, Mick was Head of Data Engineering at Riot Games, where he led the data engineering organization during the rapid growth of League of Legends and helped establish data platforms supporting multiple game titles.\n\nWith more than 25 years of experience in software and data engineering, Mick has worked on large-scale distributed data systems and analytics platforms, turning massive operational data streams into actionable insights that improve digital experiences for millions of users.\n\nMick holds a Master's degree in Data Science from UC Berkeley, a Master's degree in Computer Science, and a Bachelor's degree in Applied Computing from Waterford Institute of Technology.",
+      },
+      {
+        name: "Shridhar Iyer",
+        title: "Senior Tech Lead Director, Context Engineering",
+        company: "Meta",
+        linkedin: "https://www.linkedin.com/in/shridhar-iyer/",
+        avatarUrl: null,
+        bio: "Coming soon",
       },
     ],
+    moderator: {
+      name: "Goutham Budati",
+      title: "VP, Data Strategy and Insights",
+      company: "The Farmer's Dog",
+      linkedin: "https://www.linkedin.com/in/gouthambudati/",
+      avatarUrl: "/speakers/Goutham-Budati.jpeg",
+      bio: "Goutham Budati is Vice President of Data Strategy and Insights at The Farmer's Dog, where he leads Consumer Research, Voice of the Customer, Data Science, Analytics, and Data Engineering teams. He specializes in building zero-to-one data teams and turning around data organizations that don't scale with business after a strong start, having done so three times across companies ranging from startups to Fortune 10 enterprises, which led him to develop the Data-Perspective-Action Framework.\n\nPreviously at Amazon, Goutham led Data Products and Experimentation, where he scaled experimentation frameworks across the organization. His work at Zocdoc and Oxford Road demonstrates his ability to transform data teams from technical support into strategic partners that bridge technical execution with business impact.\n\nBeyond his executive role, Goutham serves on the University of Maryland's MS in Marketing Analytics Advisory Council. He holds an MBA from University of Maryland Smith School of Business and a BE in Computer Science from Osmania University.",
+    },
     abstract:
-      "Data engineering teams excel at building pipelines and infrastructure (Data) and executing roadmaps (Action). But the middle layer, Perspective, is where most organizations fail. Without the right perspective on what problems to solve, which stakeholders to influence, and how to translate technical capability into business value, even the best data engineering teams become glorified order-takers.\n\nThis panel explores the Data-Perspective-Action Framework through the lens of organizational transformation. We'll discuss how shifting perspective, not just adding headcount or technology, is what separates high-impact data engineering organizations from those stuck in reactive mode.\n\nKey Discussion Topics:\nThe Perspective Gap:\n1. Why data teams build the \"right\" infrastructure but still can't influence decisions\n2. How perspective shapes everything: what you measure, who you hire, what technical debt you prioritize\n3. The hidden cost of misaligned perspectives between data engineering and business stakeholders\nFrom Data to Perspective:\n1. Moving beyond \"what happened\" to \"what should we do about it\"\n2. How observability, data quality, and architecture decisions reflect your organization's perspective (or lack of one)\n3. Building systems that surface insights vs. just serving data\nFrom Perspective to Action:\n1. How organizational design either enables or blocks the perspective -> action loop\n2. Why reporting structures determine whether your perspective matters\n3. Case studies: Transformations that drove $200M+ impact by fixing the perspective layer\nScaling the Framework:\n1. What changes when you scale from 5 to 50 to 500: Data stays similar, Perspective and Action break\n2. Building teams that maintain perspective as they grow\n3. Teaching perspective: Is it a skill you can hire for or must you build?\nWhy This Panel Matters:\nMost data engineering content focuses on the Data (tooling, architecture) or Action (execution, delivery). This panel tackles the least discussed but most critical layer: Perspective. It's what separates data engineering teams that transform businesses from those that just keep the lights on.\nFormat Flexibility:\nI'm flexible on format and happy to serve as moderator, panelist, or adapt this to a 30-minute talk if that better fits the program needs. I've also applied for the Program Committee and am committed to contributing to the conference's success in whatever capacity is most valuable.\nTarget Audience:\nData engineering leaders navigating organizational transformation, managers building strategic influence, and senior ICs who sense their team's technical excellence isn't translating to business impact\nSuggested Panelist Profile:\n1. Leaders who've transformed data organizations, not just maintained them\n2. People who can speak to both technical and organizational challenges\n3. Mix of scales: startup (finding perspective), scale-up (maintaining it), enterprise (institutionalizing it)",
+      "Data engineering teams excel at building pipelines and infrastructure (Data) and executing roadmaps (Action). But the middle layer, Perspective, is where most organizations fail. Without the right perspective on what problems to solve, which stakeholders to influence, and how to translate technical capability into business value, even the best data engineering teams become glorified order-takers.\n\nThis panel explores the Data-Perspective-Action Framework through the lens of organizational transformation. We'll discuss how shifting perspective, not just adding headcount or technology, is what separates high-impact data engineering organizations from those stuck in reactive mode.\n\nWe'll dig into:\n- Why do data teams build the right infrastructure but still can't influence decisions?\n- How perspective shapes everything: what you measure, who you hire, what technical debt you prioritize\n- The hidden cost of misaligned perspectives between data engineering and business stakeholders\n- Building systems that surface insights vs. just serving data\n- How organizational design either enables or blocks the perspective -> action loop.",
   },
   {
     id: "s8",
@@ -308,6 +326,43 @@ export const sessions: Session[] = [
       },
     ],
     abstract: "To be added",
+  },
+  {
+    id: "s19",
+    start: "16:00",
+    end: "17:00",
+    hall: "goldman",
+    spansAllHalls: true,
+    sessionType: "Keynote Panel",
+    title: "Frontiers of Data: The Future of Data Engineering in an AI World",
+    speakers: [
+      {
+        name: "Paul Ellwood",
+        title: "Head of Data Engineering",
+        company: "OpenAI",
+        linkedin: "https://www.linkedin.com/in/pellwood/",
+        avatarUrl: "/speakers/Paul-Ellwood.jpeg",
+        bio: "Paul Ellwood is Head of Data Engineering at OpenAI, where he leads the development of data systems that support research, product, and business decision-making at scale. Previously, he was Senior Director of Data Strategy at Airbnb and Vice President of Data Engineering & Infrastructure at Netflix, where he led large-scale data platforms and helped establish self-serve, data-driven cultures. He brings deep experience in data engineering, analytics, and data governance across complex, high-growth environments.",
+      },
+      {
+        name: "Vikram Koka",
+        title: "Chief Strategy Officer & Apache Airflow PMC",
+        company: "Astronomer",
+        linkedin: "https://www.linkedin.com/in/vikramkoka/",
+        avatarUrl: null,
+        bio: "Coming soon",
+      },
+    ],
+    moderator: {
+      name: "Michelle Ufford",
+      title: "Distinguished Architect, Data & AI",
+      company: "eBay",
+      linkedin: "http://linkedin.com/in/mufford",
+      avatarUrl: "speakers/Michelle-Winters.jpeg",
+      bio: "Michelle Winters is a lifelong data nerd, data leader, data builder, and unapologetic champion of all things data. For 30 years, she has worked across nearly every layer of the data lifecycle-building data platforms, leading data teams, architecting data systems, scaling data organizations, and occasionally explaining what \"modern data stack\" means to non-data people.\n\nShe has been a data engineer, a data executive, a data startup founder, and a contributor to data OSS. She has written data books, data blogs, and more data documentation than she cares to admit. She has received industry awards for her work in the data community-largely, one suspects, for saying \"data\" more times per minute than generally advisable.\n\nMichelle believes the only thing better than good data is more data about data. When she's not building data teams or designing data platforms, she's probably writing a Python script to count how many times she said \"data\" in her bio. (It's.. a lot.)\n\nShe's wildly excited about the future of data and can't wait to talk data with as many fellow data nerds as possible at DEOF.",
+    },
+    abstract:
+      "Data has never been more important to the enterprise-or more visible. As intelligent agents reshape how we create, move, and trust information, the boundaries of data engineering are shifting fast. This breakout brings together industry luminaries for a candid, forward-looking conversation about the craft's next chapter: from human dashboards to autonomous workflows, from schemas to semantics, from pipelines to products.\n\nWe'll dig into:\n- The evolution of the data engineer: from moving bytes to governing meaning\n- Semantic contracts and accountability: where responsibility lives when meaning gets lost in translation\n- Open knowledge vs. black boxes: the future of standards in an AI-first ecosystem\n- The 24-month pivot: the single skill to bet on as SQL and ETL automate away\n- Language wars: the best specs for aligning data teams with business partners and intelligent assistants.\n\nIf you're building with data-or building your career on it-this session will cut through the hype and offer practical, inspiring guidance on how to stay relevant, resilient, and impactful in the era of self-managing systems.",
   },
   {
     id: "s18",
