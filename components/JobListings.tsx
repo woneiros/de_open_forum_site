@@ -26,10 +26,11 @@ const ALL_LOCATION_TYPES: JobListing["location_type"][] = [
 
 interface JobListingsProps {
   jobs: JobListing[];
+  initialCompany?: string;
 }
 
-export default function JobListings({ jobs }: JobListingsProps) {
-  const [query, setQuery] = useState("");
+export default function JobListings({ jobs, initialCompany }: JobListingsProps) {
+  const [query, setQuery] = useState(initialCompany ?? "");
   const [activeFilter, setActiveFilter] = useState<
     JobListing["location_type"] | null
   >(null);
@@ -112,13 +113,16 @@ export default function JobListings({ jobs }: JobListingsProps) {
                     <span>{LOCATION_TYPE_ICONS[job.location_type]}</span>
                     {job.location_type.toUpperCase()}
                   </span>
+                  <span className="font-mono text-xs text-muted-foreground border border-accent/20 px-1.5 py-0.5">
+                    {job.location}
+                  </span>
                 </div>
                 <p className="text-base font-semibold leading-snug">
                   {job.title}
                 </p>
                 <p className="font-mono text-sm text-muted-foreground">
                   {"// "}
-                  {job.subtitle} &mdash; {job.location}
+                  {job.subtitle}
                 </p>
               </div>
               <a

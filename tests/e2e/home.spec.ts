@@ -73,7 +73,7 @@ test.describe("Homepage", () => {
       page.getByText(/Make connections that outlive the event/i),
     ).toBeVisible();
     await expect(
-      page.getByText(/Exclusive access to career opportunities/i),
+      page.getByText(/Onsite recruiting with Airbnb, Netflix, and OpenAI/i),
     ).toBeVisible();
   });
 
@@ -101,7 +101,7 @@ test.describe("Homepage", () => {
 
     // Check career opportunities content
     await expect(
-      page.getByText(/job opportunities at top tech companies/i),
+      page.getByText(/Top tech companies.*will be recruiting onsite/i),
     ).toBeVisible();
   });
 
@@ -184,25 +184,16 @@ test.describe("Homepage", () => {
       page.getByText(/Our event partners are looking for top talent/i),
     ).toBeVisible();
 
-    // Check Netflix job link
+    // Logo cards now link to the internal jobs page with a company prefilter
     const netflixJobLink = page.getByRole("link", {
       name: /View Data Engineering jobs at Netflix/i,
     });
     await expect(netflixJobLink).toBeVisible();
-    await expect(netflixJobLink).toHaveAttribute("target", "_blank");
-    await expect(netflixJobLink).toHaveAttribute(
-      "href",
-      /explore\.jobs\.netflix\.net/,
-    );
-
-    // Check "more coming soon" text
-    await expect(
-      page.getByText(/More job opportunities to be added soon/i),
-    ).toBeVisible();
+    await expect(netflixJobLink).toHaveAttribute("href", "/jobs?company=Netflix");
 
     // Check "View all" link points to /jobs
     const viewAllLink = page.getByRole("link", {
-      name: /VIEW ALL OPPORTUNITIES/i,
+      name: /VIEW ALL/i,
     });
     await expect(viewAllLink).toBeVisible();
     await expect(viewAllLink).toHaveAttribute("href", "/jobs");
