@@ -47,9 +47,18 @@ export default function JobListings({ jobs, initialCompany }: JobListingsProps) 
     JobListing["location_type"] | null
   >(null);
 
+  const sortedJobs = useMemo(
+    () =>
+      [...jobs].sort((a, b) => {
+        const co = a.company.localeCompare(b.company);
+        return co !== 0 ? co : a.title.localeCompare(b.title);
+      }),
+    [jobs],
+  );
+
   const availableCompanies = useMemo(() => {
     const seen = new Set<string>();
-    return jobs
+    return sortedJobs
       .filter((j) => {
         if (seen.has(j.company)) return false;
         seen.add(j.company);
@@ -59,13 +68,13 @@ export default function JobListings({ jobs, initialCompany }: JobListingsProps) 
   }, [jobs]);
 
   const availableLocationTypes = useMemo(() => {
-    const types = new Set(jobs.map((j) => j.location_type));
+    const types = new Set(sortedJobs.map((j) => j.location_type));
     return ALL_LOCATION_TYPES.filter((t) => types.has(t));
-  }, [jobs]);
+  }, [sortedJobs]);
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase().trim();
-    return jobs.filter((job) => {
+    return sortedJobs.filter((job) => {
       const matchesQuery =
         !q ||
         job.company.toLowerCase().includes(q) ||
@@ -77,7 +86,7 @@ export default function JobListings({ jobs, initialCompany }: JobListingsProps) 
         !activeLocationType || job.location_type === activeLocationType;
       return matchesQuery && matchesCompany && matchesLocationType;
     });
-  }, [jobs, query, activeCompany, activeLocationType]);
+  }, [sortedJobs, query, activeCompany, activeLocationType]);
 
   return (
     <div className="space-y-4">
