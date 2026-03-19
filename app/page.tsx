@@ -46,6 +46,11 @@ const sponsorTiers = [
     tier: "SILVER",
     sponsors: [
       {
+        name: "Altimate AI",
+        href: "https://altimate.ai/",
+        logoSrc: "/sponsors/altimate-ai.png",
+      },
+      {
         name: "CelerData",
         href: "https://celerdata.com/",
         logoSrc: "/sponsors/celerdata.svg",
@@ -515,6 +520,13 @@ export default function Home() {
                                 width={220}
                                 height={56}
                                 className={`sponsor-logo mx-auto w-auto max-w-full object-contain ${
+                                  isSilver
+                                    ? sponsor.name === "Dremio" ||
+                                      sponsor.name === "OpenAI"
+                                      ? "scale-[0.88]"
+                                      : "scale-[0.8]"
+                                    : ""
+                                } ${
                                   sponsor.name === "Dremio"
                                     ? isSilver
                                       ? "h-[70px] sm:h-[79px]"
@@ -528,14 +540,19 @@ export default function Home() {
                                       ? isSilver
                                         ? "h-10 sm:h-[43px]"
                                         : "h-12 sm:h-[52px]"
+                                    : sponsor.name === "Altimate AI" ||
+                                        sponsor.name === "Matia"
+                                      ? isSilver
+                                        ? "h-7 sm:h-8"
+                                        : "h-9 sm:h-10"
                                     : sponsor.name === "StreamNative"
                                       ? isSilver
                                         ? "h-9 sm:h-10"
                                         : "h-11 sm:h-12"
                                     : sponsor.name === "MinIO"
                                       ? isSilver
-                                        ? "h-[18px] sm:h-5"
-                                        : "h-[22px] sm:h-[26px]"
+                                        ? "h-5 sm:h-6"
+                                        : "h-[24px] sm:h-7"
                                       : sponsor.name === "CelerData"
                                         ? isSilver
                                           ? "h-7 sm:h-8"
