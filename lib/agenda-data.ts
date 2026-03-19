@@ -163,7 +163,7 @@ export const sessions: Session[] = [
         company: "Airbnb",
         linkedin: "https://www.linkedin.com/in/barakalon/",
         avatarUrl: "/speakers/barak-alon.jpeg",
-        bio: "Barak is the technical lead of Airbnb's semantic layer and metric platform, Minerva, and a core contributor to the SQLGlot open source project. To the bewilderment of his family and friends, Barak is passionate about building elegant data infrastructure. Barak is the technical lead of Airbnb’s semantic layer and metric platform, Minerva, and a core contributor to the SQLGlot open source project. To the bewilderment of his family and friends, Barak is passionate about building elegant data infrastructure.",
+        bio: "Barak is the technical lead of Airbnb's semantic layer and metric platform, Minerva, and a core contributor to the SQLGlot open source project. To the bewilderment of his family and friends, Barak is passionate about building elegant data infrastructure.",
       },
     ],
     abstract:
