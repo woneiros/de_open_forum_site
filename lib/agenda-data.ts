@@ -134,7 +134,7 @@ export const sessions: Session[] = [
         title: "Senior Tech Lead Director, Context Engineering",
         company: "Meta",
         linkedin: "https://www.linkedin.com/in/shridhar-iyer/",
-        avatarUrl: null,
+        avatarUrl: "/speakers/Shridhar-lyer.png",
         bio: "Coming soon",
       },
     ],
@@ -303,10 +303,11 @@ export const sessions: Session[] = [
         company: "Databricks",
         linkedin: "https://www.linkedin.com/in/boyang-jerry-peng/",
         avatarUrl: "/speakers/jerrypeng.jpeg",
-        bio: "To be added",
+        bio: "Boyang Jerry Peng is currently a Staff Engineer at Databricks extensively working Apache Spark Structured Streaming. Before joining Databricks, he was a Principal Software Engineer at Splunk working on streaming and messaging projects especially with Apache Pulsar. Jerry is a committer and PMC member of Apache Pulsar, Apache Storm, and Apache Heron projects. Before Splunk, he worked at Streamlio (acquired by Splunk), Citadel, and Yahoo on distributed systems and stream processing. Jerry has been working in the area of distributed systems and stream processing since his days in grad school at the University of Illinois, Urbana-Champaign.",
       },
     ],
-    abstract: "To be added",
+    abstract:
+      "Apache Spark Structured Streaming is a distributed stream processing engine built on Spark SQL and is widely used for ETL-style workloads, where seconds- to minutes-level latency is acceptable. But millisecond-latency use cases have historically been out of reach. Real-time Mode (RTM) introduces a new low-latency processing capability to Structured Streaming, enabling millisecond-latency processing and allowing Spark to power these workloads as well. This helps organizations consolidate their data platform: instead of using Spark for batch/ETL and a separate system for low-latency streaming, they can now use Spark across workloads with different latency requirements. In this talk, we'll explain how Real-time Mode works, share insights into how we extended the Structured Streaming architecture to enable low-latency processing, and highlight how users are using it.",
   },
   {
     id: "s16",
@@ -314,18 +315,19 @@ export const sessions: Session[] = [
     end: "15:45",
     hall: "swig",
     sessionType: "Full Talk",
-    title: "Apache Spark: Declarative Pipelines",
+    title: "From Repetition to Reuse: The Evolution of Apache Spark Declarative Pipelines",
     speakers: [
       {
-        name: "Sandy Ryza",
+        name: "Andreas Neumann",
         title: "Software Engineer",
         company: "Databricks",
-        linkedin: "https://www.linkedin.com/in/sandyryza/",
-        avatarUrl: "/speakers/sandyryza.jpeg",
-        bio: "To be added",
+        linkedin: "https://www.linkedin.com/in/anew-/",
+        avatarUrl: "/speakers/Andreas-Neumann.jpg",
+        bio: "With a career defined by \"massive scale\", Andreas Neumann currently serves as the Technical Lead for Declarative Pipelines at Databricks. From his early work at IBM and Yahoo! to his time at Google and his journey as the co-founder of Cask Data, Andreas has spent decades solving the data industry's toughest architectural puzzles. Beyond his corporate leadership, he is a dedicated advocate for open-source software, having shepherded several Apache projects from incubation to maturity. Andreas holds a PhD in Computer Science for his research in document parsing and query techniques.",
       },
     ],
-    abstract: "To be added",
+    abstract:
+      "Learn how to build batch and streaming pipelines faster while improving correctness and reducing operational complexity with Apache Spark Declarative Pipelines. Production Spark pipelines often require extensive orchestration code for dependency management, checkpointing, retries, and execution ordering-surrounding a relatively small amount of transformation logic. As pipelines scale, this scaffolding becomes increasingly difficult to maintain and evolve. Introduced in Spark 4.1, Spark Declarative Pipelines (SDP) shifts this model by allowing developers to declare datasets and transformations while Spark constructs and manages the execution plan. By separating what a pipeline does from how it runs, SDP reduces boilerplate and accelerates time to production.",
   },
   {
     id: "s19",
@@ -385,7 +387,7 @@ export const sessions: Session[] = [
       "In modern machine learning ecosystems, innovation happens at a staggering pace-new model architectures, training optimizations, feature engineering techniques, and serving improvements emerge continuously from research labs and engineering teams alike. But as organizations scale to thousands of prediction use cases serving billions of users, a fundamental question becomes increasingly difficult to answer: How do innovations actually flow through ML ecosystems, and what value do they create?\n\nThe technical challenges are substantial: innovations are abstract concepts that embody in code, configurations, and processes with varying footprints; models spanning across large heterogeneous ecosystems iterated through multiple frameworks and pipelines; and \"existence\" of a technique sometimes must be inferred as it is impossible to be explicitly logged.\n\nOur solution combines static analysis, agent-based discovery, dependency resolution, and ML artifact graph to bridge the gap between ML research and production value realization, by building a central innovation platform including many parts: a centralized registry that transforms scattered innovations into a discoverable, governable catalog with rich metadata; a lineage foundation that automatically extracts technique representations across model development process; a recommender that help innovation propagation faster across ML use cases; and an attribution engine that provides unprecedented visibility into the innovation-to-impact lifecycle.",
   },
   {
-    id: "s19",
+    id: "s20",
     start: "15:00",
     end: "15:45",
     hall: "goldman",
@@ -435,7 +437,16 @@ const sessionSlugMap = (() => {
 
 export const getSessionSlug = (session: Session) => {
   for (const [slug, value] of sessionSlugMap.entries()) {
-    if (value.id === session.id) return slug;
+    if (value === session) return slug;
+    if (
+      value.id === session.id &&
+      value.title === session.title &&
+      value.start === session.start &&
+      value.end === session.end &&
+      value.hall === session.hall
+    ) {
+      return slug;
+    }
   }
   return slugify(session.title) || session.id;
 };
