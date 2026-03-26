@@ -352,7 +352,7 @@ export const sessions: Session[] = [
     speakers: [
       {
         name: "Andreas Neumann",
-        title: "Software Engineer",
+        title: "Senior Staff Software Engineer",
         company: "Databricks",
         linkedin: "https://www.linkedin.com/in/anew-/",
         avatarUrl: "/speakers/Andreas-Neumann.jpg",
