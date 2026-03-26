@@ -160,7 +160,7 @@ export function MuseumAgendaPrototype() {
     const moderator = getModerator(session);
 
     if (sortedSpeakers.length === 0 && !moderator) {
-      return <p className="mt-2 text-xs text-muted-foreground">All attendees</p>;
+      return <p className="mt-2 text-xs text-muted-foreground">Speaker TBA</p>;
     }
 
     return (
@@ -186,6 +186,11 @@ export function MuseumAgendaPrototype() {
       .split(/\n{2,}/)
       .map((paragraph) => paragraph.trim())
       .filter(Boolean);
+
+  const keynoteSessions = {
+    databricks: sessions.find((item) => item.id === "s0") ?? null,
+    airbnb: sessions.find((item) => item.id === "s0b") ?? null,
+  };
 
   const handleShare = async () => {
     if (!activeSession || !isMounted) return;
@@ -255,14 +260,56 @@ export function MuseumAgendaPrototype() {
                 <p className="text-sm font-semibold leading-tight">📋 Check-in & Breakfast</p>
               </div>
             ) : slot.key === "09:30" ? (
-              <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
-                <div className="flex flex-col items-center gap-1 text-center">
-                  <p className="text-sm font-semibold leading-tight">
-                    Open Remarks & Keynote Presentations
-                  </p>
-                  <p className="font-mono text-[11px] tracking-[0.18em] text-accent/80">
-                    @ Goldman Hall
-                  </p>
+              <div className="col-span-3 flex bg-black/10 p-1">
+                <div className="flex w-full flex-col gap-1">
+                  <div className="flex min-h-[88px] flex-col items-center justify-center rounded border border-accent/15 bg-black/15 px-3 py-3 text-center">
+                    <p className="text-sm font-semibold leading-tight">Open Remarks</p>
+                    <p className="mt-1 text-xs text-accent">9:30 AM - 9:45 AM</p>
+                  </div>
+                  {keynoteSessions.databricks ? (
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setActiveSession(keynoteSessions.databricks);
+                      }}
+                      className={`flex min-h-[88px] cursor-pointer flex-col items-center justify-center rounded border border-accent/15 px-3 py-3 text-center transition-all ${
+                        activeSession?.id === keynoteSessions.databricks.id
+                          ? "bg-accent/15 shadow-[inset_0_0_0_1px_rgba(239,214,72,0.45)]"
+                          : "bg-black/15 hover:bg-accent/25 hover:shadow-[inset_0_0_0_1px_rgba(239,214,72,0.35)]"
+                      }`}
+                    >
+                      <p className="text-sm font-semibold leading-tight underline decoration-accent/70 underline-offset-2">
+                        Databricks Keynote
+                      </p>
+                      <p className="mt-2 text-xs text-accent">
+                        {getSessionTimeRange(keynoteSessions.databricks)}
+                      </p>
+                      {renderSpeakerList(keynoteSessions.databricks, "center")}
+                    </button>
+                  ) : null}
+                  {keynoteSessions.airbnb ? (
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setActiveSession(keynoteSessions.airbnb);
+                      }}
+                      className={`flex min-h-[88px] cursor-pointer flex-col items-center justify-center rounded border border-accent/15 px-3 py-3 text-center transition-all ${
+                        activeSession?.id === keynoteSessions.airbnb.id
+                          ? "bg-accent/15 shadow-[inset_0_0_0_1px_rgba(239,214,72,0.45)]"
+                          : "bg-black/15 hover:bg-accent/25 hover:shadow-[inset_0_0_0_1px_rgba(239,214,72,0.35)]"
+                      }`}
+                    >
+                      <p className="text-sm font-semibold leading-tight underline decoration-accent/70 underline-offset-2">
+                        Airbnb Keynote
+                      </p>
+                      <p className="mt-2 text-xs text-accent">
+                        {getSessionTimeRange(keynoteSessions.airbnb)}
+                      </p>
+                      {renderSpeakerList(keynoteSessions.airbnb, "center")}
+                    </button>
+                  ) : null}
                 </div>
               </div>
             ) : slot.key === "12:15" ? (
