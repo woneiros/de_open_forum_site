@@ -117,9 +117,9 @@ test.describe("Homepage", () => {
     await expect(page.getByText("Swig Gallery", { exact: true }).first()).toBeVisible();
     await expect(page.getByText("Yud Gallery", { exact: true }).first()).toBeVisible();
     await expect(page.getByText("Check-in & Breakfast")).toBeVisible();
-    await expect(
-      page.getByText("Open Remarks & Keynote Presentations"),
-    ).toBeVisible();
+    await expect(page.getByText("Open Remarks")).toBeVisible();
+    await expect(page.getByText("Databricks Keynote")).toBeVisible();
+    await expect(page.getByText("Airbnb Keynote")).toBeVisible();
   });
 
   test("should display DET organizer information prominently", async ({

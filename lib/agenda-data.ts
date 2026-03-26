@@ -54,6 +54,39 @@ export const timeSlots = [
 
 export const sessions: Session[] = [
   {
+    id: "s0",
+    start: "09:45",
+    end: "10:00",
+    hall: "goldman",
+    spansAllHalls: true,
+    sessionType: "Keynote Panel",
+    title:
+      "The Evolution of Structured Streaming: How Apache Spark Innovated on Throughput, Latency, and Flexibility",
+    speakers: [
+      {
+        name: "Indrajit Roy",
+        title: "Director of Engineering",
+        company: "Databricks",
+        linkedin: "https://www.linkedin.com/in/indrajit-roy-93759570/",
+        avatarUrl: "/speakers/IndrajitRoy.jpg",
+        bio: "Indrajit Roy is a Director at Databricks where he leads Spark Structured Streaming and the Enzyme incremental processing engine. Before Databricks, he led the Napa data warehouse at Google, the engine behind some of Google’s most revenue-critical systems including Ads. He spent his earlier years as a principal researcher at HP Labs working on databases and new data infrastructure technologies.",
+      },
+    ],
+    abstract:
+      "Apache Spark Structured Streaming serves millions of queries weekly for enterprise users at production sale. Its core innovation- microbatch processing that incrementally processes data - has driven its widespread adoption. Over the last decade we have evolved Structured Streaming to handle the challenges when this microbatch architecture is applied to data engineering, from improving utilization for cost conscious clients to pushing latency down to meet real-time demands. We also brought the power of declarative programming to users by adding new abstractions for stateful processing and making it easier to express complex data engineering tasks via Spark Declarative Pipelines (SDP).",
+  },
+  {
+    id: "s0b",
+    start: "10:00",
+    end: "10:15",
+    hall: "goldman",
+    spansAllHalls: true,
+    sessionType: "Keynote Panel",
+    title: "Airbnb Keynote",
+    speakers: [],
+    abstract: "Details coming soon.",
+  },
+  {
     id: "s5",
     start: "10:30",
     end: "11:15",
@@ -453,10 +486,22 @@ export const getSessionSlug = (session: Session) => {
 
 export const getSessionBySlug = (slug: string) => sessionSlugMap.get(slug) ?? null;
 
+const formatTime = (value: string) => {
+  const match = /^(\d{2}):(\d{2})$/.exec(value);
+  if (!match) return value;
+
+  const hours24 = Number.parseInt(match[1], 10);
+  const minutes = match[2];
+  const suffix = hours24 >= 12 ? "PM" : "AM";
+  const hours12 = hours24 % 12 || 12;
+
+  return `${hours12}:${minutes} ${suffix}`;
+};
+
 export const getSessionTimeRange = (session: Session) => {
   const matchingSlot = timeSlots.find((slot) => slot.key === session.start);
   if (!matchingSlot) {
-    return `${session.start} - ${session.end}`;
+    return `${formatTime(session.start)} - ${formatTime(session.end)}`;
   }
   return `${matchingSlot.start} - ${matchingSlot.end}`;
 };
