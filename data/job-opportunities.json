@@ -160,5 +160,68 @@
     "location": "Menlo Park, CA",
     "location_type": "Remote",
     "years_experience": "2+"
+  },
+  {
+    "company": "Altimate AI",
+    "link": "https://jobs.ashbyhq.com/altimate/801b90de-1bf2-4c44-b913-8be403a7b64a",
+    "title": "Product Manager",
+    "subtitle": "Product",
+    "location": "Sunnyvale, CA",
+    "location_type": "Onsite",
+    "years_experience": "5+"
+  },
+  {
+    "company": "Altimate AI",
+    "link": "https://jobs.ashbyhq.com/altimate/e84a038e-7fc3-4e24-b233-4b66e324ddbc",
+    "title": "Product Engineer",
+    "subtitle": "Engineering",
+    "location": "Sunnyvale, CA",
+    "location_type": "Onsite",
+    "years_experience": "8+"
+  },
+  {
+    "company": "Altimate AI",
+    "link": "https://jobs.ashbyhq.com/altimate/e9480396-8a88-43c7-88bc-11077ea25b0a",
+    "title": "Senior Data Scientist - AI/ML Engineer",
+    "subtitle": "Engineering",
+    "location": "Sunnyvale, CA",
+    "location_type": "Onsite",
+    "years_experience": "5+"
+  },
+  {
+    "company": "Altimate AI",
+    "link": "https://jobs.ashbyhq.com/altimate/7d01b04d-3ff7-4f6e-b9d9-7148f3041076",
+    "title": "Senior Software Engineer - Data",
+    "subtitle": "Engineering",
+    "location": "Sunnyvale, CA",
+    "location_type": "Onsite",
+    "years_experience": "8+"
+  },
+  {
+    "company": "Altimate AI",
+    "link": "https://jobs.ashbyhq.com/altimate/afb335ad-7612-47c3-a9e4-d5d7c6de33b0",
+    "title": "Staff Software Engineer",
+    "subtitle": "Engineering",
+    "location": "Sunnyvale, CA",
+    "location_type": "Onsite",
+    "years_experience": "10+"
+  },
+  {
+    "company": "Altimate AI",
+    "link": "https://jobs.ashbyhq.com/altimate/6ca069d6-6b02-4d0c-bc5a-453a27e9bff8",
+    "title": "Sales Engineer - Data",
+    "subtitle": "GTM",
+    "location": "Remote / Sunnyvale, CA",
+    "location_type": "Remote",
+    "years_experience": "4+"
+  },
+  {
+    "company": "Altimate AI",
+    "link": "https://jobs.ashbyhq.com/altimate/bd962bc1-9827-4d12-99ca-fc50cdf839dd",
+    "title": "Solution Architect",
+    "subtitle": "GTM",
+    "location": "Remote",
+    "location_type": "Remote",
+    "years_experience": "4+"
   }
 ]
