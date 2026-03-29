@@ -31,6 +31,7 @@ const COMPANY_LOGOS: Record<string, string> = {
   CelerData: "/job_logos/celerdata_jobs.svg",
   Netflix: "/job_logos/netflix_jobs.png",
   OpenAI: "/job_logos/openai_jobs.png",
+  "Altimate AI": "/job_logos/altimateai_jobs.png",
 };
 
 interface JobListingsProps {
@@ -38,7 +39,10 @@ interface JobListingsProps {
   initialCompany?: string;
 }
 
-export default function JobListings({ jobs, initialCompany }: JobListingsProps) {
+export default function JobListings({
+  jobs,
+  initialCompany,
+}: JobListingsProps) {
   const [query, setQuery] = useState("");
   const [activeCompany, setActiveCompany] = useState<string | null>(
     initialCompany ?? null,
@@ -136,9 +140,7 @@ export default function JobListings({ jobs, initialCompany }: JobListingsProps) 
                 key={company}
                 type="button"
                 aria-pressed={isActive}
-                onClick={() =>
-                  setActiveCompany(isActive ? null : company)
-                }
+                onClick={() => setActiveCompany(isActive ? null : company)}
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 font-mono text-xs border transition-colors ${
                   isActive
                     ? "border-accent bg-accent text-primary"
@@ -168,65 +170,65 @@ export default function JobListings({ jobs, initialCompany }: JobListingsProps) 
 
       {/* Listings */}
       <div data-testid="job-listings">
-      {filtered.length > 0 ? (
-        <div className="space-y-3">
-          {filtered.map((job) => (
-            <div
-              key={`${job.company}-${job.title}`}
-              className="flex items-start justify-between gap-4 border border-accent/20 bg-primary/40 px-5 py-4 transition-colors hover:border-accent/50 hover:bg-primary/60"
-            >
-              <div className="space-y-1.5 min-w-0">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono text-xs font-semibold text-accent border border-accent/40 px-1.5 py-0.5 inline-flex items-center gap-1">
-                    {COMPANY_LOGOS[job.company] && (
-                      <Image
-                        src={COMPANY_LOGOS[job.company]}
-                        alt={`${job.company} logo`}
-                        width={14}
-                        height={14}
-                        className="h-3.5 w-auto object-contain brightness-0 invert opacity-80"
-                      />
-                    )}
-                    {job.company.toUpperCase()}
-                  </span>
-                  <span className="font-mono text-xs text-muted-foreground border border-accent/20 px-1.5 py-0.5 inline-flex items-center gap-1">
-                    <span>{LOCATION_TYPE_ICONS[job.location_type]}</span>
-                    {job.location_type.toUpperCase()}
-                  </span>
-                  <span className="font-mono text-xs text-muted-foreground border border-accent/20 px-1.5 py-0.5">
-                    {job.location}
-                  </span>
-                </div>
-                <p className="text-base font-semibold leading-snug">
-                  {job.title}
-                </p>
-                <p className="font-mono text-sm text-muted-foreground">
-                  {"// "}
-                  {job.subtitle}
-                </p>
-                <p className="font-mono text-sm text-muted-foreground">
-                  {"// "}
-                  {job.years_experience} years experience
-                </p>
-              </div>
-              <a
-                href={job.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0 inline-flex items-center justify-center border border-accent/40 px-3 py-1.5 font-mono text-xs text-accent transition-colors hover:bg-accent hover:text-primary hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent mt-0.5"
+        {filtered.length > 0 ? (
+          <div className="space-y-3">
+            {filtered.map((job) => (
+              <div
+                key={`${job.company}-${job.title}`}
+                className="flex items-start justify-between gap-4 border border-accent/20 bg-primary/40 px-5 py-4 transition-colors hover:border-accent/50 hover:bg-primary/60"
               >
-                APPLY →
-              </a>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="border border-accent/20 bg-primary/40 px-5 py-8 text-center">
-          <p className="font-mono text-sm text-muted-foreground">
-            {"// no results found. try a different search term."}
-          </p>
-        </div>
-      )}
+                <div className="space-y-1.5 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-mono text-xs font-semibold text-accent border border-accent/40 px-1.5 py-0.5 inline-flex items-center gap-1">
+                      {COMPANY_LOGOS[job.company] && (
+                        <Image
+                          src={COMPANY_LOGOS[job.company]}
+                          alt={`${job.company} logo`}
+                          width={14}
+                          height={14}
+                          className="h-3.5 w-auto object-contain brightness-0 invert opacity-80"
+                        />
+                      )}
+                      {job.company.toUpperCase()}
+                    </span>
+                    <span className="font-mono text-xs text-muted-foreground border border-accent/20 px-1.5 py-0.5 inline-flex items-center gap-1">
+                      <span>{LOCATION_TYPE_ICONS[job.location_type]}</span>
+                      {job.location_type.toUpperCase()}
+                    </span>
+                    <span className="font-mono text-xs text-muted-foreground border border-accent/20 px-1.5 py-0.5">
+                      {job.location}
+                    </span>
+                  </div>
+                  <p className="text-base font-semibold leading-snug">
+                    {job.title}
+                  </p>
+                  <p className="font-mono text-sm text-muted-foreground">
+                    {"// "}
+                    {job.subtitle}
+                  </p>
+                  <p className="font-mono text-sm text-muted-foreground">
+                    {"// "}
+                    {job.years_experience} years experience
+                  </p>
+                </div>
+                <a
+                  href={job.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 inline-flex items-center justify-center border border-accent/40 px-3 py-1.5 font-mono text-xs text-accent transition-colors hover:bg-accent hover:text-primary hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent mt-0.5"
+                >
+                  APPLY →
+                </a>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="border border-accent/20 bg-primary/40 px-5 py-8 text-center">
+            <p className="font-mono text-sm text-muted-foreground">
+              {"// no results found. try a different search term."}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
