@@ -94,6 +94,47 @@ const sponsorTiers = [
   },
 ] as const;
 
+const getSponsorLogoClass = (sponsorName: string, isSilver: boolean) =>
+  `mx-auto w-auto max-w-full object-contain brightness-0 invert ${
+    isSilver
+      ? sponsorName === "Dremio" || sponsorName === "OpenAI"
+        ? "scale-[0.88]"
+        : "scale-[0.8]"
+      : ""
+  } ${
+    sponsorName === "Dremio"
+      ? isSilver
+        ? "h-[70px] sm:h-[79px]"
+        : "h-[88px] sm:h-[97px]"
+      : sponsorName === "Airbnb"
+        ? isSilver
+          ? "h-[104px] sm:h-[114px]"
+          : "h-[125px] sm:h-[135px]"
+        : sponsorName === "OpenAI" || sponsorName === "PuppyGraph"
+          ? isSilver
+            ? "h-10 sm:h-[43px]"
+            : "h-12 sm:h-[52px]"
+          : sponsorName === "Altimate AI" || sponsorName === "Matia"
+            ? isSilver
+              ? "h-7 sm:h-8"
+              : "h-9 sm:h-10"
+            : sponsorName === "StreamNative"
+              ? isSilver
+                ? "h-9 sm:h-10"
+                : "h-11 sm:h-12"
+              : sponsorName === "MinIO"
+                ? isSilver
+                  ? "h-5 sm:h-6"
+                  : "h-[24px] sm:h-7"
+                : sponsorName === "CelerData"
+                  ? isSilver
+                    ? "h-7 sm:h-8"
+                    : "h-10 sm:h-11"
+                  : isSilver
+                    ? "h-8 sm:h-9"
+                    : "h-10 sm:h-11"
+  }`;
+
 const galleryItems = [
   {
     src: "/gallery/panel-discussion-2025.jpg",
@@ -197,6 +238,11 @@ export default function Home() {
                   Data Engineer Things (DET)
                 </a>
               </p>
+              <div className="space-y-2 font-mono text-sm text-muted-foreground">
+                <p>{"// Community-driven content with technical depth"}</p>
+                <p>{"// Make connections that outlive the event"}</p>
+                <p>{"// Onsite recruiting with Airbnb, Netflix, and OpenAI"}</p>
+              </div>
               <div>
                 <a
                   href="https://luma.com/deof2026?utm_source=website-hero"
@@ -206,11 +252,6 @@ export default function Home() {
                 >
                   Register Now
                 </a>
-              </div>
-              <div className="space-y-2 font-mono text-sm text-muted-foreground">
-                <p>{"// Community-driven content with technical depth"}</p>
-                <p>{"// Make connections that outlive the event"}</p>
-                <p>{"// Onsite recruiting with Airbnb, Netflix, and OpenAI"}</p>
               </div>
             </div>
             {/* Right column - Visual element */}
@@ -227,6 +268,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+
           {/* End of header -- begin main content */}
           {/* Left column - Text content */}
           <div className="flex flex-col justify-center space-y-16 lg:col-span-8 mx-1 md:mx-8 lg:mx-0">
@@ -403,6 +445,71 @@ export default function Home() {
               </a>
             </div>
 
+            {/* Sponsors Section */}
+            <div className="space-y-4">
+              <div className="font-mono text-3xl font-semibold text-accent">
+                {"> SPONSORS_ "}
+              </div>
+              <p className="font-mono text-sm text-muted-foreground">
+                {"// Thank you to our partners for supporting the community."}
+              </p>
+
+              <section className="mt-6 rounded-sm bg-primary/70 px-5 py-8 sm:px-8 sm:py-10">
+                <div className="space-y-10">
+                  {sponsorTiers.map((group) => (
+                    <div key={group.tier} className="space-y-8">
+                      <div className="flex items-center gap-4">
+                        <div className="h-px flex-1 bg-accent/35" />
+                        <p className="font-mono text-lg font-semibold text-accent">
+                          {group.tier}
+                        </p>
+                        <div className="h-px flex-1 bg-accent/35" />
+                      </div>
+
+                      <div
+                        className={
+                          group.sponsors.length === 1
+                            ? "grid grid-cols-1 gap-4"
+                            : group.tier === "GOLD" &&
+                                group.sponsors.length === 2
+                              ? "mx-auto grid max-w-[540px] grid-cols-2 gap-4"
+                            : group.tier === "SILVER"
+                              ? "grid grid-cols-2 gap-4 sm:grid-cols-3"
+                              : "grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
+                        }
+                      >
+                        {group.sponsors.map((sponsor, index) => {
+                          const isSilver = group.tier === "SILVER";
+
+                          return (
+                            <a
+                              key={`${group.tier}-${sponsor.name}-${index}`}
+                              href={sponsor.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="sponsor-link group mx-auto flex h-20 w-full max-w-[260px] items-center justify-center rounded-sm bg-primary/20 px-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                              aria-label={sponsor.name}
+                            >
+                              <Image
+                                src={sponsor.logoSrc}
+                                alt={`${sponsor.name} logo`}
+                                width={220}
+                                height={56}
+                                className={`sponsor-logo ${getSponsorLogoClass(
+                                  sponsor.name,
+                                  isSilver,
+                                ).replace(" brightness-0 invert", "")}`}
+                              />
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </div>
+
             <div className="space-y-2">
               {/* Organizer Information */}
               <div id="organized-by" className="space-y-2 scroll-mt-24">
@@ -467,109 +574,6 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-            </div>
-
-            {/* Sponsors Section */}
-            <div className="space-y-4">
-              <div className="font-mono text-3xl font-semibold text-accent">
-                {"> SPONSORS_ "}
-              </div>
-              <p className="font-mono text-sm text-muted-foreground">
-                {"// Thank you to our partners for supporting the community."}
-              </p>
-
-              <section className="mt-6 rounded-sm bg-primary/70 px-5 py-8 sm:px-8 sm:py-10">
-                <div className="space-y-10">
-                  {sponsorTiers.map((group) => (
-                    <div key={group.tier} className="space-y-8">
-                      <div className="flex items-center gap-4">
-                        <div className="h-px flex-1 bg-accent/35" />
-                        <p className="font-mono text-lg font-semibold text-accent">
-                          {group.tier}
-                        </p>
-                        <div className="h-px flex-1 bg-accent/35" />
-                      </div>
-
-                      <div
-                        className={
-                          group.sponsors.length === 1
-                            ? "grid grid-cols-1 gap-4"
-                            : group.tier === "GOLD" &&
-                                group.sponsors.length === 2
-                              ? "mx-auto grid max-w-[540px] grid-cols-2 gap-4"
-                            : group.tier === "SILVER"
-                              ? "grid grid-cols-2 gap-4 sm:grid-cols-3"
-                              : "grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
-                        }
-                      >
-                        {group.sponsors.map((sponsor, index) => {
-                          const isSilver = group.tier === "SILVER";
-
-                          return (
-                            <a
-                              key={`${group.tier}-${sponsor.name}-${index}`}
-                              href={sponsor.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="sponsor-link group mx-auto flex h-20 w-full max-w-[260px] items-center justify-center rounded-sm bg-primary/20 px-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                              aria-label={sponsor.name}
-                            >
-                              <Image
-                                src={sponsor.logoSrc}
-                                alt={`${sponsor.name} logo`}
-                                width={220}
-                                height={56}
-                                className={`sponsor-logo mx-auto w-auto max-w-full object-contain ${
-                                  isSilver
-                                    ? sponsor.name === "Dremio" ||
-                                      sponsor.name === "OpenAI"
-                                      ? "scale-[0.88]"
-                                      : "scale-[0.8]"
-                                    : ""
-                                } ${
-                                  sponsor.name === "Dremio"
-                                    ? isSilver
-                                      ? "h-[70px] sm:h-[79px]"
-                                      : "h-[88px] sm:h-[97px]"
-                                    : sponsor.name === "Airbnb"
-                                      ? isSilver
-                                        ? "h-[104px] sm:h-[114px]"
-                                        : "h-[125px] sm:h-[135px]"
-                                    : sponsor.name === "OpenAI" ||
-                                        sponsor.name === "PuppyGraph"
-                                      ? isSilver
-                                        ? "h-10 sm:h-[43px]"
-                                        : "h-12 sm:h-[52px]"
-                                    : sponsor.name === "Altimate AI" ||
-                                        sponsor.name === "Matia"
-                                      ? isSilver
-                                        ? "h-7 sm:h-8"
-                                        : "h-9 sm:h-10"
-                                    : sponsor.name === "StreamNative"
-                                      ? isSilver
-                                        ? "h-9 sm:h-10"
-                                        : "h-11 sm:h-12"
-                                    : sponsor.name === "MinIO"
-                                      ? isSilver
-                                        ? "h-5 sm:h-6"
-                                        : "h-[24px] sm:h-7"
-                                      : sponsor.name === "CelerData"
-                                        ? isSilver
-                                          ? "h-7 sm:h-8"
-                                          : "h-10 sm:h-11"
-                                        : isSilver
-                                          ? "h-8 sm:h-9"
-                                          : "h-10 sm:h-11"
-                                }`}
-                              />
-                            </a>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
             </div>
 
             {/* Event Production Section */}

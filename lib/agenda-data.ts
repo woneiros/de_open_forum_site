@@ -83,7 +83,16 @@ export const sessions: Session[] = [
     spansAllHalls: true,
     sessionType: "Keynote Panel",
     title: "Airbnb Keynote",
-    speakers: [],
+    speakers: [
+      {
+        name: "Jerry Wang",
+        title: "Head of Data Development Infrastructure",
+        company: "Airbnb",
+        linkedin: "https://www.linkedin.com/in/jerry-wang-aa813637",
+        avatarUrl: "/speakers/Jerry-Wang.jpg",
+        bio: "Senior engineering leader with nearly 20 years of experience building and scaling data engineering, analytics, data infrastructure, and AI/ML platforms at Airbnb, Apple, Netflix, and Meta. Proven track record of leading large, multi-team organizations, modernizing core infrastructure, establishing governance at scale, and delivering durable platforms that improve reliability, developer velocity, and cost efficiency for thousands of engineers and practitioners.",
+      },
+    ],
     abstract: "Details coming soon.",
   },
   {
@@ -237,6 +246,14 @@ export const sessions: Session[] = [
         linkedin: "https://www.linkedin.com/in/yezhaoqin/",
         avatarUrl: "/speakers/Jack-Ye.jpeg",
         bio: "Jack Ye is an open source software engineer at LanceDB. He is Apache Iceberg, Apache Polaris and Lance PMC Member. Before LanceDB, he was formerly tech lead for AWS SageMaker Lakehouse, EMR, Athena and S3 Tables.",
+      },
+      {
+        name: "Pablo Delgado",
+        title: "Machine Learning Engineer",
+        company: "Netflix",
+        linkedin: "https://www.linkedin.com/in/pabloadelgado/",
+        avatarUrl: "/speakers/Pablo-Delgado.jpeg",
+        bio: "Pablo Delgado is a Machine Learning Engineer currently working at Netflix. He focuses on the data infrastructure to create large multimodal datasets for Studio and Content Promotion and Production. Previously he worked also at Netflix optimizing performance for training and inference within the Machine Learning Platform at Netflix, which powers personalized recommendation algorithms and content/media production. Prior to that, he contributed to the recommendation systems stack at OpenTable, focusing on personalized restaurant recommendations. Pablo holds a degree in Mathematics and Computer Science from University College London, where he specialized in graph-based methods for collaborative filtering.",
       },
     ],
     abstract:
