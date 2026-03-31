@@ -92,6 +92,16 @@ const sponsorTiers = [
       },
     ],
   },
+  {
+    tier: "HAPPY HOUR",
+    sponsors: [
+      {
+        name: "Datadog",
+        href: "https://www.datadoghq.com/",
+        logoSrc: "/sponsors/datadog.svg",
+      },
+    ],
+  },
 ] as const;
 
 const getSponsorLogoClass = (sponsorName: string, isSilver: boolean) =>
@@ -114,6 +124,8 @@ const getSponsorLogoClass = (sponsorName: string, isSilver: boolean) =>
           ? isSilver
             ? "h-10 sm:h-[43px]"
             : "h-12 sm:h-[52px]"
+          : sponsorName === "Datadog"
+            ? "h-9 sm:h-10"
           : sponsorName === "Altimate AI" || sponsorName === "Matia"
             ? isSilver
               ? "h-7 sm:h-8"
@@ -507,6 +519,9 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
+                <p className="mt-8 font-mono text-sm text-muted-foreground">
+                  {"* Happy Hour is jointly sponsored by Databricks and Datadog."}
+                </p>
               </section>
             </div>
 
