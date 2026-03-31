@@ -15,7 +15,8 @@ export interface Session {
   end: string;
   hall: HallId;
   spansAllHalls?: boolean;
-  sessionType: "Keynote" | "Keynote Panel" | "Panel" | "Full Talk" | "Lightning Talk" | "None";
+  isSponsored?: boolean;
+  sessionType: "Keynote" | "Panel" | "Full Talk" | "Lightning Talk" | "None";
   title: string;
   speakers: Speaker[];
   moderator?: Speaker | null;
@@ -59,7 +60,8 @@ export const sessions: Session[] = [
     end: "10:00",
     hall: "goldman",
     spansAllHalls: true,
-    sessionType: "Keynote Panel",
+    isSponsored: true,
+    sessionType: "Keynote",
     title:
       "The Evolution of Structured Streaming: How Apache Spark Innovated on Throughput, Latency, and Flexibility",
     speakers: [
@@ -81,9 +83,19 @@ export const sessions: Session[] = [
     end: "10:15",
     hall: "goldman",
     spansAllHalls: true,
-    sessionType: "Keynote Panel",
+    isSponsored: true,
+    sessionType: "Keynote",
     title: "Airbnb Keynote",
-    speakers: [],
+    speakers: [
+      {
+        name: "Jerry Wang",
+        title: "Head of Data Development Infrastructure",
+        company: "Airbnb",
+        linkedin: "https://www.linkedin.com/in/jerry-wang-aa813637",
+        avatarUrl: "/speakers/Jerry-Wang.jpg",
+        bio: "Senior engineering leader with nearly 20 years of experience building and scaling data engineering, analytics, data infrastructure, and AI/ML platforms at Airbnb, Apple, Netflix, and Meta. Proven track record of leading large, multi-team organizations, modernizing core infrastructure, establishing governance at scale, and delivering durable platforms that improve reliability, developer velocity, and cost efficiency for thousands of engineers and practitioners.",
+      },
+    ],
     abstract: "Details coming soon.",
   },
   {
@@ -164,11 +176,11 @@ export const sessions: Session[] = [
       },
       {
         name: "Shridhar Iyer",
-        title: "Senior Tech Lead Director, Context Engineering",
+        title: "Director, Data Engineering",
         company: "Meta",
         linkedin: "https://www.linkedin.com/in/shridhar-iyer/",
         avatarUrl: "/speakers/Shridhar-lyer.png",
-        bio: "Coming soon",
+        bio: "Shridhar Iyer is a Senior Tech Lead Director at Meta, where he has spent over 13 years building the data infrastructure that powers some of the world's most widely used products. Currently tech leading Meta's AI for Data Stack, he architects the Context Ecosystem Infrastructure - the foundational layer for AI-powered data agents - spanning semantic modeling, metadata governance, and compliance workflows across the Meta Family of Apps. His career traces the arc of data engineering itself: from raw data to information, knowledge, and ultimately wisdom - and he believes AI is now accelerating that journey industry-wide. With 25+ years of engineering experience in supply chain, search analytics, and large-scale data infrastructure, Shridhar brings a practitioner's lens to the evolving role of data engineering in an AI-native world.",
       },
     ],
     moderator: {
@@ -237,6 +249,14 @@ export const sessions: Session[] = [
         linkedin: "https://www.linkedin.com/in/yezhaoqin/",
         avatarUrl: "/speakers/Jack-Ye.jpeg",
         bio: "Jack Ye is an open source software engineer at LanceDB. He is Apache Iceberg, Apache Polaris and Lance PMC Member. Before LanceDB, he was formerly tech lead for AWS SageMaker Lakehouse, EMR, Athena and S3 Tables.",
+      },
+      {
+        name: "Pablo Delgado",
+        title: "Machine Learning Engineer",
+        company: "Netflix",
+        linkedin: "https://www.linkedin.com/in/pabloadelgado/",
+        avatarUrl: "/speakers/Pablo-Delgado.jpeg",
+        bio: "Pablo Delgado is a Machine Learning Engineer currently working at Netflix. He focuses on the data infrastructure to create large multimodal datasets for Studio and Content Promotion and Production. Previously he worked also at Netflix optimizing performance for training and inference within the Machine Learning Platform at Netflix, which powers personalized recommendation algorithms and content/media production. Prior to that, he contributed to the recommendation systems stack at OpenTable, focusing on personalized restaurant recommendations. Pablo holds a degree in Mathematics and Computer Science from University College London, where he specialized in graph-based methods for collaborative filtering.",
       },
     ],
     abstract:
@@ -365,10 +385,10 @@ export const sessions: Session[] = [
   {
     id: "s19",
     start: "16:00",
-    end: "17:00",
+    end: "16:45",
     hall: "goldman",
     spansAllHalls: true,
-    sessionType: "Keynote Panel",
+    sessionType: "Keynote",
     title: "Frontiers of Data: The Future of Data Engineering in an AI World",
     speakers: [
       {
@@ -393,11 +413,22 @@ export const sessions: Session[] = [
       title: "Distinguished Architect, Data & AI",
       company: "eBay",
       linkedin: "http://linkedin.com/in/mufford",
-      avatarUrl: "speakers/Michelle-Winters.jpeg",
+      avatarUrl: "/speakers/Michelle-Winters.jpeg",
       bio: "Michelle Winters is a lifelong data nerd, data leader, data builder, and unapologetic champion of all things data. For 30 years, she has worked across nearly every layer of the data lifecycle-building data platforms, leading data teams, architecting data systems, scaling data organizations, and occasionally explaining what \"modern data stack\" means to non-data people.\n\nShe has been a data engineer, a data executive, a data startup founder, and a contributor to data OSS. She has written data books, data blogs, and more data documentation than she cares to admit. She has received industry awards for her work in the data community-largely, one suspects, for saying \"data\" more times per minute than generally advisable.\n\nMichelle believes the only thing better than good data is more data about data. When she's not building data teams or designing data platforms, she's probably writing a Python script to count how many times she said \"data\" in her bio. (It's.. a lot.)\n\nShe's wildly excited about the future of data and can't wait to talk data with as many fellow data nerds as possible at DEOF.",
     },
     abstract:
       "Data has never been more important to the enterprise-or more visible. As intelligent agents reshape how we create, move, and trust information, the boundaries of data engineering are shifting fast. This breakout brings together industry luminaries for a candid, forward-looking conversation about the craft's next chapter: from human dashboards to autonomous workflows, from schemas to semantics, from pipelines to products.\n\nWe'll dig into:\n- The evolution of the data engineer: from moving bytes to governing meaning\n- Semantic contracts and accountability: where responsibility lives when meaning gets lost in translation\n- Open knowledge vs. black boxes: the future of standards in an AI-first ecosystem\n- The 24-month pivot: the single skill to bet on as SQL and ETL automate away\n- Language wars: the best specs for aligning data teams with business partners and intelligent assistants.\n\nIf you're building with data-or building your career on it-this session will cut through the hype and offer practical, inspiring guidance on how to stay relevant, resilient, and impactful in the era of self-managing systems.",
+  },
+  {
+    id: "s21",
+    start: "16:45",
+    end: "17:00",
+    hall: "goldman",
+    spansAllHalls: true,
+    sessionType: "None",
+    title: "Closing Remarks",
+    speakers: [],
+    abstract: "Closing remarks.",
   },
   {
     id: "s18",
@@ -499,7 +530,9 @@ const formatTime = (value: string) => {
 };
 
 export const getSessionTimeRange = (session: Session) => {
-  const matchingSlot = timeSlots.find((slot) => slot.key === session.start);
+  const matchingSlot = timeSlots.find(
+    (slot) => slot.key === session.start && slot.end === formatTime(session.end),
+  );
   if (!matchingSlot) {
     return `${formatTime(session.start)} - ${formatTime(session.end)}`;
   }

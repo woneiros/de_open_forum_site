@@ -14,7 +14,6 @@ import {
 } from "@/lib/agenda-data";
 const sessionTypeStyle: Record<Session["sessionType"], string> = {
   Keynote: "border-[#ff5fa2] bg-[#ff5fa2]/15 text-[#ffb7d3]",
-  "Keynote Panel": "border-[#dc2626] bg-[#dc2626]/15 text-[#fca5a5]",
   Panel: "border-[#7a6df0] bg-[#7a6df0]/15 text-[#c8c1ff]",
   "Full Talk": "border-[#2f9e44] bg-[#2f9e44]/15 text-[#9be3aa]",
   "Lightning Talk": "border-[#3f8cff] bg-[#3f8cff]/15 text-[#9ec7ff]",
@@ -40,7 +39,7 @@ function SpeakerBio({ bio }: { bio: string }) {
 
       bioElement.style.display = "-webkit-box";
       bioElement.style.overflow = "hidden";
-      bioElement.style.webkitLineClamp = "5";
+      bioElement.style.webkitLineClamp = "3";
       bioElement.style.webkitBoxOrient = "vertical";
 
       setShowToggle(bioElement.scrollHeight > bioElement.clientHeight + 1);
@@ -67,7 +66,7 @@ function SpeakerBio({ bio }: { bio: string }) {
             : {
                 display: "-webkit-box",
                 overflow: "hidden",
-                WebkitLineClamp: 5,
+                WebkitLineClamp: 3,
                 WebkitBoxOrient: "vertical",
               }
         }
@@ -262,6 +261,16 @@ export function MuseumAgendaPrototype() {
             ) : slot.key === "09:30" ? (
               <div className="col-span-3 flex bg-black/10 p-1">
                 <div className="flex w-full flex-col gap-1">
+                  <div className="rounded border border-accent/20 bg-accent/8 px-3 py-2">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <span className="inline-flex rounded border border-accent/35 bg-accent/12 px-2 py-1 font-mono text-[11px] font-semibold tracking-[0.18em] text-accent">
+                        KEYNOTE
+                      </span>
+                      <span className="font-mono text-[11px] tracking-[0.18em] text-accent/85">
+                        @ GOLDMAN HALL
+                      </span>
+                    </div>
+                  </div>
                   <div className="flex min-h-[88px] flex-col items-center justify-center rounded border border-accent/15 bg-black/15 px-3 py-3 text-center">
                     <p className="text-sm font-semibold leading-tight">Open Remarks</p>
                     <p className="mt-1 text-xs text-accent">9:30 AM - 9:45 AM</p>
@@ -280,7 +289,7 @@ export function MuseumAgendaPrototype() {
                       }`}
                     >
                       <p className="text-sm font-semibold leading-tight underline decoration-accent/70 underline-offset-2">
-                        Databricks Keynote
+                        {keynoteSessions.databricks.title}
                       </p>
                       <p className="mt-2 text-xs text-accent">
                         {getSessionTimeRange(keynoteSessions.databricks)}
@@ -316,12 +325,68 @@ export function MuseumAgendaPrototype() {
               <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
                 <p className="text-sm font-semibold leading-tight">🥗 Lunch</p>
               </div>
+            ) : slot.key === "16:00" ? (
+              <div className="col-span-3 flex bg-black/10 p-1">
+                <div className="flex w-full flex-col gap-1">
+                  <div className="rounded border border-accent/20 bg-accent/8 px-3 py-2">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <span className="inline-flex rounded border border-accent/35 bg-accent/12 px-2 py-1 font-mono text-[11px] font-semibold tracking-[0.18em] text-accent">
+                        KEYNOTE
+                      </span>
+                      <span className="font-mono text-[11px] tracking-[0.18em] text-accent/85">
+                        @ GOLDMAN HALL
+                      </span>
+                    </div>
+                  </div>
+                  {sessions
+                    .filter((item) => item.id === "s19" || item.id === "s21")
+                    .sort((left, right) => left.start.localeCompare(right.start))
+                    .map((session) => {
+                      const isSelected = activeSession?.id === session.id;
+                      const isInteractive = session.sessionType !== "None";
+
+                      if (!isInteractive) {
+                        return (
+                          <div
+                            key={session.id}
+                            className="flex min-h-[88px] flex-col items-center justify-center rounded border border-accent/15 bg-black/15 px-3 py-3 text-center"
+                          >
+                            <p className="text-sm font-semibold leading-tight">{session.title}</p>
+                            <p className="mt-2 text-xs text-accent">{getSessionTimeRange(session)}</p>
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <button
+                          key={session.id}
+                          type="button"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            setActiveSession(session);
+                          }}
+                          className={`flex min-h-[88px] cursor-pointer flex-col items-center justify-center rounded border border-accent/15 px-3 py-3 text-center transition-all ${
+                            isSelected
+                              ? "bg-accent/15 shadow-[inset_0_0_0_1px_rgba(239,214,72,0.45)]"
+                              : "bg-black/15 hover:bg-accent/25 hover:shadow-[inset_0_0_0_1px_rgba(239,214,72,0.35)]"
+                          }`}
+                        >
+                          <p className="text-sm font-semibold leading-tight underline decoration-accent/70 underline-offset-2">
+                            {session.title}
+                          </p>
+                          <p className="mt-2 text-xs text-accent">{getSessionTimeRange(session)}</p>
+                          {renderSpeakerList(session, "center")}
+                        </button>
+                      );
+                    })}
+                </div>
+              </div>
             ) : slot.key === "17:30" ? (
               <div className="col-span-3 flex items-center justify-center bg-black/15 px-2 py-2">
                 <p className="text-center text-sm font-semibold leading-tight">
                   🍹 Happy Hour & Networking
                   <br />
-                  <span className="font-normal italic">(Sponsored by Databricks)</span>
+                  <span className="font-normal italic">(Sponsored by Databricks and Datadog)</span>
                 </p>
               </div>
             ) : (
@@ -631,7 +696,7 @@ export function MuseumAgendaPrototype() {
                           {activeSession.sessionType}
                         </div>
                       ) : null}
-                      {activeSession.hall === "swig" ? (
+                      {activeSession.isSponsored ? (
                         <div
                           className={`inline-block rounded border px-2 py-1 text-xs font-semibold ${sponsoredTagStyle}`}
                         >
