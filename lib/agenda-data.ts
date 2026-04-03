@@ -404,8 +404,14 @@ export const sessions: Session[] = [
         title: "Chief Strategy Officer & Apache Airflow PMC",
         company: "Astronomer",
         linkedin: "https://www.linkedin.com/in/vikramkoka/",
-        avatarUrl: null,
-        bio: "Coming soon",
+        avatarUrl: "/speakers/Vikram-Koka.jpg",
+      },
+      {
+        name: "Laura Pruitt",
+        title: "Director, Data Science & Engineering",
+        company: "Netflix",
+        linkedin: "https://www.linkedin.com/in/lpruitt/",
+        avatarUrl: "/speakers/Laura-Pruitt.jpeg",
       },
     ],
     moderator: {
