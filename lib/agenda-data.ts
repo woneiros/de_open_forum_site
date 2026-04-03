@@ -85,7 +85,8 @@ export const sessions: Session[] = [
     spansAllHalls: true,
     isSponsored: true,
     sessionType: "Keynote",
-    title: "Airbnb Keynote",
+    title:
+      "The Data Odyssey: A 15-Year Voyage from Pipelines to Sovereignty across Big Tech",
     speakers: [
       {
         name: "Jerry Wang",
@@ -96,7 +97,8 @@ export const sessions: Session[] = [
         bio: "Senior engineering leader with nearly 20 years of experience building and scaling data engineering, analytics, data infrastructure, and AI/ML platforms at Airbnb, Apple, Netflix, and Meta. Proven track record of leading large, multi-team organizations, modernizing core infrastructure, establishing governance at scale, and delivering durable platforms that improve reliability, developer velocity, and cost efficiency for thousands of engineers and practitioners.",
       },
     ],
-    abstract: "Details coming soon.",
+    abstract:
+      'This talk chronicles "The Data Odyssey," a 15-year voyage across Big Tech that redefines the data engineer\'s role from managing pipelines to architecting data products and achieving data sovereignty. We\'ll examine key lessons from the giants, which drives the transition to data products and services exemplified by the work at Airbnb. The session concludes with a call to action for the next generation of Data Engineers to own the data\'s entire lifecycle.',
   },
   {
     id: "s5",
