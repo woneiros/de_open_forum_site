@@ -22,12 +22,18 @@ const sessionTypeStyle: Record<Session["sessionType"], string> = {
 
 const sponsoredTagStyle = "border-[#8b5e3c] bg-[#8b5e3c]/15 text-[#d2b49c]";
 
-function SpeakerBio({ bio }: { bio: string }) {
+function SpeakerBio({ bio }: { bio?: string | null }) {
+  const trimmedBio = bio?.trim() ?? "";
   const [expanded, setExpanded] = useState(false);
   const [showToggle, setShowToggle] = useState(false);
   const bioRef = useRef<HTMLParagraphElement | null>(null);
 
   useEffect(() => {
+    if (!trimmedBio) {
+      setShowToggle(false);
+      return;
+    }
+
     const bioElement = bioRef.current;
     if (!bioElement) return;
 
@@ -53,7 +59,9 @@ function SpeakerBio({ bio }: { bio: string }) {
     updateOverflowState();
     window.addEventListener("resize", updateOverflowState);
     return () => window.removeEventListener("resize", updateOverflowState);
-  }, [bio]);
+  }, [trimmedBio]);
+
+  if (!trimmedBio) return null;
 
   return (
     <div className="mt-2 w-full pr-14">
@@ -71,7 +79,7 @@ function SpeakerBio({ bio }: { bio: string }) {
               }
         }
       >
-        “{bio}”
+        “{trimmedBio}”
       </p>
       {showToggle ? (
         <div className="mt-1 text-sm leading-relaxed italic text-muted-foreground/80">
