@@ -405,6 +405,7 @@ export const sessions: Session[] = [
         company: "Astronomer",
         linkedin: "https://www.linkedin.com/in/vikramkoka/",
         avatarUrl: "/speakers/Vikram-Koka.jpg",
+        bio: "",
       },
       {
         name: "Laura Pruitt",
@@ -412,6 +413,7 @@ export const sessions: Session[] = [
         company: "Netflix",
         linkedin: "https://www.linkedin.com/in/lpruitt/",
         avatarUrl: "/speakers/Laura-Pruitt.jpeg",
+        bio: "",
       },
     ],
     moderator: {
