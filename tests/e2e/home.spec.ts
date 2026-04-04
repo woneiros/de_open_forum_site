@@ -118,7 +118,7 @@ test.describe("Homepage", () => {
     await expect(page.getByText("Yud Gallery", { exact: true }).first()).toBeVisible();
     await expect(page.getByText("Check-in & Breakfast")).toBeVisible();
     await expect(page.getByText("Open Remarks")).toBeVisible();
-    await expect(page.getByText("Databricks Keynote")).toBeVisible();
+    await expect(page.getByText(/The Evolution of Structured Streaming/i)).toBeVisible();
     await expect(page.getByText("Airbnb Keynote")).toBeVisible();
   });
 
