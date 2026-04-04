@@ -23,7 +23,10 @@ export interface Session {
   abstract: string;
 }
 
-export const halls: Record<HallId, { name: string; color: string; roomLabel: string }> = {
+export const halls: Record<
+  HallId,
+  { name: string; color: string; roomLabel: string }
+> = {
   goldman: {
     name: "Goldman Hall",
     roomLabel: "North Gallery",
@@ -98,7 +101,7 @@ export const sessions: Session[] = [
       },
     ],
     abstract:
-      'This talk chronicles "The Data Odyssey," a 15-year voyage across Big Tech that redefines the data engineer\'s role from managing pipelines to architecting data products and achieving data sovereignty. We\'ll examine key lessons from the giants, which drives the transition to data products and services exemplified by the work at Airbnb. The session concludes with a call to action for the next generation of Data Engineers to own the data\'s entire lifecycle.',
+      "This talk chronicles \"The Data Odyssey,\" a 15-year voyage across Big Tech that redefines the data engineer's role from managing pipelines to architecting data products and achieving data sovereignty. We'll examine key lessons from the giants, which drives the transition to data products and services exemplified by the work at Airbnb. The session concludes with a call to action for the next generation of Data Engineers to own the data's entire lifecycle.",
   },
   {
     id: "s5",
@@ -134,11 +137,11 @@ export const sessions: Session[] = [
         company: "Amazon Web Services",
         linkedin: "https://www.linkedin.com/in/himanshi-manglunia/",
         avatarUrl: "/speakers/Himanshi-Manglunia.jpeg",
-        bio: "Himanshi Manglunia is a Senior Data Engineer at Amazon Web Services, specializing in marketing measurement and attribution systems. With nearly a decade of experience in data engineering and analytics, she brings deep expertise in designing and building large-scale data pipelines that power critical business decisions.\n\nHimanshi holds a Bachelor's degree in Information Technology and a Master's degree in Data Analytics. At AWS Marketing, she leads the technical development of backend data infrastructure which supports the marketing investment portfolio, including decision-support tools used by senior leadership for goal-setting and resource allocation.\n\nHer technical contributions span end-to-end pipeline development, data architecture design, and cross-functional enablement. She has driven significant process improvements through automation and workflow optimization. Himanshi is the go-to technical advisor for science, economist, and business intelligence teams, establishing office hours, comprehensive documentation, and change management frameworks that have improved cross-team collaboration.\n\nBeyond her individual contributions, Himanshi is committed to developing engineering talent through mentorship and knowledge sharing. She has presented technical sessions to 50+ attendees and on-boarded multiple engineers to independence. Her work exemplifies the intersection of technical excellence, operational efficiency, and organizational impact.",
+        bio: "Himanshi Manglunia is a Data Engineer at Amazon Web Services with nearly a decade of experience building data pipelines across financial services, payments, and cloud technology. At AWS, she works on data engineering and MLOps, designing large-scale data infrastructure that powers critical business decisions. Himanshi is passionate about using AI agents to eliminate repetitive engineering work, and this talk draws from her hands-on experience building autonomous ETL automation systems.",
       },
     ],
     abstract:
-      "Data engineers spend countless hours on repetitive ETL enhancements-adding columns, updating transformations, fixing schema mismatches. What if GenAI agents could autonomously handle these changes from start to finish, including detecting and fixing their own errors?\n\nThis talk presents a production implementation of an autonomous ETL automation system powered by Kiro and Claude AI. Through a live demonstration, attendees will see how AI agents can parse requirements from natural language, navigate complex codebases, generate production-ready SQL transformations, deploy to cloud infrastructure, and automatically recover from common failures-all without human intervention.\n\nWhat the attendees will see in the Demo: A complete end-to-end workflow where an AI agent reads a txt file requesting a new column, validates the source table schema exists, locates the correct ETL script among hundreds of files, modifies the SQL while preserving existing code patterns, deploys to S3, triggers an Apache Airflow DAG, detects a \"column not found\" error in CloudWatch logs, automatically applies a COALESCE fix with appropriate defaults, redeploys, retries execution, validates the data in Redshift, and creates a code review-all autonomously in under 10 minutes.\n\nTechnical Architecture:\n1. Layered Validation Strategy: Schema validation via cloud metadata catalogs (Glue) to verify table/column existence pre-deployment, followed by production DAG execution monitoring with exponential backoff, and data validation via Redshift queries post-deployment to confirm correct data population\n2. Intelligent Error Recovery: Pattern matching that classifies failures as auto-fixable (column not found, type mismatches, missing partitions) vs. manual intervention required (table not found, permission errors, resource exhaustion), then automatically applies fixes and retries up to 3 times\n3. Context-Aware Code Generation: Claude models analyze existing codebase patterns to generate SQL that matches team conventions-preserving indentation, naming patterns, and transformation styles for seamless integration\n4. Conditional Progression Gates: Code reviews are only created after successful DAG execution and data validation, ensuring all changes are production-validated before human review\n\nKey Innovation:\nThe system doesn't just generate code-it validates changes in production, learns from failures, and iteratively refines until success. This \"deploy-test-fix-retry\" loop handles approximately 80% of common ETL errors automatically, reducing manual intervention from hours to minutes.\n\nProduction Deployment Insights:\nThe attendees will learn practical strategies for building trust in AI-generated code: comprehensive audit logging for every decision, fail-fast validation to catch issues early, clear boundaries between auto-fixable and manual-intervention errors, and integration with existing DevOps workflows (version control, code review, deployment pipelines).",
+      "Data engineers spend countless hours on repetitive ETL enhancements — adding columns, updating transformations, fixing schema mismatches. A \"simple\" pipeline change that should take 90 minutes routinely balloons into a full day of context switching, redeployment cycles, and debugging. What if AI agents could handle these changes end to end? In this talk, we'll walk through the design of a self-healing ETL automation system powered by AI agents. Rather than one-shot code generation, the system executes a full workflow: parsing requirements from natural language, modifying SQL while preserving team coding patterns, deploying to cloud infrastructure, monitoring execution with exponential backoff, and automatically recovering from common failures — all without human intervention. We'll start with the real cost of repetitive pipeline work and what makes a task a good candidate for automation. Then we'll unpack the architecture: how the agent validates schemas via metadata catalogs, deploys and triggers Airflow DAGs, classifies failures as auto-fixable vs. requiring human intervention, and retries up to 3 times before escalating. We'll also cover why the AI model is only a fraction of the solution — the real product is the context layer: guardrails",
   },
   {
     id: "s13",
@@ -166,7 +169,8 @@ export const sessions: Session[] = [
     end: "12:15",
     hall: "goldman",
     sessionType: "Panel",
-    title: "Data, Perspective, Action: Why Most Data Engineering Teams Fail at the 'Perspective' Part",
+    title:
+      "Data, Perspective, Action: Why Most Data Engineering Teams Fail at the 'Perspective' Part",
     speakers: [
       {
         name: "Mick Dreeling",
@@ -202,7 +206,8 @@ export const sessions: Session[] = [
     end: "12:15",
     hall: "yud",
     sessionType: "Lightning Talk",
-    title: "MinervaSQL - Lessons Building a Full-fledged SQL interface for a Semantic Layer",
+    title:
+      "MinervaSQL - Lessons Building a Full-fledged SQL interface for a Semantic Layer",
     speakers: [
       {
         name: "Barak Alon",
@@ -222,7 +227,8 @@ export const sessions: Session[] = [
     end: "12:15",
     hall: "swig",
     sessionType: "Full Talk",
-    title: "Beyond Vectors: How Apache Doris Brings Hybrid Search and Real-Time Analytics to Context Engineering",
+    title:
+      "Beyond Vectors: How Apache Doris Brings Hybrid Search and Real-Time Analytics to Context Engineering",
     speakers: [
       {
         name: "Yuankai Shen",
@@ -270,7 +276,8 @@ export const sessions: Session[] = [
     end: "15:45",
     hall: "yud",
     sessionType: "Full Talk",
-    title: "Breaking Down Data Silos: Building Federated Knowledge Infrastructure for Enterprise Agentic AI",
+    title:
+      "Breaking Down Data Silos: Building Federated Knowledge Infrastructure for Enterprise Agentic AI",
     speakers: [
       {
         name: "Dinesh Thangaraju",
@@ -310,7 +317,8 @@ export const sessions: Session[] = [
     end: "14:45",
     hall: "yud",
     sessionType: "Lightning Talk",
-    title: "Data Lineage in 2026: From Compliance Checkbox to Critical Platform Investment",
+    title:
+      "Data Lineage in 2026: From Compliance Checkbox to Critical Platform Investment",
     speakers: [
       {
         name: "Dan Shetty",
@@ -330,7 +338,8 @@ export const sessions: Session[] = [
     end: "14:45",
     hall: "yud",
     sessionType: "Lightning Talk",
-    title: "Lessons from building a data observability product with OpenLineage",
+    title:
+      "Lessons from building a data observability product with OpenLineage",
     speakers: [
       {
         name: "Harel Shein",
@@ -370,7 +379,8 @@ export const sessions: Session[] = [
     end: "15:45",
     hall: "swig",
     sessionType: "Full Talk",
-    title: "From Repetition to Reuse: The Evolution of Apache Spark Declarative Pipelines",
+    title:
+      "From Repetition to Reuse: The Evolution of Apache Spark Declarative Pipelines",
     speakers: [
       {
         name: "Andreas Neumann",
@@ -378,7 +388,7 @@ export const sessions: Session[] = [
         company: "Databricks",
         linkedin: "https://www.linkedin.com/in/anew-/",
         avatarUrl: "/speakers/Andreas-Neumann.jpg",
-        bio: "With a career defined by \"massive scale\", Andreas Neumann currently serves as the Technical Lead for Declarative Pipelines at Databricks. From his early work at IBM and Yahoo! to his time at Google and his journey as the co-founder of Cask Data, Andreas has spent decades solving the data industry's toughest architectural puzzles. Beyond his corporate leadership, he is a dedicated advocate for open-source software, having shepherded several Apache projects from incubation to maturity. Andreas holds a PhD in Computer Science for his research in document parsing and query techniques.",
+        bio: 'With a career defined by "massive scale", Andreas Neumann currently serves as the Technical Lead for Declarative Pipelines at Databricks. From his early work at IBM and Yahoo! to his time at Google and his journey as the co-founder of Cask Data, Andreas has spent decades solving the data industry\'s toughest architectural puzzles. Beyond his corporate leadership, he is a dedicated advocate for open-source software, having shepherded several Apache projects from incubation to maturity. Andreas holds a PhD in Computer Science for his research in document parsing and query techniques.',
       },
     ],
     abstract:
@@ -424,7 +434,7 @@ export const sessions: Session[] = [
       company: "eBay",
       linkedin: "http://linkedin.com/in/mufford",
       avatarUrl: "/speakers/Michelle-Winters.jpeg",
-      bio: "Michelle Winters is a lifelong data nerd, data leader, data builder, and unapologetic champion of all things data. For 30 years, she has worked across nearly every layer of the data lifecycle-building data platforms, leading data teams, architecting data systems, scaling data organizations, and occasionally explaining what \"modern data stack\" means to non-data people.\n\nShe has been a data engineer, a data executive, a data startup founder, and a contributor to data OSS. She has written data books, data blogs, and more data documentation than she cares to admit. She has received industry awards for her work in the data community-largely, one suspects, for saying \"data\" more times per minute than generally advisable.\n\nMichelle believes the only thing better than good data is more data about data. When she's not building data teams or designing data platforms, she's probably writing a Python script to count how many times she said \"data\" in her bio. (It's.. a lot.)\n\nShe's wildly excited about the future of data and can't wait to talk data with as many fellow data nerds as possible at DEOF.",
+      bio: 'Michelle Winters is a lifelong data nerd, data leader, data builder, and unapologetic champion of all things data. For 30 years, she has worked across nearly every layer of the data lifecycle-building data platforms, leading data teams, architecting data systems, scaling data organizations, and occasionally explaining what "modern data stack" means to non-data people.\n\nShe has been a data engineer, a data executive, a data startup founder, and a contributor to data OSS. She has written data books, data blogs, and more data documentation than she cares to admit. She has received industry awards for her work in the data community-largely, one suspects, for saying "data" more times per minute than generally advisable.\n\nMichelle believes the only thing better than good data is more data about data. When she\'s not building data teams or designing data platforms, she\'s probably writing a Python script to count how many times she said "data" in her bio. (It\'s.. a lot.)\n\nShe\'s wildly excited about the future of data and can\'t wait to talk data with as many fellow data nerds as possible at DEOF.',
     },
     abstract:
       "Data has never been more important to the enterprise-or more visible. As intelligent agents reshape how we create, move, and trust information, the boundaries of data engineering are shifting fast. This breakout brings together industry luminaries for a candid, forward-looking conversation about the craft's next chapter: from human dashboards to autonomous workflows, from schemas to semantics, from pipelines to products.\n\nWe'll dig into:\n- The evolution of the data engineer: from moving bytes to governing meaning\n- Semantic contracts and accountability: where responsibility lives when meaning gets lost in translation\n- Open knowledge vs. black boxes: the future of standards in an AI-first ecosystem\n- The 24-month pivot: the single skill to bet on as SQL and ETL automate away\n- Language wars: the best specs for aligning data teams with business partners and intelligent assistants.\n\nIf you're building with data-or building your career on it-this session will cut through the hype and offer practical, inspiring guidance on how to stay relevant, resilient, and impactful in the era of self-managing systems.",
@@ -458,7 +468,7 @@ export const sessions: Session[] = [
       },
     ],
     abstract:
-      "In modern machine learning ecosystems, innovation happens at a staggering pace-new model architectures, training optimizations, feature engineering techniques, and serving improvements emerge continuously from research labs and engineering teams alike. But as organizations scale to thousands of prediction use cases serving billions of users, a fundamental question becomes increasingly difficult to answer: How do innovations actually flow through ML ecosystems, and what value do they create?\n\nThe technical challenges are substantial: innovations are abstract concepts that embody in code, configurations, and processes with varying footprints; models spanning across large heterogeneous ecosystems iterated through multiple frameworks and pipelines; and \"existence\" of a technique sometimes must be inferred as it is impossible to be explicitly logged.\n\nOur solution combines static analysis, agent-based discovery, dependency resolution, and ML artifact graph to bridge the gap between ML research and production value realization, by building a central innovation platform including many parts: a centralized registry that transforms scattered innovations into a discoverable, governable catalog with rich metadata; a lineage foundation that automatically extracts technique representations across model development process; a recommender that help innovation propagation faster across ML use cases; and an attribution engine that provides unprecedented visibility into the innovation-to-impact lifecycle.",
+      'In modern machine learning ecosystems, innovation happens at a staggering pace-new model architectures, training optimizations, feature engineering techniques, and serving improvements emerge continuously from research labs and engineering teams alike. But as organizations scale to thousands of prediction use cases serving billions of users, a fundamental question becomes increasingly difficult to answer: How do innovations actually flow through ML ecosystems, and what value do they create?\n\nThe technical challenges are substantial: innovations are abstract concepts that embody in code, configurations, and processes with varying footprints; models spanning across large heterogeneous ecosystems iterated through multiple frameworks and pipelines; and "existence" of a technique sometimes must be inferred as it is impossible to be explicitly logged.\n\nOur solution combines static analysis, agent-based discovery, dependency resolution, and ML artifact graph to bridge the gap between ML research and production value realization, by building a central innovation platform including many parts: a centralized registry that transforms scattered innovations into a discoverable, governable catalog with rich metadata; a lineage foundation that automatically extracts technique representations across model development process; a recommender that help innovation propagation faster across ML use cases; and an attribution engine that provides unprecedented visibility into the innovation-to-impact lifecycle.',
   },
   {
     id: "s20",
@@ -525,7 +535,8 @@ export const getSessionSlug = (session: Session) => {
   return slugify(session.title) || session.id;
 };
 
-export const getSessionBySlug = (slug: string) => sessionSlugMap.get(slug) ?? null;
+export const getSessionBySlug = (slug: string) =>
+  sessionSlugMap.get(slug) ?? null;
 
 const formatTime = (value: string) => {
   const match = /^(\d{2}):(\d{2})$/.exec(value);
@@ -541,7 +552,8 @@ const formatTime = (value: string) => {
 
 export const getSessionTimeRange = (session: Session) => {
   const matchingSlot = timeSlots.find(
-    (slot) => slot.key === session.start && slot.end === formatTime(session.end),
+    (slot) =>
+      slot.key === session.start && slot.end === formatTime(session.end),
   );
   if (!matchingSlot) {
     return `${formatTime(session.start)} - ${formatTime(session.end)}`;
