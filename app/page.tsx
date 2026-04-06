@@ -458,7 +458,7 @@ export default function Home() {
             </div>
 
             {/* Sponsors Section */}
-            <div className="space-y-4">
+            <div id="sponsors" className="space-y-4 scroll-mt-24">
               <div className="font-mono text-3xl font-semibold text-accent">
                 {"> SPONSORS_ "}
               </div>
