@@ -373,78 +373,43 @@ export default function Home() {
               className="space-y-8 scroll-mt-24"
             >
               <div className="font-mono text-3xl font-semibold text-accent">
-                {"> DET_MENTORSHIP_&_COMMUNITY_BOOTH_"}
+                {"> DET_COMMUNITY_BOOTH_"}
               </div>
               <div className="inline-flex items-center gap-2 border border-accent/35 bg-accent/10 px-3 py-1 font-mono text-xs uppercase tracking-[0.24em] text-accent">
                 <span className="h-2 w-2 rounded-full bg-accent" />
                 All Day at DEOF 2026
               </div>
-              <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
-                <div className="flex h-full flex-col justify-between gap-8">
-                  <div className="space-y-4">
-                    <p className="text-pretty text-lg leading-relaxed">
-                      At DEOF 2026, we&apos;re bringing an engaging, hands-on
-                      experience to this year&apos;s conference with the DET
-                      Mentorship &amp; Community Booth.
-                    </p>
-                    <p className="text-pretty text-base leading-relaxed text-muted-foreground">
-                      Accelerate your data engineering journey with direct
-                      access to experienced mentors and get real-world insights,
-                      personalized guidance, and meaningful connections in one
-                      place. Stop by the DET Booth for high-impact 1:1
-                      conversations and powerful networking that moves your
-                      career forward.
-                    </p>
-                  </div>
-
-                  <div className="space-y-4">
-                    <p className="text-pretty text-lg leading-relaxed">
-                      Throughout the day, you&apos;ll be able to stop by the
-                      booth to:
-                    </p>
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <div className="border-l-2 border-accent/35 pl-4 py-2">
-                        <p className="font-semibold">
-                          Connect 1:1 with experienced data engineers and
-                          mentors
-                        </p>
-                      </div>
-                      <div className="border-l-2 border-accent/35 pl-4 py-2">
-                        <p className="font-semibold">
-                          Ask questions about career growth, transitions, and
-                          real-world challenges
-                        </p>
-                      </div>
-                      <div className="border-l-2 border-accent/35 pl-4 py-2">
-                        <p className="font-semibold">
-                          Join small-group networking sessions with fellow
-                          practitioners
-                        </p>
-                      </div>
-                      <div className="border-l-2 border-accent/35 pl-4 py-2">
-                        <p className="font-semibold">
-                          Learn how to get involved with the DET community
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <p className="text-pretty text-lg leading-relaxed">
+                    Throughout the day, you&apos;ll be able to stop by the
+                    booth to:
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
+                      <p className="font-semibold">
+                        Connect 1:1 with experienced data engineers and mentors
+                      </p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
+                      <p className="font-semibold">
+                        Join small-group networking sessions with fellow
+                        practitioners
+                      </p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
+                      <p className="font-semibold">
+                        Learn how to get involved with the DET community
+                      </p>
+                    </li>
+                  </ul>
                 </div>
 
-                <div className="space-y-4 rounded-md border border-accent/35 bg-primary/50 p-5 shadow-[0_0_0_1px_rgba(239,214,72,0.08)]">
-                  <div className="space-y-2 border-b border-accent/20 pb-4">
-                    <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
-                      Reserve Your Spot
-                    </p>
-                    <h3 className="text-xl font-semibold">
-                      Mentorship + Networking
-                    </h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      Pre-book a dedicated conversation or register early for
-                      the pre-event networking session.
-                    </p>
-                  </div>
-
-                  <div className="space-y-3 rounded-sm border border-accent/20 bg-primary/35 p-4">
+                <div className="grid gap-4 lg:grid-cols-2">
+                  <div className="space-y-3 rounded-md border border-accent/35 bg-primary/50 p-5 shadow-[0_0_0_1px_rgba(239,214,72,0.08)]">
                     <div className="space-y-2">
                       <p className="font-semibold">
                         1:1 Mentorship Sessions
@@ -459,34 +424,28 @@ export default function Home() {
                       href="https://detmentorship.as.me/schedule/aa77ccb8/appointment/91014253?appointmentTypeIds[]=91014253"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex min-h-[72px] w-full items-center justify-center border-2 border-accent bg-accent px-4 py-2 text-center font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                      className="inline-flex min-h-[56px] w-full items-center justify-center border-2 border-accent bg-accent px-4 py-2 text-center font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     >
-                      Sign Up for 1:1 Mentorship
+                      Sign Up
                     </a>
                   </div>
 
-                  <div className="space-y-3 rounded-sm border border-accent/20 bg-primary/35 p-4">
+                  <div className="space-y-3 rounded-md border border-accent/35 bg-primary/50 p-5 shadow-[0_0_0_1px_rgba(239,214,72,0.08)]">
                     <div className="space-y-2">
-                      <p className="font-semibold">
-                        Pre-Event Networking Session
-                      </p>
+                      <p className="font-semibold">Networking Sessions</p>
                       <p className="text-sm leading-relaxed text-muted-foreground">
-                        Meet fellow data engineers in advance, start meaningful
-                        conversations early, and make the most of your DEOF
-                        experience before conference day.
+                        Meet fellow data engineers during the event, start
+                        meaningful conversations, and make the most of your
+                        DEOF experience on the conference day.
                       </p>
                     </div>
                     <a
                       href="https://detmentorship.as.me/schedule/aa77ccb8/?appointmentTypeIds[]=90952063"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex min-h-[72px] w-full items-center justify-center border-2 border-accent bg-accent px-4 py-2 text-center font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                      className="inline-flex min-h-[56px] w-full items-center justify-center border-2 border-accent bg-accent px-4 py-2 text-center font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     >
-                      <span className="block text-center leading-tight">
-                        Register for Pre-Event
-                        <br />
-                        Networking Session
-                      </span>
+                      Sign Up
                     </a>
                   </div>
                 </div>
