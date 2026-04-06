@@ -367,6 +367,91 @@ export default function Home() {
               </a>
             </div>
 
+            {/* DET Mentorship Booth Section */}
+            <div
+              id="det-mentorship-booth"
+              className="space-y-8 scroll-mt-24"
+            >
+              <div className="font-mono text-3xl font-semibold text-accent">
+                {"> DET_COMMUNITY_BOOTH_"}
+              </div>
+              <div className="inline-flex items-center gap-2 border border-accent/35 bg-accent/10 px-3 py-1 font-mono text-xs uppercase tracking-[0.24em] text-accent">
+                <span className="h-2 w-2 rounded-full bg-accent" />
+                All Day at DEOF 2026
+              </div>
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <p className="text-pretty text-lg leading-relaxed">
+                    Throughout the day, you&apos;ll be able to stop by the
+                    booth to:
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
+                      <p className="font-semibold">
+                        Connect 1:1 with experienced data engineers and mentors
+                      </p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
+                      <p className="font-semibold">
+                        Join small-group networking sessions with fellow
+                        practitioners
+                      </p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
+                      <p className="font-semibold">
+                        Learn how to get involved with the DET community
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="grid gap-4 lg:grid-cols-2">
+                  <div className="space-y-3 rounded-md border border-accent/35 bg-primary/50 p-5 shadow-[0_0_0_1px_rgba(239,214,72,0.08)]">
+                    <div className="space-y-2">
+                      <p className="font-semibold">
+                        1:1 Mentorship Sessions
+                      </p>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        To ensure you get dedicated time, we offer pre-booked
+                        1:1 mentorship conversations. You can also walk up
+                        during the event, but pre-booking is recommended.
+                      </p>
+                    </div>
+                    <a
+                      href="https://detmentorship.as.me/schedule/aa77ccb8/appointment/91014253?appointmentTypeIds[]=91014253"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-[56px] w-full items-center justify-center border-2 border-accent bg-accent px-4 py-2 text-center font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    >
+                      Sign Up
+                    </a>
+                  </div>
+
+                  <div className="space-y-3 rounded-md border border-accent/35 bg-primary/50 p-5 shadow-[0_0_0_1px_rgba(239,214,72,0.08)]">
+                    <div className="space-y-2">
+                      <p className="font-semibold">Networking Sessions</p>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        Meet fellow data engineers during the event, start
+                        meaningful conversations, and make the most of your
+                        DEOF experience on the conference day.
+                      </p>
+                    </div>
+                    <a
+                      href="https://detmentorship.as.me/schedule/aa77ccb8/?appointmentTypeIds[]=90952063"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-[56px] w-full items-center justify-center border-2 border-accent bg-accent px-4 py-2 text-center font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    >
+                      Sign Up
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Job Opportunities Section */}
             <div id="onsite-recruiting" className="space-y-4 scroll-mt-24">
               <div className="font-mono text-3xl font-semibold text-accent">
