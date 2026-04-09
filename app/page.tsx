@@ -13,7 +13,7 @@ const sponsorTiers = [
       {
         name: "Databricks",
         href: "https://www.databricks.com/",
-        logoSrc: "/sponsors/databriks.svg",
+        logoSrc: "/sponsors/databricks.svg",
       },
     ],
   },
@@ -33,7 +33,7 @@ const sponsorTiers = [
       {
         name: "Airbnb",
         href: "https://www.airbnb.com/",
-        logoSrc: "/sponsors/Airbnb.png",
+        logoSrc: "/sponsors/airbnb.png",
       },
       {
         name: "VeloDB",
@@ -49,11 +49,6 @@ const sponsorTiers = [
         name: "Altimate AI",
         href: "https://altimate.ai/",
         logoSrc: "/sponsors/altimate-ai.png",
-      },
-      {
-        name: "CelerData",
-        href: "https://celerdata.com/",
-        logoSrc: "/sponsors/celerdata.svg",
       },
       {
         name: "Dremio",
@@ -81,6 +76,12 @@ const sponsorTiers = [
         logoSrc: "/sponsors/openai.png",
       },
       {
+        name: "PhoenixAI",
+        href: "https://celerdata.com/",
+        logoSrc: "/sponsors/phoenixai.svg",
+        finePrint: "(Formerly CelerData)",
+      },
+      {
         name: "PuppyGraph",
         href: "https://www.puppygraph.com/",
         logoSrc: "/sponsors/puppygraph.png",
@@ -105,9 +106,11 @@ const sponsorTiers = [
 ] as const;
 
 const getSponsorLogoClass = (sponsorName: string, isSilver: boolean) =>
-  `mx-auto w-auto max-w-full object-contain brightness-0 invert ${
+  `mx-auto w-auto object-contain brightness-0 invert ${
     isSilver
-      ? sponsorName === "Dremio" || sponsorName === "OpenAI"
+      ? sponsorName === "PhoenixAI"
+        ? "max-w-none scale-[2.4]"
+        : sponsorName === "Dremio" || sponsorName === "OpenAI"
         ? "scale-[0.88]"
         : "scale-[0.8]"
       : ""
@@ -138,7 +141,7 @@ const getSponsorLogoClass = (sponsorName: string, isSilver: boolean) =>
                 ? isSilver
                   ? "h-5 sm:h-6"
                   : "h-[24px] sm:h-7"
-                : sponsorName === "CelerData"
+                : sponsorName === "PhoenixAI"
                   ? isSilver
                     ? "h-7 sm:h-8"
                     : "h-10 sm:h-11"
@@ -471,7 +474,7 @@ export default function Home() {
                   aria-label="View Data Engineering jobs at Airbnb"
                 >
                   <Image
-                    src="/sponsors/Airbnb.png"
+                    src="/sponsors/airbnb.png"
                     alt="Airbnb logo"
                     width={480}
                     height={160}
@@ -584,7 +587,7 @@ export default function Home() {
                               href={sponsor.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="sponsor-link group mx-auto flex h-20 w-full max-w-[260px] items-center justify-center rounded-sm bg-primary/20 px-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                              className="sponsor-link group relative mx-auto flex h-20 w-full max-w-[260px] items-center justify-center rounded-sm bg-primary/20 px-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                               aria-label={sponsor.name}
                             >
                               <Image
@@ -597,6 +600,11 @@ export default function Home() {
                                   isSilver,
                                 ).replace(" brightness-0 invert", "")}`}
                               />
+                              {"finePrint" in sponsor ? (
+                                <span className="pointer-events-none absolute bottom-1 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs leading-tight text-muted-foreground">
+                                  {sponsor.finePrint}
+                                </span>
+                              ) : null}
                             </a>
                           );
                         })}
