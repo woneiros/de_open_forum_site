@@ -101,7 +101,7 @@ export const sessions: Session[] = [
       },
     ],
     abstract:
-      "This talk chronicles \"The Data Odyssey,\" a 15-year voyage across Big Tech that redefines the data engineer's role from managing pipelines to architecting data products and achieving data sovereignty. We'll examine key lessons from the giants, which drives the transition to data products and services exemplified by the work at Airbnb. The session concludes with a call to action for the next generation of Data Engineers to own the data's entire lifecycle.",
+      "This talk chronicles \"The Data Odyssey,\" a decade long voyage across Airbnb that redefines the data engineer's role from managing pipelines to architecting data products and achieving data sovereignty. We'll examine key lessons from the past, which drives the transition to data products and services exemplified by the work at Airbnb. The session concludes with a call to action for the next generation of Data Engineers to own the data's entire lifecycle.",
   },
   {
     id: "s5",

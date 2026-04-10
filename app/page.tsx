@@ -378,9 +378,15 @@ export default function Home() {
               <div className="font-mono text-3xl font-semibold text-accent">
                 {"> DET_COMMUNITY_BOOTH_"}
               </div>
-              <div className="inline-flex items-center gap-2 border border-accent/35 bg-accent/10 px-3 py-1 font-mono text-xs uppercase tracking-[0.24em] text-accent">
-                <span className="h-2 w-2 rounded-full bg-accent" />
-                All Day at DEOF 2026
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <div className="inline-flex items-center gap-2 border border-accent/35 bg-accent/10 px-3 py-1 font-mono text-xs uppercase tracking-[0.24em] text-accent">
+                  <span className="h-2 w-2 rounded-full bg-accent" />
+                  All Day at DEOF 2026
+                </div>
+                <div className="inline-flex items-center gap-2 border border-accent/35 bg-accent/10 px-3 py-1 font-mono text-xs uppercase tracking-[0.24em] text-accent">
+                  <span className="h-2 w-2 rounded-full bg-accent" />
+                  Location: Blue Cube
+                </div>
               </div>
               <div className="space-y-6">
                 <div className="space-y-4">
@@ -391,20 +397,20 @@ export default function Home() {
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
-                      <p className="font-semibold">
+                      <p>
                         Connect 1:1 with experienced data engineers and mentors
                       </p>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
-                      <p className="font-semibold">
+                      <p>
                         Join small-group networking sessions with fellow
                         practitioners
                       </p>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
-                      <p className="font-semibold">
+                      <p>
                         Learn how to get involved with the DET community
                       </p>
                     </li>
