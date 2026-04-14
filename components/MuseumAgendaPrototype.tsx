@@ -319,7 +319,7 @@ export function MuseumAgendaPrototype() {
                       }`}
                     >
                       <p className="text-sm font-semibold leading-tight underline decoration-accent/70 underline-offset-2">
-                        Airbnb Keynote
+                        {keynoteSessions.airbnb.title}
                       </p>
                       <p className="mt-2 text-xs text-accent">
                         {getSessionTimeRange(keynoteSessions.airbnb)}
