@@ -688,7 +688,7 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="pt-2 font-mono font-semibold text-accent">
-                  {"// Volunteer_Leads_"}
+                  {"// VOLUNTEER_LEADS_"}
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {volunteerLeads.map((member) => (
