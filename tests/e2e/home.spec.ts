@@ -144,7 +144,7 @@ test.describe("Homepage", () => {
 
     // Check section header
     await expect(page.getByText(/PROGRAM_COMMITTEE_/)).toBeVisible();
-    await expect(page.getByText(/Volunteer_Leads_/)).toBeVisible();
+    await expect(page.getByText(/VOLUNTEER_LEADS_/)).toBeVisible();
 
     // Check all 9 committee members are displayed
     const committeeMembers = [
