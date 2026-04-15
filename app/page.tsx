@@ -4,7 +4,7 @@ import { CommitteeCard } from "@/components/CommitteeCard";
 import { FAQSection } from "@/components/FAQSection";
 import { MuseumAgendaPrototype } from "@/components/MuseumAgendaPrototype";
 import GalleryCarousel from "@/components/GalleryCarousel";
-import { programCommittee, faqItems } from "@/data/homepage";
+import { programCommittee, volunteerLeads, faqItems } from "@/data/homepage";
 
 const sponsorTiers = [
   {
@@ -679,6 +679,19 @@ export default function Home() {
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {programCommittee.map((member) => (
+                    <CommitteeCard
+                      key={member.name}
+                      name={member.name}
+                      title={member.title}
+                      linkedin={member.linkedin}
+                    />
+                  ))}
+                </div>
+                <div className="pt-2 font-mono font-semibold text-accent">
+                  {"// Volunteer_Leads_"}
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {volunteerLeads.map((member) => (
                     <CommitteeCard
                       key={member.name}
                       name={member.name}
