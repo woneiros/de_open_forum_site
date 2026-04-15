@@ -144,6 +144,7 @@ test.describe("Homepage", () => {
 
     // Check section header
     await expect(page.getByText(/PROGRAM_COMMITTEE_/)).toBeVisible();
+    await expect(page.getByText(/Volunteer_Leads_/)).toBeVisible();
 
     // Check all 9 committee members are displayed
     const committeeMembers = [
@@ -160,6 +161,19 @@ test.describe("Homepage", () => {
 
     const committeeSection = page.locator("#program-committee");
     for (const member of committeeMembers) {
+      await expect(
+        committeeSection.getByText(member, { exact: true }),
+      ).toBeVisible();
+    }
+
+    // Check Volunteer Leads are displayed
+    const volunteerLeads = [
+      "Anna Peng",
+      "Annu Joshi",
+      "Balachandar Paulraj",
+    ];
+
+    for (const member of volunteerLeads) {
       await expect(
         committeeSection.getByText(member, { exact: true }),
       ).toBeVisible();

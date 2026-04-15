@@ -61,6 +61,24 @@ export const programCommittee: CommitteeMember[] = [
   },
 ];
 
+export const volunteerLeads: CommitteeMember[] = [
+  {
+    name: "Anna Peng",
+    title: "Engineering Director @ RISE2GETHER",
+    linkedin: "https://www.linkedin.com/in/huipeng/",
+  },
+  {
+    name: "Annu Joshi",
+    title: "Data Engineer @ Doordash",
+    linkedin: "https://www.linkedin.com/in/annu-joshi/",
+  },
+  {
+    name: "Balachandar Paulraj",
+    title: "Staff Engineer @ Quizlet",
+    linkedin: "https://www.linkedin.com/in/balachandar-paulraj-b8a26727/",
+  },
+];
+
 export const faqItems: FAQItem[] = [
   {
     question: "How do I register for the event?",
