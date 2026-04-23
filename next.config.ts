@@ -21,6 +21,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/sponsorship",
+        destination: "https://forms.gle/HpcaGq95Pf3R2iEQ9",
+        permanent: true,
+      },
+      {
         source: "/email-list",
         destination: "https://groups.google.com/g/data-engineering-open-forum",
         permanent: true,
