@@ -188,6 +188,14 @@ export const sessions: Session[] = [
         avatarUrl: "/speakers/Shridhar-lyer.png",
         bio: "Shridhar Iyer is a Senior Tech Lead Director at Meta, where he has spent over 13 years building the data infrastructure that powers some of the world's most widely used products. Currently tech leading Meta's AI for Data Stack, he architects the Context Ecosystem Infrastructure - the foundational layer for AI-powered data agents - spanning semantic modeling, metadata governance, and compliance workflows across the Meta Family of Apps. His career traces the arc of data engineering itself: from raw data to information, knowledge, and ultimately wisdom - and he believes AI is now accelerating that journey industry-wide. With 25+ years of engineering experience in supply chain, search analytics, and large-scale data infrastructure, Shridhar brings a practitioner's lens to the evolving role of data engineering in an AI-native world.",
       },
+      {
+        name: "Monisha Kanoth",
+        title: "Head of Siri User Experience Metrics",
+        company: "Apple",
+        linkedin: "https://www.linkedin.com/in/monishakanoth/",
+        avatarUrl: "/speakers/Monisha-Kanoth.png",
+        bio: "Monisha is a data engineering and analytics leader with over 15 years of experience building scalable data systems across companies like Apple, Netflix, and early-stage startups. Currently leading Siri User Experience Metrics at Apple, Monisha drives latency and reliability analytics, anomaly detection, and self-service data enablement through a team of Data and ML engineers.\n\nThroughout Monisha's career, she has architected and scaled data systems that power critical business decisions. At Netflix, she played a key role in standardizing content data systems and enabling data-driven content strategy, including supporting decisions on content acquisition. Before Netflix, she helped scale data infrastructure at growing organizations, leading cloud migrations, establishing data governance practices, and building robust data models and pipelines. Her work consistently focuses on creating trusted, accessible data systems that drive innovation and measurable impact.",
+      },
     ],
     moderator: {
       name: "Goutham Budati",

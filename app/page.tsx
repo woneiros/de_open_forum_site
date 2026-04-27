@@ -4,7 +4,7 @@ import { CommitteeCard } from "@/components/CommitteeCard";
 import { FAQSection } from "@/components/FAQSection";
 import { MuseumAgendaPrototype } from "@/components/MuseumAgendaPrototype";
 import GalleryCarousel from "@/components/GalleryCarousel";
-import { programCommittee, faqItems } from "@/data/homepage";
+import { programCommittee, volunteerLeads, faqItems } from "@/data/homepage";
 
 const sponsorTiers = [
   {
@@ -221,12 +221,20 @@ export default function Home() {
               [JOBS]
             </Link>
             <a
-              href="https://luma.com/deof2026?utm_source=website-topbar"
+              href="https://forms.gle/HpcaGq95Pf3R2iEQ9"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center border-2 border-accent bg-accent px-3 py-1 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
-              Register Now
+              Sponsorship
+            </a>
+            <a
+              href="https://groups.google.com/g/data-engineering-open-forum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center border-2 border-accent bg-accent px-3 py-1 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              Get Updates
             </a>
           </div>
         </div>
@@ -258,16 +266,6 @@ export default function Home() {
                 <p>{"// Make connections that outlive the event"}</p>
                 <p>{"// Onsite recruiting with Airbnb, Netflix, and OpenAI"}</p>
               </div>
-              <div>
-                <a
-                  href="https://luma.com/deof2026?utm_source=website-hero"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-3 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                >
-                  Register Now
-                </a>
-              </div>
             </div>
             {/* Right column - Visual element */}
             <div className="flex items-center justify-center lg:col-span-4 ">
@@ -285,6 +283,52 @@ export default function Home() {
           </div>
 
           {/* End of header -- begin main content */}
+          <section className="col-span-full space-y-4">
+            <div className="space-y-4">
+              <div className="font-mono text-3xl font-semibold text-accent">
+                {"> DEOF_2027_"}
+              </div>
+              <p className="text-pretty text-lg leading-relaxed">
+                DEOF 2026 has wrapped, and we are already looking ahead to the
+                next Data Engineering Open Forum.
+              </p>
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="space-y-3 rounded-md border border-accent/35 bg-primary/50 p-5 shadow-[0_0_0_1px_rgba(239,214,72,0.08)]">
+                  <p className="font-semibold">Stay in the Loop</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Join our{" "}
+                    <a
+                      href="https://groups.google.com/g/data-engineering-open-forum"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline text-accent hover:opacity-90"
+                    >
+                      Google Group
+                    </a>{" "}
+                    for DEOF 2027 announcements, CFP updates, volunteer
+                    opportunities, and community news.
+                  </p>
+                </div>
+                <div className="space-y-3 rounded-md border border-accent/35 bg-primary/50 p-5 shadow-[0_0_0_1px_rgba(239,214,72,0.08)]">
+                  <p className="font-semibold">Sponsor DEOF 2027</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Interested in partnering with the data engineering
+                    community? Complete our{" "}
+                    <a
+                      href="https://forms.gle/HpcaGq95Pf3R2iEQ9"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline text-accent hover:opacity-90"
+                    >
+                      sponsorship interest form
+                    </a>
+                    .
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Left column - Text content */}
           <div className="flex flex-col justify-center space-y-16 lg:col-span-8 mx-1 md:mx-8 lg:mx-0">
             {/* Why Should I Attend? */}
@@ -339,14 +383,6 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <a
-                href="https://luma.com/deof2026?utm_source=website-why-attend"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                Register Now
-              </a>
             </div>
 
             {/* Agenda Section */}
@@ -360,14 +396,6 @@ export default function Home() {
                 }
               </p>
               <MuseumAgendaPrototype />
-              <a
-                href="https://luma.com/deof2026?utm_source=website-agenda"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                Register Now
-              </a>
             </div>
 
             {/* DET Mentorship Booth Section */}
@@ -429,14 +457,6 @@ export default function Home() {
                         during the event, but pre-booking is recommended.
                       </p>
                     </div>
-                    <a
-                      href="https://detmentorship.as.me/schedule/aa77ccb8/appointment/91014253?appointmentTypeIds[]=91014253"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-[56px] w-full items-center justify-center border-2 border-accent bg-accent px-4 py-2 text-center font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                    >
-                      Sign Up
-                    </a>
                   </div>
 
                   <div className="space-y-3 rounded-md border border-accent/35 bg-primary/50 p-5 shadow-[0_0_0_1px_rgba(239,214,72,0.08)]">
@@ -448,14 +468,6 @@ export default function Home() {
                         DEOF experience on the conference day.
                       </p>
                     </div>
-                    <a
-                      href="https://detmentorship.as.me/schedule/aa77ccb8/?appointmentTypeIds[]=90952063"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-[56px] w-full items-center justify-center border-2 border-accent bg-accent px-4 py-2 text-center font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                    >
-                      Sign Up
-                    </a>
                   </div>
                 </div>
               </div>
@@ -541,14 +553,6 @@ export default function Home() {
               <div className="max-w-2xl">
                 <GalleryCarousel items={galleryItems} />
               </div>
-              <a
-                href="https://luma.com/deof2026?utm_source=website-past-events"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                Register Now
-              </a>
             </div>
 
             {/* Sponsors Section */}
@@ -558,6 +562,18 @@ export default function Home() {
               </div>
               <p className="font-mono text-sm text-muted-foreground">
                 {"// Thank you to our partners for supporting the community."}
+              </p>
+              <p className="text-pretty leading-relaxed text-primary-foreground">
+                Interested in sponsoring DEOF 2027? Please complete our{" "}
+                <a
+                  href="https://forms.gle/HpcaGq95Pf3R2iEQ9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-accent hover:opacity-90"
+                >
+                  sponsorship interest form
+                </a>
+                .
               </p>
 
               <section className="mt-6 rounded-sm bg-primary/70 px-5 py-8 sm:px-8 sm:py-10">
@@ -687,6 +703,19 @@ export default function Home() {
                     />
                   ))}
                 </div>
+                <div className="pt-2 font-mono font-semibold text-accent">
+                  {"// VOLUNTEER_LEADS_"}
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {volunteerLeads.map((member) => (
+                    <CommitteeCard
+                      key={member.name}
+                      name={member.name}
+                      title={member.title}
+                      linkedin={member.linkedin}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -728,14 +757,6 @@ export default function Home() {
                 {"> FAQ_ "}
               </div>
               <FAQSection items={faqItems} />
-              <a
-                href="https://luma.com/deof2026?utm_source=website-faq"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-2 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                Register Now
-              </a>
             </div>
 
             {/* Contact Section */}
@@ -762,15 +783,28 @@ export default function Home() {
                   volunteer opportunities, and more.
                 </p>
                 <div className="font-mono font-semibold text-accent">
+                  {"// SPONSORSHIP_ "}
+                </div>
+                <p className="text-pretty leading-relaxed text-primary-foreground">
+                  Interested in sponsoring DEOF? Please complete our{" "}
+                  <a
+                    href="https://forms.gle/HpcaGq95Pf3R2iEQ9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-accent hover:opacity-90"
+                  >
+                    sponsorship interest form
+                  </a>
+                  .
+                </p>
+                <div className="font-mono font-semibold text-accent">
                   {"// QUESTIONS_ "}
                 </div>
                 <p className="mt-3 text-pretty leading-relaxed text-primary-foreground">
-                  If you have any questions, please contact us in{" "}
+                  If you have any questions, please contact us by {" "}
                   <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=data-engineering-open-forum-info@googlegroups.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline hover:text-accent"
+                    href="mailto:info@dataengineerthings.org"
+                    className="underline text-accent hover:opacity-90"
                   >
                     email
                   </a>
