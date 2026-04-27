@@ -35,8 +35,8 @@ export const programCommittee: CommitteeMember[] = [
     linkedin: "https://www.linkedin.com/in/jerry-wang-aa813637/",
   },
   {
-    name: "Michelle Winters",
-    title: "Distinguished Architect @ eBay",
+    name: "Michelle (Ufford) Winters",
+    title: "Distinguished Architect @ eBay (formerly)",
     linkedin: "https://www.linkedin.com/in/mufford/",
   },
   {
