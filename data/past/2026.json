@@ -1,0 +1,357 @@
+{
+  "year": "2026",
+  "title": "Data Engineering Open Forum 2026",
+  "date": "2026-04-16",
+  "description": "The third edition of Data Engineering Open Forum brought the data engineering community together at The Contemporary Jewish Museum in San Francisco.",
+  "playlistUrl": "https://www.youtube.com/playlist?list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+  "talks": [
+    {
+      "title": "The Evolution of Structured Streaming: How Apache Spark Innovated on Throughput, Latency, and Flexibility",
+      "authors": [
+        {
+          "name": "Indrajit Roy",
+          "title": "Director of Engineering at Databricks",
+          "avatarUrl": "/speakers/IndrajitRoy.jpg"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=VLJhGDwTS3I&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Keynote"
+    },
+    {
+      "title": "The Data Odyssey: A 15-Year Voyage from Pipelines to Sovereignty across Big Tech",
+      "authors": [
+        {
+          "name": "Jerry Wang",
+          "title": "Head of Data Development Infrastructure at Airbnb",
+          "avatarUrl": "/speakers/Jerry-Wang.jpg"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=1iAZgJaHxhg&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Keynote"
+    },
+    {
+      "title": "Frontiers of Data: The Future of Data Engineering in an AI World",
+      "authors": [
+        {
+          "name": "Paul Ellwood",
+          "title": "Head of Data Engineering at OpenAI",
+          "avatarUrl": "/speakers/Paul-Ellwood.jpeg"
+        },
+        {
+          "name": "Vikram Koka",
+          "title": "Chief Strategy Officer & Apache Airflow PMC at Astronomer",
+          "avatarUrl": "/speakers/Vikram-Koka.jpg"
+        },
+        {
+          "name": "Laura Pruitt",
+          "title": "Senior Director, Data Science & Engineering at Netflix",
+          "avatarUrl": "/speakers/Laura-Pruitt.jpeg"
+        },
+        {
+          "name": "Michelle Ufford",
+          "title": "Distinguished Architect, Data & AI",
+          "avatarUrl": "/speakers/michelle-winters-profile.jpg"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=k8-UZNSvQF0&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Keynote"
+    },
+    {
+      "title": "Panel: Data, Perspective, Action: Why Most Data Engineering Teams Fail at the 'Perspective' Part",
+      "authors": [
+        {
+          "name": "Mick Dreeling",
+          "title": "Director, Games Data Science and Engineering at Netflix",
+          "avatarUrl": "/speakers/Mick-Dreeling.jpeg"
+        },
+        {
+          "name": "Shridhar Iyer",
+          "title": "Director, Data Engineering at Meta",
+          "avatarUrl": "/speakers/Shridhar-lyer.png"
+        },
+        {
+          "name": "Monisha Kanoth",
+          "title": "Head of Siri User Experience Metrics at Apple",
+          "avatarUrl": "/speakers/Monisha-Kanoth.png"
+        },
+        {
+          "name": "Goutham Budati",
+          "title": "VP, Data Strategy and Insights at The Farmer's Dog",
+          "avatarUrl": "/speakers/Goutham-Budati.jpeg"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=3eOzOOcC05k&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Panel"
+    },
+    {
+      "title": "Column storage for the AI era",
+      "authors": [
+        {
+          "name": "Julien Le Dem",
+          "title": "Principal Engineer at Datadog",
+          "avatarUrl": "/speakers/julien-le-dem.png"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=6_lOFlnlHH8&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Full Talk"
+    },
+    {
+      "title": "Apache Spark: Structured Streaming Real-Time Mode",
+      "authors": [
+        {
+          "name": "Jerry Peng",
+          "title": "Staff Software Engineer at Databricks",
+          "avatarUrl": "/speakers/jerrypeng.jpeg"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=_E8f6wkcIBE&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Full Talk"
+    },
+    {
+      "title": "Lightning Talks: From Manual to Magical: Building AI Agents for ETL Automation",
+      "authors": [
+        {
+          "name": "Himanshi Manglunia",
+          "title": "Senior Data Engineer at Amazon Web Services",
+          "avatarUrl": "/speakers/Himanshi-Manglunia.jpeg"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=xwI6hP67ZAE&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Lightning Talk"
+    },
+    {
+      "title": "Lightning Talks: SparkMedic: First Aid for Failing Jobs",
+      "authors": [
+        {
+          "name": "Drasko Profirovic",
+          "title": "Staff Engineer at Pinterest",
+          "avatarUrl": "/speakers/drasko-profirovic.jpeg"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=iyzY08L9iD0&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Lightning Talk"
+    },
+    {
+      "title": "Beyond Vectors: How Apache Doris Brings Hybrid Search and Real-Time Analytics to Context Engineering",
+      "authors": [
+        {
+          "name": "Yuankai Shen",
+          "title": "Principal Product Manager at VeloDB",
+          "avatarUrl": "/speakers/Kevin-Shen.jpg"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=XyVJpOr0FOo&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Full Talk"
+    },
+    {
+      "title": "Lightning Talks: MinervaSQL - Lessons Building a Full-fledged SQL interface for a Semantic Layer",
+      "authors": [
+        {
+          "name": "Barak Alon",
+          "title": "Senior Staff Software Engineer at Airbnb",
+          "avatarUrl": "/speakers/barak-alon.jpeg"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=xPFPOEDYV9g&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Lightning Talk"
+    },
+    {
+      "title": "Lightning Talks: From Idea to Production: E2E Traceability for ML Innovation",
+      "authors": [
+        {
+          "name": "Booker Gong",
+          "title": "Senior Staff Data Engineer at Meta",
+          "avatarUrl": "/speakers/Booker-Gong.jpeg"
+        }
+      ],
+      "youtubeUrl": null,
+      "sessionType": "Lightning Talk"
+    },
+    {
+      "title": "Powering Netflix’s Multimodal Feature Engineering at Scale",
+      "authors": [
+        {
+          "name": "Jack Ye",
+          "title": "Software Engineer at LanceDB",
+          "avatarUrl": "/speakers/Jack-Ye.jpeg"
+        },
+        {
+          "name": "Pablo Delgado",
+          "title": "Machine Learning Engineer at Netflix",
+          "avatarUrl": "/speakers/Pablo-Delgado.jpeg"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=CrcvEEB4FW4&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Full Talk"
+    },
+    {
+      "title": "Orchestrating LLM Inference with Apache Airflow",
+      "authors": [
+        {
+          "name": "Volker Janz",
+          "title": "Senior Developer Advocate at Astronomer",
+          "avatarUrl": "/speakers/Volker-janz.jpg"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=aq59u-2MuPU&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Full Talk"
+    },
+    {
+      "title": "Lightning Talks: Data Lineage in 2026: From Compliance Checkbox to Critical Platform Investment",
+      "authors": [
+        {
+          "name": "Dan Shetty",
+          "title": "Product Manager at Spotify",
+          "avatarUrl": "/speakers/Dhanush-Shetty.png"
+        }
+      ],
+      "youtubeUrl": null,
+      "sessionType": "Lightning Talk"
+    },
+    {
+      "title": "Lightning Talks: Lessons from building a data observability product with OpenLineage",
+      "authors": [
+        {
+          "name": "Harel Shein",
+          "title": "Senior Engineering Manager at Datadog",
+          "avatarUrl": "/speakers/Harel-Shein.jpeg"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=AVNzNThXn9M&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Lightning Talk"
+    },
+    {
+      "title": "Inside OpenAI’s Internal AI Data Agent",
+      "authors": [
+        {
+          "name": "Bonnie Xu",
+          "title": "Staff Software Engineer at OpenAI",
+          "avatarUrl": "/speakers/Bonnie-Xu.png"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=OTVVK0lDfqQ&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Full Talk"
+    },
+    {
+      "title": "From Repetition to Reuse: The Evolution of Apache Spark Declarative Pipelines",
+      "authors": [
+        {
+          "name": "Andreas Neumann",
+          "title": "Senior Staff Software Engineer at Databricks",
+          "avatarUrl": "/speakers/Andreas-Neumann.jpg"
+        }
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=h5ehSKksI8E&list=PLTDfuxyNWpIxxV_uzLijxZfpLbIvlmm-C",
+      "sessionType": "Full Talk"
+    },
+    {
+      "title": "Breaking Down Data Silos: Building Federated Knowledge Infrastructure for Enterprise Agentic AI",
+      "authors": [
+        {
+          "name": "Dinesh Thangaraju",
+          "title": "Head of AWS Data Platform at Amazon Web Services",
+          "avatarUrl": "/speakers/Dinesh-Thangaraju.jpeg"
+        }
+      ],
+      "youtubeUrl": null,
+      "sessionType": "Full Talk"
+    }
+  ],
+  "sponsorTiers": [
+    {
+      "tier": "PLATINUM PLUS",
+      "sponsors": [
+        {
+          "name": "Databricks",
+          "href": "https://www.databricks.com/",
+          "logoSrc": "/sponsors/databricks.svg"
+        }
+      ]
+    },
+    {
+      "tier": "PLATINUM",
+      "sponsors": [
+        {
+          "name": "Astronomer",
+          "href": "https://www.astronomer.io/",
+          "logoSrc": "/sponsors/astronomer.png"
+        }
+      ]
+    },
+    {
+      "tier": "GOLD",
+      "sponsors": [
+        {
+          "name": "Airbnb",
+          "href": "https://www.airbnb.com/",
+          "logoSrc": "/sponsors/airbnb.png"
+        },
+        {
+          "name": "VeloDB",
+          "href": "https://www.velodb.io/",
+          "logoSrc": "/sponsors/velodb.png"
+        }
+      ]
+    },
+    {
+      "tier": "SILVER",
+      "sponsors": [
+        {
+          "name": "Altimate AI",
+          "href": "https://altimate.ai/",
+          "logoSrc": "/sponsors/altimate-ai.png"
+        },
+        {
+          "name": "Dremio",
+          "href": "https://www.dremio.com/",
+          "logoSrc": "/sponsors/dremio.png"
+        },
+        {
+          "name": "Matia",
+          "href": "https://www.matia.io/",
+          "logoSrc": "/sponsors/matia.png"
+        },
+        {
+          "name": "MinIO",
+          "href": "https://min.io/",
+          "logoSrc": "/sponsors/minio-color.svg"
+        },
+        {
+          "name": "Netflix",
+          "href": "https://www.netflix.com/",
+          "logoSrc": "/sponsors/netflix.svg"
+        },
+        {
+          "name": "OpenAI",
+          "href": "https://openai.com/",
+          "logoSrc": "/sponsors/openai-logotype.png"
+        },
+        {
+          "name": "PhoenixAI",
+          "href": "https://celerdata.com/",
+          "logoSrc": "/sponsors/phoenixai.svg"
+        },
+        {
+          "name": "PuppyGraph",
+          "href": "https://www.puppygraph.com/",
+          "logoSrc": "/sponsors/puppygraph.png"
+        },
+        {
+          "name": "StreamNative",
+          "href": "https://streamnative.io/",
+          "logoSrc": "/sponsors/streamnative.svg"
+        }
+      ]
+    },
+    {
+      "tier": "HAPPY HOUR",
+      "sponsors": [
+        {
+          "name": "Datadog",
+          "href": "https://www.datadoghq.com/",
+          "logoSrc": "/sponsors/datadog.svg"
+        }
+      ]
+    }
+  ]
+}

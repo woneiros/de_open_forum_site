@@ -14,9 +14,10 @@ test.describe("Homepage", () => {
   test("should display event date and location", async ({ page }) => {
     await page.goto("/");
 
-    // Check event date and location line
+    // Check the hero date and location rows.
+    await expect(page.getByText("Tuesday, April 20, 2027")).toBeVisible();
     await expect(
-      page.getByText(/San Francisco\s*\|\s*April 16th, 2026/),
+      page.getByText("South San Francisco Conference Center"),
     ).toBeVisible();
   });
 
@@ -43,15 +44,38 @@ test.describe("Homepage", () => {
   }) => {
     await page.goto("/");
 
-    // Check Google Group link
-    const googleGroupLink = page.getByRole("link", {
-      name: /Google Group/i,
-    });
-    await expect(googleGroupLink).toHaveAttribute(
+    // Check community calendar and subscription links
+    const calendarLink = page.getByRole("link", {
+      name: /community calendar/i,
+    }).first();
+    await expect(calendarLink).toHaveAttribute(
       "href",
-      "https://groups.google.com/g/data-engineering-open-forum",
+      "https://luma.com/det-meetup-bay-area",
     );
-    await expect(googleGroupLink).toHaveAttribute("target", "_blank");
+    await expect(calendarLink).toHaveAttribute("target", "_blank");
+    await expect(page.getByRole("link", { name: "Subscribe", exact: true })).toHaveAttribute(
+      "href", "https://luma.com/det-meetup-bay-area",
+    );
+  });
+
+  test("should highlight four ways to get involved", async ({ page }) => {
+    await page.goto("/");
+    const involvement = page.getByRole("region", { name: "> GET_INVOLVED_" });
+    await expect(involvement.getByRole("article")).toHaveCount(4);
+    for (const name of ["Attend", "Volunteer", "Speak", "Sponsor"]) {
+      await expect(involvement.getByRole("heading", { name, exact: true })).toBeVisible();
+    }
+    await expect(involvement).toContainText("Program Committee member or Community Ambassador");
+    await expect(involvement).toContainText("Call for Proposals details are coming soon.");
+    await expect(involvement.getByRole("link", { name: "Register to attend →", exact: true })).toHaveAttribute(
+      "href", "https://luma.com/deof2027",
+    );
+    await expect(involvement.getByRole("link", { name: "Sponsor DEOF 2027 →", exact: true })).toHaveAttribute(
+      "href", "https://forms.gle/HpcaGq95Pf3R2iEQ9",
+    );
+    await expect(involvement.getByRole("link", { name: "Get CFP updates →", exact: true })).toHaveAttribute(
+      "href", "https://luma.com/det-meetup-bay-area",
+    );
   });
 
   test("should display Golden Gate Bridge image", async ({ page }) => {
@@ -73,7 +97,7 @@ test.describe("Homepage", () => {
       page.getByText(/Make connections that outlive the event/i),
     ).toBeVisible();
     await expect(
-      page.getByText(/Onsite recruiting with Airbnb, Netflix, and OpenAI/i),
+      page.getByText(/Onsite recruiting details coming soon/i),
     ).toBeVisible();
   });
 
@@ -101,25 +125,29 @@ test.describe("Homepage", () => {
 
     // Check career opportunities content
     await expect(
-      page.getByText(/Top tech companies.*will be recruiting onsite/i),
+      page.getByText(/Top tech companies will be recruiting onsite\. Explore open job roles, meet the hiring teams in person/i),
     ).toBeVisible();
   });
 
-  test("should display expanded Agenda section with past links", async ({
+  test("should retain the 2026 past-event link without a separate recordings section", async ({
     page,
   }) => {
     await page.goto("/");
 
-    // Check agenda section
-    await expect(page.getByText(/>\s*AGENDA_/)).toBeVisible();
-    await expect(page.getByText("Time Range")).toBeVisible();
-    await expect(page.getByText("Goldman Hall", { exact: true }).first()).toBeVisible();
-    await expect(page.getByText("Swig Gallery", { exact: true }).first()).toBeVisible();
-    await expect(page.getByText("Yud Gallery", { exact: true }).first()).toBeVisible();
-    await expect(page.getByText("Check-in & Breakfast")).toBeVisible();
-    await expect(page.getByText("Open Remarks")).toBeVisible();
-    await expect(page.getByText(/The Evolution of Structured Streaming/i)).toBeVisible();
-    await expect(page.getByText("Airbnb Keynote")).toBeVisible();
+    const recordingsLink = page.getByRole("link", {
+      name: "DEOF 2026",
+      exact: true,
+    });
+    await expect(recordingsLink).toBeVisible();
+    await expect(recordingsLink).toHaveAttribute("href", "/past/2026");
+    await expect(page.locator("#deof-2026-recordings")).toHaveCount(0);
+    await expect(page.locator("#agenda")).toHaveCount(0);
+    await expect(page.getByText("Time Range", { exact: true })).toHaveCount(0);
+    await recordingsLink.click();
+    await expect(page).toHaveURL("/past/2026");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "Data Engineering Open Forum 2026",
+    );
   });
 
   test("should display DET organizer information prominently", async ({
@@ -139,86 +167,69 @@ test.describe("Homepage", () => {
     ).toBeVisible();
   });
 
-  test("should display all Program Committee members", async ({ page }) => {
+  test("should mark unconfirmed 2027 details as coming soon", async ({ page }) => {
     await page.goto("/");
-
-    // Check section header
-    await expect(page.getByText(/PROGRAM_COMMITTEE_/)).toBeVisible();
-    await expect(page.getByText(/VOLUNTEER_LEADS_/)).toBeVisible();
-
-    // Check all 9 committee members are displayed
-    const committeeMembers = [
-      "Xinran Waibel",
-      "Apoorva Bapat",
-      "Goutham Budati",
-      "Jerry Wang",
-      "Michelle Winters",
-      "Sharath Chandra",
-      "Shruthi Jaganathan",
-      "Tulika Bhatt",
-      "Will Monge",
-    ];
-
-    const committeeSection = page.locator("#program-committee");
-    for (const member of committeeMembers) {
-      await expect(
-        committeeSection.getByText(member, { exact: true }),
-      ).toBeVisible();
-    }
-
-    // Check Volunteer Leads are displayed
-    const volunteerLeads = [
-      "Anna Peng",
-      "Annu Joshi",
-      "Balachandar Paulraj",
-    ];
-
-    for (const member of volunteerLeads) {
-      await expect(
-        committeeSection.getByText(member, { exact: true }),
-      ).toBeVisible();
-    }
-
-    // Check some company names
-    await expect(page.getByText(/Netflix/).first()).toBeVisible();
-    await expect(page.getByText(/Airbnb/).first()).toBeVisible();
-    await expect(page.getByText(/Figma/).first()).toBeVisible();
+    await expect(page.locator("#program-committee")).toContainText(
+      "The DEOF 2027 program committee is coming soon.",
+    );
+    await expect(page.locator("#program-committee")).toContainText(
+      "DEOF 2027 community ambassadors and opportunities are coming soon.",
+    );
+    await expect(page.locator("#onsite-recruiting")).toHaveCount(0);
+    await expect(page.locator('a[href="#onsite-recruiting"]')).toHaveCount(0);
+    await expect(page.locator("#sponsors")).toContainText(
+      "Sponsorship for DEOF 2027 is now open!",
+    );
+    await expect(page.getByRole("link", { name: "Become a Sponsor", exact: true })).toHaveAttribute(
+      "href", "https://forms.gle/HpcaGq95Pf3R2iEQ9",
+    );
+    const pastSponsors = page.getByRole("region", { name: "2026 Sponsors" });
+    await expect(pastSponsors.getByRole("img")).toHaveCount(14);
+    await expect(pastSponsors.locator("dt")).toHaveCount(5);
+    await expect(pastSponsors.getByRole("link", { name: "Databricks", exact: true })).toHaveCount(1);
+    await expect(page.locator("#det-mentorship-booth")).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "ImagineX Productions", exact: true })).toHaveAttribute(
+      "href", "https://imaginexproductions.com/",
+    );
+    await expect(page.getByRole("img", { name: "ImagineX Productions logo" })).toBeVisible();
   });
 
-  test("should display Job Opportunities section with Netflix link", async ({
-    page,
-  }) => {
+  test("should offer 2027 registration and retain the past event gallery", async ({ page }) => {
     await page.goto("/");
-
-    // Check section header
-    await expect(page.getByText(/>\s*ONSITE_RECRUITING_/)).toBeVisible();
-
-    // Check description text
-    await expect(
-      page.getByText(/Our event partners are looking for top talent/i),
-    ).toBeVisible();
-
-    // Logo cards now link to the internal jobs page with a company prefilter
-    const netflixJobLink = page.getByRole("link", {
-      name: /View Data Engineering jobs at Netflix/i,
-    });
-    await expect(netflixJobLink).toBeVisible();
-    await expect(netflixJobLink).toHaveAttribute("href", "/jobs?company=Netflix");
-
-    // Check "View all" link points to /jobs
-    const viewAllLink = page.getByRole("link", {
-      name: /VIEW ALL/i,
-    });
-    await expect(viewAllLink).toBeVisible();
-    await expect(viewAllLink).toHaveAttribute("href", "/jobs");
+    await expect(page).toHaveTitle("Data Engineering Open Forum 2027");
+    const registrationLinks = page.getByRole("link", { name: "Register Now", exact: true });
+    await expect(registrationLinks).toHaveCount(1);
+    await expect(page.getByRole("link", { name: "RSVP", exact: true })).toHaveAttribute(
+      "href", "https://luma.com/deof2027",
+    );
+    for (const link of await registrationLinks.all()) {
+      await expect(link).toHaveAttribute("href", "https://luma.com/deof2027");
+    }
+    await expect(page.getByRole("img", { name: "Frontiers of Data keynote panel - Data Engineering Open Forum 2026", exact: true })).toBeVisible();
+    await expect(page.getByText("Photo: DuHon Photography", { exact: true })).toBeVisible();
+    await page.getByRole("button", { name: /How do I register for the event/ }).click();
+    await expect(page.getByRole("link", { name: "event registration page" })).toHaveAttribute(
+      "href", "https://luma.com/deof2027",
+    );
   });
 
-  test("should display [JOBS] link in the top navbar", async ({ page }) => {
-    await page.goto("/");
+  test("shows a navigable showcase of 2026 speakers", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/#speakers-2026");
+    const showcase = page.getByRole("region", { name: "Speakers from DEOF 2026" });
+    const profiles = showcase.getByRole("list", { name: "2026 speaker profiles" });
+    await expect(profiles.getByRole("listitem")).toHaveCount(25);
+    await expect(profiles.getByRole("img", { name: "Andreas Neumann portrait", exact: true })).toBeVisible();
+    await expect(showcase.getByRole("button", { name: "Pause speaker scrolling" })).toHaveCount(0);
+    await showcase.getByRole("button", { name: "Next speakers" }).click();
+    await expect.poll(() => profiles.evaluate(element => element.scrollLeft)).toBeGreaterThan(0);
+    await showcase.getByRole("button", { name: "Previous speakers" }).click();
+    await expect.poll(() => profiles.evaluate(element => element.scrollLeft)).toBe(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 
-    const jobsLink = page.getByRole("link", { name: "[JOBS]" });
-    await expect(jobsLink).toBeVisible();
-    await expect(jobsLink).toHaveAttribute("href", "/jobs");
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await showcase.getByRole("button", { name: "Pause speaker scrolling" }).click();
+    await expect(showcase.getByRole("button", { name: "Resume speaker scrolling" })).toHaveAttribute("aria-pressed", "true");
   });
 
   test("should display FAQ section with accordion", async ({ page }) => {
@@ -235,7 +246,7 @@ test.describe("Homepage", () => {
     ).toBeVisible();
     await expect(
       page.getByRole("button", {
-        name: /Who organizes Data Engineering Open Forum 2026\?/,
+        name: /Who organizes Data Engineering Open Forum 2027\?/,
       }),
     ).toBeVisible();
     await expect(
@@ -258,11 +269,11 @@ test.describe("Homepage", () => {
     // Check that answer is now visible
     await expect(
       page.getByText(
-        /The Data Engineering Open Forum will be held on April 16th, 2026 at/i,
+        /The Data Engineering Open Forum will be held on Tuesday, April 20, 2027 at/i,
       ),
     ).toBeVisible();
     await expect(
-      page.getByText(/736 Mission St, San Francisco, CA 94103\./),
+      page.getByRole("link", { name: "South San Francisco Conference Center" }),
     ).toBeVisible();
 
     // Click again to collapse
