@@ -466,7 +466,7 @@ export default function Home() {
                     alt="ImagineX Productions logo"
                     width={110}
                     height={38}
-                    className="h-auto w-full max-w-[96px] object-contain sm:max-w-[110px]"
+                    className="h-auto w-24 object-contain sm:w-[110px]"
                   />
                 </a>
               </div>
