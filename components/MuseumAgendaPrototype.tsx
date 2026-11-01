@@ -590,10 +590,10 @@ export function MuseumAgendaPrototype() {
                                       <img
                                         src={speaker.avatarUrl}
                                         alt={`${speaker.name} avatar`}
-                                        className="h-20 w-20 rounded-full border border-accent/30 object-cover"
+                                        className="h-20 w-20 shrink-0 rounded-full border border-accent/30 object-cover"
                                       />
                                     ) : (
-                                      <div className="h-20 w-20 rounded-full border border-accent/30 bg-black/20" />
+                                      <div className="h-20 w-20 shrink-0 rounded-full border border-accent/30 bg-black/20" />
                                     )}
                                     <div className="min-w-0 flex-1">
                                       <div>
@@ -646,10 +646,10 @@ export function MuseumAgendaPrototype() {
                                     <img
                                       src={activeSession.moderator.avatarUrl}
                                       alt={`${activeSession.moderator.name} avatar`}
-                                      className="h-20 w-20 rounded-full border border-accent/30 object-cover"
+                                      className="h-20 w-20 shrink-0 rounded-full border border-accent/30 object-cover"
                                     />
                                   ) : (
-                                    <div className="h-20 w-20 rounded-full border border-accent/30 bg-black/20" />
+                                    <div className="h-20 w-20 shrink-0 rounded-full border border-accent/30 bg-black/20" />
                                   )}
                                   <div className="min-w-0 flex-1">
                                     <div>

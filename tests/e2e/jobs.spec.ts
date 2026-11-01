@@ -1,114 +1,23 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Job Opportunities Page", () => {
-  test("should load with correct header and description", async ({ page }) => {
-    await page.goto("/jobs");
-
-    await expect(page.getByText(/>\s*JOB_OPPORTUNITIES_/)).toBeVisible();
-    await expect(
-      page.getByRole("heading", { name: "Job Opportunities" }),
-    ).toBeVisible();
-    await expect(
-      page.getByText(/Our event partners are looking for top talent/i),
-    ).toBeVisible();
-  });
-
-  test("should display job listings from all companies", async ({ page }) => {
-    await page.goto("/jobs");
-
-    // Each company badge is uppercased
-    await expect(page.getByText("OPENAI").first()).toBeVisible();
-    await expect(page.getByText("NETFLIX").first()).toBeVisible();
-    await expect(page.getByText("AIRBNB").first()).toBeVisible();
-  });
-
-  test("should filter listings when searching by title", async ({ page }) => {
-    await page.goto("/jobs");
-
-    await page.getByPlaceholder(/search by title/i).fill("Analytics");
-
-    const listings = page.locator('[data-testid="job-listings"]');
-    await expect(listings.getByText("OPENAI")).toBeVisible();
-    await expect(listings.getByText("NETFLIX")).not.toBeVisible();
-    await expect(listings.getByText("AIRBNB")).not.toBeVisible();
-  });
-
-  test("should show empty state when search has no matches", async ({
-    page,
-  }) => {
-    await page.goto("/jobs");
-
-    await page.getByPlaceholder(/search by title/i).fill("xyzzy-no-match");
-
-    await expect(page.getByText(/no results found/i)).toBeVisible();
-    await expect(page.getByText(/0 opportunities found/i)).toBeVisible();
-  });
-
-  test("should filter by location type chip", async ({ page }) => {
-    await page.goto("/jobs");
-
-    // OpenAI is the only company with exclusively Onsite listings —
-    // filtering Remote should hide it
-    await page.getByRole("button", { name: /remote/i }).click();
-
-    const listings = page.locator('[data-testid="job-listings"]');
-    await expect(listings.getByText("OPENAI")).not.toBeVisible();
-    await expect(listings.getByText("NETFLIX").first()).toBeVisible();
-
-    // Click again to deselect — OpenAI should reappear
-    await page.getByRole("button", { name: /remote/i }).click();
-    await expect(listings.getByText("OPENAI")).toBeVisible();
-  });
-
-  test("should filter by company pill", async ({ page }) => {
-    await page.goto("/jobs");
-
-    await page.getByRole("button", { name: /airbnb/i }).click();
-
-    const listings = page.locator('[data-testid="job-listings"]');
-    await expect(listings.getByText("AIRBNB").first()).toBeVisible();
-    await expect(listings.getByText("NETFLIX")).not.toBeVisible();
-    await expect(listings.getByText("OPENAI")).not.toBeVisible();
-
-    // Click again to deselect
-    await page.getByRole("button", { name: /airbnb/i }).click();
-    await expect(listings.getByText("NETFLIX").first()).toBeVisible();
-  });
-
-  test("should pre-select company pill when navigating from homepage logo", async ({
-    page,
-  }) => {
-    await page.goto("/jobs?company=Netflix");
-
-    // Netflix pill should be active (aria-pressed)
-    const netflixPill = page.getByRole("button", { name: /netflix/i });
-    await expect(netflixPill).toHaveAttribute("aria-pressed", "true");
-
-    // Only Netflix jobs should be visible in listings
-    const listings = page.locator('[data-testid="job-listings"]');
-    await expect(listings.getByText("AIRBNB")).not.toBeVisible();
-    await expect(listings.getByText("OPENAI")).not.toBeVisible();
-  });
-
-  test("should have apply links that open in a new tab", async ({ page }) => {
-    await page.goto("/jobs");
-
-    const applyLinks = page.getByRole("link", { name: "APPLY →" });
-    const count = await applyLinks.count();
-    expect(count).toBeGreaterThan(0);
-
-    await expect(applyLinks.first()).toHaveAttribute("target", "_blank");
-    await expect(applyLinks.first()).toHaveAttribute(
-      "rel",
-      "noopener noreferrer",
-    );
-  });
+  for (const route of ["/jobs", "/jobs?company=Netflix"]) {
+    test(`shows coming-soon information without listings at ${route}`, async ({ page }) => {
+      await page.goto(route);
+      await expect(page.getByRole("heading", { name: "Job Opportunities" })).toBeVisible();
+      await expect(page.getByText("Recruiting partners and job opportunities for DEOF 2027 are coming soon.")).toBeVisible();
+      await expect(page.getByTestId("job-listings")).toHaveCount(0);
+      await expect(page.getByRole("textbox")).toHaveCount(0);
+      await expect(page.getByRole("link", { name: "APPLY →" })).toHaveCount(0);
+      await expect(page.getByRole("link", { name: "Register Now" })).toHaveAttribute(
+        "href", "https://luma.com/deof2027?utm_source=website-job-page",
+      );
+    });
+  }
 
   test("should navigate back to home", async ({ page }) => {
     await page.goto("/jobs");
-
     await page.getByRole("link", { name: "← BACK TO HOME" }).click();
-
     await expect(page).toHaveURL("/");
   });
 });

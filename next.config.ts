@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/rsvp",
-        destination: "https://luma.com/deof2026",
+        destination: "https://luma.com/deof2027",
         permanent: true,
       },
       {
@@ -27,7 +27,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/email-list",
-        destination: "https://groups.google.com/g/data-engineering-open-forum",
+        destination: "https://luma.com/det-meetup-bay-area",
         permanent: true,
       },
     ];

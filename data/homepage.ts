@@ -83,25 +83,43 @@ export const faqItems: FAQItem[] = [
   {
     question: "How do I register for the event?",
     answer:
-      "You can register for Data Engineering Open Forum 2026 using our ",
+      "You can register for Data Engineering Open Forum 2027 using our ",
     answerLinkText: "event registration page",
-    answerLinkHref: "https://luma.com/deof2026",
+    answerLinkHref: "https://luma.com/deof2027",
     answerSuffix: ".",
     category: "logistics",
   },
   {
     question: "When and where is the conference?",
     answer:
-      "The Data Engineering Open Forum will be held on April 16th, 2026 at ",
-    answerLinkText: "The Contemporary Jewish Museum",
-    answerLinkHref: "https://maps.app.goo.gl/Gy94FPXDxhcouHHn6",
-    answerSuffix: ", 736 Mission St, San Francisco, CA 94103.",
+      "The Data Engineering Open Forum will be held on Tuesday, April 20, 2027 at ",
+    answerLinkText: "South San Francisco Conference Center",
+    answerLinkHref: "https://www.google.com/maps/search/?api=1&query=South+San+Francisco+Conference+Center",
+    answerSuffix: ".",
     category: "logistics",
   },
   {
-    question: "Who organizes Data Engineering Open Forum 2026?",
+    question: "Will sessions be recorded?",
     answer:
-      "This conference is organized by Data Engineer Things (DET). This is not a Netflix event, though some Netflix employees are involved in the Program Committee.",
+      "We plan to record sessions with speakers’ permission and upload the recordings to the ",
+    answerLinkText: "Data Engineer Things YouTube channel",
+    answerLinkHref: "https://www.youtube.com/@data-engineer-things/",
+    answerSuffix: " after the event.",
+    category: "content",
+  },
+  {
+    question: "Can I submit a talk proposal for DEOF 2027?",
+    answer:
+      "Call for Proposals (CFP) details for DEOF 2027 are coming soon. Subscribe to our ",
+    answerLinkText: "community calendar",
+    answerLinkHref: "https://luma.com/det-meetup-bay-area",
+    answerSuffix: " for email updates about the CFP.",
+    category: "content",
+  },
+  {
+    question: "Who organizes Data Engineering Open Forum 2027?",
+    answer:
+      "This conference is organized by Data Engineer Things (DET), a global community built by data engineers for data engineers.",
     category: "community",
   },
   {
@@ -112,29 +130,5 @@ export const faqItems: FAQItem[] = [
     answerLinkHref: "https://www.dataengineerthings.org/coc",
     answerSuffix: ".",
     category: "logistics",
-  },
-  {
-    question: "Is this a vendor-sponsored conference?",
-    answer:
-      "While we have sponsors to help cover costs, all sessions are reviewed and approved by the Program Committee.",
-    category: "community",
-  },
-  {
-    question: "Will sessions be recorded?",
-    answer:
-      "Yes! We plan to record sessions and upload them to the ",
-    answerLinkText: "Data Engineer Things YouTube channel",
-    answerLinkHref: "https://www.youtube.com/@data-engineer-things/",
-    answerSuffix: " after the event.",
-    category: "content",
-  },
-  {
-    question: "Can I submit a talk proposal for future events?",
-    answer:
-      "The Call for Proposals (CFP) for this year's event has closed. However, we welcome talk proposals throughout the year for future events. Stay tuned to our ",
-    answerLinkText: "Google Group",
-    answerLinkHref: "https://groups.google.com/g/data-engineering-open-forum",
-    answerSuffix: " for announcements about the next CFP.",
-    category: "content",
   },
 ];

@@ -3,6 +3,8 @@ import PageFooter from "@/components/PageFooter";
 import TalksList, { Talk } from "@/components/TalksList";
 import eventData2024 from "@/data/past/2024.json";
 import eventData2025 from "@/data/past/2025.json";
+import eventData2026 from "@/data/past/2026.json";
+import SponsorCredits, { type SponsorTier } from "@/components/SponsorCredits";
 import { notFound } from "next/navigation";
 
 // type definitions for event data
@@ -13,17 +15,19 @@ interface EventData {
   description: string;
   playlistUrl: string;
   talks: Talk[];
+  sponsorTiers?: SponsorTier[];
 }
 
 // Map of available years to their data
 const eventDataMap: Record<string, EventData> = {
   "2024": eventData2024,
   "2025": eventData2025,
+  "2026": eventData2026,
 };
 
 // Tell Next.js which years to pre-render at build time
 export async function generateStaticParams() {
-  return [{ year: "2024" }, { year: "2025" }];
+  return Object.keys(eventDataMap).map((year) => ({ year }));
 }
 
 // Generate metadata dynamically based on year
@@ -82,6 +86,7 @@ export default async function TalksPage({
           {/* Event date and talk count */}
           <div className="font-mono text-lg text-muted-foreground space-y-1">
             <div>{`// ${new Date(eventData.date).toLocaleDateString("en-US", {
+              timeZone: "UTC",
               weekday: "long",
               year: "numeric",
               month: "long",
@@ -103,7 +108,14 @@ export default async function TalksPage({
         </div>
 
         {/* Talks list */}
-        <TalksList talks={eventData.talks} />
+        <TalksList
+          talks={eventData.talks}
+          presentation={eventData.year === "2026" ? "cards" : "list"}
+        />
+
+        {eventData.sponsorTiers && (
+          <SponsorCredits year={eventData.year} sponsorTiers={eventData.sponsorTiers} />
+        )}
 
         <PageFooter />
       </div>

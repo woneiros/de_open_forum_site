@@ -441,7 +441,7 @@ export const sessions: Session[] = [
       title: "Distinguished Architect, Data & AI",
       company: "",
       linkedin: "http://linkedin.com/in/mufford",
-      avatarUrl: "/speakers/Michelle-Winters.jpeg",
+      avatarUrl: "/speakers/michelle-winters-profile.jpg",
       bio: 'Michelle Winters is a lifelong data nerd, data leader, data builder, and unapologetic champion of all things data. For 30 years, she has worked across nearly every layer of the data lifecycle-building data platforms, leading data teams, architecting data systems, scaling data organizations, and occasionally explaining what "modern data stack" means to non-data people.\n\nShe has been a data engineer, a data executive, a data startup founder, and a contributor to data OSS. She has written data books, data blogs, and more data documentation than she cares to admit. She has received industry awards for her work in the data community-largely, one suspects, for saying "data" more times per minute than generally advisable.\n\nMichelle believes the only thing better than good data is more data about data. When she\'s not building data teams or designing data platforms, she\'s probably writing a Python script to count how many times she said "data" in her bio. (It\'s.. a lot.)\n\nShe\'s wildly excited about the future of data and can\'t wait to talk data with as many fellow data nerds as possible at DEOF.',
     },
     abstract:

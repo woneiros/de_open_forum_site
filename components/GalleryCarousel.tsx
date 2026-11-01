@@ -7,8 +7,10 @@ type GalleryItem = {
   src: string;
   alt: string;
   title: string;
+  eventName: string;
   body: readonly string[];
   photoCredit: string;
+  objectPosition?: string;
 };
 
 type GalleryCarouselProps = {
@@ -63,6 +65,7 @@ export default function GalleryCarousel({
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"
           className="object-cover"
+          style={{ objectPosition: activeItem.objectPosition }}
         />
         <div className="absolute inset-0 flex items-center justify-between px-3">
           <button
@@ -83,20 +86,20 @@ export default function GalleryCarousel({
           </button>
         </div>
       </div>
-      <div className="relative flex min-h-[180px] flex-col border-t border-accent/20 bg-accent/10 px-6 py-5 text-sm text-primary-foreground">
+      <div className="flex min-h-[180px] flex-col border-t border-accent/20 bg-accent/10 px-6 pb-4 pt-5 text-sm text-primary-foreground">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="font-semibold">{activeItem.title}</p>
         </div>
-        <div className="mt-3 space-y-1 text-muted-foreground">
+        <div className="mt-3 space-y-1 text-primary-foreground/75">
           {activeItem.body.map((line) => (
             <p key={line}>{line}</p>
           ))}
         </div>
-        <div className="absolute bottom-4 left-6 text-[11px] text-muted-foreground">
-          {activeIndex + 1} / {totalItems}
-        </div>
-        <div className="absolute bottom-4 right-6 text-[11px] text-muted-foreground">
-          Photo: {activeItem.photoCredit}
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pt-5 text-[11px] text-primary-foreground/65">
+          <div>
+            {activeIndex + 1} / {totalItems} · {activeItem.eventName}
+          </div>
+          <div>Photo: {activeItem.photoCredit}</div>
         </div>
       </div>
     </div>

@@ -97,18 +97,10 @@ test.describe("Navigation", () => {
     await expect(page).toHaveURL("/");
   });
 
-  test("should navigate from home to jobs page", async ({ page }) => {
+  test("should omit Jobs from homepage navigation", async ({ page }) => {
     await page.goto("/");
-
-    await Promise.all([
-      page.waitForURL("**/jobs"),
-      page.getByRole("link", { name: "[JOBS]" }).click(),
-    ]);
-
-    await expect(page).toHaveURL("/jobs");
-    await expect(
-      page.getByRole("heading", { name: "Job Opportunities" }),
-    ).toBeVisible();
+    await expect(page.locator('a[href="/jobs"]')).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "[JOBS]" })).toHaveCount(0);
   });
 
   test("should have working browser back button", async ({ page }) => {
