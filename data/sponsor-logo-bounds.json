@@ -1,0 +1,128 @@
+{
+  "/sponsors/databricks.svg": {
+    "width": 713,
+    "height": 113,
+    "left": 0,
+    "top": 0,
+    "contentWidth": 713,
+    "contentHeight": 113,
+    "inkArea": 23527.851
+  },
+  "/sponsors/astronomer.png": {
+    "width": 802,
+    "height": 83,
+    "left": 0,
+    "top": 0,
+    "contentWidth": 802,
+    "contentHeight": 83,
+    "inkArea": 23153.51
+  },
+  "/sponsors/airbnb.png": {
+    "width": 2000,
+    "height": 1200,
+    "left": 352,
+    "top": 399,
+    "contentWidth": 1295,
+    "contentHeight": 402,
+    "inkArea": 124773.255
+  },
+  "/sponsors/velodb.png": {
+    "width": 1547,
+    "height": 320,
+    "left": 228,
+    "top": 60,
+    "contentWidth": 1090,
+    "contentHeight": 201,
+    "inkArea": 99849.973
+  },
+  "/sponsors/altimate-ai.png": {
+    "width": 2650,
+    "height": 378,
+    "left": 0,
+    "top": 0,
+    "contentWidth": 2650,
+    "contentHeight": 377,
+    "inkArea": 305863.043
+  },
+  "/sponsors/dremio.png": {
+    "width": 625,
+    "height": 293,
+    "left": 57,
+    "top": 65,
+    "contentWidth": 502,
+    "contentHeight": 159,
+    "inkArea": 22312.839
+  },
+  "/sponsors/matia.png": {
+    "width": 2841,
+    "height": 535,
+    "left": 0,
+    "top": 0,
+    "contentWidth": 2841,
+    "contentHeight": 535,
+    "inkArea": 656333.843
+  },
+  "/sponsors/minio-color.svg": {
+    "width": 2600,
+    "height": 446,
+    "left": 0,
+    "top": 0,
+    "contentWidth": 2600,
+    "contentHeight": 446,
+    "inkArea": 546177.082
+  },
+  "/sponsors/netflix.svg": {
+    "width": 1024,
+    "height": 277,
+    "left": 0,
+    "top": 0,
+    "contentWidth": 1024,
+    "contentHeight": 277,
+    "inkArea": 126775.549
+  },
+  "/sponsors/phoenixai.svg": {
+    "width": 819,
+    "height": 268,
+    "left": 42,
+    "top": 79,
+    "contentWidth": 731,
+    "contentHeight": 105,
+    "inkArea": 20480.722
+  },
+  "/sponsors/puppygraph.png": {
+    "width": 800,
+    "height": 165,
+    "left": 1,
+    "top": 0,
+    "contentWidth": 798,
+    "contentHeight": 165,
+    "inkArea": 32480.094
+  },
+  "/sponsors/streamnative.svg": {
+    "width": 758,
+    "height": 150,
+    "left": 0,
+    "top": 0,
+    "contentWidth": 758,
+    "contentHeight": 150,
+    "inkArea": 28261.761
+  },
+  "/sponsors/datadog.svg": {
+    "width": 801,
+    "height": 196,
+    "left": 1,
+    "top": 0,
+    "contentWidth": 800,
+    "contentHeight": 196,
+    "inkArea": 40067.153
+  },
+  "/sponsors/openai-logotype.png": {
+    "width": 1640,
+    "height": 640,
+    "left": 14,
+    "top": 130,
+    "contentWidth": 1594,
+    "contentHeight": 437,
+    "inkArea": 232984.98
+  }
+}

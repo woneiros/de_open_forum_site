@@ -8,8 +8,8 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Data Engineering Open Forum 2026",
-  description: "The Data Engineering Open Forum (DEOF) is a community conference for practitioners and leaders in data engineering.",
+  title: "Data Engineering Open Forum 2027",
+  description: "Join Data Engineering Open Forum 2027 on Tuesday, April 20, 2027 at South San Francisco Conference Center. RSVP and stay tuned for program announcements.",
   metadataBase: new URL("https://www.dataengineeringopenforum.com"),
   generator: "v0.app",
   icons: {

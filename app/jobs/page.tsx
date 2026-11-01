@@ -1,26 +1,14 @@
 import type { Metadata } from "next";
-import { z } from "zod";
 import PageNavBar from "@/components/PageNavBar";
 import PageFooter from "@/components/PageFooter";
-import JobListings, { type JobListing } from "@/components/JobListings";
-import jobOpportunities from "@/data/job-opportunities.json";
-
-const jobListingsSchema: z.ZodType<JobListing[]> = z.array(z.any());
-const validatedJobOpportunities = jobListingsSchema.parse(jobOpportunities);
 
 export const metadata: Metadata = {
   title: "Job Opportunities - Data Engineering Open Forum",
   description:
-    "Explore data engineering job opportunities from our event partners at the Data Engineering Open Forum.",
+    "Recruiting partners and job opportunities for Data Engineering Open Forum 2027 are coming soon.",
 };
 
-export default async function JobsPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ company?: string }>;
-}) {
-  const { company } = await searchParams;
-
+export default function JobsPage() {
   return (
     <main className="min-h-screen bg-primary text-primary-foreground bg-diagonal-pattern">
       <PageNavBar />
@@ -35,13 +23,12 @@ export default async function JobsPage({
             Job Opportunities
           </h1>
           <p className="text-pretty leading-relaxed text-muted-foreground max-w-3xl">
-            Our event partners are looking for top talent in data engineering.
-            Explore open roles, meet the hiring teams in person at the event,
-            and make connections that can turn into real next steps.
+            Recruiting partners and job opportunities for DEOF 2027 are coming
+            soon.
           </p>
           <div>
             <a
-              href="https://luma.com/deof2026?utm_source=website-job-page"
+              href="https://luma.com/deof2027?utm_source=website-job-page"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-3 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
@@ -50,8 +37,6 @@ export default async function JobsPage({
             </a>
           </div>
         </div>
-
-        <JobListings jobs={validatedJobOpportunities} initialCompany={company} />
 
         <PageFooter />
       </div>

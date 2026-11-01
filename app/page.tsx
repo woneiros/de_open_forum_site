@@ -1,161 +1,38 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CommitteeCard } from "@/components/CommitteeCard";
 import { FAQSection } from "@/components/FAQSection";
-import { MuseumAgendaPrototype } from "@/components/MuseumAgendaPrototype";
 import GalleryCarousel from "@/components/GalleryCarousel";
-import { programCommittee, volunteerLeads, faqItems } from "@/data/homepage";
+import SpeakerCarousel from "@/components/SpeakerCarousel";
+import { faqItems } from "@/data/homepage";
+import SponsorCredits from "@/components/SponsorCredits";
+import eventData2026 from "@/data/past/2026.json";
 
-const sponsorTiers = [
-  {
-    tier: "PLATINUM PLUS",
-    sponsors: [
-      {
-        name: "Databricks",
-        href: "https://www.databricks.com/",
-        logoSrc: "/sponsors/databricks.svg",
-      },
-    ],
-  },
-  {
-    tier: "PLATINUM",
-    sponsors: [
-      {
-        name: "Astronomer",
-        href: "https://www.astronomer.io/",
-        logoSrc: "/sponsors/astronomer.png",
-      },
-    ],
-  },
-  {
-    tier: "GOLD",
-    sponsors: [
-      {
-        name: "Airbnb",
-        href: "https://www.airbnb.com/",
-        logoSrc: "/sponsors/airbnb.png",
-      },
-      {
-        name: "VeloDB",
-        href: "https://www.velodb.io/",
-        logoSrc: "/sponsors/velodb.png",
-      },
-    ],
-  },
-  {
-    tier: "SILVER",
-    sponsors: [
-      {
-        name: "Altimate AI",
-        href: "https://altimate.ai/",
-        logoSrc: "/sponsors/altimate-ai.png",
-      },
-      {
-        name: "Dremio",
-        href: "https://www.dremio.com/",
-        logoSrc: "/sponsors/dremio.png",
-      },
-      {
-        name: "Matia",
-        href: "https://www.matia.io/",
-        logoSrc: "/sponsors/matia.png",
-      },
-      {
-        name: "MinIO",
-        href: "https://min.io/",
-        logoSrc: "/sponsors/minio-color.svg",
-      },
-      {
-        name: "Netflix",
-        href: "https://www.netflix.com/",
-        logoSrc: "/sponsors/netflix.svg",
-      },
-      {
-        name: "OpenAI",
-        href: "https://openai.com/",
-        logoSrc: "/sponsors/openai.png",
-      },
-      {
-        name: "PhoenixAI",
-        href: "https://celerdata.com/",
-        logoSrc: "/sponsors/phoenixai.svg",
-        finePrint: "(Formerly CelerData)",
-      },
-      {
-        name: "PuppyGraph",
-        href: "https://www.puppygraph.com/",
-        logoSrc: "/sponsors/puppygraph.png",
-      },
-      {
-        name: "StreamNative",
-        href: "https://streamnative.io/",
-        logoSrc: "/sponsors/streamnative.svg",
-      },
-    ],
-  },
-  {
-    tier: "HAPPY HOUR",
-    sponsors: [
-      {
-        name: "Datadog",
-        href: "https://www.datadoghq.com/",
-        logoSrc: "/sponsors/datadog.svg",
-      },
-    ],
-  },
-] as const;
-
-const getSponsorLogoClass = (sponsorName: string, isSilver: boolean) =>
-  `mx-auto w-auto object-contain brightness-0 invert ${
-    isSilver
-      ? sponsorName === "PhoenixAI"
-        ? "max-w-none scale-[2.4]"
-        : sponsorName === "Dremio" || sponsorName === "OpenAI"
-        ? "scale-[0.88]"
-        : "scale-[0.8]"
-      : ""
-  } ${
-    sponsorName === "Dremio"
-      ? isSilver
-        ? "h-[70px] sm:h-[79px]"
-        : "h-[88px] sm:h-[97px]"
-      : sponsorName === "Airbnb"
-        ? isSilver
-          ? "h-[104px] sm:h-[114px]"
-          : "h-[125px] sm:h-[135px]"
-        : sponsorName === "OpenAI" || sponsorName === "PuppyGraph"
-          ? isSilver
-            ? "h-10 sm:h-[43px]"
-            : "h-12 sm:h-[52px]"
-          : sponsorName === "Datadog"
-            ? "h-9 sm:h-10"
-          : sponsorName === "Altimate AI" || sponsorName === "Matia"
-            ? isSilver
-              ? "h-7 sm:h-8"
-              : "h-9 sm:h-10"
-            : sponsorName === "StreamNative"
-              ? isSilver
-                ? "h-9 sm:h-10"
-                : "h-11 sm:h-12"
-              : sponsorName === "MinIO"
-                ? isSilver
-                  ? "h-5 sm:h-6"
-                  : "h-[24px] sm:h-7"
-                : sponsorName === "PhoenixAI"
-                  ? isSilver
-                    ? "h-7 sm:h-8"
-                    : "h-10 sm:h-11"
-                  : isSilver
-                    ? "h-8 sm:h-9"
-                    : "h-10 sm:h-11"
-  }`;
+const speakers2026 = Array.from(
+  new Map(
+    eventData2026.talks.flatMap((talk) => talk.authors).map((author) => [author.name, author])
+  ).values()
+).sort((a, b) => a.name.localeCompare(b.name, "en"));
 
 const galleryItems = [
+  {
+    src: "/gallery/keynote-panel-2026.jpg",
+    alt: "Frontiers of Data keynote panel - Data Engineering Open Forum 2026",
+    title:
+      "“Frontiers of Data” Keynote Panel",
+    eventName: "Data Engineering Open Forum 2026",
+    body: [
+      "Paul Ellwood, Head of Data Engineering at OpenAI",
+      "Vikram Koka, Chief Strategy Officer & Apache Airflow PMC at Astronomer",
+      "Laura Pruitt, Senior Director, Data Science & Engineering at Netflix",
+    ],
+    photoCredit: "DuHon Photography",
+  },
   {
     src: "/gallery/panel-discussion-2025.jpg",
     alt: "Panel discussion on stage - Data Engineering Open Forum 2025",
     title:
-      "“The Future of Data Engineering” Panel - Data Engineering Open Forum 2025",
+      "“The Future of Data Engineering” Keynote Panel",
+    eventName: "Data Engineering Open Forum 2025",
     body: [
       "Inna Giguere, Director of Data Engineering at Netflix",
       "Ryan Blue, Technical Staff at Databricks",
@@ -164,9 +41,28 @@ const galleryItems = [
     photoCredit: "Luis Medina",
   },
   {
+    src: "/gallery/himanshi-manglunia-2026.jpg",
+    alt: "Himanshi Manglunia presenting From Manual to Magical at Data Engineering Open Forum 2026",
+    title: "From Manual to Magical: Building AI Agents for ETL Automation",
+    eventName: "Data Engineering Open Forum 2026",
+    body: ["Himanshi Manglunia, Senior Data Engineer at Amazon Web Services"],
+    photoCredit: "DuHon Photography",
+    objectPosition: "50% 32%",
+  },
+  {
+    src: "/gallery/harel-shein-2026.jpg",
+    alt: "Harel Shein presenting data observability with OpenLineage at Data Engineering Open Forum 2026",
+    title: "Lessons from building a data observability product with OpenLineage",
+    eventName: "Data Engineering Open Forum 2026",
+    body: ["Harel Shein, Senior Engineering Manager at Datadog"],
+    photoCredit: "DuHon Photography",
+    objectPosition: "50% 100%",
+  },
+  {
     src: "/gallery/apache-spark-talk-2025.jpg",
     alt: "Apache Spark 4.0 Talk - Data Engineering Open Forum 2025",
-    title: "Presenting Apache Spark 4.0 - Data Engineering Open Forum 2025",
+    title: "Presenting Apache Spark 4.0",
+    eventName: "Data Engineering Open Forum 2025",
     body: [
       "Allison Wang, Staff Software Engineer at Databricks",
       "Jules S. Damji, Technical Staff at Databricks",
@@ -174,17 +70,22 @@ const galleryItems = [
     photoCredit: "Luis Medina",
   },
   {
-    src: "/gallery/apache-xtable-talk-2025.jpg",
-    alt: "Apache XTable talk - Data Engineering Open Forum 2025",
-    title: "Presenting Apache XTable - Data Engineering Open Forum 2025",
-    body: ["Dipankar Mazumdar, Staff Data Engineer Advocate at Onehouse.ai"],
-    photoCredit: "Luis Medina",
+    src: "/gallery/onsite-recruiting-2026.jpg",
+    alt: "Attendees connecting with recruiters at Data Engineering Open Forum 2026",
+    title: "Top Tech Companies Recruiting Onsite: Airbnb, Netflix, and OpenAI",
+    eventName: "Data Engineering Open Forum 2026",
+    body: [
+      "Attendees connected with hiring teams from Airbnb, Netflix, and OpenAI to explore career opportunities in data and AI.",
+    ],
+    photoCredit: "DuHon Photography",
+    objectPosition: "50% 100%",
   },
   {
     src: "/gallery/audience-qna-2025.jpg",
     alt: "Q&A Lines That Never Get Shorter - Data Engineering Open Forum 2025",
     title:
-      "Q&A Lines That Never Get Shorter - Data Engineering Open Forum 2025",
+      "Q&A Lines That Never Get Shorter",
+    eventName: "Data Engineering Open Forum 2025",
     body: [
       "The conversations don’t stop when the slides end.",
       "During Q&A, attendees line up at the mic for a deeper dive.",
@@ -195,11 +96,43 @@ const galleryItems = [
   {
     src: "/gallery/audience-engagements-2025.jpg",
     alt: "Active Audience Engagements - Data Engineering Open Forum 2025",
-    title: "Active Audience Engagements - Data Engineering Open Forum 2025",
+    title: "Active Audience Engagements",
+    eventName: "Data Engineering Open Forum 2025",
     body: [
       "A packed auditorium of data professionals actively engages with the speaker, with dozens of attendees raising their hands during a session.",
     ],
     photoCredit: "Luis Medina",
+  },
+] as const;
+
+const involvementOptions = [
+  {
+    title: "Attend",
+    description:
+      "Join the data and AI community for technical talks, shared ideas, and connections that last beyond the event.",
+    action: "Register to attend →",
+    href: "https://luma.com/deof2027",
+  },
+  {
+    title: "Speak",
+    description:
+      "Share your experience and practical lessons with the data and AI community. Call for Proposals details are coming soon.",
+    action: "Get CFP updates →",
+    href: "https://luma.com/det-meetup-bay-area",
+  },
+  {
+    title: "Volunteer",
+    description:
+      "Help shape DEOF 2027 as a Program Committee member or Community Ambassador. Volunteer opportunities are coming soon.",
+    action: "Get volunteer updates →",
+    href: "https://luma.com/det-meetup-bay-area",
+  },
+  {
+    title: "Sponsor",
+    description:
+      "Connect your team with data and AI practitioners and leaders, recruit top talent, and support a community-driven conference.",
+    action: "Sponsor DEOF 2027 →",
+    href: "https://forms.gle/HpcaGq95Pf3R2iEQ9",
   },
 ] as const;
 
@@ -208,17 +141,17 @@ export default function Home() {
     <main className="min-h-screen bg-primary text-primary-foreground bg-diagonal-pattern">
       {/* Top bar with retro feel */}
       <div className="fixed inset-x-0 top-0 z-50 border-b border-accent/30 bg-primary/95 px-4 py-2 font-mono text-xs backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-y-2">
           <span>{"// DATA ENGINEERING OPEN FORUM"}</span>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <Link href="/past/2026" className="underline hover:text-accent">
+              [DEOF 2026]
+            </Link>
             <Link href="/past/2025" className="underline hover:text-accent">
               [DEOF 2025]
             </Link>
             <Link href="/past/2024" className="underline hover:text-accent">
               [DEOF 2024]
-            </Link>
-            <Link href="/jobs" className="underline hover:text-accent">
-              [JOBS]
             </Link>
             <a
               href="https://forms.gle/HpcaGq95Pf3R2iEQ9"
@@ -226,23 +159,23 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center border-2 border-accent bg-accent px-3 py-1 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
-              Sponsorship
+              Sponsor
             </a>
             <a
-              href="https://groups.google.com/g/data-engineering-open-forum"
+              href="https://luma.com/deof2027"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center border-2 border-accent bg-accent px-3 py-1 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
-              Get Updates
+              RSVP
             </a>
           </div>
         </div>
       </div>
 
       {/* Main content */}
-      <div className="mx-auto max-w-6xl px-4 pb-12 pt-24 sm:pb-16 sm:pt-28 lg:pb-24 lg:pt-32">
-        <div className="grid gap-6 lg:grid-cols-10 lg:gap-10 ">
+      <div className="mx-auto max-w-6xl px-4 pb-12 pt-32 sm:pb-16 sm:pt-28 lg:pb-24 lg:pt-32">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-10 lg:gap-10">
           {/* Header */}
           <div className="col-span-full grid lg:grid-cols-10 grid-cols-1 border-b border-accent/30 pb-10 mb-10 gap-8">
             <div className="space-y-4 lg:col-span-6">
@@ -250,22 +183,27 @@ export default function Home() {
                 Data Engineering Open Forum
               </h1>
               <div className="font-mono font-extrabold text-xl text-accent sm:text-2xl border-flow px-3 py-2 inline-block">
-                The Contemporary Jewish Museum
+                Tuesday, April 20, 2027
                 <br />
-                San Francisco | April 16th, 2026
+                South San Francisco Conference Center
               </div>
               <p className="text-pretty text-lg leading-relaxed">
                 The most anticipated data engineering community conference of
-                the year, organized by{" "}
-                <a href="#organized-by" className="underline hover:text-accent">
-                  Data Engineer Things (DET)
-                </a>
+                the year, organized by Data Engineer Things (DET)
               </p>
               <div className="space-y-2 font-mono text-sm text-muted-foreground">
                 <p>{"// Community-driven content with technical depth"}</p>
                 <p>{"// Make connections that outlive the event"}</p>
-                <p>{"// Onsite recruiting with Airbnb, Netflix, and OpenAI"}</p>
+                <p>{"// Onsite recruiting details coming soon"}</p>
               </div>
+              <a
+                href="https://luma.com/deof2027"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center border-2 border-accent bg-accent px-5 py-3 font-mono font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                Register Now
+              </a>
             </div>
             {/* Right column - Visual element */}
             <div className="flex items-center justify-center lg:col-span-4 ">
@@ -282,58 +220,62 @@ export default function Home() {
             </div>
           </div>
 
-          {/* End of header -- begin main content */}
-          <section className="col-span-full space-y-4">
-            <div className="space-y-4">
-              <div className="font-mono text-3xl font-semibold text-accent">
-                {"> DEOF_2027_"}
-              </div>
-              <p className="text-pretty text-lg leading-relaxed">
-                DEOF 2026 has wrapped, and we are already looking ahead to the
-                next Data Engineering Open Forum.
-              </p>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="space-y-3 rounded-md border border-accent/35 bg-primary/50 p-5 shadow-[0_0_0_1px_rgba(239,214,72,0.08)]">
-                  <p className="font-semibold">Stay in the Loop</p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    Join our{" "}
-                    <a
-                      href="https://groups.google.com/g/data-engineering-open-forum"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline text-accent hover:opacity-90"
-                    >
-                      Google Group
-                    </a>{" "}
-                    for DEOF 2027 announcements, CFP updates, volunteer
-                    opportunities, and community news.
+          {/* Get Involved */}
+          <section
+            id="get-involved"
+            aria-labelledby="get-involved-heading"
+            className="col-span-full mx-1 min-w-0 space-y-4 scroll-mt-24 md:mx-8 lg:col-span-8 lg:mx-0"
+          >
+            <h2 id="get-involved-heading" className="break-words font-mono text-2xl font-semibold text-accent sm:text-3xl">
+              {"> GET_INVOLVED_"}
+            </h2>
+            <p className="text-pretty text-lg leading-relaxed">
+              There&apos;s a place for you at DEOF 2027. Join us as an attendee,
+              volunteer, speaker, or sponsor.
+            </p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {involvementOptions.map((option) => (
+                <article
+                  key={option.title}
+                  className="flex min-w-0 flex-col rounded-md border border-accent/35 bg-primary/50 p-5 shadow-[0_0_0_1px_rgba(239,214,72,0.08)]"
+                >
+                  <h3 className="font-mono text-xl font-semibold text-accent">
+                    {option.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-primary-foreground/75">
+                    {option.description}
                   </p>
-                </div>
-                <div className="space-y-3 rounded-md border border-accent/35 bg-primary/50 p-5 shadow-[0_0_0_1px_rgba(239,214,72,0.08)]">
-                  <p className="font-semibold">Sponsor DEOF 2027</p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    Interested in partnering with the data engineering
-                    community? Complete our{" "}
-                    <a
-                      href="https://forms.gle/HpcaGq95Pf3R2iEQ9"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline text-accent hover:opacity-90"
-                    >
-                      sponsorship interest form
-                    </a>
-                    .
-                  </p>
-                </div>
-              </div>
+                  <a
+                    href={option.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center self-start font-mono text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  >
+                    {option.action}
+                  </a>
+                </article>
+              ))}
             </div>
+            <p className="text-sm leading-relaxed text-primary-foreground/70">
+              Subscribe to our{" "}
+              <a
+                href="https://luma.com/det-meetup-bay-area"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-accent hover:opacity-90"
+              >
+                community calendar
+              </a>{" "}
+              for email updates on CFPs, volunteer opportunities, and DEOF
+              announcements.
+            </p>
           </section>
 
           {/* Left column - Text content */}
-          <div className="flex flex-col justify-center space-y-16 lg:col-span-8 mx-1 md:mx-8 lg:mx-0">
+          <div className="flex min-w-0 flex-col justify-center space-y-16 lg:col-span-8 mx-1 md:mx-8 lg:mx-0">
             {/* Why Should I Attend? */}
             <div className="space-y-6">
-              <div className="font-mono text-3xl font-semibold text-accent">
+              <div className="break-words font-mono text-2xl font-semibold text-accent sm:text-3xl">
                 {"> WHY_ATTEND_"}
               </div>
               <p className="text-pretty text-lg leading-relaxed">
@@ -370,177 +312,25 @@ export default function Home() {
                 <div className="border-l-2 border-accent/30 pl-4 py-3 space-y-2">
                   <p className="font-semibold">Career Opportunities</p>
                   <p className="text-sm text-muted-foreground">
-                    Top tech companies (including Airbnb, Netflix, and
-                    OpenAI) will be recruiting onsite. Explore{" "}
-                    <Link
-                      href="#onsite-recruiting"
-                      className="underline underline-offset-2 hover:text-accent"
-                    >
-                      open job roles
-                    </Link>
-                    , meet the hiring teams in person, and make connections
-                    that can turn into real next steps after the event.
+                    Top tech companies will be recruiting onsite. Explore
+                    open job roles, meet the hiring teams in person, and make
+                    connections that can turn into real next steps after the
+                    event.
                   </p>
                 </div>
               </div>
-            </div>
-
-            {/* Agenda Section */}
-            <div id="agenda" className="space-y-4">
-              <div className="font-mono text-3xl font-semibold text-accent">
-                {"> AGENDA_ "}
-              </div>
-              <p className="font-mono text-sm text-muted-foreground">
-                {
-                  "// We are still finalizing the agenda. Check back later for the latest schedule and speaker updates."
-                }
-              </p>
-              <MuseumAgendaPrototype />
-            </div>
-
-            {/* DET Mentorship Booth Section */}
-            <div
-              id="det-mentorship-booth"
-              className="space-y-8 scroll-mt-24"
-            >
-              <div className="font-mono text-3xl font-semibold text-accent">
-                {"> DET_COMMUNITY_BOOTH_"}
-              </div>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                <div className="inline-flex items-center gap-2 border border-accent/35 bg-accent/10 px-3 py-1 font-mono text-xs uppercase tracking-[0.24em] text-accent">
-                  <span className="h-2 w-2 rounded-full bg-accent" />
-                  All Day at DEOF 2026
-                </div>
-                <div className="inline-flex items-center gap-2 border border-accent/35 bg-accent/10 px-3 py-1 font-mono text-xs uppercase tracking-[0.24em] text-accent">
-                  <span className="h-2 w-2 rounded-full bg-accent" />
-                  Location: Blue Cube
-                </div>
-              </div>
-              <div className="space-y-6">
-                <div className="space-y-4">
-                  <p className="text-pretty text-lg leading-relaxed">
-                    Throughout the day, you&apos;ll be able to stop by the
-                    booth to:
-                  </p>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
-                      <p>
-                        Connect 1:1 with experienced data engineers and mentors
-                      </p>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
-                      <p>
-                        Join small-group networking sessions with fellow
-                        practitioners
-                      </p>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
-                      <p>
-                        Learn how to get involved with the DET community
-                      </p>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="grid gap-4 lg:grid-cols-2">
-                  <div className="space-y-3 rounded-md border border-accent/35 bg-primary/50 p-5 shadow-[0_0_0_1px_rgba(239,214,72,0.08)]">
-                    <div className="space-y-2">
-                      <p className="font-semibold">
-                        1:1 Mentorship Sessions
-                      </p>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        To ensure you get dedicated time, we offer pre-booked
-                        1:1 mentorship conversations. You can also walk up
-                        during the event, but pre-booking is recommended.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3 rounded-md border border-accent/35 bg-primary/50 p-5 shadow-[0_0_0_1px_rgba(239,214,72,0.08)]">
-                    <div className="space-y-2">
-                      <p className="font-semibold">Networking Sessions</p>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        Meet fellow data engineers during the event, start
-                        meaningful conversations, and make the most of your
-                        DEOF experience on the conference day.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Job Opportunities Section */}
-            <div id="onsite-recruiting" className="space-y-4 scroll-mt-24">
-              <div className="font-mono text-3xl font-semibold text-accent">
-                {"> ONSITE_RECRUITING_"}
-              </div>
-              <p className="text-pretty text-lg leading-relaxed">
-                Our event partners are looking for top talent in data
-                engineering! Check out open job roles, meet the hiring teams in
-                person at the event, and make connections that can turn into
-                real next steps after the event.
-              </p>
-
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <Link
-                  href="/jobs?company=Airbnb"
-                  className="group flex h-24 items-center justify-center rounded-sm border-2 border-accent/30 bg-primary/40 px-6 transition-colors hover:border-accent hover:bg-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  aria-label="View Data Engineering jobs at Airbnb"
-                >
-                  <Image
-                    src="/sponsors/airbnb.png"
-                    alt="Airbnb logo"
-                    width={480}
-                    height={160}
-                    className="h-auto w-full max-w-[308px] object-contain brightness-0 invert opacity-80 transition-opacity group-hover:opacity-100"
-                  />
-                </Link>
-                <Link
-                  href="/jobs?company=Netflix"
-                  className="group flex h-24 items-center justify-center rounded-sm border-2 border-accent/30 bg-primary/40 px-6 transition-colors hover:border-accent hover:bg-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  aria-label="View Data Engineering jobs at Netflix"
-                >
-                  <Image
-                    src="/sponsors/netflix.svg"
-                    alt="Netflix logo"
-                    width={120}
-                    height={40}
-                    className="object-contain brightness-0 invert opacity-80 transition-opacity group-hover:opacity-100"
-                  />
-                </Link>
-                <Link
-                  href="/jobs?company=OpenAI"
-                  className="group flex h-24 items-center justify-center rounded-sm border-2 border-accent/30 bg-primary/40 px-6 transition-colors hover:border-accent hover:bg-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  aria-label="View Data Engineering jobs at OpenAI"
-                >
-                  <Image
-                    src="/sponsors/openai.png"
-                    alt="OpenAI logo"
-                    width={120}
-                    height={40}
-                    className="h-auto w-full max-w-[180px] object-contain brightness-0 invert opacity-80 transition-opacity group-hover:opacity-100"
-                  />
-                </Link>
-              </div>
-              <Link
-                href="/jobs"
-                className="inline-flex items-center font-mono text-sm text-accent hover:underline"
-              >
-                {"[VIEW ALL OPEN JOB ROLES →]"}
-              </Link>
             </div>
 
             {/* Gallery Section */}
             <div className="space-y-6">
-              <div className="font-mono text-3xl font-semibold text-accent">
+              <div className="break-words font-mono text-2xl font-semibold text-accent sm:text-3xl">
                 {"> PAST_EVENTS_ "}
               </div>
               <p className="text-pretty text-lg leading-relaxed">
                 Watch session recordings from our previous events:{" "}
+                <Link href="/past/2026" className="underline hover:text-accent">
+                  DEOF 2026
+                </Link>,{" "}
                 <Link href="/past/2025" className="underline hover:text-accent">
                   DEOF 2025
                 </Link>{" "}
@@ -550,100 +340,45 @@ export default function Home() {
                 </Link>
                 .
               </p>
-              <div className="max-w-2xl">
+              <SpeakerCarousel speakers={speakers2026} />
+              <section aria-labelledby="photo-gallery-heading" className="max-w-2xl space-y-4">
+                <h3 id="photo-gallery-heading" className="font-mono text-xl font-semibold text-accent">
+                  Photo Gallery
+                </h3>
                 <GalleryCarousel items={galleryItems} />
-              </div>
+              </section>
             </div>
 
-            {/* Sponsors Section */}
+            {/* Sponsorship Section */}
             <div id="sponsors" className="space-y-4 scroll-mt-24">
-              <div className="font-mono text-3xl font-semibold text-accent">
-                {"> SPONSORS_ "}
+              <div className="break-words font-mono text-2xl font-semibold text-accent sm:text-3xl">
+                {"> SPONSORSHIP_"}
               </div>
-              <p className="font-mono text-sm text-muted-foreground">
-                {"// Thank you to our partners for supporting the community."}
+              <p className="text-pretty text-lg leading-relaxed">
+                Sponsorship for DEOF 2027 is now open! Connect your team with
+                practitioners and leaders in the data
+                and AI space, recruit top talent, and support a community-driven
+                conference.
               </p>
-              <p className="text-pretty leading-relaxed text-primary-foreground">
-                Interested in sponsoring DEOF 2027? Please complete our{" "}
-                <a
-                  href="https://forms.gle/HpcaGq95Pf3R2iEQ9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline text-accent hover:opacity-90"
-                >
-                  sponsorship interest form
-                </a>
-                .
-              </p>
-
-              <section className="mt-6 rounded-sm bg-primary/70 px-5 py-8 sm:px-8 sm:py-10">
-                <div className="space-y-10">
-                  {sponsorTiers.map((group) => (
-                    <div key={group.tier} className="space-y-8">
-                      <div className="flex items-center gap-4">
-                        <div className="h-px flex-1 bg-accent/35" />
-                        <p className="font-mono text-lg font-semibold text-accent">
-                          {group.tier}
-                        </p>
-                        <div className="h-px flex-1 bg-accent/35" />
-                      </div>
-
-                      <div
-                        className={
-                          group.sponsors.length === 1
-                            ? "grid grid-cols-1 gap-4"
-                            : group.tier === "GOLD" &&
-                                group.sponsors.length === 2
-                              ? "mx-auto grid max-w-[540px] grid-cols-2 gap-4"
-                            : group.tier === "SILVER"
-                              ? "grid grid-cols-2 gap-4 sm:grid-cols-3"
-                              : "grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
-                        }
-                      >
-                        {group.sponsors.map((sponsor, index) => {
-                          const isSilver = group.tier === "SILVER";
-
-                          return (
-                            <a
-                              key={`${group.tier}-${sponsor.name}-${index}`}
-                              href={sponsor.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="sponsor-link group relative mx-auto flex h-20 w-full max-w-[260px] items-center justify-center rounded-sm bg-primary/20 px-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                              aria-label={sponsor.name}
-                            >
-                              <Image
-                                src={sponsor.logoSrc}
-                                alt={`${sponsor.name} logo`}
-                                width={220}
-                                height={56}
-                                className={`sponsor-logo ${getSponsorLogoClass(
-                                  sponsor.name,
-                                  isSilver,
-                                ).replace(" brightness-0 invert", "")}`}
-                              />
-                              {"finePrint" in sponsor ? (
-                                <span className="pointer-events-none absolute bottom-1 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs leading-tight text-muted-foreground">
-                                  {sponsor.finePrint}
-                                </span>
-                              ) : null}
-                            </a>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-8 font-mono text-sm text-muted-foreground">
-                  {"* Happy Hour is jointly sponsored by Databricks and Datadog."}
-                </p>
-              </section>
+              <a
+                href="https://forms.gle/HpcaGq95Pf3R2iEQ9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center border-2 border-accent bg-accent px-4 py-2 font-mono text-sm font-semibold text-primary transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                Become a Sponsor
+              </a>
+              <SponsorCredits
+                year="2026"
+                sponsorTiers={eventData2026.sponsorTiers}
+                className="scroll-mt-24"
+              />
             </div>
 
             <div className="space-y-2">
               {/* Organizer Information */}
               <div id="organized-by" className="space-y-2 scroll-mt-24">
-                <div className="font-mono text-3xl font-semibold text-accent">
+                <div className="break-words font-mono text-2xl font-semibold text-accent sm:text-3xl">
                   {"> ORGANIZED_BY_"}
                 </div>
                 <div className="flex flex-col gap-6 md:flex-row md:items-center">
@@ -693,35 +428,21 @@ export default function Home() {
                 <div className="font-mono font-semibold text-accent">
                   {"// PROGRAM_COMMITTEE_ "}
                 </div>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {programCommittee.map((member) => (
-                    <CommitteeCard
-                      key={member.name}
-                      name={member.name}
-                      title={member.title}
-                      linkedin={member.linkedin}
-                    />
-                  ))}
-                </div>
+                <p className="text-muted-foreground">
+                  The DEOF 2027 program committee is coming soon.
+                </p>
                 <div className="pt-2 font-mono font-semibold text-accent">
-                  {"// VOLUNTEER_LEADS_"}
+                  {"// COMMUNITY_AMBASSADORS_"}
                 </div>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {volunteerLeads.map((member) => (
-                    <CommitteeCard
-                      key={member.name}
-                      name={member.name}
-                      title={member.title}
-                      linkedin={member.linkedin}
-                    />
-                  ))}
-                </div>
+                <p className="text-muted-foreground">
+                  DEOF 2027 community ambassadors and opportunities are coming soon.
+                </p>
               </div>
             </div>
 
             {/* Event Production Section */}
             <div className="space-y-4">
-              <div className="font-mono text-3xl font-semibold text-accent">
+              <div className="break-words font-mono text-2xl font-semibold text-accent sm:text-3xl">
                 {"> EVENT_PARTNERS_ "}
               </div>
               <div className="grid gap-5 rounded-sm border border-border/70 p-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-8">
@@ -745,7 +466,7 @@ export default function Home() {
                     alt="ImagineX Productions logo"
                     width={110}
                     height={38}
-                    className="h-auto w-full max-w-[96px] object-contain sm:max-w-[110px]"
+                    className="h-auto w-24 object-contain sm:w-[110px]"
                   />
                 </a>
               </div>
@@ -753,7 +474,7 @@ export default function Home() {
 
             {/* FAQ Section */}
             <div className="space-y-4">
-              <div className="font-mono text-3xl font-semibold text-accent">
+              <div className="break-words font-mono text-2xl font-semibold text-accent sm:text-3xl">
                 {"> FAQ_ "}
               </div>
               <FAQSection items={faqItems} />
@@ -761,7 +482,7 @@ export default function Home() {
 
             {/* Contact Section */}
             <div className="space-y-4">
-              <div className="font-mono text-3xl font-semibold text-accent">
+              <div className="break-words font-mono text-2xl font-semibold text-accent sm:text-3xl">
                 {"> CONTACT_ "}
               </div>
               <div className="space-y-5 rounded-sm border-2 border-accent/40 p-5">
@@ -769,18 +490,17 @@ export default function Home() {
                   {"// GET_DEOF_UPDATES_ "}
                 </div>
                 <p className="text-pretty leading-relaxed text-primary-foreground">
-                  Join our{" "}
                   <a
-                    href="https://groups.google.com/g/data-engineering-open-forum"
+                    href="https://luma.com/det-meetup-bay-area"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline text-accent hover:opacity-90"
                   >
-                    Google Group
+                    Subscribe
                   </a>{" "}
-                  to receive email updates on Data Engineering Open Forum,
-                  including event announcements, Call for Proposals (CFP),
-                  volunteer opportunities, and more.
+                  to our community calendar for email updates about Data
+                  Engineering Open Forum announcements, Call for Proposals
+                  (CFP), volunteer opportunities, and upcoming DET events.
                 </p>
                 <div className="font-mono font-semibold text-accent">
                   {"// SPONSORSHIP_ "}
@@ -803,7 +523,7 @@ export default function Home() {
                 <p className="mt-3 text-pretty leading-relaxed text-primary-foreground">
                   If you have any questions, please contact us by {" "}
                   <a
-                    href="mailto:info@dataengineerthings.org"
+                    href="mailto:deof@dataengineerthings.org"
                     className="underline text-accent hover:opacity-90"
                   >
                     email
